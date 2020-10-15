@@ -1,0 +1,860 @@
+<!doctype html>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ko">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no, user-scalable=no">
+
+    <meta name="keywords" content="사랑의 열매, 사회복지공동모금회" />
+    <meta name="description" content="" />
+
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="naver-site-verification" content="4ceec3aa298af6746a1432e53369d1aa1fea56a9" />
+    <span itemscope="" itemtype="http://schema.org/Organization">
+        <link itemprop="url" href="http://www.mysite.com">
+        <a itemprop="sameAs" href="https://www.facebook.com/chestkorea"></a>
+        <a itemprop="sameAs" href="https://blog.naver.com/nanum_in"></a>
+        <a itemprop="sameAs" href="https://www.youtube.com/channel/UCJCLW5U-CQXMvLrXDoiaw0g"></a>
+        <a itemprop="sameAs" href="https://www.instagram.com/fruits_of_love"></a>
+    </span>
+
+    <!-- 크라우드 펀딩 (진행중인 펀딩 SNS 공유) start -->
+    <meta property="og:title" content="" />
+    <meta property="og:type" content="article" />
+    <meta property="og:image" content="nullcommon/img/common/no-img.jpg" />
+    <meta property="og:site_name" content="( null ) 사회복지공동모금회 사랑의열매" />
+    <meta property="og:url"
+        content="nullca/crwdfund/P/initCrwdfundDetail.do?pMenuType=header&pMenuId=00_01_01&propseSn=null" />
+    <meta property="og:description" content="" />
+    <!-- 크라우드 펀딩 (진행중인 펀딩 SNS 공유) end -->
+
+    <title>( 중앙회 ) 사회복지공동모금회 사랑의열매</title>
+
+
+
+
+
+    <link rel="icon" href="/favicon.ico">
+    <!-- css ÃªÂ²Â½Ã«Â¡Â  -->
+    <link rel="stylesheet" href="/common/css/ui.base.css?_v=20201015095339">
+    <link rel="stylesheet" href="/common/css/ui.main.css?_v=20201015095339">
+    <link rel="stylesheet" href="/common/css/swiper.css">
+    <link rel="stylesheet" href="/common/css/ui.responsive.css">
+    <!-- Jquery -->
+    <script type="text/javascript" src="/common/js/jquery/js/jquery-3.4.1.min.js"></script>
+    <script type="text/javascript" src="/common/js/jquery/plugin/jquery.cookie.js"></script><!-- cookie Plugin -->
+    <script type="text/javascript" src="/common/js/jquery/js/jquery-ui.js"></script>
+    <!-- Chest Front Common -->
+    <script type="text/javascript" src="/common/js/chest_menu.js?_v=20201015095339"></script><!-- menu script -->
+    <script type="text/javascript" src="/common/js/chest_util.js"></script><!-- util script -->
+    <script type="text/javascript" src="/common/js/chest_ajax.js"></script><!-- ajax script -->
+    <script type="text/javascript" src="/common/js/chest_com.js"></script><!-- common script -->
+    <script type="text/javascript" src="/common/js/chest_grid.js"></script><!-- grid script -->
+    <script type="text/javascript" src="/common/js/chest_date.js"></script><!-- date script -->
+    <script type="text/javascript" src="/common/js/chest_user.js"></script><!-- user script -->
+    <!-- Chest ui Common -->
+    <script type="text/javascript" src="/common/js/swiper.js"></script>
+    <script type="text/javascript" src="/common/js/ui.global.js"></script>
+    <script type="text/javascript" src="/common/js/ui.plugins.js"></script>
+    <script type="text/javascript" src="/common/js/ui.common.js?_v=20201015095339"></script>
+    <script type="text/javascript" src="/common/js/signature_pad.min.js"></script>
+
+</head>
+
+
+<body>
+    <!-- 20200923 온라인팀 요청으로 추가 start -->
+    <!-- Google Tag Manager By 누구나데이터 | 2020.09 -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P2S8MLW" height="0" width="0"
+            style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- 20200923 온라인팀 요청으로 추가 end -->
+
+    <div class="base-skip" id="baseSkip">
+        <strong class="hidden">반복영역 건너뛰기</strong>
+        <ul>
+            <li><a href="#baseMain">본문 바로가기</a></li>
+        </ul>
+    </div>
+    <div class="base-layer" id="baseLayer">
+        <!-- search -->
+        <div class="ui-modal type-search" id="modalSearch" role="dialog" aria-hidden="true">
+            <div class="ui-modal-wrap">
+                <header class="ui-modal-header">
+                    <h1 class="ui-modal-tit"><span>통합검색</span></h1>
+                    <p>사랑의열매와 함께 나눔의 행복을 찾아보세요.</p>
+                </header>
+                <div class="ui-modal-cont box-search">
+                    <div class="inner-wrap">
+                        <input type="text" class="inp-base" id="searchKeyword" title="통합검색"
+                            placeholder="검색어를 입력해주세요."></input>
+                        <button type="button" class="btn-base-main" id="btnResult">검색하기</button>
+                    </div>
+                </div>
+                <div class="ui-modal-footer">
+                    <button type="button" class="btn-base ui-modal-close"><span class="hide">닫기</span></button>
+                </div>
+            </div>
+        </div>
+
+        <div class="ui-modal box-base type-password" id="modalPassword" role="dialog" aria-hidden="true">
+            <div class="ui-modal-wrap">
+                <header class="ui-modal-header">
+                    <h1 class="ui-modal-tit hide"><span>댓글 수정/삭제</span></h1>
+                    <p>댓글입력시 설정한 자신의 비밀번호를 입력하세요.</p>
+                </header>
+                <div class="ui-modal-cont box-password">
+                    <div class="inner-wrap">
+                        <div>
+                            <p>비밀번호</p>
+                            <input type="password" id="replyPw" class="inp-base" title="비밀번호" placeholder="숫자 6자리"
+                                maxlength="6">
+                        </div>
+                        <button type="button" id="btnCheckReplyPw" class="btn-base-imp">확인</button>
+                    </div>
+                </div>
+                <div class="ui-modal-footer">
+                    <button type="button" class="ui-modal-close btn-close"><span class="hide">닫기</span></button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- layout Start -->
+    <div class="base-wrap" id="baseWrap">
+        <!-- header start -->
+        <header class="base-header" id="baseHeader">
+
+            <div class="base-header-wrap">
+                <h1 class="logo">
+                    <a href="javascript:;" OnClick="chestMainClickEvent();">
+
+
+                        <img src="/common/img/common/logo.png"
+                            srcset="/common/img/common/logo@2x.png 2x, /common/img/common/logo@3x.png 3x" alt="사랑의 열매">
+
+
+
+                    </a>
+                </h1>
+                <!-- desktop -->
+                <div class="header-desktop">
+                    <div class="nav-util">
+                        <button type="button" class="ui-drop" id="uiNavUtil1">지역모금회<i
+                                class="sprite-header_blt"></i></button>
+                        <div class="ui-drop-pnl" data-id="uiNavUtil1">
+                            <div class="nav-util-box">
+                                <ul>
+
+
+                                    <li><a href="javascript:;" OnClick="branchClickEvent(this);" title="중앙회 열기">중앙회</a>
+                                        <input id="linkBranchCd" name="linkBranchCd" type="hidden" value="001" />
+                                        <input id="linkBranchId" name="linkBranchId" type="hidden" value="www" />
+                                        <input id="linkBranchNm" name="linkBranchNm" type="hidden" value="중앙회" />
+                                        <input id="linkBranchUrl" name="linkBranchUrl" type="hidden"
+                                            value="https://www.chest.or.kr/" />
+                                    </li>
+
+                                    <li><a href="javascript:;" OnClick="branchClickEvent(this);" title="서울 모금회 열기">서울
+                                            모금회</a>
+                                        <input id="linkBranchCd" name="linkBranchCd" type="hidden" value="002" />
+                                        <input id="linkBranchId" name="linkBranchId" type="hidden" value="seoul" />
+                                        <input id="linkBranchNm" name="linkBranchNm" type="hidden" value="서울 모금회" />
+                                        <input id="linkBranchUrl" name="linkBranchUrl" type="hidden"
+                                            value="https://seoul.chest.or.kr/" />
+                                    </li>
+
+                                    <li><a href="javascript:;" OnClick="branchClickEvent(this);" title="부산 모금회 열기">부산
+                                            모금회</a>
+                                        <input id="linkBranchCd" name="linkBranchCd" type="hidden" value="003" />
+                                        <input id="linkBranchId" name="linkBranchId" type="hidden" value="busan" />
+                                        <input id="linkBranchNm" name="linkBranchNm" type="hidden" value="부산 모금회" />
+                                        <input id="linkBranchUrl" name="linkBranchUrl" type="hidden"
+                                            value="https://busan.chest.or.kr/" />
+                                    </li>
+
+                                    <li><a href="javascript:;" OnClick="branchClickEvent(this);" title="대구 모금회 열기">대구
+                                            모금회</a>
+                                        <input id="linkBranchCd" name="linkBranchCd" type="hidden" value="004" />
+                                        <input id="linkBranchId" name="linkBranchId" type="hidden" value="daegu" />
+                                        <input id="linkBranchNm" name="linkBranchNm" type="hidden" value="대구 모금회" />
+                                        <input id="linkBranchUrl" name="linkBranchUrl" type="hidden"
+                                            value="https://daegu.chest.or.kr/" />
+                                    </li>
+
+                                    <li><a href="javascript:;" OnClick="branchClickEvent(this);" title="인천 모금회 열기">인천
+                                            모금회</a>
+                                        <input id="linkBranchCd" name="linkBranchCd" type="hidden" value="005" />
+                                        <input id="linkBranchId" name="linkBranchId" type="hidden" value="incheon" />
+                                        <input id="linkBranchNm" name="linkBranchNm" type="hidden" value="인천 모금회" />
+                                        <input id="linkBranchUrl" name="linkBranchUrl" type="hidden"
+                                            value="https://incheon.chest.or.kr/" />
+                                    </li>
+
+                                    <li><a href="javascript:;" OnClick="branchClickEvent(this);" title="광주 모금회 열기">광주
+                                            모금회</a>
+                                        <input id="linkBranchCd" name="linkBranchCd" type="hidden" value="006" />
+                                        <input id="linkBranchId" name="linkBranchId" type="hidden" value="gwangju" />
+                                        <input id="linkBranchNm" name="linkBranchNm" type="hidden" value="광주 모금회" />
+                                        <input id="linkBranchUrl" name="linkBranchUrl" type="hidden"
+                                            value="https://gwangju.chest.or.kr/" />
+                                    </li>
+
+                                    <li><a href="javascript:;" OnClick="branchClickEvent(this);" title="대전 모금회 열기">대전
+                                            모금회</a>
+                                        <input id="linkBranchCd" name="linkBranchCd" type="hidden" value="007" />
+                                        <input id="linkBranchId" name="linkBranchId" type="hidden" value="daejeon" />
+                                        <input id="linkBranchNm" name="linkBranchNm" type="hidden" value="대전 모금회" />
+                                        <input id="linkBranchUrl" name="linkBranchUrl" type="hidden"
+                                            value="https://daejeon.chest.or.kr/" />
+                                    </li>
+
+                                    <li><a href="javascript:;" OnClick="branchClickEvent(this);" title="울산 모금회 열기">울산
+                                            모금회</a>
+                                        <input id="linkBranchCd" name="linkBranchCd" type="hidden" value="008" />
+                                        <input id="linkBranchId" name="linkBranchId" type="hidden" value="ulsan" />
+                                        <input id="linkBranchNm" name="linkBranchNm" type="hidden" value="울산 모금회" />
+                                        <input id="linkBranchUrl" name="linkBranchUrl" type="hidden"
+                                            value="https://ulsan.chest.or.kr/" />
+                                    </li>
+
+                                    <li><a href="javascript:;" OnClick="branchClickEvent(this);" title="경기 모금회 열기">경기
+                                            모금회</a>
+                                        <input id="linkBranchCd" name="linkBranchCd" type="hidden" value="009" />
+                                        <input id="linkBranchId" name="linkBranchId" type="hidden" value="gyeonggi" />
+                                        <input id="linkBranchNm" name="linkBranchNm" type="hidden" value="경기 모금회" />
+                                        <input id="linkBranchUrl" name="linkBranchUrl" type="hidden"
+                                            value="https://gyeonggi.chest.or.kr/" />
+                                    </li>
+
+                                    <li><a href="javascript:;" OnClick="branchClickEvent(this);" title="강원 모금회 열기">강원
+                                            모금회</a>
+                                        <input id="linkBranchCd" name="linkBranchCd" type="hidden" value="010" />
+                                        <input id="linkBranchId" name="linkBranchId" type="hidden" value="gangwon" />
+                                        <input id="linkBranchNm" name="linkBranchNm" type="hidden" value="강원 모금회" />
+                                        <input id="linkBranchUrl" name="linkBranchUrl" type="hidden"
+                                            value="https://gangwon.chest.or.kr/" />
+                                    </li>
+
+                                    <li><a href="javascript:;" OnClick="branchClickEvent(this);" title="충북 모금회 열기">충북
+                                            모금회</a>
+                                        <input id="linkBranchCd" name="linkBranchCd" type="hidden" value="011" />
+                                        <input id="linkBranchId" name="linkBranchId" type="hidden" value="cb" />
+                                        <input id="linkBranchNm" name="linkBranchNm" type="hidden" value="충북 모금회" />
+                                        <input id="linkBranchUrl" name="linkBranchUrl" type="hidden"
+                                            value="https://cb.chest.or.kr/" />
+                                    </li>
+
+                                    <li><a href="javascript:;" OnClick="branchClickEvent(this);" title="충남 모금회 열기">충남
+                                            모금회</a>
+                                        <input id="linkBranchCd" name="linkBranchCd" type="hidden" value="012" />
+                                        <input id="linkBranchId" name="linkBranchId" type="hidden" value="cn" />
+                                        <input id="linkBranchNm" name="linkBranchNm" type="hidden" value="충남 모금회" />
+                                        <input id="linkBranchUrl" name="linkBranchUrl" type="hidden"
+                                            value="https://cn.chest.or.kr/" />
+                                    </li>
+
+                                    <li><a href="javascript:;" OnClick="branchClickEvent(this);" title="전북 모금회 열기">전북
+                                            모금회</a>
+                                        <input id="linkBranchCd" name="linkBranchCd" type="hidden" value="013" />
+                                        <input id="linkBranchId" name="linkBranchId" type="hidden" value="jb" />
+                                        <input id="linkBranchNm" name="linkBranchNm" type="hidden" value="전북 모금회" />
+                                        <input id="linkBranchUrl" name="linkBranchUrl" type="hidden"
+                                            value="https://jb.chest.or.kr/" />
+                                    </li>
+
+                                    <li><a href="javascript:;" OnClick="branchClickEvent(this);" title="전남 모금회 열기">전남
+                                            모금회</a>
+                                        <input id="linkBranchCd" name="linkBranchCd" type="hidden" value="014" />
+                                        <input id="linkBranchId" name="linkBranchId" type="hidden" value="jn" />
+                                        <input id="linkBranchNm" name="linkBranchNm" type="hidden" value="전남 모금회" />
+                                        <input id="linkBranchUrl" name="linkBranchUrl" type="hidden"
+                                            value="https://jn.chest.or.kr/" />
+                                    </li>
+
+                                    <li><a href="javascript:;" OnClick="branchClickEvent(this);" title="경북 모금회 열기">경북
+                                            모금회</a>
+                                        <input id="linkBranchCd" name="linkBranchCd" type="hidden" value="015" />
+                                        <input id="linkBranchId" name="linkBranchId" type="hidden" value="gb" />
+                                        <input id="linkBranchNm" name="linkBranchNm" type="hidden" value="경북 모금회" />
+                                        <input id="linkBranchUrl" name="linkBranchUrl" type="hidden"
+                                            value="https://gb.chest.or.kr/" />
+                                    </li>
+
+                                    <li><a href="javascript:;" OnClick="branchClickEvent(this);" title="경남 모금회 열기">경남
+                                            모금회</a>
+                                        <input id="linkBranchCd" name="linkBranchCd" type="hidden" value="016" />
+                                        <input id="linkBranchId" name="linkBranchId" type="hidden" value="gn" />
+                                        <input id="linkBranchNm" name="linkBranchNm" type="hidden" value="경남 모금회" />
+                                        <input id="linkBranchUrl" name="linkBranchUrl" type="hidden"
+                                            value="https://gn.chest.or.kr/" />
+                                    </li>
+
+                                    <li><a href="javascript:;" OnClick="branchClickEvent(this);" title="제주 모금회 열기">제주
+                                            모금회</a>
+                                        <input id="linkBranchCd" name="linkBranchCd" type="hidden" value="017" />
+                                        <input id="linkBranchId" name="linkBranchId" type="hidden" value="jeju" />
+                                        <input id="linkBranchNm" name="linkBranchNm" type="hidden" value="제주 모금회" />
+                                        <input id="linkBranchUrl" name="linkBranchUrl" type="hidden"
+                                            value="https://jeju.chest.or.kr/" />
+                                    </li>
+
+                                    <li><a href="javascript:;" OnClick="branchClickEvent(this);" title="세종 모금회 열기">세종
+                                            모금회</a>
+                                        <input id="linkBranchCd" name="linkBranchCd" type="hidden" value="018" />
+                                        <input id="linkBranchId" name="linkBranchId" type="hidden" value="sejong" />
+                                        <input id="linkBranchNm" name="linkBranchNm" type="hidden" value="세종 모금회" />
+                                        <input id="linkBranchUrl" name="linkBranchUrl" type="hidden"
+                                            value="https://sejong.chest.or.kr/" />
+                                    </li>
+
+
+                                </ul>
+                            </div>
+                        </div>
+
+                        <span>|</span>
+                        <a href="javascript:;" OnClick="chestSitemap();">사이트맵</a>
+                        <span>|</span>
+
+                        <button type="button" class="ui-drop" id="uiNavUtil2">Language<i
+                                class="sprite-header_blt"></i></button>
+                        <div class="ui-drop-pnl" data-id="uiNavUtil2">
+                            <div class="nav-util-box">
+                                <ul>
+
+
+                                    <li><a href="https://www.chest.or.kr/" title="한국어">한국어</a></li>
+
+                                    <li><a href="https://eng.chest.or.kr/" title="English">English</a></li>
+
+                                    <li><a href="https://china.chest.or.kr/" title="中文">中文</a></li>
+
+                                    <li><a href="https://jp.chest.or.kr/" title="日文">日文</a></li>
+
+
+                                </ul>
+                            </div>
+                        </div>
+                        <span>|</span>
+                        <button type="button" class="btn-sh-open" id="btnPcSearch">검색<i
+                                class="sprite-header_sh"></i></button>
+
+                    </div>
+                    <nav class="nav-main" id="baseNav">
+                        <ul class="nav-main-wrap"></ul>
+                        <div class="nav-special">
+                            <a href="/ca/speclmys/initCovid.do" class="btn-covid"><span class="ir_su">코로나19</span></a>
+                            <a href="/fr/mycntr/initCntrdtlsinqire.do" class="btn-base">나의 기부</a>
+                            <a href="/ct/fdrmcntr/initEvemthcntr.do" class="btn-base-imp">기부하기</a>
+                        </div>
+                    </nav>
+                </div>
+
+                <!-- mobile -->
+                <div class="header-mobile">
+                    <div class="btn-util">
+                        <button type="button">
+                            <img src="/common/img/common/btn_srch_m.png"
+                                srcset="/common/img/common/btn_srch_m@2x.png 2x, /common/img/common/btn_srch_m@3x.png 3x"
+                                id="btnMobileSearch" alt="검색">
+                        </button>
+                        <button type="button" class="ui-menu">
+                            <img src="/common/img/common/menu.png"
+                                srcset="/common/img/common/menu@2x.png 2x, /common/img/common/menu@3x.png 3x"
+                                alt="전체메뉴">
+                        </button>
+                    </div>
+                    <div class="menu-wrap" id="">
+                        <button type="button" class="btn-close"><span class="hide">닫기</span></button>
+                        <div class="menu-sec-1">
+                            <button type="button" class="ui-drop" id="uiNavUtil1_m">
+                                <span>지역모금회</span>
+                                <i class="sprite-header_blt"></i>
+                            </button>
+                            <div class="ui-drop-pnl" data-id="uiNavUtil1_m">
+                                <div class="nav-util-box">
+                                    <ul>
+
+
+
+                                        <li><a href="javascript:;" OnClick="branchClickEvent(this);"
+                                                title="중앙회 열기">중앙회</a>
+                                            <input id="linkBranchCd" name="linkBranchCd" type="hidden" value="001" />
+                                            <input id="linkBranchId" name="linkBranchId" type="hidden" value="www" />
+                                            <input id="linkBranchNm" name="linkBranchNm" type="hidden" value="중앙회" />
+                                            <input id="linkBranchUrl" name="linkBranchUrl" type="hidden"
+                                                value="https://www.chest.or.kr/" />
+                                        </li>
+
+                                        <li><a href="javascript:;" OnClick="branchClickEvent(this);"
+                                                title="서울 모금회 열기">서울 모금회</a>
+                                            <input id="linkBranchCd" name="linkBranchCd" type="hidden" value="002" />
+                                            <input id="linkBranchId" name="linkBranchId" type="hidden" value="seoul" />
+                                            <input id="linkBranchNm" name="linkBranchNm" type="hidden" value="서울 모금회" />
+                                            <input id="linkBranchUrl" name="linkBranchUrl" type="hidden"
+                                                value="https://seoul.chest.or.kr/" />
+                                        </li>
+
+                                        <li><a href="javascript:;" OnClick="branchClickEvent(this);"
+                                                title="부산 모금회 열기">부산 모금회</a>
+                                            <input id="linkBranchCd" name="linkBranchCd" type="hidden" value="003" />
+                                            <input id="linkBranchId" name="linkBranchId" type="hidden" value="busan" />
+                                            <input id="linkBranchNm" name="linkBranchNm" type="hidden" value="부산 모금회" />
+                                            <input id="linkBranchUrl" name="linkBranchUrl" type="hidden"
+                                                value="https://busan.chest.or.kr/" />
+                                        </li>
+
+                                        <li><a href="javascript:;" OnClick="branchClickEvent(this);"
+                                                title="대구 모금회 열기">대구 모금회</a>
+                                            <input id="linkBranchCd" name="linkBranchCd" type="hidden" value="004" />
+                                            <input id="linkBranchId" name="linkBranchId" type="hidden" value="daegu" />
+                                            <input id="linkBranchNm" name="linkBranchNm" type="hidden" value="대구 모금회" />
+                                            <input id="linkBranchUrl" name="linkBranchUrl" type="hidden"
+                                                value="https://daegu.chest.or.kr/" />
+                                        </li>
+
+                                        <li><a href="javascript:;" OnClick="branchClickEvent(this);"
+                                                title="인천 모금회 열기">인천 모금회</a>
+                                            <input id="linkBranchCd" name="linkBranchCd" type="hidden" value="005" />
+                                            <input id="linkBranchId" name="linkBranchId" type="hidden"
+                                                value="incheon" />
+                                            <input id="linkBranchNm" name="linkBranchNm" type="hidden" value="인천 모금회" />
+                                            <input id="linkBranchUrl" name="linkBranchUrl" type="hidden"
+                                                value="https://incheon.chest.or.kr/" />
+                                        </li>
+
+                                        <li><a href="javascript:;" OnClick="branchClickEvent(this);"
+                                                title="광주 모금회 열기">광주 모금회</a>
+                                            <input id="linkBranchCd" name="linkBranchCd" type="hidden" value="006" />
+                                            <input id="linkBranchId" name="linkBranchId" type="hidden"
+                                                value="gwangju" />
+                                            <input id="linkBranchNm" name="linkBranchNm" type="hidden" value="광주 모금회" />
+                                            <input id="linkBranchUrl" name="linkBranchUrl" type="hidden"
+                                                value="https://gwangju.chest.or.kr/" />
+                                        </li>
+
+                                        <li><a href="javascript:;" OnClick="branchClickEvent(this);"
+                                                title="대전 모금회 열기">대전 모금회</a>
+                                            <input id="linkBranchCd" name="linkBranchCd" type="hidden" value="007" />
+                                            <input id="linkBranchId" name="linkBranchId" type="hidden"
+                                                value="daejeon" />
+                                            <input id="linkBranchNm" name="linkBranchNm" type="hidden" value="대전 모금회" />
+                                            <input id="linkBranchUrl" name="linkBranchUrl" type="hidden"
+                                                value="https://daejeon.chest.or.kr/" />
+                                        </li>
+
+                                        <li><a href="javascript:;" OnClick="branchClickEvent(this);"
+                                                title="울산 모금회 열기">울산 모금회</a>
+                                            <input id="linkBranchCd" name="linkBranchCd" type="hidden" value="008" />
+                                            <input id="linkBranchId" name="linkBranchId" type="hidden" value="ulsan" />
+                                            <input id="linkBranchNm" name="linkBranchNm" type="hidden" value="울산 모금회" />
+                                            <input id="linkBranchUrl" name="linkBranchUrl" type="hidden"
+                                                value="https://ulsan.chest.or.kr/" />
+                                        </li>
+
+                                        <li><a href="javascript:;" OnClick="branchClickEvent(this);"
+                                                title="경기 모금회 열기">경기 모금회</a>
+                                            <input id="linkBranchCd" name="linkBranchCd" type="hidden" value="009" />
+                                            <input id="linkBranchId" name="linkBranchId" type="hidden"
+                                                value="gyeonggi" />
+                                            <input id="linkBranchNm" name="linkBranchNm" type="hidden" value="경기 모금회" />
+                                            <input id="linkBranchUrl" name="linkBranchUrl" type="hidden"
+                                                value="https://gyeonggi.chest.or.kr/" />
+                                        </li>
+
+                                        <li><a href="javascript:;" OnClick="branchClickEvent(this);"
+                                                title="강원 모금회 열기">강원 모금회</a>
+                                            <input id="linkBranchCd" name="linkBranchCd" type="hidden" value="010" />
+                                            <input id="linkBranchId" name="linkBranchId" type="hidden"
+                                                value="gangwon" />
+                                            <input id="linkBranchNm" name="linkBranchNm" type="hidden" value="강원 모금회" />
+                                            <input id="linkBranchUrl" name="linkBranchUrl" type="hidden"
+                                                value="https://gangwon.chest.or.kr/" />
+                                        </li>
+
+                                        <li><a href="javascript:;" OnClick="branchClickEvent(this);"
+                                                title="충북 모금회 열기">충북 모금회</a>
+                                            <input id="linkBranchCd" name="linkBranchCd" type="hidden" value="011" />
+                                            <input id="linkBranchId" name="linkBranchId" type="hidden" value="cb" />
+                                            <input id="linkBranchNm" name="linkBranchNm" type="hidden" value="충북 모금회" />
+                                            <input id="linkBranchUrl" name="linkBranchUrl" type="hidden"
+                                                value="https://cb.chest.or.kr/" />
+                                        </li>
+
+                                        <li><a href="javascript:;" OnClick="branchClickEvent(this);"
+                                                title="충남 모금회 열기">충남 모금회</a>
+                                            <input id="linkBranchCd" name="linkBranchCd" type="hidden" value="012" />
+                                            <input id="linkBranchId" name="linkBranchId" type="hidden" value="cn" />
+                                            <input id="linkBranchNm" name="linkBranchNm" type="hidden" value="충남 모금회" />
+                                            <input id="linkBranchUrl" name="linkBranchUrl" type="hidden"
+                                                value="https://cn.chest.or.kr/" />
+                                        </li>
+
+                                        <li><a href="javascript:;" OnClick="branchClickEvent(this);"
+                                                title="전북 모금회 열기">전북 모금회</a>
+                                            <input id="linkBranchCd" name="linkBranchCd" type="hidden" value="013" />
+                                            <input id="linkBranchId" name="linkBranchId" type="hidden" value="jb" />
+                                            <input id="linkBranchNm" name="linkBranchNm" type="hidden" value="전북 모금회" />
+                                            <input id="linkBranchUrl" name="linkBranchUrl" type="hidden"
+                                                value="https://jb.chest.or.kr/" />
+                                        </li>
+
+                                        <li><a href="javascript:;" OnClick="branchClickEvent(this);"
+                                                title="전남 모금회 열기">전남 모금회</a>
+                                            <input id="linkBranchCd" name="linkBranchCd" type="hidden" value="014" />
+                                            <input id="linkBranchId" name="linkBranchId" type="hidden" value="jn" />
+                                            <input id="linkBranchNm" name="linkBranchNm" type="hidden" value="전남 모금회" />
+                                            <input id="linkBranchUrl" name="linkBranchUrl" type="hidden"
+                                                value="https://jn.chest.or.kr/" />
+                                        </li>
+
+                                        <li><a href="javascript:;" OnClick="branchClickEvent(this);"
+                                                title="경북 모금회 열기">경북 모금회</a>
+                                            <input id="linkBranchCd" name="linkBranchCd" type="hidden" value="015" />
+                                            <input id="linkBranchId" name="linkBranchId" type="hidden" value="gb" />
+                                            <input id="linkBranchNm" name="linkBranchNm" type="hidden" value="경북 모금회" />
+                                            <input id="linkBranchUrl" name="linkBranchUrl" type="hidden"
+                                                value="https://gb.chest.or.kr/" />
+                                        </li>
+
+                                        <li><a href="javascript:;" OnClick="branchClickEvent(this);"
+                                                title="경남 모금회 열기">경남 모금회</a>
+                                            <input id="linkBranchCd" name="linkBranchCd" type="hidden" value="016" />
+                                            <input id="linkBranchId" name="linkBranchId" type="hidden" value="gn" />
+                                            <input id="linkBranchNm" name="linkBranchNm" type="hidden" value="경남 모금회" />
+                                            <input id="linkBranchUrl" name="linkBranchUrl" type="hidden"
+                                                value="https://gn.chest.or.kr/" />
+                                        </li>
+
+                                        <li><a href="javascript:;" OnClick="branchClickEvent(this);"
+                                                title="제주 모금회 열기">제주 모금회</a>
+                                            <input id="linkBranchCd" name="linkBranchCd" type="hidden" value="017" />
+                                            <input id="linkBranchId" name="linkBranchId" type="hidden" value="jeju" />
+                                            <input id="linkBranchNm" name="linkBranchNm" type="hidden" value="제주 모금회" />
+                                            <input id="linkBranchUrl" name="linkBranchUrl" type="hidden"
+                                                value="https://jeju.chest.or.kr/" />
+                                        </li>
+
+                                        <li><a href="javascript:;" OnClick="branchClickEvent(this);"
+                                                title="세종 모금회 열기">세종 모금회</a>
+                                            <input id="linkBranchCd" name="linkBranchCd" type="hidden" value="018" />
+                                            <input id="linkBranchId" name="linkBranchId" type="hidden" value="sejong" />
+                                            <input id="linkBranchNm" name="linkBranchNm" type="hidden" value="세종 모금회" />
+                                            <input id="linkBranchUrl" name="linkBranchUrl" type="hidden"
+                                                value="https://sejong.chest.or.kr/" />
+                                        </li>
+
+
+                                    </ul>
+                                </div>
+                            </div>
+                            <button type="button" class="ui-drop" id="uiNavUtil2_m">
+                                <span>KOR</span>
+                                <i class="sprite-header_blt"></i>
+                            </button>
+                            <div class="ui-drop-pnl" data-id="uiNavUtil2_m">
+                                <div class="nav-util-box">
+                                    <ul>
+
+
+                                        <li><a href="https://www.chest.or.kr/" title="한국어">한국어</a></li>
+
+                                        <li><a href="https://eng.chest.or.kr/" title="English">English</a></li>
+
+                                        <li><a href="https://china.chest.or.kr/" title="中文">中文</a></li>
+
+                                        <li><a href="https://jp.chest.or.kr/" title="日文">日文</a></li>
+
+
+                                    </ul>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="menu-sec-2">
+                            <a href="/fr/mycntr/initCntrdtlsinqire.do" class="btn-base">나의 기부</a>
+                            <a href="/ct/fdrmcntr/initEvemthcntr.do" class="btn-base-imp">기부하기</a>
+                        </div>
+                        <nav class="nav-mobile" id="baseNav2">
+                            <ul class="ui-acco" role="group" id="AccoNavDepth1"></ul>
+                            <div style="margin:20px;">
+                                <a href="/ca/speclmys/initCovid.do" class="btn-covid"><span
+                                        class="ir_su">코로나19</span></a>
+                            </div>
+                        </nav>
+                        <div class="mobile-sns">
+                            <ul class="mobile-sns-area">
+                                <li class="mobile-sns-item"><a
+                                        href="https://www.youtube.com/channel/UCJCLW5U-CQXMvLrXDoiaw0g?view_as=subscriber"
+                                        title="새 창 열림" target="_blank"><i class="sprite-footer_sns2">유튜브</i></a></li>
+                                <li class="mobile-sns-item"><a href="javascript:snsMoveEvent('SNS_BG');"
+                                        title="새 창 열림"><i class="sprite-footer_sns3" target="_blank">블로그</i></a></li>
+                                <li class="mobile-sns-item"><a href="javascript:snsMoveEvent('SNS_PB');"
+                                        title="새 창 열림"><i class="sprite-footer_sns1">페이스북</i></a></li>
+                                <li class="mobile-sns-item"><a href="javascript:snsMoveEvent('SNS_IS');"
+                                        title="새 창 열림"><i class="sprite-footer_sns4" target="_blank">인스타그램</i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="dim-nav"></div>
+        </header>
+        <!-- // header end -->
+
+        <!-- body start -->
+        <div class="base-body" id="baseBody">
+            <!-- body Html -->
+            <div class="base-main" id="baseMain">
+
+                <!-- main hero 배너(2type) -->
+                <div class="main__vs">
+                    <div class="main-vs2">
+                        <!-- Swiper -->
+                        <div class="swiper-container" id="mainVs">
+                            <div class="swiper-wrapper" id="banrList"></div>
+                            <!-- Add Pagination -->
+                            <div class="swiper-pagination"></div>
+                            <!-- Add Arrows -->
+                            <div class="swiper-button-next"></div>
+                            <div class="swiper-button-prev"></div>
+                        </div>
+                    </div>
+
+                    <div class="main__aside">
+                        <div class="main__aside--top">
+                            <ul class="left">
+                                <li class="active" data-tab="tab-1" id="tab-1-t">공지사항</li>
+                                <li data-tab="tab-2" id="tab-2-t">지원안내</li>
+                            </ul>
+                            <div class="right">
+                                <p><span class="aside__icon--off"></span>종료</p>
+                                <p>&nbsp;<span class="aside__icon--on"></span>진행중</p>
+                            </div>
+                        </div>
+                        <div class="main__aside--bottom">
+                            <ul class="aside_notice active" id="tab-1"></ul>
+
+                            <ul class="aside_notice" id="tab-2"></ul>
+
+                            <p class="line"></p>
+                        </div>
+                    </div>
+                </div>
+
+                <!--// main hero 배너(2type) -->
+
+                <div class="main-type2 mini">
+                    <h3>나눔과 <br>변화의스토리</h3>
+                    <div class="main-type-wrap">
+                        <div class="swiper-container" id="mainBn1">
+                            <div class="swiper-wrapper"></div>
+                        </div>
+                    </div>
+                    <button type="button" class="btn-swiper-prev" id="btn-swiper-prev2">
+                        <span class="hide">이전</span>
+                    </button>
+                    <button type="button" class="btn-swiper-next" id="btn-swiper-next2">
+                        <span class="hide">다음</span>
+                    </button>
+
+                    <button type="button" class="btn-more" id="mainBn1_more" title="나눔과 변화의스토리 더보기">
+                        <span class="hide">나눔과 변화의스토리 더보기</span>
+                    </button>
+                </div>
+
+                <div class="box-sns">
+                    <div class="box-sns-vod">
+                        <div>
+                            <iframe id="player" type="text/html" width="344" height="222"
+                                src="https://www.youtube.com/embed/uhB4Am0Aakk" title="이영지, 나눔으로 세상을 움직이다"
+                                frameborder="0"></iframe>
+                            <strong>이영지, 나눔으로 세상을 움직이다</strong>
+                            <div class="sns-wrap">
+                                <a href="javascript:snsMoveEvent('SNS_PB');" title="새 창 열림" class="ico-f"><span
+                                        class="hide">페이스북</span></a>
+                                <a href="https://www.youtube.com/channel/UCbHsnc9llMcA9ypjVAnpcuQ" title="새 창 열림"
+                                    class="ico-u" target="_blank"><span class="hide">유튜브</span></a>
+                                <a href="javascript:snsMoveEvent('SNS_BG');" title="새 창 열림" class="ico-b"><span
+                                        class="hide">블로그</span></a>
+                                <a href="javascript:snsMoveEvent('SNS_IS');" title="새 창 열림" class="ico-i"><span
+                                        class="hide">인스타그램</span></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="box-sns-slide">
+                        <div class="swiper-container" id="mainBn3">
+                            <div class="swiper-wrapper" id="fbList"></div>
+                            <button type="button" class="btn-swiper-prev" id="btn-swiper-prev4">
+                                <span class="hide">이전</span>
+                            </button>
+                            <button type="button" class="btn-swiper-next" id="btn-swiper-next4">
+                                <span class="hide">다음</span>
+                            </button>
+
+                        </div>
+
+                    </div>
+                </div>
+                <div class="main-type2 solo">
+                    <h3>사랑의열매 <br>크라우드펀딩</h3>
+                    <div class="main-type-wrap">
+                        <div class="swiper-container" id="mainBn2">
+                            <div class="swiper-wrapper"></div>
+                        </div>
+                    </div>
+                    <button type="button" class="btn-swiper-prev" id="btn-swiper-prev3">
+                        <span class="hide">이전</span>
+                    </button>
+                    <button type="button" class="btn-swiper-next" id="btn-swiper-next3">
+                        <span class="hide">다음</span>
+                    </button>
+
+                    <button type="button" class="btn-more" id="mainBn2_more" title="사랑의열매 크라우드펀딩 더보기">
+                        <span class="hide">사랑의열매 크라우드펀딩 더보기</span>
+                    </button>
+                </div>
+
+                <div class="box-card">
+                    <ul class="box-card-area">
+                        <li class="box-card-item box-img01">
+                            <h3 class="box-card-title">착한가정</h3>
+                            <a href="/ct/cntrpt/initNicehome.do" class="box-link">바로가기</a>
+                        </li>
+                        <li class="box-card-item box-img02">
+                            <h3 class="box-card-title">착한가게</h3>
+                            <a href="/ct/cntrpt/initNicestore.do" class="box-link">바로가기</a>
+                        </li>
+                        <li class="box-card-item box-img03">
+                            <h3 class="box-card-title">착한일터</h3>
+                            <a href="/ct/cntrpt/initNicespt.do" class="box-link">바로가기</a>
+                        </li>
+                        <li class="box-card-item box-img04">
+                            <h3 class="box-card-title">나눔리더</h3>
+                            <a href="/ct/cntrpt/initShareleadr.do" class="box-link">바로가기</a>
+                        </li>
+                        <li class="box-card-item box-img05">
+                            <h3 class="box-card-title">나눔리더스클럽</h3>
+                            <a href="/ct/cntrpt/initShareleadrclub.do" class="box-link">바로가기</a>
+                        </li>
+                        <li class="box-card-item box-img06">
+                            <h3 class="box-card-title">아너 소사이어티</h3>
+                            <a href="/ct/cntrpt/initHonorsociety.do" class="box-link">바로가기</a>
+                        </li>
+                        <li class="box-card-item box-img07">
+                            <h3 class="box-card-title">기부자맞춤기금</h3>
+                            <a href="/ct/cntrpt/initCntrendw.do" class="box-link">바로가기</a>
+                        </li>
+                        <li class="box-card-item box-img08">
+                            <h3 class="box-card-title">기업사회공헌</h3>
+                            <a href="/ct/entcntrb/initSoctycntrbdntncntr.do" class="box-link">바로가기</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="main-bbs">
+                    <div class="box-bbs">
+                        <h3 class="box-bbs-title">공지사항</h3>
+                        <ul class="bbs-list" id="noticeList"></ul>
+                        <a href="/bbs/1000/initPostList.do" class="bbs-more" alt="공지사항 더 보기" title="공지사항 더 보기">more</a>
+                    </div>
+                    <div class="box-bbs">
+                        <h3 class="box-bbs-title">최근보도</h3>
+                        <ul class="bbs-list" id="mediaList"></ul>
+                        <a href="/bbs/1003/initPostList.do" class="bbs-more" alt="최근보도 더 보기" title="최근보도 더 보기">more</a>
+                    </div>
+                    <div class="box-bbs">
+                        <h3 class="box-bbs-title">지원안내</h3>
+                        <ul class="bbs-list" id="supportList"></ul>
+                        <a href="/bbs/1004/initPostList.do" class="bbs-more" alt="지원안내 더 보기" title="지원안내 더 보기">more</a>
+                    </div>
+                </div>
+
+                <div class="box-banner">
+                    <ul class="box-banner-area">
+                        <li class="box-banner-item">
+                            <!--                <a href="/bn/sca/initChildse.do" class="box-banner-link"> -->
+                            <a href="javascript:;" OnClick="gf_msg();" class="box-banner-link">
+                                <i class="sprite-mainbn-01"></i>
+                                나눔체험관 <span class="mobile-block">견학신청</span>
+                            </a>
+                        </li>
+                        <li class="box-banner-item">
+                            <!--                 <a href="/cm/sereqst/init.do" class="box-banner-link"> -->
+                            <a href="javascript:;" OnClick="gf_msg();" class="box-banner-link">
+                                <i class="sprite-mainbn-02"></i>
+                                기관방문<span class="mobile-block">신청</span>
+                            </a>
+                        </li>
+                        <li class="box-banner-item">
+                            <!--                 <a href="/cm/rentreqst/init.do" class="box-banner-link"> -->
+                            <a href="javascript:;" OnClick="gf_msg();" class="box-banner-link">
+                                <i class="sprite-mainbn-03"></i>
+                                대관<span class="mobile-block">신청</span>
+                            </a>
+                        </li>
+                        <li class="box-banner-item">
+                            <a href="http://proposal.chest.or.kr" target="_blank" class="box-banner-link">
+                                <i class="sprite-mainbn-04"></i>
+                                온라인 <span class="mobile-block">배분신청</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+        <!-- // body end -->
+
+        <!-- footer start -->
+        <footer class="base-footer" id="baseFooter">
+
+            <div class="base-footer-wrap">
+                <div class="logo"><span class="hide">사랑의 열매</span></div>
+
+                <div class="footer-link"></div>
+
+                <div class="footer-address">
+                    <ul class="footer-menu">
+                        <li class="footer-menu-item" style="font-weight:bold;"><a
+                                href="javascript:goFootPrivacy();">개인정보처리방침</a></li>
+                        <li class="footer-menu-item"><a href="javascript:goFootEmail();">이메일주소무단수집거부</a></li>
+                        <li class="footer-menu-item"><a href="/lf/intrcn/initBranchintrcn.do?mapYn=Y">찾아오시는 길</a></li>
+                    </ul>
+                    <address>
+                        <p class="address-txt">
+                            <span class="address-item">(04519) 서울 중구 세종대로21길 39 (정동 1-17) <span
+                                    class="mobile-block">사랑의열매 회관 5, 6층 사회복지공동모금회 (회장 예종석)</span></span>
+                            <span class="address-item only-pc">사업등록번호 116-82-14426</span>
+                        </p>
+                        <p class="address-txt">
+                            <span class="address-item only-mobile">사업등록번호 116-82-14426</span>
+                            <span class="address-item">TEL 02-6262-3000</span>
+                            <span class="address-item">FAX 02-6262-3100</span>
+                            <span class="address-item">CCK call center 080-890-1212</span>
+                            <span class="address-item">E-mail webmaster@chest.or.kr</span>
+                        </p>
+                    </address>
+
+                    <p class="footer-copyright">© Community Chest Of Korea, 2019</p>
+                    <a href="http://www.w4c.go.kr/main/mainPage.do" target="_blank" class="partner-logo only-pc"><img
+                            src="/common/img/common/footer_partner_logo.png" alt="보건복지부 사회복지시설정보시스템"></a>
+                </div>
+            </div>
+
+        </footer>
+        <!-- // footer end -->
+
+        <!-- Temperature Tower of Love Fruit Start -->
+        <div class="box-wing" id="rightWing" style="display:none;"></div>
+        <!-- Temperature Tower of Love Fruit End -->
+    </div>
+    <!-- // layout Start -->
+</body>
+
+</html>

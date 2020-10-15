@@ -1,0 +1,319 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no, user-scalable=no">
+
+	<meta name="keywords" content="사랑의 열매, 사회복지공동모금회"/>
+	<meta name="description" content=""/>
+    
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta name="mobile-web-app-capable" content="yes">
+
+    <title>사회복지공동모금회 사랑의열매</title>
+
+	<link rel="stylesheet" href="/resources/css/ui.base.css">
+	<link rel="stylesheet" href="/resources/libs/swiper.css">
+
+	
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script src="/resources/libs/swiper.js"></script>
+
+	<script src="/resources/js/ui.global.js"></script>
+	<script src="/resources/js/ui.plugins.js"></script>
+	<script src="/resources/js/ui.common.js"></script>
+	<style>
+	.swiper-container {
+		width: 100%;
+		height: 100%;
+	}
+	.swiper-slide {
+		text-align: center;
+		font-size: 18px;
+		background: #fff;
+		/* Center slide text vertically */
+		display: -webkit-box;
+		display: -ms-flexbox;
+		display: -webkit-flex;
+		display: flex;
+		-webkit-box-pack: center;
+		-ms-flex-pack: center;
+		-webkit-justify-content: center;
+		justify-content: center;
+		-webkit-box-align: center;
+		-ms-flex-align: center;
+		-webkit-align-items: center;
+		align-items: center;
+	}
+  </style>
+</head>
+
+<body>	
+	<div class="base-skip" id="baseSkip"></div>
+	<div class="base-layer" id="baseLayer">
+
+		
+	</div>
+	<div class="base-wrap" id="baseWrap">
+		<header class="base-header" id="baseHeader"></header>
+		<div class="base-body" id="baseBody">
+			<main class="base-main" id="baseMain">
+				<article class="guide-wrap">
+					<h1>가이드</h1>
+
+					<section>
+						<h2>Button</h2>
+						<h3>기본</h3>
+						<a href="#" class="btn-base">나의 기부</a>
+						<button type="button" class="btn-base">나의 기부</button>
+
+						<a href="#" class="btn-base-imp">기부하기</a>
+						<button type="button" class="btn-base-imp">기부하기</button>
+
+						<a href="#" class="btn-base-line">기부하기</a>
+						<button type="button" class="btn-base-line">기부하기</button>
+						
+						<h3>중요</h3>
+						<a href="#" class="btn-base-main">기부하기</a>
+						<button type="button" class="btn-base-main">기부하기</button>
+					</section>
+
+					<section>
+						<h2>Modal</h2>
+						<button type="button" class="btn-base" onclick="
+						$plugins.uiModal({ 
+							id:'modalSample1', 
+							link:'/modal/modalSample1.html', 
+							remove:true, 
+							openback: function() { console.log('open callback'); },
+							closeback: function(v) { console.log('close callback', v); }
+						}); ">기본모달</button>
+					</section>
+					
+					<section>
+						<h2>Slider</h2>
+						<!-- Swiper -->
+						<div class="swiper-container">
+							<div class="swiper-wrapper">
+								<div class="swiper-slide">Slide 1</div>
+								<div class="swiper-slide">Slide 2</div>
+								<div class="swiper-slide">Slide 3</div>
+								<div class="swiper-slide">Slide 4</div>
+								<div class="swiper-slide">Slide 5</div>
+								<div class="swiper-slide">Slide 6</div>
+								<div class="swiper-slide">Slide 7</div>
+								<div class="swiper-slide">Slide 8</div>
+								<div class="swiper-slide">Slide 9</div>
+								<div class="swiper-slide">Slide 10</div>
+							</div>
+							<!-- Add Pagination -->
+							<div class="swiper-pagination"></div>
+							<!-- Add Arrows -->
+							<button type="button" class="btn-swiper-prev">
+								<span class="hide">이전</span>
+							</button>
+							<button type="button" class="btn-swiper-next">
+								<span class="hide">다음</span>
+							</button>
+						</div>
+					</section>
+
+					<section>
+						<h2>Tab</h2>
+						<div class="ui-tab" id="uiTabguide1">
+							<div class="ui-tab-btns" btn-id="uiTabguide1">
+								<button type="button" class="ui-tab-btn"><i>탭1</i></button>
+								<button type="button" class="ui-tab-btn"><i>탭2</i></button>
+								<button type="button" class="ui-tab-btn"><i>탭3</i></button>
+							</div>
+							<div class="ui-tab-pnls" pnl-id="uiTabguide1">
+								<section class="ui-tab-pnl">
+									<h1 class="ui-tab-tit">탭1</h1>
+									<p>탭1 content</p>
+									<a href="#">더보기</a>
+									
+									<div class="ui-tab" id="uiTabguide2">
+										<div class="ui-tab-btns" btn-id="uiTabguide2">
+											<button type="button" class="ui-tab-btn"><i>탭1-1</i></button>
+											<button type="button" class="ui-tab-btn"><i>탭1-2</i></button>
+										</div>
+										<div class="ui-tab-pnls" pnl-id="uiTabguide2">
+											<section class="ui-tab-pnl">
+												<h1 class="ui-tab-tit">탭1-1</h1>
+												<p>탭1-1 content</p>
+												<a href="#">더보기</a>
+											</section>
+											<section class="ui-tab-pnl">
+												<h1 class="ui-tab-tit">탭1-2</h1>
+												<p>탭1-2 content</p>
+												<a href="#">더보기</a>
+											</section>
+										</div>
+									</div>
+								</section>
+								<section class="ui-tab-pnl">
+									<h1 class="ui-tab-tit">탭2</h1>
+									<p>탭2 content</p>
+									<a href="#">더보기</a>
+								</section>
+								<section class="ui-tab-pnl">
+									<h1 class="ui-tab-tit">탭3</h1>
+									<p>탭3 content</p>
+									<a href="#">더보기</a>
+								</section>
+							</div>
+						</div>
+					</section>
+
+					<section>
+						<h2>accordion</h2>
+						<div class="ui-acco" role="group" id="uiAccoguide1">
+							<dl class="ui-acco-wrap">
+								<dt class="ui-acco-tit">
+									<button type="button" class="ui-acco-btn">아코디언이란? <span class="ui-acco-arrow"></span></button>
+								</dt>
+								<dd class="ui-acco-pnl">
+									<p>(accordion, 독일어: <a href="#">Akkodeon</a>, 프랑스어: <a href="#">accordéon</a>, 이탈리아어: <a href="#">fisarmonica</a>, 문화어:손풍금)은 바람통과 리드가 달린 상자형의 악기로, 악기학상으로는 리드 오르간의 일종으로 분류된다.</p>
+								</dd>
+							</dl>
+							<dl class="ui-acco-wrap">
+								<dt class="ui-acco-tit">
+									<button type="button" class="ui-acco-btn">아코디언 연주법<span class="ui-acco-arrow">열기</span></button>
+								</dt>
+								<dd class="ui-acco-pnl">
+									<p><a href="#">풀무(bellows)</a>로 압축공기를 만들며 금속제의 리드로 발음한다. 이 바람통은 주름상자식이며 연주자는 악기를 밴드로 어깨에 메어 가슴에 안고 주로 왼손으로 바람통을 신축(伸縮)하여서 풀무역할을 시킨다. 리드로 가는 통풍조작은 연주자의 오른손이 닿으며 풀무 옆에 있는 피아노식 건반과 왼손의 단추로 한다. 이러한 방식으로 된 것을 피아노식 아코디언이라고 한다. 오른손의 다섯손가락으로 연주하는 건반은 표준 대형악기로 바음으로부터 가3음까지의 41건이나 실음의 음역은 스톱의 사용으로 고저(高低)로 다시 1옥타브씩 넓어진다. 스톱은 바람통의 양쪽에 있어 단추식과 건반식이 있다.</p>
+									<p class="mgt-m">왼손은 바람통을 움직이면서 동시에 엄지손가락 이외의 네 손가락으로 <a href="#">베이스</a>라고 하는 낮은음이나 반주화음의 단추를 조작한다. 단추의 수효는 보통 120개로 6줄로 되어 있으며, 가락과 함께 각 조의 화음이 쉽게 연주되도록 특수한 배열을 하고 있다. 휴대하기에 편리하며 화음반주가 되고, <a href="#">리드 오르간</a>과 같이 풀무는 족답식이 아니어서 셈여림에 의한 미묘한 표현이 가능한 것 등 많은 장점이 있어 대중적인 악기로 보급되어 있으나 예술음악에서는 거의 쓰지 않고 있다. 피아노식 외에 단추식이 있다.</p>
+								</dd>
+							</dl>
+							<dl class="ui-acco-wrap">
+								<dt class="ui-acco-tit">
+									<button type="button" class="ui-acco-btn">아코디언 역사 <span class="ui-acco-arrow">열기</span></button>
+								</dt>
+								<dd class="ui-acco-pnl">
+									<p>1822년 독일의 프리드리히 부시만(Friedirch Buschmann)이 발명한 것을 첫 아코디언으로 보는 것이 일반적이다. 당초의 아코디언은 온음계식(全音階式)이어서 반음계를 연주할 수 없었고, 이에 따라 연주도 간단하였다. 피아노식은 19세기 후반에 제작되었고 그 뒤 세계적으로 피아노식이 쓰이고 있다.</p>
+								</dd>
+							</dl>
+						</div>
+					</section>
+
+					<section>
+						<h2>Form</h2>
+						<h3>Input</h3>
+						<p class="sbt">basic type</p>
+						<input type="text" value="입력값"> <br><br>
+						<p class="sbt">basic placeholder type</p>
+						<input type="text" value="" placeholder="입력값"> <br><br>
+						<p class="sbt">basic disabled type</p>
+						<input type="text" value="입력값" disabled="">
+
+						<h3>Select</h3>
+						<div class="ui-select">
+							<select class="sel_type">
+								<option selected="selected">select</option>
+								<option>select</option>
+								<option>select</option>
+								<option>select</option>
+								<option>select</option>
+							</select>
+						</div>
+                        <div class="ui-select">
+                            <select class="sel_type small">
+                                <option selected="selected">select</option>
+                                <option>select</option>
+                                <option>select</option>
+                                <option>select</option>
+                                <option>select</option>
+                            </select>
+                        </div>
+					</section>
+
+					<section>
+						<h2>Table</h2>
+						<div class="tb-type_a">
+							<table>
+								<colgroup>
+									<col class="col-xs">
+									<col class="col-auto">
+								</colgroup>
+								<tbody>
+								<tr>
+									<th>타이틀<span class="required">*</span></th>
+									<td>텍스트</td>
+								</tr>
+								<tr>
+									<th>타이틀<span class="required">*</span></th>
+									<td>
+										<input type="text">
+									</td>
+								</tr>
+								<tr>
+									<th>타이틀<span class="required">*</span></th>
+									<td>텍스트</td>
+								</tr>
+								<tr>
+									<th>타이틀<span class="required">*</span></th>
+									<td>텍스트</td>
+								</tr>
+								</tbody>
+							</table>
+						</div>
+					</section>
+				</article>
+				
+
+			</main>
+		</div>
+		<footer class="base-footer" id="baseFooter"></footer>
+	</div>
+
+	<script>
+        (function($, win, doc, undefined) {
+            $(doc).ready(function(){
+
+				//필수실행
+                $plugins.common.init({
+					menuid: '01_02_03' //1depth_2depth_3depth
+				});
+				
+				//slider
+				var swiper = new Swiper('.swiper-container', {
+					slidesPerView: 3,
+					spaceBetween: 30,
+					pagination: {
+						el: '.swiper-pagination',
+						clickable: true,
+					},
+					navigation: {
+						nextEl: '.btn-swiper-next',
+						prevEl: '.btn-swiper-prev',
+					}
+				});
+				//tab
+				$plugins.uiTab({ 
+					id:'uiTabguide1', 
+					current:0
+				});
+				$plugins.uiTab({ 
+					id:'uiTabguide2', 
+					current:0
+				});
+				$plugins.uiTab({ 
+					id:'uiTabguide3', 
+					current:0
+				});
+
+				//acco
+				$plugins.uiAccordion({ 
+					id: 'uiAccoguide1', 
+					current: [0], 
+					autoclose: true
+				});
+				
+            });
+        })(jQuery, window, document);
+	</script>
+</body>
+</html>

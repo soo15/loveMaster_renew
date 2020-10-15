@@ -1,0 +1,908 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no, user-scalable=no">
+
+    <meta name="keywords" content="사랑의 열매, 사회복지공동모금회" />
+    <meta name="description" content="" />
+
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="mobile-web-app-capable" content="yes">
+
+    <title>사회복지공동모금회 사랑의열매</title>
+
+    <link rel="stylesheet" href="../../common/css/ui.base.css">
+
+    <style>
+        .inner {
+            max-width: 100%;
+            height: 700px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+            background-color: #F5F5F5;
+        }
+
+        .sub_tit {
+            padding-bottom: 80px;
+        }
+
+        .sub_tit strong {
+            display: block;
+            text-align: center;
+            color: #0c1e52;
+            font-weight: 500;
+            padding-top: 37px;
+            font-size: 20px;
+        }
+
+        .sub_tit strong:after {
+            content: "";
+            display: block;
+            width: 240px;
+            margin: 0 auto;
+            border: 1px solid #000;
+        }
+
+
+        .vision {
+            margin-top: 20px;
+            text-align: center;
+            background-color: #fff;
+        }
+
+        .vision .inner ul {
+            text-align: center;
+        }
+
+
+        .vision .inner ul li {
+            display: inline-block;
+            width: 290px;
+            height: 290px;
+            border-radius: 50%;
+        }
+
+
+        .vision .inner ul li:first-child {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 402px;
+            height: 402px;
+            color: #000;
+            background: #fff;
+            box-shadow: 1px 2px 2px 2px rgba(0, 0, 0, 0.1);
+            transform: translate(-50%, -50%);
+            z-index: 100;
+        }
+
+
+        .vision .inner ul li:nth-child(2) {
+            background: #4BBB6A;
+            position: absolute;
+            top: 70%;
+            left: 24%;
+            transform: translate(-50%, -50%);
+            z-index: 2;
+        }
+
+        .vision .inner ul li:nth-child(3) {
+            background: #F25D69;
+            position: absolute;
+            top: 70%;
+            left: 74%;
+            transform: translate(-50%, -50%);
+        }
+
+        .vision .inner ul li .txt_wrap {
+            padding-top: 68px;
+        }
+
+
+
+        .vision .inner ul li .txt_wrap em {
+            display: block;
+            color: #fff;
+            font-size: 20px;
+            margin-bottom: 25px;
+        }
+
+        .vision .inner ul li:first-child .txt_wrap em {
+            color: #F25D69
+        }
+
+
+        .vision li:first-child .txt_wrap em:before {
+            content: "";
+            display: block;
+            position: absolute;
+            top: 18px;
+            left: 14px;
+            width: 360px;
+            height: 360px;
+            border-radius: 50%;
+            border: 6px solid #E60012;
+        }
+
+        .vision .inner ul li .txt_wrap em::after {
+            content: "";
+            display: block;
+            width: 40px;
+            margin: 4px auto;
+            border: 2px solid #E60012;
+            background-color: #E60012;
+        }
+
+        .vision .inner ul li:nth-child(2) .txt_wrap em:after {
+            border: 2px solid #2A9848;
+            background-color: #2A9848;
+        }
+
+        .vision .inner ul li .txt_wrap strong {
+            display: block;
+            color: #fff;
+            font-size: 26px;
+            line-height: 28px;
+            font-weight: 300;
+            letter-spacing: -0.5px;
+        }
+
+        .vision .inner ul li:first-child .txt_wrap strong {
+            color: #000;
+            font-size: 50px;
+            line-height: 50px;
+            font-weight: 400;
+            text-align: center;
+        }
+
+
+
+        .vision .inner ul li:first-child .txt_wrap strong::after {
+            content: "";
+            display: block;
+            position: absolute;
+            width: 61px;
+            height: 71px;
+            top: 87%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-image: url('../../common/img/contents/vision_ci_simbol.png');
+            background-repeat: no-repeat;
+        }
+
+        .vision .inner ul li:first-child .txt_wrap span {
+            color: #00833E;
+        }
+
+        .vision .inner ul li:first-child .txt_wrap strong {
+            color: #000;
+        }
+
+
+        .vision h3 {
+            display: inline-block;
+            width: 168px;
+            height: 42px;
+            line-height: 42px;
+            font-size: 18px;
+            border-radius: 2%;
+            color: #fff;
+            background-color: #84655A;
+        }
+
+        .vision .vision__strategys {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin: 0 40px;
+            padding: 80px 0;
+            position: relative;
+        }
+
+
+        .vision .vision__strategys h3 {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 10;
+        }
+
+        .vision .vision__principle h3 {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 10;
+        }
+
+
+        .vision .vision__strategys ul {
+            width: 228px;
+        }
+
+        .vision .vision__strategys li {
+            padding: 18px;
+
+        }
+
+        .vision .vision__strategys li .bold {
+            font-weight: 600;
+        }
+
+        .vision .vision__strategys li p {
+            line-height: 20px;
+            padding-bottom: 8px;
+        }
+
+        .vision .vision__strategys strong {
+            display: inline-block;
+            font-size: 18px;
+            line-height: 22px;
+            padding-top: 8px;
+        }
+
+        .vision .vision__strategys li:nth-child(odd) {
+            width: 100%;
+            height: 168px;
+            border: 2px solid #FFA1A8;
+            border-radius: 4%;
+            box-shadow: 1px 2px 2px 2px rgba(0, 0, 0, 0.1);
+            position: relative;
+            font-size: 18px;
+            text-align: center;
+        }
+
+        .vision .vision__strategys li:nth-child(odd) p {
+            font-size: 40px;
+            font-weight: 200;
+            color: #FFA1A8;
+            position: absolute;
+        }
+
+        .vision .vision__strategys li:nth-child(odd) em {
+            width: 100px;
+            height: 82px;
+            display: block;
+            margin: auto;
+            background-image: url(../../common/img/contents/vision_icons.png);
+            background-size: 222px 384px;
+        }
+
+        .vision .vision__strategys li:nth-child(odd) em.icon1 {
+            background-position: 0px 0px;
+        }
+
+        .vision .vision__strategys li:nth-child(odd) em.icon2 {
+            background-position: 0px -80px;
+        }
+
+        .vision .vision__strategys li:nth-child(odd) em.icon3 {
+            background-position: 0px -160px
+        }
+
+        .vision .vision__strategys li:nth-child(odd) em.icon4 {
+            background-position: 0px -240px
+        }
+
+
+        .vision .vision__strategys li:nth-child(odd) strong:after {
+            content: "";
+            display: block;
+            position: absolute;
+            top: 179px;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 18px;
+            height: 29px;
+            background-image: url(../../common/img/contents/vision_icons.png);
+            background-size: 222px 384px;
+            background-position: -98px 0px;
+        }
+
+        .vision .vision__strategys li:nth-child(even) {
+            width: 100%;
+            height: 260px;
+            border: 1px solid #DDDDDD;
+            margin-top: 18px;
+            margin-bottom: 16px;
+            text-align: center;
+            padding: 20px;
+            border-radius: 4%;
+            font-size: 14px;
+
+        }
+
+        .vision .vision__strategys li:nth-child(even) p:first-child {
+            color: red;
+        }
+
+
+
+        .vision .vision__principle {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            position: relative;
+            background-color: #F5F5F5;
+            padding: 50px;
+        }
+
+        .vision .vision__principle li {
+            width: 220px;
+            height: 220px;
+            text-align: center;
+            border-radius: 50%;
+            border: 1px solid #DDDDDD;
+            position: relative;
+            margin-bottom: 50px;
+            background-color: #fff;
+        }
+
+        .vision .vision__principle li::after {
+            content: "+";
+            font-size: 24px;
+            display: block;
+            position: absolute;
+            top: 90px;
+            left: 230px;
+            color: #DDDDDD;
+        }
+
+        .vision .vision__principle li:last-child::after {
+            display: none;
+        }
+
+        .vision .vision__principle li em::before {
+            content: "";
+            display: block;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 184px;
+            height: 184px;
+            border: 3px solid #8FD1A1;
+            border-radius: 50%;
+        }
+
+        .vision .vision__principle li em {
+            display: block;
+            position: absolute;
+            width: 80px;
+            height: 62px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-image: url(../../common/img/contents/vision_icons.png);
+            background-size: 222px 384px;
+        }
+
+        .vision .vision__principle li em.icon1 {
+            background-position: 120px -78px;
+        }
+
+        .vision .vision__principle li em.icon2 {
+            background-position: 120px -139px;
+        }
+
+        .vision .vision__principle li em.icon3 {
+            background-position: 120px -201px;
+        }
+
+        .vision .vision__principle li em.icon4 {
+            background-position: 120px -262px;
+        }
+
+
+        .vision .vision__principle strong {
+            color: #00833E;
+            display: block;
+            font-size: 20px;
+            width: 220px;
+            position: absolute;
+            bottom: -46px;
+        }
+
+
+        @media all and (max-width:600px) {
+            .inner {
+                height: 380px;
+            }
+
+            .vision h3 {
+                font-size: 14px;
+                width: 139px;
+                height: 30px;
+                line-height: 30px;
+            }
+
+            .vision .inner ul li:first-child {
+                width: 150px;
+                height: 150px;
+                top: 42%;
+            }
+
+            .vision .inner ul li:nth-child(2) {
+                top: 68%;
+            }
+
+            .vision .inner ul li:nth-child(3) {
+                top: 68%;
+            }
+
+            .vision .inner ul li:nth-child(2) .txt_wrap,
+            .vision .inner ul li:nth-child(3) .txt_wrap {
+                padding-top: 28px;
+            }
+
+            .vision .inner ul li .txt_wrap {
+                padding-top: 18px;
+            }
+
+            .vision li:first-child .txt_wrap em:before {
+                width: 138px;
+                height: 138px;
+                top: 4px;
+                left: 3px;
+                border: 3px solid #E60012;
+            }
+
+
+            .vision .inner ul li .txt_wrap em {
+                margin-bottom: 8px;
+                font-size: 12px;
+            }
+
+            .vision .inner ul li:first-child .txt_wrap em::after {
+                border: 2px solid #E60012;
+                width: 16px;
+            }
+
+            .vision .inner ul li .txt_wrap em::after {
+                width: 26px;
+            }
+
+            .vision .inner ul li:first-child .txt_wrap strong {
+                font-size: 22px;
+                line-height: 22px;
+            }
+
+            .vision .inner ul li .txt_wrap strong {
+                font-size: 12px;
+                line-height: 16px;
+            }
+
+            .vision .inner ul li:first-child .txt_wrap strong::after {
+                background-size: 24px;
+                width: 25px;
+                height: 29px;
+                top: 89%;
+            }
+
+            .vision .inner ul li {
+                width: 140px;
+                height: 140px;
+
+            }
+
+            .vision .vision__strategys ul {
+
+                width: 130px;
+            }
+
+            .vision .vision__strategys {
+                margin: 0 10px;
+                padding: 38px 0;
+            }
+
+            .vision .vision__strategys li:nth-child(odd) {
+                height: 120px;
+            }
+
+            .vision .vision__strategys li:nth-child(odd) em {
+                width: 50px;
+                height: 41px;
+                background-size: 111px 192px;
+            }
+
+            .vision .vision__strategys strong {
+                font-size: 12px;
+                line-height: 14px;
+            }
+
+            .vision .vision__strategys li:nth-child(odd) strong:after {
+                top: 130px;
+            }
+
+            .vision .vision__strategys li:nth-child(even) {
+                padding: 12px;
+            }
+
+            .vision .vision__strategys li:nth-child(even) p {
+                font-size: 12px;
+                line-height: 16px;
+            }
+
+            .vision .vision__strategys li:nth-child(odd) em.icon2 {
+                background-position: 0px -40px;
+            }
+
+            .vision .vision__strategys li:nth-child(odd) em.icon3 {
+                background-position: 0px -78px;
+            }
+
+            .vision .vision__strategys li:nth-child(odd) em.icon4 {
+                background-position: 0px -120px;
+            }
+
+
+
+            .vision .vision__principle li {
+                width: 130px;
+                height: 130px;
+                margin-bottom: 38px;
+            }
+
+            .vision .vision__principle strong {
+                font-size: 14px;
+                width: 130px;
+                bottom: -28px;
+            }
+
+            .vision .vision__principle li em::before {
+
+                width: 100px;
+                height: 100px;
+            }
+
+            .vision .vision__principle li em {
+                width: 40px;
+                height: 31px;
+                background-size: 111px 192px;
+
+            }
+
+            .vision .vision__principle li em.icon1 {
+                background-position: 60px -34px;
+            }
+
+            .vision .vision__principle li em.icon2 {
+                background-position: 60px -70px;
+            }
+
+            .vision .vision__principle li em.icon3 {
+                background-position: 60px -100px;
+            }
+
+            .vision .vision__principle li em.icon4 {
+                background-position: 60px -130px;
+            }
+
+            .vision .vision__strategys li:nth-child(odd) p {
+                font-size: 24px;
+            }
+
+            .vision .vision__principle li::after {
+                display: none;
+            }
+
+            .vision .vision__principle {
+                padding: 30px 10px;
+            }
+        }
+    </style>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <script src="../../common/js/ui.global.js"></script>
+    <script src="../../common/js/ui.plugins.js"></script>
+    <script src="../../common/js/ui.common.js"></script>
+
+</head>
+
+<body>
+    <div class="base-skip" id="baseSkip"></div>
+    <div class="base-layer" id="baseLayer"></div>
+    <div class="base-wrap" id="baseWrap">
+        <header class="base-header" id="baseHeader"></header>
+        <div class="base-body type-sub" id="baseBody">
+            <div class="sub-visual visual02_01">
+                <div class="sub-title-area">
+                    <h2 class="heading-title-a">소개</h2>
+                    <p class="title-sub-txt">2depth 설명글 수급 중입니다.</p>
+                </div>
+            </div>
+            <div class="base-breadcrumbs" id="baseBreadcrumbs"></div>
+            <main class="base-main" id="baseMain">
+                <div class="contents-area">
+                    <div class="contents-hd">
+                        <h3><strong>조직소개</strong><span>나누는 기쁨, 희망과 행복 - 사랑의열매를 소개합니다.</span></h3>
+                        <div class="contents-menu-nav">
+                            <button type="button" class="prev-menu">인사말</button>
+                            <button type="button" class="next-menu">CI소개</button>
+                        </div>
+                    </div>
+
+                    <div class="seo-box">
+                        <div class="ui-tab ui-tab-type2 col-2 contents-tab" id="uiTabCCKI12_1">
+                            <div class="ui-tab-btns" btn-id="uiTabCCKI12_1">
+                                <button type="button" class="ui-tab-btn"><i>소개</i></button>
+                                <button type="button" class="ui-tab-btn"><i>찾아오시는길</i></button>
+                            </div>
+                            <div class="ui-tab-pnls" pnl-id="uiTabCCKI12_1">
+
+
+                                <!-- S : 소개 -->
+                                <section class="ui-tab-pnl">
+                                    <div class="tab-contents">
+                                        <div class="img-with-txt mg-t-sm">
+                                            <div class="text-area">
+                                                <p class="txt-big-a">사랑의열매 사회복지공동모금회는</p>
+                                                <p class="txt-basic-a">공동모금제도를 활용하여 다양한 이해관계자들과 파트너십을 이루어 사회변화를 추구하는 국민
+                                                    모두의 기관입니다.<br>
+                                                    사랑의열매는 어려운 이웃에 희망을 전하고자 『사회복지공동모금회법』에 따라 1998년 설립된 법정 전문모금•배분기관
+                                                    입니다. 전국 광역자치단체별로 지회를 두어 각 지역에서 모금된 성금 은 해당 지역의 복지 사업에 사용하고 있습니다.</p>
+                                                <div class="btn-area-r">
+                                                    <a href="" class="btn-base-line small">사회복지공동모금회 법과정관</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="vision">
+                                            <div class="inner">
+                                                <div class="sub_tit">
+                                                    <strong>사랑의열매 비전2030 체계도</strong>
+                                                </div>
+                                                <ul>
+                                                    <li>
+                                                        <div class="txt_wrap">
+                                                            <em>미션</em>
+                                                            <strong>"나눔으로&nbsp;&nbsp;<br>
+                                                                &nbsp;&nbsp;하나 되는&nbsp;&nbsp;<br>
+                                                                <span>&nbsp;&nbsp;&nbsp;행복한 세상</span>"&nbsp;</strong>
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div class="txt_wrap">
+                                                            <em>비전</em>
+                                                            <strong><span>함께 따뜻한 세상을</span><br>만드는 <br>
+                                                                사랑의열매</strong>
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div class="txt_wrap">
+                                                            <em>전략방향</em>
+                                                            <strong><span>참여, 신뢰, 소통,</span><br>혁신으로
+                                                                <br>
+                                                                나눔의 사회적<br>
+                                                                가치확산</strong>
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <div class="vision__strategys">
+                                                <h3>전략목표</h3>
+                                                <ul>
+                                                    <li>
+                                                        <p>1</p>
+                                                        <em class="icon1"></em>
+                                                        <strong>나눔 참여<br />
+                                                            인프라 확대</strong>
+                                                    </li>
+                                                    <li>
+                                                        <p>전략과제</p>
+                                                        <p class="bold">· 지역사회나눔생태계 육성<br />
+                                                            [ 5대 혁신과제 ]</p>
+                                                        <p>· 협력적 기부문화 조성</p>
+                                                        <p class="bold">· 소액다수기부활성화<br />
+                                                            [ 5대 혁신과제 ]</p>
+                                                        <p>· 나눔관련정책개발 강화</p>
+                                                        <p>· 나눔관련R&D 강화</p>
+                                                    </li>
+                                                </ul>
+                                                <ul>
+                                                    <li>
+                                                        <p>2</p>
+                                                        <em class="icon2"></em>
+                                                        <strong>사회문제 해결 및<br />
+                                                            사회성과 제시강화</strong>
+                                                    </li>
+                                                    <li>
+                                                        <p>전략과제</p>
+                                                        <p class="bold">· 지역사· 의제기반사회문제 해결&nbsp;강화<br />
+                                                            [ 5대 혁신과제 ]</p>
+                                                        <p>· 새로운 사회변화 신속대응</p>
+                                                        <p>· 사업성과 보고 강화</p>
+                                                        <p>· 배분 영역의 확대</p>
+                                                        <p class="bold">· 배분 행정의 혁신<br />
+                                                            [ 5대 혁신과제 ]</p>
+                                                    </li>
+                                                </ul>
+                                                <ul>
+                                                    <li>
+                                                        <p>3</p>
+                                                        <em class="icon3"></em>
+                                                        <strong>건강한 거버넌스<br />
+                                                            구축</strong>
+                                                    </li>
+                                                    <li>
+                                                        <p>전략과제</p>
+                                                        <p>· 배분의 파트너십 강화</p>
+                                                        <p>· 임원구성의다양성 제고</p>
+                                                        <p>· 의사결정 권한의 분산 및
+                                                            독립성 강화</p>
+                                                        <p class="bold">· 시민 참여 활성화<br />
+                                                            [5대 혁신과제]</p>
+                                                        <p>· 의사결정 공개 확대</p>
+                                                    </li>
+                                                </ul>
+                                                <ul>
+                                                    <li>
+                                                        <p>4</p>
+                                                        <em class="icon4"></em>
+                                                        <strong>변화 주도 조직<br />
+                                                            운영</strong>
+                                                    </li>
+                                                    <li>
+                                                        <p>전략과제</p>
+                                                        <p>· 지정기탁 혁신</p>
+                                                        <p>· 디지털조직으로 변화</p>
+                                                        <p>· 지역중심사업체계 구축</p>
+                                                        <p>· 업무 효율성 증대</p>
+                                                        <p>· 조직 및 인적 역량 강화</p>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <div>
+                                                <ul class="vision__principle">
+                                                    <h3>운영원리</h3>
+                                                    <li>
+                                                        <em class="icon1"></em>
+                                                        <strong>참여와 권한의 분산</strong>
+                                                    </li>
+                                                    <li>
+                                                        <em class="icon2"></em>
+                                                        <strong>자율성과 사회적 책무성</strong>
+                                                    </li>
+                                                    <li>
+                                                        <em class="icon3"></em>
+                                                        <strong>투명성과 공개성</strong>
+                                                    </li>
+                                                    <li>
+                                                        <em class="icon4"></em>
+                                                        <strong>신뢰와 협력</strong>
+                                                    </li>
+                                                </ul>
+
+                                            </div>
+
+                                        </div>
+                                </section>
+                                <!-- E : 소개 -->
+                                <!-- S : 찾아오시는길 -->
+                                <section class="ui-tab-pnl">
+                                    <div class="tab-contents">
+                                        <h4 class="heading-title-b mg-t-sm">사랑의열매 사회복지공동모금회</h4>
+                                        <p class="map-adress">
+                                            <i class="sprite-map-1"></i>
+                                            (100-120) 서울시 중구 정동 1-17번지 사랑의열매회관 2층<br>
+                                            대표번호 : 02) 3144-7700 대표팩스 : 02) 323-7372
+                                        </p>
+                                        <div class="btn-area-r mg-t-s">
+                                            <button type="button" class="btn-base-bline small">프린트</button>
+                                        </div>
+                                        <!-- * 카카오맵 - 지도퍼가기 -->
+                                        <!-- 1. 지도 노드 -->
+                                        <div class="map-area">
+                                            <div id="daumRoughmapContainer1569036493600"
+                                                class="root_daum_roughmap root_daum_roughmap_landing"></div>
+                                        </div>
+                                        <!--
+                                            2. 설치 스크립트
+                                            * 지도 퍼가기 서비스를 2개 이상 넣을 경우, 설치 스크립트는 하나만 삽입합니다.
+                                        -->
+                                        <script charset="UTF-8" class="daum_roughmap_loader_script"
+                                            src="https://ssl.daumcdn.net/dmaps/map_js_init/roughmapLoader.js"></script>
+                                        <!-- 3. 실행 스크립트 -->
+                                        <script charset="UTF-8">
+                                            new daum.roughmap.Lander({
+                                                "timestamp": "1569036493600",
+                                                "key": "v4sh",
+                                                "mapHeight": "500"
+                                            }).render();
+                                        </script>
+                                        <div class="how-to">
+                                            <div class="how-to-section">
+                                                <i class="sprite-map-2"></i>
+                                                <p class="heading-title-b">버스를 이용하실 경우</p>
+                                                <p class="sb-contents-tit">세종문화회관 하차</p>
+                                                <p class="how-to-txt">광화문 사거리 하차 시 동화면세점 방향으로 전방 15미터 이동 후 홀리스커피전문점 골목으로
+                                                    30미터 전방</p>
+                                                <p class="sb-contents-tit">세종문화회관 정류소 이용 가능한 버스 번호</p>
+                                                <dl class="how-to-dl">
+                                                    <dt>좌석 :</dt>
+                                                    <dd>1005-5, 5500, 5500-1, 5500-2, 9001</dd>
+                                                    <dt>간선 :</dt>
+                                                    <dd>103, 109, 150, 401, 402, 406, 704</dd>
+                                                    <dt>지선 :</dt>
+                                                    <dd>1711, 4012, 7016, 7018, 7022, 7023</dd>
+                                                    <dt>광역 :</dt>
+                                                    <dd>9400, 9401, 9411, 9600, 9602, 9706, 9708, 9710, 9713, 9301</dd>
+                                                </dl>
+                                                <p class="sb-contents-tit">광화문 사거리 하차</p>
+                                                <p class="how-to-txt">광화문 사거리 하차 시 동화면세점 방향으로 전방 15미터 이동 후 홀리스커피전문점 골목으로
+                                                    30미터 전방</p>
+                                                <p class="sb-contents-tit">세종문화회관 정류소 이용 가능한 버스 번호</p>
+                                                <dl class="how-to-dl">
+                                                    <dt>좌석 :</dt>
+                                                    <dd>1000, 1000-1, 1200, 5000, 1002, 631</dd>
+                                                    <dt>간선 :</dt>
+                                                    <dd>161, 260, 270, 271, 273, 370, 470, 471, 600, 602,702, 720, 721
+                                                    </dd>
+                                                    <dt>지선 :</dt>
+                                                    <dd>7019</dd>
+                                                    <dt>광역 :</dt>
+                                                    <dd>9701, 9702, 9301, 9600, 9704, 9706, 9708, 9709, 9713</dd>
+                                                </dl>
+                                            </div>
+
+                                            <div class="how-to-section">
+                                                <i class="sprite-map-3"></i>
+                                                <p class="heading-title-b">지하철을 이용하실 경우</p>
+                                                <p class="sb-contents-tit">5호선 광화문역 6번출구</p>
+                                                <p class="how-to-txt">동화면세점 방향으로 전방 30미터 이동 후 홀리스커피전문점 골목으로 30미터 전방</p>
+                                                <p class="sb-contents-tit">1호선 시청역 3번출구</p>
+                                                <p class="how-to-txt">서울시의회 방향으로 50미터 직진후 왼쪽 골목으로 70미터 직진</p>
+                                                <p class="sb-contents-tit">2호선 시청역 12번출구 </p>
+                                                <p class="how-to-txt">서울시의회 방향으로 250미터 직진후 왼쪽 골목으로 70미터 직진</p>
+                                            </div>
+
+                                            <div class="how-to-section">
+                                                <i class="sprite-map-4"></i>
+                                                <p class="heading-title-b">자동차를 이용하실 경우</p>
+                                                <p class="sb-contents-tit">광화문 사거리 하차</p>
+                                                <p class="how-to-txt">광화문 사거리 하차 시 동화면세점 방향으로 전방 15미터 이동 후 홀리스커피전문점 골목으로
+                                                    30미터 전방</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </section>
+                                <!-- E : 찾아오시는길 -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+
+        <footer class="base-footer" id="baseFooter"></footer>
+        <div class="box-wing" id="rightWing"></div>
+    </div>
+
+    <script>
+        (function ($, win, doc, undefined) {
+            $(doc).ready(function () {
+
+                //필수실행
+                //메뉴는 00 부터 시작
+                $plugins.common.init({
+                    menuid: '03_00_02' //1depth_2depth_3depth
+                });
+
+            });
+
+            //tab
+            $plugins.uiTab({
+                id: 'uiTabCCKI12_1',
+                current: 0
+            });
+        })(jQuery, window, document);
+    </script>
+</body>
+
+</html>
