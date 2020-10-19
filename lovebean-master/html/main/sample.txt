@@ -1,0 +1,195 @@
+clss참고
+<style>
+    /*font*/
+	.target {
+		/* 한 줄 자르기 */
+		display: inline-block;
+		width: 200px;
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow:
+			ellipsis;
+		/* 여러 줄 자르기 추가 스타일 */
+		white-space: normal;
+		line-height: 1.2;
+		height: 3.6em;
+		text-align: left;
+		word-wrap:
+			break-word;
+		display: -webkit-box;
+		-webkit-line-clamp: 3;
+		-webkit-box-orient: vertical;
+	}
+</style>
+
+
+https://www.m-park.co.kr/
+
+
+        <!--slide-->
+        <div class="top-slide slick-initialized slick-slider">
+        <button class="slick-prev slick-arrow" aria-label="Previous" type="button" style="display: block;">Previous</button>
+            <div class="slick-list draggable">
+                <div class="slick-track" style="opacity: 1; width: 4480px; transform: translate3d(-1280px, 0px, 0px);">
+                    <div class="slick-slide slick-cloned" data-slick-index="-4" aria-hidden="true" tabindex="-1"
+                        style="width: 320px;">
+                        <div>
+                            <div class="slide-box" style="width: 100%; display: inline-block;"><a
+                                    href="/common/AspCommon/gotoADPage.asp?Gbn=S4&amp;idx=361" "="" tabindex=" -1"><img
+                                        src="/AttEdit/AD_Image/755065D638794037BD3EECA9D98907C1.png" alt=""></a></div>
+                        </div>
+                    </div>
+                    <div class="slick-slide slick-cloned" data-slick-index="-3" aria-hidden="true" tabindex="-1"
+                        style="width: 320px;">
+                        <div>
+                            <div class="slide-box" style="width: 100%; display: inline-block;"><a
+                                    href="/common/AspCommon/gotoADPage.asp?Gbn=S4&amp;idx=360" "="" tabindex=" -1"><img
+                                        src="/AttEdit/AD_Image/552FA003F3AB4847BB78A02C411EA258.png" alt=""></a></div>
+                        </div>
+                    </div>
+                    <div class="slick-slide slick-cloned" data-slick-index="-2" aria-hidden="true" tabindex="-1"
+                        style="width: 320px;">
+                        <div>
+                            <div class="slide-box" style="width: 100%; display: inline-block;"><a
+                                    href="/common/AspCommon/gotoADPage.asp?Gbn=S4&amp;idx=359" "="" tabindex=" -1"><img
+                                        src="/AttEdit/AD_Image/6E9FFE5068A1423F80E810B0B6D0EE8F.png" alt=""></a></div>
+                        </div>
+                    </div>
+                    <div class="slick-slide slick-cloned" data-slick-index="-1" aria-hidden="true" tabindex="-1"
+                        style="width: 320px;">
+                        <div>
+                            <div class="slide-box" style="width: 100%; display: inline-block;"><a
+                                    href="/common/AspCommon/gotoADPage.asp?Gbn=S4&amp;idx=358" "="" tabindex=" -1"><img
+                                        src="/AttEdit/AD_Image/FF8AF0CE0E7C442B8D81F23D6F91D847.png" alt=""></a></div>
+                        </div>
+                    </div>
+                    <div class="slick-slide slick-current slick-active" data-slick-index="0" aria-hidden="false"
+                        style="width: 320px;">
+                        <div>
+                            <div class="slide-box" style="width: 100%; display: inline-block;"><a
+                                    href="/common/AspCommon/gotoADPage.asp?Gbn=S4&amp;idx=362" "="" tabindex=" 0"><img
+                                        src="/AttEdit/AD_Image/ECDD23EF06FB49B1A4616DD0D86AEBD5.png" alt=""></a></div>
+                        </div>
+                    </div>
+                    <div class="slick-slide slick-active" data-slick-index="1" aria-hidden="false" style="width: 320px;">
+                        <div>
+                            <div class="slide-box" style="width: 100%; display: inline-block;"><a
+                                    href="/common/AspCommon/gotoADPage.asp?Gbn=S4&amp;idx=361" "="" tabindex=" 0"><img
+                                        src="/AttEdit/AD_Image/755065D638794037BD3EECA9D98907C1.png" alt=""></a></div>
+                        </div>
+                    </div>
+                    <div class="slick-slide slick-active" data-slick-index="2" aria-hidden="false" style="width: 320px;">
+                        <div>
+                            <div class="slide-box" style="width: 100%; display: inline-block;"><a
+                                    href="/common/AspCommon/gotoADPage.asp?Gbn=S4&amp;idx=360" "="" tabindex=" 0"><img
+                                        src="/AttEdit/AD_Image/552FA003F3AB4847BB78A02C411EA258.png" alt=""></a></div>
+                        </div>
+                    </div>
+                    <div class="slick-slide slick-active" data-slick-index="3" aria-hidden="false" style="width: 320px;">
+                        <div>
+                            <div class="slide-box" style="width: 100%; display: inline-block;"><a
+                                    href="/common/AspCommon/gotoADPage.asp?Gbn=S4&amp;idx=359" "="" tabindex=" 0"><img
+                                        src="/AttEdit/AD_Image/6E9FFE5068A1423F80E810B0B6D0EE8F.png" alt=""></a></div>
+                        </div>
+                    </div>
+                    <div class="slick-slide" data-slick-index="4" aria-hidden="true" style="width: 320px;" tabindex="-1">
+                        <div>
+                            <div class="slide-box" style="width: 100%; display: inline-block;"><a
+                                    href="/common/AspCommon/gotoADPage.asp?Gbn=S4&amp;idx=358" "="" tabindex=" -1"><img
+                                        src="/AttEdit/AD_Image/FF8AF0CE0E7C442B8D81F23D6F91D847.png" alt=""></a></div>
+                        </div>
+                    </div>
+                    <div class="slick-slide slick-cloned" data-slick-index="5" aria-hidden="true" tabindex="-1"
+                        style="width: 320px;">
+                        <div>
+                            <div class="slide-box" style="width: 100%; display: inline-block;"><a
+                                    href="/common/AspCommon/gotoADPage.asp?Gbn=S4&amp;idx=362" "="" tabindex=" -1"><img
+                                        src="/AttEdit/AD_Image/ECDD23EF06FB49B1A4616DD0D86AEBD5.png" alt=""></a></div>
+                        </div>
+                    </div>
+                    <div class="slick-slide slick-cloned" data-slick-index="6" aria-hidden="true" tabindex="-1"
+                        style="width: 320px;">
+                        <div>
+                            <div class="slide-box" style="width: 100%; display: inline-block;"><a
+                                    href="/common/AspCommon/gotoADPage.asp?Gbn=S4&amp;idx=361" "="" tabindex=" -1"><img
+                                        src="/AttEdit/AD_Image/755065D638794037BD3EECA9D98907C1.png" alt=""></a></div>
+                        </div>
+                    </div>
+                    <div class="slick-slide slick-cloned" data-slick-index="7" aria-hidden="true" tabindex="-1"
+                        style="width: 320px;">
+                        <div>
+                            <div class="slide-box" style="width: 100%; display: inline-block;"><a
+                                    href="/common/AspCommon/gotoADPage.asp?Gbn=S4&amp;idx=360" "="" tabindex=" -1"><img
+                                        src="/AttEdit/AD_Image/552FA003F3AB4847BB78A02C411EA258.png" alt=""></a></div>
+                        </div>
+                    </div>
+                    <div class="slick-slide slick-cloned" data-slick-index="8" aria-hidden="true" tabindex="-1"
+                        style="width: 320px;">
+                        <div>
+                            <div class="slide-box" style="width: 100%; display: inline-block;"><a
+                                    href="/common/AspCommon/gotoADPage.asp?Gbn=S4&amp;idx=359" "="" tabindex=" -1"><img
+                                        src="/AttEdit/AD_Image/6E9FFE5068A1423F80E810B0B6D0EE8F.png" alt=""></a></div>
+                        </div>
+                    </div>
+                    <div class="slick-slide slick-cloned" data-slick-index="9" aria-hidden="true" tabindex="-1"
+                        style="width: 320px;">
+                        <div>
+                            <div class="slide-box" style="width: 100%; display: inline-block;"><a
+                                    href="/common/AspCommon/gotoADPage.asp?Gbn=S4&amp;idx=358" "="" tabindex=" -1"><img
+                                        src="/AttEdit/AD_Image/FF8AF0CE0E7C442B8D81F23D6F91D847.png" alt=""></a></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button class="slick-next slick-arrow" aria-label="Next" type="button" style="display: block;">Next</button>
+        </div>
+
+        <!--//slide-->
+
+
+        <!-- 퀵메뉴 -->
+        <article class="quick_nav">
+            <h2 class="blind">Quick Menu</h2>
+            <!-- quick_box -->
+            <div class="quick-area">
+                <ul class="quick-info">
+                    <li>
+                        <a href="/mympark/mypage.asp">
+                            <i class="ico-mypage"></i>
+                            <span class="txt">마이페이지</span>
+                        </a>
+                    </li>
+                    <li class="s1">
+                        <a href="#" onclick="topView('recent');return false;" id="top_recent_title">
+                            <i class="ico-recent"></i>
+                            <em style="display: none;"></em>
+                            <span class="txt">최근본차량</span>
+                        </a>
+                    </li>
+                    <li class="s2">
+                        <a href="#" onclick="loginAlert(); return false;" id="top_interest_title">
+                            <i class="ico-interest"></i>
+                            <em style="display: none;"></em>
+                            <span class="txt">관심차량</span>
+                        </a>
+                    </li>
+                    <li class="s3">
+                        <a href="#" onclick="topView('compare'); return false;" id="top_compare_title">
+                            <i class="ico-compare"></i>
+                            <em style="display: none;"></em>
+                            <span class="txt">차량비교</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <!-- //quick_box -->
+            <a href="#" class="btn_top">상단으로 이동</a>
+            <!-- s:quick-bottom -->
+            <div class="quick-bottom">
+                <a href="/trade/customer_center.asp">
+                    <div class="customer-center">1544-4967</div>
+                </a>
+            </div>
+            <!-- e:quick-bottom -->
+        </article>
+        <!-- 퀵메뉴 -->

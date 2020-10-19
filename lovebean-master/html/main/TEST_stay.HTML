@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html>
+
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no, user-scalable=no">
+
+    <meta name="keywords" content="사랑의 열매, 사회복지공동모금회" />
+    <meta name="description" content="" />
+
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="naver-site-verification" content="4ceec3aa298af6746a1432e53369d1aa1fea56a9" />
+    <span itemscope="" itemtype="http://schema.org/Organization">
+        <link itemprop="url" href="http://www.mysite.com">
+        <a itemprop="sameAs" href="https://www.facebook.com/chestkorea"></a>
+        <a itemprop="sameAs" href="https://blog.naver.com/nanum_in"></a>
+        <a itemprop="sameAs" href="https://www.youtube.com/channel/UCJCLW5U-CQXMvLrXDoiaw0g"></a>
+        <a itemprop="sameAs" href="https://www.instagram.com/fruits_of_love"></a>
+    </span>
+
+    <!-- 크라우드 펀딩 (진행중인 펀딩 SNS 공유) start -->
+    <meta property="og:title" content="" />
+    <meta property="og:type" content="article" />
+    <meta property="og:image" content="nullcommon/img/common/no-img.jpg" />
+    <meta property="og:site_name" content="( null ) 사회복지공동모금회 사랑의열매" />
+    <meta property="og:url"
+        content="nullca/crwdfund/P/initCrwdfundDetail.do?pMenuType=header&pMenuId=00_01_01&propseSn=null" />
+    <meta property="og:description" content="" />
+    <!-- 크라우드 펀딩 (진행중인 펀딩 SNS 공유) end -->
+
+    <title>( 중앙회 ) 사회복지공동모금회 사랑의열매</title>
+
+
+
+
+
+    <link rel="icon" href="/favicon.ico">
+    <!-- css ÃªÂ²Â½Ã«Â¡Â  -->
+    <link rel="stylesheet" href="/common/css/ui.base.css?_v=20201015095339">
+    <link rel="stylesheet" href="/common/css/ui.main.css?_v=20201015095339">
+    <link rel="stylesheet" href="/common/css/swiper.css">
+    <link rel="stylesheet" href="/common/css/ui.responsive.css">
+    <!-- Jquery -->
+    <script type="text/javascript" src="/common/js/jquery/js/jquery-3.4.1.min.js"></script>
+    <script type="text/javascript" src="/common/js/jquery/plugin/jquery.cookie.js"></script><!-- cookie Plugin -->
+    <script type="text/javascript" src="/common/js/jquery/js/jquery-ui.js"></script>
+    <!-- Chest Front Common -->
+    <script type="text/javascript" src="/common/js/chest_menu.js?_v=20201015095339"></script><!-- menu script -->
+    <script type="text/javascript" src="/common/js/chest_util.js"></script><!-- util script -->
+    <script type="text/javascript" src="/common/js/chest_ajax.js"></script><!-- ajax script -->
+    <script type="text/javascript" src="/common/js/chest_com.js"></script><!-- common script -->
+    <script type="text/javascript" src="/common/js/chest_grid.js"></script><!-- grid script -->
+    <script type="text/javascript" src="/common/js/chest_date.js"></script><!-- date script -->
+    <script type="text/javascript" src="/common/js/chest_user.js"></script><!-- user script -->
+    <!-- Chest ui Common -->
+    <script type="text/javascript" src="/common/js/swiper.js"></script>
+    <script type="text/javascript" src="/common/js/ui.global.js"></script>
+    <script type="text/javascript" src="/common/js/ui.plugins.js"></script>
+    <script type="text/javascript" src="/common/js/ui.common.js?_v=20201015095339"></script>
+    <script type="text/javascript" src="/common/js/signature_pad.min.js"></script>
+
+</head>
+
+
+
+
+
+<body>
+    <div class="base-main" id="baseMain">
+        <!-- main hero 배너(2type) -->
+        <div class="main__vs">
+            <div class="main-vs2">
+                <!-- Swiper -->
+                <div class="swiper-container" id="mainVs">
+                    <div class="swiper-wrapper" id="banrList"></div>
+                    <!-- Add Pagination -->
+                    <div class="swiper-pagination"></div>
+                    <!-- Add Arrows -->
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
+                </div>
+            </div>
+
+            <div class="main__aside">
+                <div class="main__aside--top">
+                    <ul class="left">
+                        <li class="active" data-tab="tab-1" id="tab-1-t">공지사항</li>
+                        <li data-tab="tab-2" id="tab-2-t">지원안내</li>
+                    </ul>
+                    <div class="right">
+                        <p><span class="aside__icon--off"></span>종료</p>
+                        <p>&nbsp;<span class="aside__icon--on"></span>진행중</p>
+                    </div>
+                </div>
+                <div class="main__aside--bottom">
+                    <ul class="aside_notice active" id="tab-1"></ul>
+
+                    <ul class="aside_notice" id="tab-2"></ul>
+
+                    <p class="line"></p>
+                </div>
+            </div>
+        </div>
+
+        <!--// main hero 배너(2type) -->
+
+
+        <div class="box-sns">
+            <div class="box-sns-vod">
+                <div>
+                    <iframe id="player" type="text/html" width="344" height="222"
+                        src="https://www.youtube.com/embed/uhB4Am0Aakk" title="이영지, 나눔으로 세상을 움직이다"
+                        frameborder="0"></iframe>
+                    <strong>이영지, 나눔으로 세상을 움직이다</strong>
+                    <div class="sns-wrap">
+                        <a href="javascript:snsMoveEvent('SNS_PB');" title="새 창 열림" class="ico-f"><span
+                                class="hide">페이스북</span></a>
+                        <a href="https://www.youtube.com/channel/UCbHsnc9llMcA9ypjVAnpcuQ" title="새 창 열림" class="ico-u"
+                            target="_blank"><span class="hide">유튜브</span></a>
+                        <a href="javascript:snsMoveEvent('SNS_BG');" title="새 창 열림" class="ico-b"><span
+                                class="hide">블로그</span></a>
+                        <a href="javascript:snsMoveEvent('SNS_IS');" title="새 창 열림" class="ico-i"><span
+                                class="hide">인스타그램</span></a>
+                    </div>
+                </div>
+            </div>
+            <div class="box-sns-slide">
+                <div class="swiper-container" id="mainBn3">
+                    <div class="swiper-wrapper" id="fbList"></div>
+                    <button type="button" class="btn-swiper-prev" id="btn-swiper-prev4">
+                        <span class="hide">이전</span>
+                    </button>
+                    <button type="button" class="btn-swiper-next" id="btn-swiper-next4">
+                        <span class="hide">다음</span>
+                    </button>
+
+                </div>
+
+            </div>
+        </div>
+
+        <div class="main-type2 mini">
+            <h3>나눔과 <br>변화의스토리</h3>
+            <div class="main-type-wrap">
+                <div class="swiper-container" id="mainBn1">
+                    <div class="swiper-wrapper"></div>
+                </div>
+            </div>
+            <button type="button" class="btn-swiper-prev" id="btn-swiper-prev2">
+                <span class="hide">이전</span>
+            </button>
+            <button type="button" class="btn-swiper-next" id="btn-swiper-next2">
+                <span class="hide">다음</span>
+            </button>
+
+            <button type="button" class="btn-more" id="mainBn1_more" title="나눔과 변화의스토리 더보기">
+                <span class="hide">나눔과 변화의스토리 더보기</span>
+            </button>
+        </div>
+
+
+        <div class="main-type2 solo">
+            <h3>사랑의열매 <br>크라우드펀딩</h3>
+            <div class="main-type-wrap">
+                <div class="swiper-container" id="mainBn2">
+                    <div class="swiper-wrapper"></div>
+                </div>
+            </div>
+            <button type="button" class="btn-swiper-prev" id="btn-swiper-prev3">
+                <span class="hide">이전</span>
+            </button>
+            <button type="button" class="btn-swiper-next" id="btn-swiper-next3">
+                <span class="hide">다음</span>
+            </button>
+
+            <button type="button" class="btn-more" id="mainBn2_more" title="사랑의열매 크라우드펀딩 더보기">
+                <span class="hide">사랑의열매 크라우드펀딩 더보기</span>
+            </button>
+        </div>
+
+        <div class="box-card">
+            <ul class="box-card-area">
+                <li class="box-card-item box-img01">
+                    <h3 class="box-card-title">착한가정</h3>
+                    <a href="/ct/cntrpt/initNicehome.do" class="box-link">바로가기</a>
+                </li>
+                <li class="box-card-item box-img02">
+                    <h3 class="box-card-title">착한가게</h3>
+                    <a href="/ct/cntrpt/initNicestore.do" class="box-link">바로가기</a>
+                </li>
+                <li class="box-card-item box-img03">
+                    <h3 class="box-card-title">착한일터</h3>
+                    <a href="/ct/cntrpt/initNicespt.do" class="box-link">바로가기</a>
+                </li>
+                <li class="box-card-item box-img04">
+                    <h3 class="box-card-title">나눔리더</h3>
+                    <a href="/ct/cntrpt/initShareleadr.do" class="box-link">바로가기</a>
+                </li>
+                <li class="box-card-item box-img05">
+                    <h3 class="box-card-title">나눔리더스클럽</h3>
+                    <a href="/ct/cntrpt/initShareleadrclub.do" class="box-link">바로가기</a>
+                </li>
+                <li class="box-card-item box-img06">
+                    <h3 class="box-card-title">아너 소사이어티</h3>
+                    <a href="/ct/cntrpt/initHonorsociety.do" class="box-link">바로가기</a>
+                </li>
+                <li class="box-card-item box-img07">
+                    <h3 class="box-card-title">기부자맞춤기금</h3>
+                    <a href="/ct/cntrpt/initCntrendw.do" class="box-link">바로가기</a>
+                </li>
+                <li class="box-card-item box-img08">
+                    <h3 class="box-card-title">기업사회공헌</h3>
+                    <a href="/ct/entcntrb/initSoctycntrbdntncntr.do" class="box-link">바로가기</a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="main-bbs">
+            <div class="box-bbs">
+                <h3 class="box-bbs-title">공지사항</h3>
+                <ul class="bbs-list" id="noticeList"></ul>
+                <a href="/bbs/1000/initPostList.do" class="bbs-more" alt="공지사항 더 보기" title="공지사항 더 보기">more</a>
+            </div>
+            <div class="box-bbs">
+                <h3 class="box-bbs-title">최근보도</h3>
+                <ul class="bbs-list" id="mediaList"></ul>
+                <a href="/bbs/1003/initPostList.do" class="bbs-more" alt="최근보도 더 보기" title="최근보도 더 보기">more</a>
+            </div>
+            <div class="box-bbs">
+                <h3 class="box-bbs-title">지원안내</h3>
+                <ul class="bbs-list" id="supportList"></ul>
+                <a href="/bbs/1004/initPostList.do" class="bbs-more" alt="지원안내 더 보기" title="지원안내 더 보기">more</a>
+            </div>
+        </div>
+
+        <div class="box-banner">
+            <ul class="box-banner-area">
+                <li class="box-banner-item">
+                    <!--                <a href="/bn/sca/initChildse.do" class="box-banner-link"> -->
+                    <a href="javascript:;" OnClick="gf_msg();" class="box-banner-link">
+                        <i class="sprite-mainbn-01"></i>
+                        나눔체험관 <span class="mobile-block">견학신청</span>
+                    </a>
+                </li>
+                <li class="box-banner-item">
+                    <!--                 <a href="/cm/sereqst/init.do" class="box-banner-link"> -->
+                    <a href="javascript:;" OnClick="gf_msg();" class="box-banner-link">
+                        <i class="sprite-mainbn-02"></i>
+                        기관방문<span class="mobile-block">신청</span>
+                    </a>
+                </li>
+                <li class="box-banner-item">
+                    <!--                 <a href="/cm/rentreqst/init.do" class="box-banner-link"> -->
+                    <a href="javascript:;" OnClick="gf_msg();" class="box-banner-link">
+                        <i class="sprite-mainbn-03"></i>
+                        대관<span class="mobile-block">신청</span>
+                    </a>
+                </li>
+                <li class="box-banner-item">
+                    <a href="http://proposal.chest.or.kr" target="_blank" class="box-banner-link">
+                        <i class="sprite-mainbn-04"></i>
+                        온라인 <span class="mobile-block">배분신청</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+
+</body>
+
+</html>
