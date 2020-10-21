@@ -21,7 +21,7 @@
 
 
     <!-- slick -->
-    <script type="text/javascript" src="../../common/css/slick/slick.min.js"></script>
+
     <link rel="stylesheet" href="../../common/css/slick/slick-theme.css">
     <link rel="stylesheet" href="../../common/css/slick/slick.css">
     <style>
@@ -29,9 +29,103 @@
         .slider-container_camp {
             border: 1px solid #000;
             width: 100%;
+        }
+
+        /* 
+        .slider-container_camp .slider-for {
+            position: relative;
+            border: 1px solid yellow;
+            height: 650px;
+        }
+
+        .slider-container_camp .slider-for .box {
+            width: 100%;
+            border: 1px solid red;
+
+        } 
+
+        .slider-container_camp .slider-nav {
+            position: absolute;
+            border: 1px solid green;
+            top: 24px;
+            width: 820px;
+            overflow: hidden;
+        }
+
+        .slider-container_camp .slider-nav .box {
+            border: 1px solid green;
             height: 620px;
+        }
+
+        
+        
+        */
+
+
+        /* slick sample */
+        .container {
+            padding: 30px;
+        }
+
+        .test-case-wrap {
+            border: 2px solid green;
+        }
+
+        .tab-content>.tab-pane {
+            display: block;
+            visibility: hidden;
+        }
+
+        .tab-content>.tab-pane.active {
+            visibility: visible;
+        }
+
+        .tab-content {
             position: relative;
         }
+
+        .tab-pane {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+        }
+
+        .nav-tabs>li>a {
+            background: rgba(255, 255, 255, 0.65);
+            color: #333;
+        }
+
+        .slick-slider {
+            background: #3a8999;
+            font-size: 30px;
+            line-height: 1;
+            text-align: center;
+            color: white;
+        }
+
+        .slick-slider .slick-dots button:before,
+        .slick-slider .slick-dots .slick-active button:before {
+            color: rgba(255, 255, 255, 0.85);
+        }
+
+        .slick-slider .slick-slide {
+            background: #3a8999;
+            padding: 40px 0;
+        }
+
+        .slick-slider .slick-slide:nth-child(odd) {
+            background: #e84a69;
+        }
+
+        .slick-slider .slick-slide.slick-active {
+            background: rebeccapurple;
+        }
+
+        /* slick custom */
+        /* // */
+
 
         /* notice-banner */
         .sliderB_container_camp {
@@ -51,15 +145,17 @@
         /*box-card*/
         .box-card_camp {
             width: 100%;
+            height: 260px;
             border: 1px solid #000;
         }
 
 
+
         .box-card_campbox {
-            border: 1px solid #000;
             width: 1280px;
+            border: 1px solid #000;
             margin: auto;
-            display: flex;
+            position: relative;
         }
 
 
@@ -134,30 +230,51 @@
         <!--slider_hero-->
         <div class="main__vs">
             <div class="slider-container_camp">
-                <!--main_hero_slider1-->
+                <!--main_hero_slider1
                 <div>
                     <div class="slider-for">
-                        <div>your content1</div>
-                        <div>your content2</div>
-                        <div>your content3</div>
+                        <div class="box"><img src="http://placehold.it/1280x650?text=1" /></div>
+                        <div class="box"><img src="http://placehold.it/1280x650?text=2" /></div>
+                        <div class="box"><img src="http://placehold.it/1280x650?text=3" /></div>
                     </div>
                     <div class="slider-nav">
-                        <div>your content1</div>
-                        <div>your content2</div>
-                        <div>your content3</div>
-                        <div>your content3</div>
-                        <div>your content3</div>
-                        <div>your content3</div>
-                        <div>your content3</div>
+                        <div class="box"><img src="http://placehold.it/820x620?text=1" /></div>
+                        <div class="box"><img src="http://placehold.it/820x620?text=2" /></div>
+                        <div class="box"><img src="http://placehold.it/820x620?text=3" /></div>
+                    </div>
+                </div>-->
+
+                <div class="test-case-wrap centerMode-asNavFor">
+                    <div class="slider thumbs">
+                        <div class="slide">Slide 이미지</div>
+                        <div class="slide">Slide 2</div>
+                        <div class="slide">Slide 3</div>
+                        <div class="slide">Slide 4</div>
+                        <div class="slide">Slide 5</div>
+                        <div class="slide">Slide 6</div>
+                        <div class="slide">Slide 7</div>
+                        <div class="slide">Slide 8</div>
+                        <div class="slide">Slide 9</div>
+                    </div>
+
+                    <div class="slider text">
+                        <div class="slide">Slide 배경</div>
+                        <div class="slide">Slide 2</div>
+                        <div class="slide">Slide 3</div>
+                        <div class="slide">Slide 4</div>
+                        <div class="slide">Slide 5</div>
+                        <div class="slide">Slide 6</div>
+                        <div class="slide">Slide 7</div>
+                        <div class="slide">Slide 8</div>
+                        <div class="slide">Slide 9</div>
                     </div>
                 </div>
-                <!-- // -->
             </div>
             <!--//slider_hero-->
             <!--notice&campaign-->
             <section class="sliderB_container_camp">
                 <!-- main_hero_lider2 -->
-                <h2>부산 사회복지공동모금회</h2>
+                <!-- <h2>부산 사회복지공동모금회</h2>
                 <section>
                     <div>
                         <div class="aside__bottom--item">
@@ -176,21 +293,34 @@
                     <div>
                         <img src="http://placehold.it/432x100?text=3">
                     </div>
-                </section>
+                </section> -->
+
+
+                <!-- slider1 -->
+                <!-- <div class="test-case-wrap vertical-mode">
+                    <div class="slider">
+                        <div>Slide 1</div>
+                        <div>Slide 2</div>
+                        <div>Slide 3</div>
+                        <div>Slide 4</div>
+                        <div>Slide 5</div>
+                        <div>Slide 6</div>
+                    </div>
+                </div> -->
+                <!-- // -->
                 <!-- // -->
             </section>
-            <!--//benner-->
+            <!--//notice&campaign-->
             <!-- quick_nav(box-banner) -->
 
             <article class="quick_nav">
-                <h2>주요 서비스</h2>
+                <!-- <h2>주요 서비스</h2> -->
                 <!-- quick_box -->
-                <div class="quick-area">
+                <!-- <div class="quick-area">
                     <ul class="quick-info">
                         <li>
                             <a href="#">
                                 <i class="ico-mypage"></i>
-                                <!-- <em style="display: none;"></em> -->
                                 <span class="txt">공지사항</span>
                             </a>
                         </li>
@@ -225,9 +355,9 @@
                             </a>
                         </li>
                     </ul>
-                </div>
+                </div> -->
                 <!-- //quick_box -->
-                <a href="#" class="btn_close"></a>접기</a>
+                <!-- <a href="#" class="btn_close"></a>접기</a> -->
             </article>
             <!-- //quick_nav -->
         </div>
@@ -241,14 +371,29 @@
                 </div>
                 <div>
                     <!--main_sub_slider1-->
-                    <div class="your-class">
+                    <!-- <div class="your-class">
                         <div>
                             <i><img src="http://placehold.it/200x130?text=sample" /></i>
                             <p>문구들</p>
                             <button>버튼</button>
                         </div>
-                    </div>
+                    </div> -->
                     <!-- //main_sub_slider1-->
+                </div>
+                <div>
+                    <div role="tabpanel" class="tab-pane" id="slide-scroll">
+                        <div class="test-case-wrap slick-2-2">
+                            <h2>2/2</h2>
+                            <div class="slider">
+                                <div><img src="http://placehold.it/200x130?text=1" /></div>
+                                <div><img src="http://placehold.it/200x130?text=2" /></div>
+                                <div><img src="http://placehold.it/200x130?text=3" /></div>
+                                <div><img src="http://placehold.it/200x130?text=4" /></div>
+                                <div><img src="http://placehold.it/200x130?text=5" /></div>
+                                <div><img src="http://placehold.it/200x130?text=6" /></div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </section>
         </div>
@@ -436,11 +581,9 @@
         <!-- //프로팅배너 -->
 
         <!-- partial -->
-        <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js'></script>
-        <script
-            src='https://wp.incredibbble.com/writsy-shop/wp-content/themes/writsy-shop/assets/vendor/jquery-zoom/jquery.zoom.min.js?ver=1.7.18'>
-        </script>
-        <script src='https://cdn.jsdelivr.net/jquery.slick/1.6.0/slick.min.js'></script>
+        <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+        <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+        <script type="text/javascript" src="../../common/css/slick/slick.min.js"></script>
         <script type="text/javascript" src="../../common/js/slick/slick_custom.js"></script>
 </body>
 
