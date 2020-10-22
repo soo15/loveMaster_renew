@@ -19,214 +19,10 @@
     <link rel="stylesheet" href="../../common/css/ui.main.css?_v=20201015095339">
     <!-- <link rel="stylesheet" href="../../common/css/swiper.css"> -->
 
-
     <!-- slick -->
-
     <link rel="stylesheet" href="../../common/css/slick/slick-theme.css">
     <link rel="stylesheet" href="../../common/css/slick/slick.css">
-    <style>
-        /*hero*/
-        .slider-container_camp {
-            border: 1px solid #000;
-            width: 100%;
-        }
-
-        /* 
-        .slider-container_camp .slider-for {
-            position: relative;
-            border: 1px solid yellow;
-            height: 650px;
-        }
-
-        .slider-container_camp .slider-for .box {
-            width: 100%;
-            border: 1px solid red;
-
-        } 
-
-        .slider-container_camp .slider-nav {
-            position: absolute;
-            border: 1px solid green;
-            top: 24px;
-            width: 820px;
-            overflow: hidden;
-        }
-
-        .slider-container_camp .slider-nav .box {
-            border: 1px solid green;
-            height: 620px;
-        }
-
-        
-        
-        */
-
-
-        /* slick sample */
-        .container {
-            padding: 30px;
-        }
-
-        .test-case-wrap {
-            border: 2px solid green;
-        }
-
-        .tab-content>.tab-pane {
-            display: block;
-            visibility: hidden;
-        }
-
-        .tab-content>.tab-pane.active {
-            visibility: visible;
-        }
-
-        .tab-content {
-            position: relative;
-        }
-
-        .tab-pane {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            top: 0;
-            left: 0;
-        }
-
-        .nav-tabs>li>a {
-            background: rgba(255, 255, 255, 0.65);
-            color: #333;
-        }
-
-        .slick-slider {
-            background: #3a8999;
-            font-size: 30px;
-            line-height: 1;
-            text-align: center;
-            color: white;
-        }
-
-        .slick-slider .slick-dots button:before,
-        .slick-slider .slick-dots .slick-active button:before {
-            color: rgba(255, 255, 255, 0.85);
-        }
-
-        .slick-slider .slick-slide {
-            background: #3a8999;
-            padding: 40px 0;
-        }
-
-        .slick-slider .slick-slide:nth-child(odd) {
-            background: #e84a69;
-        }
-
-        .slick-slider .slick-slide.slick-active {
-            background: rebeccapurple;
-        }
-
-        /* slick custom */
-        .slick-slider .draggable {
-            padding: 0px !important;
-        }
-
-        .centerMode-asNavFor {
-            position: relative;
-            height: 650px;
-        }
-
-        .centerMode-asNavFor .thumbs {
-            position: absolute;
-            max-width: 820px;
-            z-index: 1;
-            border: 1px solid #000;
-
-        }
-
-        .centerMode-asNavFor .slick-arrow {
-            border: 1px solid #000;
-            z-index: 1;
-        }
-
-        .centerMode-asNavFor .slick-next {
-            right: 885px;
-        }
-
-
-
-        /* // */
-
-
-        /* notice-banner */
-        .sliderB_container_camp {
-            border: 1px solid #000;
-            position: absolute;
-            right: 0;
-            width: 432px;
-        }
-
-        /*quick_nav*/
-        .quick_nav {
-            position: fixed;
-            right: 0;
-        }
-
-
-        /*box-card*/
-        .box-card_camp {
-            width: 100%;
-            height: 260px;
-            border: 1px solid #000;
-        }
-
-
-
-        .box-card_campbox {
-            max-width: 1280px;
-            border: 1px solid #000;
-            margin: auto;
-            position: relative;
-        }
-
-
-        /*crowd*/
-        .main-type2 {
-            position: relative;
-            max-width: 1280px;
-            height: auto;
-            margin: auto;
-        }
-
-        .main-crowd__camp {
-            border: 1px solid #000;
-            width: 100%;
-            height: 620px;
-        }
-
-        /* 열매튜브*/
-        .main-beanTube {
-            max-width: 1280px;
-        }
-
-        .main-beanTube_box {
-            border: 1px solid #000;
-            width: 100%;
-            margin: auto;
-        }
-
-
-        /*공지사항/최근보도/지원안내*/
-        /* .main-bbs {
-            max-width: 1280px;
-            margin: auto;
-        } */
-
-
-        /* borderbox_test */
-        .main_border_test {
-            border: 1px solid #000;
-            width: 100%;
-            height: 300px;
-        }
-    </style>
+    <link rel="stylesheet" href="../../common/css/slick/slick-custom.css">
     <link rel="stylesheet" href="../../common/css/ui.responsive.css">
 
     <!-- Jquery -->
@@ -249,404 +45,338 @@
     <script type="text/javascript" src="../../common/js/ui.common.js?_v=20201015095339"></script>
     <script type="text/javascript" src="../../common/js/signature_pad.min.js"></script>
 
-
-
 </head>
 
-<body>
+<body style="overflow-x:hidden">
     <div class="base-main" id="baseMain">
-        <!--slider_hero-->
+        <!--main_section-->
         <div class="main__vs">
-            <div class="slider-container_camp">
-                <!--main_hero_slider1
-                <div>
-                    <div class="slider-for">
-                        <div class="box"><img src="http://placehold.it/1280x650?text=1" /></div>
-                        <div class="box"><img src="http://placehold.it/1280x650?text=2" /></div>
-                        <div class="box"><img src="http://placehold.it/1280x650?text=3" /></div>
+            <!--slider_hero-->
+            <div class="slider-hero-box">
+                <div class="slider-hero">
+                    <div class="hero-box">
+                        <div class="slider hero-imgs">
+                            <div class="slide"><img src="../../common/img/re_main_2010/hero_img1.png" /></div>
+                            <div class="slide">Slide 2</div>
+                            <div class="slide">Slide 3</div>
+                        </div>
                     </div>
-                    <div class="slider-nav">
-                        <div class="box"><img src="http://placehold.it/820x620?text=1" /></div>
-                        <div class="box"><img src="http://placehold.it/820x620?text=2" /></div>
-                        <div class="box"><img src="http://placehold.it/820x620?text=3" /></div>
-                    </div>
-                </div>-->
-
-                <div class="test-case-wrap centerMode-asNavFor">
-                    <div class="slider thumbs">
-                        <div class="slide">Slide 이미지</div>
-                        <div class="slide">Slide 2</div>
-                        <div class="slide">Slide 3</div>
-                        <div class="slide">Slide 4</div>
-                        <div class="slide">Slide 5</div>
-                        <div class="slide">Slide 6</div>
-                        <div class="slide">Slide 7</div>
-                        <div class="slide">Slide 8</div>
-                        <div class="slide">Slide 9</div>
-                    </div>
-
-                    <div class="slider text">
-                        <div class="slide">Slide 배경</div>
-                        <div class="slide">Slide 2</div>
-                        <div class="slide">Slide 3</div>
-                        <div class="slide">Slide 4</div>
-                        <div class="slide">Slide 5</div>
-                        <div class="slide">Slide 6</div>
-                        <div class="slide">Slide 7</div>
-                        <div class="slide">Slide 8</div>
-                        <div class="slide">Slide 9</div>
+                    <div class="hero-bg-box">
+                        <div class="slider hero-bgs">
+                            <div class="slide"><img src="../../common/img/re_main_2010/hero_img1.png" /></div>
+                            <div class="slide">Slide 2</div>
+                            <div class="slide">Slide 3</div>
+                        </div>
                     </div>
                 </div>
             </div>
             <!--//slider_hero-->
             <!--notice&campaign-->
             <section class="sliderB_container_camp">
-                <!-- main_hero_lider2 -->
-                <!-- <h2>부산 사회복지공동모금회</h2>
-                <section>
-                    <div>
-                        <div class="aside__bottom--item">
-                            <a><img src="http://placehold.it/50x50?text=1"></a>
+                <!-- slider1  -->
+                <div class="main_v_notice">
+                    <h2>부산 사회복지공동모금회</h2>
+                    <div class="slider">
+                        <div>
                             <div>
-                                <strong>공지사항</strong>
-                                <p>2020.08.01 ~ 2020.08.31</p>
-                                <h1>호우피해 지원성금 기부 안내</h1>
-                                <p>사랑의열매는 호우로 큰 어려움을 겪고 있는 이웃들을 위해 특별모금을 진행합니다.</p>
+                                <a><img src="http://placehold.it/50x50?text=1"></a>
+                                <div>
+                                    <strong>공지사항</strong>
+                                    <p>2020.08.01 ~ 2020.08.31</p>
+                                    <h1>호우피해 지원성금 기부 안내</h1>
+                                    <p>사랑의열매는 호우로 큰 어려움을 겪고 있는 이웃들을 위해 특별모금을 진행합니다.</p>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div>
-                        <img src="http://placehold.it/432x100?text=2">
-                    </div>
-                    <div>
-                        <img src="http://placehold.it/432x100?text=3">
-                    </div>
-                </section> -->
-
-
-                <!-- slider1 
-                <div class="test-case-wrap vertical-mode">
-                    <div class="slider">
-                        <div>Slide 1</div>
                         <div>Slide 2</div>
                         <div>Slide 3</div>
-                        <div>Slide 4</div>
-                        <div>Slide 5</div>
-                        <div>Slide 6</div>
+                        <div>Slide 2</div>
+                        <div>Slide 3</div>
+                        <div>Slide 2</div>
+                        <div>Slide 3</div>
+                        <div>Slide 2</div>
+                        <div>Slide 3</div>
                     </div>
                 </div>
-                // -->
+                <!-- // -->
                 <!-- // -->
             </section>
-            <!--//notice&campaign-->
-            <!-- quick_nav(box-banner) -->
-
-            <article class="quick_nav">
-                <h2>주요 서비스</h2>
-                <!-- quick_box -->
-                <div class="quick-area">
-                    <ul class="quick-info">
-                        <li>
-                            <a href="#">
-                                <i class="ico-mypage"></i>
-                                <span class="txt">공지사항</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <i class="ico-recent"></i>
-                                <span class="txt">지원안내</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <i class="ico-interest"></i>
-                                <span class="txt">온라인배분신청</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <i class="ico-compare"></i>
-                                <span class="txt">일시기부</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <i class="ico-compare"></i>
-                                <span class="txt">정기기부</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <i class="ico-compare"></i>
-                                <span class="txt">마이페이지</span>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-                <!-- //quick_box -->
-                <a href="#" class="btn_close"></a>접기</a>
-            </article>
-            <!-- //quick_nav -->
         </div>
-        <div class="box-card_camp">
-            <section class="box-card_campbox">
-                <div>
-                    <h2>함께나누면 행복도 2배 <strong>착한기부</strong></h2>
-                    <em>사랑의열매는 기부내역확인서비스로 기부금 내역을 공개하고 있습니다. 여러분의 사랑을 보여주세요.</em>
-                    <button>정기기부</button>
-                    <button>일반기부</button>
+        <!--//notice&campaign-->
+        <!-- quick_nav(box-banner) -->
+        <article class="quick_nav">
+            <h2>주요 서비스</h2>
+            <!-- quick_box -->
+            <div class="quick-area">
+                <ul class="quick-info">
+                    <li>
+                        <a href="#">
+                            <i class="ico-mypage"></i>
+                            <span class="txt">공지사항</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class="ico-recent"></i>
+                            <span class="txt">지원안내</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class="ico-interest"></i>
+                            <span class="txt">온라인배분신청</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class="ico-compare"></i>
+                            <span class="txt">일시기부</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class="ico-compare"></i>
+                            <span class="txt">정기기부</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class="ico-compare"></i>
+                            <span class="txt">마이페이지</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <!-- //quick_box -->
+            <a href="#" class="btn_close"></a>접기</a>
+        </article>
+        <!-- //quick_nav -->
+    </div>
+    <!--sub_section-->
+    <div class="box-card_camp">
+        <section class="box-card_campbox">
+            <div>
+                <h2>함께나누면 행복도 2배 <strong>착한기부</strong></h2>
+                <em>사랑의열매는 기부내역확인서비스로 기부금 내역을 공개하고 있습니다. 여러분의 사랑을 보여주세요.</em>
+                <button>정기기부</button>
+                <button>일반기부</button>
+            </div>
+            <div>
+                <div role="tabpanel" class="tab-pane" id="slide-scroll">
+                    <div class="test-case-wrap slick-2-2">
+                        <div class="slider" style="max-width:900px; left:300px;">
+                            <div>
+                                <i><img src="http://placehold.it/200x130?text=sample" /></i>
+                                <p>문구들</p>
+                                <button>버튼</button>
+                            </div>
+                            <div><img src="http://placehold.it/200x130?text=2" /></div>
+                            <div><img src="http://placehold.it/200x130?text=3" /></div>
+                            <div><img src="http://placehold.it/200x130?text=4" /></div>
+                            <div><img src="http://placehold.it/200x130?text=5" /></div>
+                            <div><img src="http://placehold.it/200x130?text=6" /></div>
+                        </div>
+                    </div>
                 </div>
-                <div>
-                    <!--main_sub_slider1-->
-                    <!-- <div class="your-class">
+            </div>
+        </section>
+    </div>
+    <div class="main-type2 solo">
+        <section class="main_border_test">
+            <div>
+                <h2>우리 같이 응원해요!<strong>크라우드 펀딩</strong></h2>
+                <em>모금된 금액은 수수료 없이 전액 펀딩 사업에 사용됩니다.</em>
+                <button>펀딩더보기</button>
+                <button>신청하기</button>
+                <button>펀딩후기</button>
+            </div>
+            <!--main_sub_slider2-->
+            <div class="your-class">
+                <div role="tabpanel" class="tab-pane" id="slide-scroll">
+                    <div class="test-case-wrap slick-2-2">
+                        <div class="slider" style="max-width:900px; left:300px;">
+                            <div>
+                                <img src="http://placehold.it/200x100?text=sample" />
+                                <i>로고</i>
+                                <p>문구들</p>
+                                <button>버튼</button>
+                            </div>
+                            <div><img src="http://placehold.it/200x130?text=2" /></div>
+                            <div><img src="http://placehold.it/200x130?text=3" /></div>
+                            <div><img src="http://placehold.it/200x130?text=4" /></div>
+                            <div><img src="http://placehold.it/200x130?text=5" /></div>
+                            <div><img src="http://placehold.it/200x130?text=6" /></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- //main_sub_slider2-->
+        </section>
+    </div>
+
+
+    <div class="main-type2 mini">
+        <section class="main_border_test ">
+            <div>
+                <h2>사랑의 열매와 함께 나누는<strong>나눔 스토리</strong></h2>
+                <em>여러분의 소중한 성금은 꼭 필요한 곳에 용됩니다.</em>
+                <button>스토리더보기</button>
+                <button>신청하기</button>
+                <button>지원사업</button>
+            </div>
+            <!--main_sub_slider2-->
+            <div role="tabpanel" class="tab-pane" id="slide-scroll">
+                <div class="test-case-wrap slick-2-2">
+                    <div class="slider" style="width:900px; left:300px;">
+                        <div><img src="http://placehold.it/200x130?text=1" /></div>
+                        <div><img src="http://placehold.it/200x130?text=2" /></div>
+                        <div><img src="http://placehold.it/200x130?text=3" /></div>
+                        <div><img src="http://placehold.it/200x130?text=4" /></div>
+                        <div><img src="http://placehold.it/200x130?text=5" /></div>
+                        <div><img src="http://placehold.it/200x130?text=6" /></div>
+                    </div>
+                </div>
+            </div>
+            <!-- //main_sub_slider2-->
+        </section>
+    </div>
+
+    <!-- 열매튜브 -->
+    <div class="main-type2 main-beanTube">
+        <section class="main-beanTube_box">
+            <h2>열매튜브</h2>
+            <ul>
+                <li>사랑의열매&JTBC</li>
+                <li>연말연중광고</li>
+                <li>온라인배분사업설명회</li>
+            </ul>
+            <div role="tabpanel" class="tab-pane" id="slide-scroll">
+                <div class="test-case-wrap slick-2-2">
+                    <div class="slider" style="width:900px; left:300px;">
                         <div>
-                            <i><img src="http://placehold.it/200x130?text=sample" /></i>
+                            <img src="http://placehold.it/200x100?text=sample" />
                             <p>문구들</p>
-                            <button>버튼</button>
+                            <p>문구들</p>
                         </div>
-                    </div> -->
-                    <!-- //main_sub_slider1-->
-                </div>
-                <div>
-                    <div role="tabpanel" class="tab-pane" id="slide-scroll">
-                        <div class="test-case-wrap slick-2-2">
-                            <div class="slider" style="max-width:900px; left:300px;">
-                                <div>
-                                    <i><img src="http://placehold.it/200x130?text=sample" /></i>
-                                    <p>문구들</p>
-                                    <button>버튼</button>
-                                </div>
-                                <div><img src="http://placehold.it/200x130?text=2" /></div>
-                                <div><img src="http://placehold.it/200x130?text=3" /></div>
-                                <div><img src="http://placehold.it/200x130?text=4" /></div>
-                                <div><img src="http://placehold.it/200x130?text=5" /></div>
-                                <div><img src="http://placehold.it/200x130?text=6" /></div>
-                            </div>
-                        </div>
+                        <div><img src="http://placehold.it/200x130?text=2" /></div>
+                        <div><img src="http://placehold.it/200x130?text=3" /></div>
+                        <div><img src="http://placehold.it/200x130?text=4" /></div>
+                        <div><img src="http://placehold.it/200x130?text=5" /></div>
+                        <div><img src="http://placehold.it/200x130?text=6" /></div>
                     </div>
                 </div>
-            </section>
-        </div>
-        <div class="main-type2 solo">
-            <section class="main_border_test">
-                <div>
-                    <h2>우리 같이 응원해요!<strong>크라우드 펀딩</strong></h2>
-                    <em>모금된 금액은 수수료 없이 전액 펀딩 사업에 사용됩니다.</em>
-                    <button>펀딩더보기</button>
-                    <button>신청하기</button>
-                    <button>펀딩후기</button>
-                </div>
-                <!--main_sub_slider2-->
-                <div class="your-class">
-                    <!-- <div>
-                        <img src="http://placehold.it/200x130?text=sample" />
-                        <i>로고</i>
-                        <p>문구들</p>
-                        <button>버튼</button>
-                    </div> -->
-
-                    <div role="tabpanel" class="tab-pane" id="slide-scroll">
-                        <div class="test-case-wrap slick-2-2">
-                            <div class="slider" style="max-width:900px; left:300px;">
-                                <div>
-                                    <img src="http://placehold.it/200x100?text=sample" />
-                                    <i>로고</i>
-                                    <p>문구들</p>
-                                    <button>버튼</button>
-                                </div>
-                                <div><img src="http://placehold.it/200x130?text=2" /></div>
-                                <div><img src="http://placehold.it/200x130?text=3" /></div>
-                                <div><img src="http://placehold.it/200x130?text=4" /></div>
-                                <div><img src="http://placehold.it/200x130?text=5" /></div>
-                                <div><img src="http://placehold.it/200x130?text=6" /></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- //main_sub_slider2-->
-            </section>
-        </div>
-
-
-        <div class="main-type2 mini">
-            <section class="main_border_test ">
-                <div>
-                    <h2>사랑의 열매와 함께 나누는<strong>나눔 스토리</strong></h2>
-                    <em>여러분의 소중한 성금은 꼭 필요한 곳에 용됩니다.</em>
-                    <button>스토리더보기</button>
-                    <button>신청하기</button>
-                    <button>지원사업</button>
-                </div>
-                <!--main_sub_slider2-->
-                <div class="your-class">
-                    <!-- <div>
-                        <img src="http://placehold.it/316x232?text=sample" />
-                        <p>문구들</p>
-                    </div> -->
-
-                    <div role="tabpanel" class="tab-pane" id="slide-scroll">
-                        <div class="test-case-wrap slick-2-2">
-                            <div class="slider" style="width:900px; left:300px;">
-                                <div><img src="http://placehold.it/200x130?text=1" /></div>
-                                <div><img src="http://placehold.it/200x130?text=2" /></div>
-                                <div><img src="http://placehold.it/200x130?text=3" /></div>
-                                <div><img src="http://placehold.it/200x130?text=4" /></div>
-                                <div><img src="http://placehold.it/200x130?text=5" /></div>
-                                <div><img src="http://placehold.it/200x130?text=6" /></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- //main_sub_slider2-->
-            </section>
-        </div>
-
-        <!-- 열매튜브 -->
-        <div class="main-type2 main-beanTube">
-            <section class="main-beanTube_box">
-                <h2>열매튜브</h2>
-                <ul>
-                    <li>사랑의열매&JTBC</li>
-                    <li>연말연중광고</li>
-                    <li>온라인배분사업설명회</li>
-                </ul>
-                <!--main_sub_slider3-->
-                <div class="your-class">
-                    <!-- <div>
-                        <img src="http://placehold.it/400x220?text=sample" />
-                        <p>문구들</p>
-                        <p>문구들</p>
-                    </div> -->
-
-                    <div role="tabpanel" class="tab-pane" id="slide-scroll">
-                        <div class="test-case-wrap slick-2-2">
-                            <div class="slider" style="width:900px; left:300px;">
-                                <div>
-                                    <img src="http://placehold.it/200x100?text=sample" />
-                                    <p>문구들</p>
-                                    <p>문구들</p>
-                                </div>
-                                <div><img src="http://placehold.it/200x130?text=2" /></div>
-                                <div><img src="http://placehold.it/200x130?text=3" /></div>
-                                <div><img src="http://placehold.it/200x130?text=4" /></div>
-                                <div><img src="http://placehold.it/200x130?text=5" /></div>
-                                <div><img src="http://placehold.it/200x130?text=6" /></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- //main_sub_slider-->
-            </section>
-        </div>
-        <!-- //열매튜브 -->
-
-
-        <!-- 공지사항/최근보도/지원안내 -->
-        <div class="main-bbs">
-            <div class="box-bbs">
-                <h3 class="box-bbs-title">공지사항</h3>
-                <ul class="bbs-list" id="noticeList">
-                    <li class="bbs-item"> <a href="javascript:;" onclick="javascript:goPostDetail(this);"
-                            data-bbs_sn="1000" data-list_sn="13350" class="bbs-link">
-                            <div class="bbs-link-col days"> <span class="bbs-day">14</span> <span
-                                    class="bbs-month">2020.10</span> </div>
-                            <div class="bbs-link-col"> <span class="bbs-title">2020년도 인턴 채용</span> </div>
-                        </a></li>
-                    <li class="bbs-item"> <a href="javascript:;" onclick="javascript:goPostDetail(this);"
-                            data-bbs_sn="1000" data-list_sn="13349" class="bbs-link">
-                            <div class="bbs-link-col days"> <span class="bbs-day">14</span> <span
-                                    class="bbs-month">2020.10</span> </div>
-                            <div class="bbs-link-col"> <span class="bbs-title">제2회 사랑의열매 학술상 안내(기간연장, ~10/31)</span>
-                            </div>
-                        </a></li>
-                    <li class="bbs-item"> <a href="javascript:;" onclick="javascript:goPostDetail(this);"
-                            data-bbs_sn="1000" data-list_sn="13333" class="bbs-link">
-                            <div class="bbs-link-col days"> <span class="bbs-day">08</span> <span
-                                    class="bbs-month">2020.10</span> </div>
-                            <div class="bbs-link-col"> <span class="bbs-title">연구직 직원 채용 최종 합격자 발표</span> </div>
-                        </a></li>
-                    <li class="bbs-item"> <a href="javascript:;" onclick="javascript:goPostDetail(this);"
-                            data-bbs_sn="1000" data-list_sn="13236" class="bbs-link">
-                            <div class="bbs-link-col days"> <span class="bbs-day">25</span> <span
-                                    class="bbs-month">2020.09</span> </div>
-                            <div class="bbs-link-col"> <span class="bbs-title">연구직 직원채용 2차 전형(수행평가) 합격자 발표</span> </div>
-                        </a></li>
-                </ul>
-                <a href="/bbs/1000/initPostList.do" class="bbs-more" alt="공지사항 더 보기" title="공지사항 더 보기">more</a>
             </div>
-            <div class="box-bbs">
-                <h3 class="box-bbs-title">최근보도</h3>
-                <ul class="bbs-list" id="mediaList">
-                    <li class="bbs-item"> <a href="javascript:;" onclick="javascript:goPostDetail(this);"
-                            data-bbs_sn="1003" data-list_sn="13374" class="bbs-link">
-                            <div class="bbs-link-col days"> <span class="bbs-day">19</span> <span
-                                    class="bbs-month">2020.10</span> </div>
-                            <div class="bbs-link-col"> <span class="bbs-title">[한국경제 외] 국민MC 송해, 마스크 10만장 기부</span>
-                            </div>
-                        </a></li>
-                    <li class="bbs-item"> <a href="javascript:;" onclick="javascript:goPostDetail(this);"
-                            data-bbs_sn="1003" data-list_sn="13337" class="bbs-link">
-                            <div class="bbs-link-col days"> <span class="bbs-day">13</span> <span
-                                    class="bbs-month">2020.10</span> </div>
-                            <div class="bbs-link-col"> <span class="bbs-title">[뉴스1] 전국 소상공인 위해 상점가 특별방역 지원</span>
-                            </div>
-                        </a></li>
-                    <li class="bbs-item"> <a href="javascript:;" onclick="javascript:goPostDetail(this);"
-                            data-bbs_sn="1003" data-list_sn="13258" class="bbs-link">
-                            <div class="bbs-link-col days"> <span class="bbs-day">05</span> <span
-                                    class="bbs-month">2020.10</span> </div>
-                            <div class="bbs-link-col"> <span class="bbs-title">[연합뉴스] W아너 소사이어티, ’제1회 w아너 리더십 포럼’
-                                    개최</span> </div>
-                        </a></li>
-                    <li class="bbs-item"> <a href="javascript:;" onclick="javascript:goPostDetail(this);"
-                            data-bbs_sn="1003" data-list_sn="13257" class="bbs-link">
-                            <div class="bbs-link-col days"> <span class="bbs-day">05</span> <span
-                                    class="bbs-month">2020.10</span> </div>
-                            <div class="bbs-link-col"> <span class="bbs-title">[뉴스1] ’박상민·황기순의 사랑더하기’ 누적 기부금 6억원
-                                    달성</span> </div>
-                        </a></li>
-                </ul>
-                <a href="/bbs/1003/initPostList.do" class="bbs-more" alt="최근보도 더 보기" title="최근보도 더 보기">more</a>
-            </div>
-            <div class="box-bbs">
-                <h3 class="box-bbs-title">지원안내</h3>
-                <ul class="bbs-list" id="supportList">
-                    <li class="bbs-item"> <a href="javascript:;" onclick="javascript:goPostDetail(this);"
-                            data-bbs_sn="1004" data-list_sn="13369" class="bbs-link">
-                            <div class="bbs-link-col days"> <span class="bbs-day">16</span> <span
-                                    class="bbs-month">2020.10</span> </div>
-                            <div class="bbs-link-col"> <span class="bbs-title">2020 하반기 아리따운물품나눔 선정공고</span> </div>
-                        </a></li>
-                    <li class="bbs-item"> <a href="javascript:;" onclick="javascript:goPostDetail(this);"
-                            data-bbs_sn="1004" data-list_sn="13327" class="bbs-link">
-                            <div class="bbs-link-col days"> <span class="bbs-day">07</span> <span
-                                    class="bbs-month">2020.10</span> </div>
-                            <div class="bbs-link-col"> <span class="bbs-title">2021년 기획사업 “코로나19 이후를 대비하는 사회백신 프로젝트”
-                                    신청안내(온라인 설명회 자료 추가)</span> </div>
-                        </a></li>
-                    <li class="bbs-item"> <a href="javascript:;" onclick="javascript:goPostDetail(this);"
-                            data-bbs_sn="1004" data-list_sn="13248" class="bbs-link">
-                            <div class="bbs-link-col days"> <span class="bbs-day">28</span> <span
-                                    class="bbs-month">2020.09</span> </div>
-                            <div class="bbs-link-col"> <span class="bbs-title">2020년 기획 ’북한이탈주민 지원사업’ 공모 신청 안내</span>
-                            </div>
-                        </a></li>
-                    <li class="bbs-item"> <a href="javascript:;" onclick="javascript:goPostDetail(this);"
-                            data-bbs_sn="1004" data-list_sn="13340" class="bbs-link">
-                            <div class="bbs-link-col days"> <span class="bbs-day">13</span> <span
-                                    class="bbs-month">2020.10</span> </div>
-                            <div class="bbs-link-col"> <span class="bbs-title">2020년 ’비영리스타트업 인큐베이팅 사업’ 면접심사 대상기관
-                                    안내</span> </div>
-                        </a></li>
-                </ul>
-                <a href="/bbs/1004/initPostList.do" class="bbs-more" alt="지원안내 더 보기" title="지원안내 더 보기">more</a>
-            </div>
-        </div>
-        <!-- // -->
+            <!-- //main_sub_slider-->
+        </section>
+    </div>
+    <!-- //열매튜브 -->
 
-        <!-- 프로팅배너 -->
-        <!-- <div>
+
+    <!-- 공지사항/최근보도/지원안내 -->
+    <div class="main-bbs">
+        <div class="box-bbs">
+            <h3 class="box-bbs-title">공지사항</h3>
+            <ul class="bbs-list" id="noticeList">
+                <li class="bbs-item"> <a href="javascript:;" onclick="javascript:goPostDetail(this);" data-bbs_sn="1000"
+                        data-list_sn="13350" class="bbs-link">
+                        <div class="bbs-link-col days"> <span class="bbs-day">14</span> <span
+                                class="bbs-month">2020.10</span> </div>
+                        <div class="bbs-link-col"> <span class="bbs-title">2020년도 인턴 채용</span> </div>
+                    </a></li>
+                <li class="bbs-item"> <a href="javascript:;" onclick="javascript:goPostDetail(this);" data-bbs_sn="1000"
+                        data-list_sn="13349" class="bbs-link">
+                        <div class="bbs-link-col days"> <span class="bbs-day">14</span> <span
+                                class="bbs-month">2020.10</span> </div>
+                        <div class="bbs-link-col"> <span class="bbs-title">제2회 사랑의열매 학술상 안내(기간연장, ~10/31)</span>
+                        </div>
+                    </a></li>
+                <li class="bbs-item"> <a href="javascript:;" onclick="javascript:goPostDetail(this);" data-bbs_sn="1000"
+                        data-list_sn="13333" class="bbs-link">
+                        <div class="bbs-link-col days"> <span class="bbs-day">08</span> <span
+                                class="bbs-month">2020.10</span> </div>
+                        <div class="bbs-link-col"> <span class="bbs-title">연구직 직원 채용 최종 합격자 발표</span> </div>
+                    </a></li>
+                <li class="bbs-item"> <a href="javascript:;" onclick="javascript:goPostDetail(this);" data-bbs_sn="1000"
+                        data-list_sn="13236" class="bbs-link">
+                        <div class="bbs-link-col days"> <span class="bbs-day">25</span> <span
+                                class="bbs-month">2020.09</span> </div>
+                        <div class="bbs-link-col"> <span class="bbs-title">연구직 직원채용 2차 전형(수행평가) 합격자 발표</span> </div>
+                    </a></li>
+            </ul>
+            <a href="/bbs/1000/initPostList.do" class="bbs-more" alt="공지사항 더 보기" title="공지사항 더 보기">more</a>
+        </div>
+        <div class="box-bbs">
+            <h3 class="box-bbs-title">최근보도</h3>
+            <ul class="bbs-list" id="mediaList">
+                <li class="bbs-item"> <a href="javascript:;" onclick="javascript:goPostDetail(this);" data-bbs_sn="1003"
+                        data-list_sn="13374" class="bbs-link">
+                        <div class="bbs-link-col days"> <span class="bbs-day">19</span> <span
+                                class="bbs-month">2020.10</span> </div>
+                        <div class="bbs-link-col"> <span class="bbs-title">[한국경제 외] 국민MC 송해, 마스크 10만장 기부</span>
+                        </div>
+                    </a></li>
+                <li class="bbs-item"> <a href="javascript:;" onclick="javascript:goPostDetail(this);" data-bbs_sn="1003"
+                        data-list_sn="13337" class="bbs-link">
+                        <div class="bbs-link-col days"> <span class="bbs-day">13</span> <span
+                                class="bbs-month">2020.10</span> </div>
+                        <div class="bbs-link-col"> <span class="bbs-title">[뉴스1] 전국 소상공인 위해 상점가 특별방역 지원</span>
+                        </div>
+                    </a></li>
+                <li class="bbs-item"> <a href="javascript:;" onclick="javascript:goPostDetail(this);" data-bbs_sn="1003"
+                        data-list_sn="13258" class="bbs-link">
+                        <div class="bbs-link-col days"> <span class="bbs-day">05</span> <span
+                                class="bbs-month">2020.10</span> </div>
+                        <div class="bbs-link-col"> <span class="bbs-title">[연합뉴스] W아너 소사이어티, ’제1회 w아너 리더십 포럼’
+                                개최</span> </div>
+                    </a></li>
+                <li class="bbs-item"> <a href="javascript:;" onclick="javascript:goPostDetail(this);" data-bbs_sn="1003"
+                        data-list_sn="13257" class="bbs-link">
+                        <div class="bbs-link-col days"> <span class="bbs-day">05</span> <span
+                                class="bbs-month">2020.10</span> </div>
+                        <div class="bbs-link-col"> <span class="bbs-title">[뉴스1] ’박상민·황기순의 사랑더하기’ 누적 기부금 6억원
+                                달성</span> </div>
+                    </a></li>
+            </ul>
+            <a href="/bbs/1003/initPostList.do" class="bbs-more" alt="최근보도 더 보기" title="최근보도 더 보기">more</a>
+        </div>
+        <div class="box-bbs">
+            <h3 class="box-bbs-title">지원안내</h3>
+            <ul class="bbs-list" id="supportList">
+                <li class="bbs-item"> <a href="javascript:;" onclick="javascript:goPostDetail(this);" data-bbs_sn="1004"
+                        data-list_sn="13369" class="bbs-link">
+                        <div class="bbs-link-col days"> <span class="bbs-day">16</span> <span
+                                class="bbs-month">2020.10</span> </div>
+                        <div class="bbs-link-col"> <span class="bbs-title">2020 하반기 아리따운물품나눔 선정공고</span> </div>
+                    </a></li>
+                <li class="bbs-item"> <a href="javascript:;" onclick="javascript:goPostDetail(this);" data-bbs_sn="1004"
+                        data-list_sn="13327" class="bbs-link">
+                        <div class="bbs-link-col days"> <span class="bbs-day">07</span> <span
+                                class="bbs-month">2020.10</span> </div>
+                        <div class="bbs-link-col"> <span class="bbs-title">2021년 기획사업 “코로나19 이후를 대비하는 사회백신 프로젝트”
+                                신청안내(온라인 설명회 자료 추가)</span> </div>
+                    </a></li>
+                <li class="bbs-item"> <a href="javascript:;" onclick="javascript:goPostDetail(this);" data-bbs_sn="1004"
+                        data-list_sn="13248" class="bbs-link">
+                        <div class="bbs-link-col days"> <span class="bbs-day">28</span> <span
+                                class="bbs-month">2020.09</span> </div>
+                        <div class="bbs-link-col"> <span class="bbs-title">2020년 기획 ’북한이탈주민 지원사업’ 공모 신청 안내</span>
+                        </div>
+                    </a></li>
+                <li class="bbs-item"> <a href="javascript:;" onclick="javascript:goPostDetail(this);" data-bbs_sn="1004"
+                        data-list_sn="13340" class="bbs-link">
+                        <div class="bbs-link-col days"> <span class="bbs-day">13</span> <span
+                                class="bbs-month">2020.10</span> </div>
+                        <div class="bbs-link-col"> <span class="bbs-title">2020년 ’비영리스타트업 인큐베이팅 사업’ 면접심사 대상기관
+                                안내</span> </div>
+                    </a></li>
+            </ul>
+            <a href="/bbs/1004/initPostList.do" class="bbs-more" alt="지원안내 더 보기" title="지원안내 더 보기">more</a>
+        </div>
+    </div>
+    <!-- // -->
+
+    <!-- 프로팅배너 -->
+    <!-- <div>
             <div class="box-sns">
                 <div class="main_border_test">
 
@@ -657,13 +387,13 @@
                 </div>
             </div>
         </div> -->
-        <!-- //프로팅배너 -->
+    <!-- //프로팅배너 -->
 
-        <!-- partial -->
-        <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
-        <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
-        <script type="text/javascript" src="../../common/css/slick/slick.min.js"></script>
-        <script type="text/javascript" src="../../common/js/slick/slick_custom.js"></script>
+    <!-- partial -->
+    <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+    <script type="text/javascript" src="../../common/css/slick/slick.min.js"></script>
+    <script type="text/javascript" src="../../common/js/slick/slick_custom.js"></script>
 </body>
 
 </html>

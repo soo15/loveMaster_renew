@@ -21,37 +21,44 @@
 
 
 //VERTICAL MODE
-$('.vertical-mode .slider').slick({
+$('.main_v_notice .slider').slick({
+  // infinite: false,
   autoplay: false,
   dots: true,
-  slidesToShow: 5,
+  slidesToShow: 1,
+  slidesToScroll: 1,
   vertical: true,
+  arrows:false,
 });
 
 
 $('.slick-2-2 .slider').slick({
   autoplay: false,
   dots: true,
-  slidesToShow: 2,
-  slidesToScroll: 2,
+  slidesToShow: 4,
+  slidesToScroll: 4,
+  swipe:true,
 });
 
 
   //CENTER MODE AND AS NAV FOR
-$(".centerMode-asNavFor .slider.thumbs").slick({
+$(".slider-hero .slider.hero-imgs").slick({
   slidesToShow: 1,
   slidesToScroll: 1,
-  asNavFor: '.centerMode-asNavFor .slider.text',
+  asNavFor: '.slider-hero .slider.hero-bgs',
   dots: false,
   arrows: false,
   centerMode: true,
-  focusOnSelect: true
+  focusOnSelect: false,
 });
-$(".centerMode-asNavFor .slider.text").slick({
+$(".slider-hero .slider.hero-bgs").slick({
   slidesToShow: 1,
   slidesToScroll: 1,
+  dots: false,
   autoplay: false,
-  asNavFor: '.centerMode-asNavFor .slider.thumbs'
+  focusOnSelect: true,
+  asNavFor: '.slider-hero .slider.hero-imgs',
+  arrows:true,
 });
 
 $('a[data-toggle="tab"]').on('shown.bs.tab', function(e) {
