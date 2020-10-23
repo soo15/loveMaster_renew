@@ -21,22 +21,30 @@
 
 
 //VERTICAL MODE
+
+
 $('.main_v_notice .slider').slick({
-  // infinite: false,
-  autoplay: false,
   dots: true,
-  slidesToShow: 1,
-  slidesToScroll: 1,
+  infinite: true,
+  speed: 300,
+  slidesToShow: 3,
+  slidesToScroll: 3,
   vertical: true,
-  arrows:false,
+  verticalSwiping: true,
+  dots: false,
+  centerPadding: '50px',
+  arrows: true,
 });
+
+
+// E
 
 
 $('.slick-2-2 .slider').slick({
   autoplay: false,
-  dots: true,
-  slidesToShow: 4,
-  slidesToScroll: 4,
+  dots: false,
+  slidesToShow: 3,
+  slidesToScroll: 3,
   swipe:true,
 });
 
@@ -58,7 +66,7 @@ $(".slider-hero .slider.hero-bgs").slick({
   autoplay: false,
   focusOnSelect: true,
   asNavFor: '.slider-hero .slider.hero-imgs',
-  arrows:true,
+  arrows: true,
 });
 
 $('a[data-toggle="tab"]').on('shown.bs.tab', function(e) {
