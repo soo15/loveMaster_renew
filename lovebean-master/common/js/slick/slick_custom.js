@@ -46,6 +46,7 @@ $('.slick-2-2 .slider').slick({
   slidesToShow: 3,
   slidesToScroll: 3,
   swipe:true,
+  arrows: true,
 });
 
 
@@ -58,15 +59,16 @@ $(".slider-hero .slider.hero-imgs").slick({
   arrows: false,
   centerMode: true,
   focusOnSelect: false,
+  arrows: true,
 });
 $(".slider-hero .slider.hero-bgs").slick({
   slidesToShow: 1,
   slidesToScroll: 1,
   dots: false,
   autoplay: false,
-  focusOnSelect: true,
+  focusOnSelect: false,
   asNavFor: '.slider-hero .slider.hero-imgs',
-  arrows: true,
+  arrows: false,
 });
 
 $('a[data-toggle="tab"]').on('shown.bs.tab', function(e) {
