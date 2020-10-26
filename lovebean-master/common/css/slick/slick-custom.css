@@ -94,7 +94,9 @@
             height: 100%;
         }
 
-        
+        .main_v_notice .slider .v_notice_contents{
+            display: flex;
+        }
 
         .sliderB_container_camp h2{
             font-size:16px;
