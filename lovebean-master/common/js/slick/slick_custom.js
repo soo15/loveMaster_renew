@@ -24,14 +24,14 @@
 
 
 $('.main_v_notice .slider').slick({
-  dots: true,
+  dots: false,
   infinite: true,
   speed: 300,
-  slidesToShow: 3,
-  slidesToScroll: 3,
+  slidesToShow: 4,
+  slidesToScroll: 4,
   vertical: true,
   verticalSwiping: true,
-  dots: false,
+  focusOnSelect: true,
   centerPadding: '50px',
   arrows: true,
 });
@@ -58,7 +58,7 @@ $(".slider-hero .slider.hero-imgs").slick({
   dots: false,
   arrows: false,
   centerMode: true,
-  focusOnSelect: false,
+  focusOnSelect: true,
   arrows: true,
 });
 $(".slider-hero .slider.hero-bgs").slick({

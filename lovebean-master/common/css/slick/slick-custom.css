@@ -23,10 +23,6 @@
             z-index: 1;
         }
 
-        .slider hero-imgs{
-            float: left;
-        }
-
         
         .slider-hero .hero-imgs{
             position: absolute;
@@ -36,6 +32,7 @@
             display: block;
             border-radius: 30px;
             height:620px;
+            line-height: 650px;
             overflow: hidden;
         }
 
@@ -98,19 +95,12 @@
             height: 100%;
         }
 
-        .sliderB_container_camp .main_v_notice .draggable{
-            padding:0 !important;
-        }
-
         
 
         .sliderB_container_camp h2{
             font-size:16px;
         }
 
-        .sliderB_container_camp .slick-vertical div{
-            height: auto !important;
-        }
 
         .sliderB_container_camp .slick-vertical{
             height: 420px;
@@ -272,7 +262,6 @@
 
         .slick-slider {
             background: #3a8999;
-            font-size: 30px;
             line-height: 1;
             text-align: center;
             color: white;
