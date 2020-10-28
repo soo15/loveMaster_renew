@@ -25,8 +25,159 @@
             right:-20px;
         }
 
-        
+        .hero-box .main-hero__buttons{
+            position: absolute;
+            bottom:10px;
+            left:16px;
+            width: 180px;
+            height: 52px;
+            overflow: hidden;
+            border-radius: 35px;
+            z-index: 100;
+            background-color: rgba(100, 100, 100, 0.65);
+        }
 
+        .main-hero__prev, .main-hero__next {
+            float: left;
+            z-index: 100;
+        }
+
+        .main-hero__prev,
+        .main-hero__next,
+        .main-hero__autoplay {
+        float: left;
+        position: relative;
+        display: block;
+        width: 34px;
+        height: 0;
+        margin: 0;
+        padding: 52px 0 0 0;
+        border: none;
+        border-radius: 0;
+        background: black;
+        overflow: hidden;
+        cursor: pointer;
+        opacity: 0.5;
+        -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
+        filter: alpha(opacity=50);
+        }
+
+        .main-hero__prev,
+        .main-hero__next
+        {
+        float: left;
+        }
+        .main-hero__prev:before, .main-hero__prev:after,
+        .main-hero__next:before,
+        .main-hero__next:after {
+        content: '';
+        display: block;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        }
+
+        .main-hero__prev:before {
+        margin-left: -4px;
+        margin-top: -8px;
+        display: block;
+        width: 0;
+        height: 0;
+        border: inset 8px;
+        content: '';
+        border-left-width: 0;
+        border-right-style: solid;
+        border-color: transparent #000 transparent transparent;
+        }
+
+        .main-hero__prev:after {
+        margin-left: -2px;
+        margin-top: -8px;
+        display: block;
+        width: 0;
+        height: 0;
+        border: inset 8px;
+        content: '';
+        border-left-width: 0;
+        border-right-style: solid;
+        border-color: transparent #FFF transparent transparent;
+        }
+
+        .main-hero__next:before {
+        margin-left: -4px;
+        margin-top: -8px;
+        display: block;
+        width: 0;
+        height: 0;
+        border: inset 8px;
+        content: '';
+        border-right-width: 0;
+        border-left-style: solid;
+        border-color: transparent transparent transparent #000;
+        }
+
+        .main-hero__next:after {
+        margin-left: -6px;
+        margin-top: -8px;
+        display: block;
+        width: 0;
+        height: 0;
+        border: inset 8px;
+        content: '';
+        border-right-width: 0;
+        border-left-style: solid;
+        border-color: transparent transparent transparent #FFF;
+        }
+
+        .main-hero__autoplay {
+        float: left;
+        }
+
+        .main-hero__autoplay.main-hero__autoplay--pause:before, .main-hero__autoplay.main-hero__autoplay--pause:after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 2px;
+        height: 12px;
+        background: #fff;
+        margin-top: -6px;
+        overflow: hidden;
+        }
+
+        .main-hero__autoplay.main-hero__autoplay--pause:before {
+        margin-left: -4px;
+        }
+
+        .main-hero__autoplay.main-hero__autoplay--pause:after {
+        margin-left: 2px;
+        }
+
+        .main-hero__autoplay.main-hero__autoplay--start:before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin-top: -8px;
+        margin-left: -4px;
+        display: block;
+        width: 0;
+        height: 0;
+        border: inset 8px;
+        border-right-width: 0;
+        border-left-style: solid;
+        border-color: transparent transparent transparent #000;
+        }
+
+        .main-hero__autoplay.main-hero__autoplay--start:after {
+        display: none;
+        }
+
+
+
+
+
+        /* main */
         .main__vs{
             margin-top:0;
             font-size: 16px;
@@ -41,6 +192,7 @@
         .slider-hero-box .hero-box{
             max-width: 1280px;
             margin:auto;
+            position: relative;
         }
 
         .hero-box .hero-imgs{
@@ -58,9 +210,15 @@
             top:0;
             left:0;
             width: 100%;
-            height:100vh;
+            height:100%;
             background-color: #000;
             opacity: 0.5;
+            /* background: inherit;
+            filter:blur(6px);
+            -webkit-filter:blur(6px);
+            -moz-filter:blur(6px);
+            -o-filter:blur(6px);
+            filter:url(#blur); */ 
             z-index: 1;
         }
         .slider-hero .hero-bgs{
@@ -118,8 +276,8 @@
 
         
         .main_v_notice{
-            position: relative;
             width: 432px;
+            display: block;
             box-sizing: border-box;
         }
 
@@ -137,11 +295,16 @@
             left: 0;
             width: 100%;
             border-bottom: 1px solid #DDDDDD;
-            z-index: 3;
+            z-index: 5;
         }
 
         .main_v_notice h1 strong{
             color:red;
+        }
+
+        .main_v_notice .slider{
+            height: auto;
+            z-index: 3;
         }
 
         .main_v_notice .slider .v_notice_contents{
@@ -149,6 +312,7 @@
             text-align: left;
             color:black;
             width: 100%;
+            height:146px;
             line-height: 23px;
             border-bottom:1px solid #DDDDDD;
             box-sizing: border-box;
@@ -199,7 +363,6 @@
 
     
         /* E-notice&campaign slick */
-        
 
         .sliderB_container_camp .slick-dots{ 
             text-align: center;
@@ -393,13 +556,13 @@
 
         /* crowd-camp */
         .crowd-camp{
-            height:420px;
+            height:auto;
         }
 
 
         /* camp-namum */
         .slick-camp-namum{
-            height:356px;
+            height:auto;
         }
 
         
@@ -467,7 +630,6 @@
 
         .slick-slider .slick-slide {
             background: #fff;
-            padding: 40px 0;
         }
 
         .slick-slider .slick-slide:nth-child(odd) {
@@ -480,3 +642,7 @@
             background: #fff;
         }
 
+
+
+
+        /* slick button */
