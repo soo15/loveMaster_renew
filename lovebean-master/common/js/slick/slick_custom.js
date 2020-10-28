@@ -71,6 +71,9 @@ $('.main_v_notice .slider').slick({
   arrows: true,
   adaptiveHeight: true,
   draggable:true,
+  arrows:true,
+  nextArrow: '.main_notice___next',
+  prevArrow: '.main_notice___prev',
 });
  
 
@@ -83,8 +86,10 @@ $('.slick-crowd-camp .slider').slick({
   slidesToShow: 3,
   slidesToScroll: 3,
   swipe:true,
-  arrows: true,
   draggable:true,
+  arrows:true,
+  nextArrow: '.crowd-camp_next',
+  prevArrow: '.crowd-camp_prev',
 });
 
 // nanum
