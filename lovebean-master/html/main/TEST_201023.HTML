@@ -45,6 +45,23 @@
     <script type="text/javascript" src="../../common/js/ui.common.js?_v=20201015095339"></script>
     <!-- <script type="text/javascript" src="../../common/js/signature_pad.min.js"></script> -->
 
+    <script type="text/javascript">
+        $(window).resize(function () {
+            resizeYoutube();
+        });
+        $(function () {
+            resizeYoutube();
+        });
+
+        function resizeYoutube() {
+            $("iframe").each(function () {
+                if (/^https?:\/\/www.youtube.com\/embed\//g.test($(this).attr("src"))) {
+                    $(this).css("width", "100%");
+                    $(this).css("height", Math.ceil(parseInt($(this).css("width")) * 220 / ) + "px");
+                }
+            });
+        }
+    </script>
 </head>
 
 <body style="overflow-x:hidden">
@@ -437,7 +454,7 @@
     <div class="main-type2-camp main-beanTube">
         <div class="main-beanTube_box">
             <div class="beanTube_title">
-                <h2>열매튜브</h2>
+                <h2><strong>열매</strong>튜브<span class="beanIcon"></span></h2>
                 <div class="beanTube-list-link">
                     <ul>
                         <li class="tab1 on"><a href="#">사랑의열매&JTBC</a></li>
@@ -451,39 +468,59 @@
                     <div class="test-case-wrap slick-beanTube">
                         <div class="slider">
                             <div>
-                                <i><iframe width="400" height="220" src="https://www.youtube.com/embed/uhB4Am0Aakk"
-                                        frameborder="0"
-                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                        allowfullscreen></iframe></i>
-                                <h2>#나눔 #우리가 #움직여야</h2>
-                                <p>사랑의열매2020년 연중광고 이영지, 나눔으로 세상을 움직이다</p>
+                                <iframe width="400" height="220" src="https://www.youtube.com/embed/uhB4Am0Aakk"
+                                    frameborder="0"
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                    allowfullscreen></iframe>
+                                <div class="beanTube_descript">
+                                    <h2>#나눔 #우리가 #움직여야</h2>
+                                    <p>사랑의열매2020년 연중광고
+                                        이영지,<br /> 나눔으로 세상을 움직이다</p>
+                                </div>
                             </div>
                             <div>
                                 <iframe width="400" height="220" src="https://www.youtube.com/embed/uhB4Am0Aakk"
                                     frameborder="0"
                                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                                     allowfullscreen></iframe>
-                                <h2>#나눔 #우리가 #움직여야</h2>
-                                <p>사랑의열매2020년 연중광고
-                                    이영지, 나눔으로 세상을 움직이다</p>
+                                <div class="beanTube_descript">
+                                    <h2>#착한오지라퍼</h2>
+                                    <p>(속보)이영지, 중학교때부터 사랑의열매와 연이<br />
+                                        깊어… [착한 오지라퍼 ep.7]</p>
+                                </div>
                             </div>
                             <div>
                                 <iframe width="400" height="220" src="https://www.youtube.com/embed/uhB4Am0Aakk"
                                     frameborder="0"
                                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                                     allowfullscreen></iframe>
-                                <h2>#나눔 #우리가 #움직여야</h2>
-                                <p>사랑의열매2020년 연중광고
-                                    이영지, 나눔으로 세상을 움직이다</p>
+                                <div class="beanTube_descript">
+                                    <h2>#사랑의 열매& JTBC</h2>
+                                    <p>사랑의열매2020년 바이럴광고- 적!재!적!소!에<br />
+                                        빠르게!</p>
+                                </div>
                             </div>
                             <div>
                                 <iframe width="400" height="220" src="https://www.youtube.com/embed/uhB4Am0Aakk"
                                     frameborder="0"
                                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                                     allowfullscreen></iframe>
-                                <h2>#나눔 #우리가 #움직여야</h2>
-                                <p>사랑의열매2020년 연중광고
-                                    이영지, 나눔으로 세상을 움직이다</p>
+                                <div class="beanTube_descript">
+                                    <h2>#나눔 #우리가 #움직여야</h2>
+                                    <p>사랑의열매2020년 연중광고
+                                        이영지,<br /> 나눔으로 세상을 움직이다</p>
+                                </div>
+                            </div>
+                            <div>
+                                <iframe width="400" height="220" src="https://www.youtube.com/embed/uhB4Am0Aakk"
+                                    frameborder="0"
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                    allowfullscreen></iframe>
+                                <div class="beanTube_descript">
+                                    <h2>#나눔 #우리가 #움직여야</h2>
+                                    <p>사랑의열매2020년 연중광고
+                                        이영지,<br /> 나눔으로 세상을 움직이다</p>
+                                </div>
                             </div>
                         </div>
                     </div>

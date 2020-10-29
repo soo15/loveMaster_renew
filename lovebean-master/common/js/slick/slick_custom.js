@@ -99,7 +99,6 @@ $('.main_v_notice .slider').slick({
        
       ]
 
-
 });
  
 
@@ -111,6 +110,7 @@ $('.slick-crowd-camp .slider').slick({
   dots: false,
   slidesToShow: 3,
   slidesToScroll: 3,
+  focusOnSelect: true,
   swipe:true,
   draggable:true,
   arrows:true,
@@ -126,6 +126,7 @@ $('.slick-camp-namum .slider').slick({
   dots: false,
   slidesToShow: 3,
   slidesToScroll: 3,
+  focusOnSelect: true,
   swipe:true,
   arrows: true,
   draggable:true,
@@ -139,6 +140,7 @@ $('.slick-beanTube .slider').slick({
   dots: false,
   slidesToShow: 3,
   slidesToScroll: 3,
+  focusOnSelect: true,
   swipe:true,
   draggable:true,
   arrows: true,

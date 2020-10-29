@@ -1,5 +1,9 @@
 @charset 'UTF-8';
 
+/* 
+.slick-slider .slick-slide.slick-active {
+    opacity: 0;
+} */
 /*button */
         
         .list-link{
@@ -26,7 +30,7 @@
             border-bottom:1px solid #FD4852;
         }
 
-        .slick-prev,
+        /* .slick-prev,
         .slick-next{
             width:52px;
             height: 52px;
@@ -39,7 +43,7 @@
         }
         .slick-next{
             right:-20px;
-        }
+        } */
 
         .hero-box .main-hero__buttons{
             position: absolute;
@@ -684,7 +688,6 @@
         /*crowd*/
 
         .main-type2-camp {
-            border: 1px solid blue;
             width: 100%;
             margin:40px 0;
             color:black; 
@@ -701,14 +704,16 @@
 
         /* 열매튜브*/
 
-        
         .main-beanTube {
             color:white;
             width: 100%;
-            border: 1px solid green;
-            background-color: #000;
+            background-color:#202324;
             display: inline-block;
             margin: auto;
+            background-image: url('../../img/re_main_2010/beantube_bg.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: left bottom;
 
         }
 
@@ -722,7 +727,7 @@
 
         .main-beanTube .main-beanTube_box {
             max-width: 1280px;
-            margin: 40px auto;
+            margin: 68px auto;
         }
 
 
@@ -730,12 +735,29 @@
         
         .beanTube_title{
             position: relative;
-            line-height: 40px;
+            margin-bottom:18px;
+            margin-left:18px;
         }
         .beanTube_title h2{
             display: inline-block;
             text-align: left;
+            line-height: 40px;
         }
+
+        .beanTube_title strong{
+            display: inline-block;
+            color: #FF4049;
+        }
+
+        .beanTube_title h2::after{
+            content: "";
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            border-radius: 100%;
+            background-color: #FD4852;
+            margin-left: 8px;
+        } 
 
         .beanTube_title .beanTube-list-link{
             float: right;
@@ -763,9 +785,50 @@
 
         
 
-        .slick-beanTube .slider{
-            color:black;
+        .beanTube_descript{
+            display: block;
+            text-align: left;
+            line-height: 28px;
+            padding-left: 18px;
         }
+
+        .beanTube_descript h2{
+            font-size: 16px;
+            color:#FF4049;
+        }
+
+        .beanTube_descript p{
+            font-size: 20px;
+        }
+
+
+
+        .slick-beanTube .slider{
+            display: block;
+            color:white;
+        }
+
+        .slick-beanTube .slider div{
+            margin-left:2px;
+            margin-right:2px;
+        }
+
+
+        /* .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            padding-top: 30px; height: 0; overflow: hidden;
+        }
+         
+        .video-container iframe,
+        .video-container object,
+        .video-container embed {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        } */
 
         /*공지사항/최근보도/지원안내*/
         .main-bbs {
@@ -782,7 +845,6 @@
             position: relative;
             width: 1280px;
             margin: auto;
-            border: 1px solid #000;
         }
 
 
@@ -1030,9 +1092,6 @@
             padding: 30px;
         }
 
-        .test-case-wrap {
-            border: 4px solid green;
-        }
 
         .tab-content>.tab-pane {
             display: block;
@@ -1070,7 +1129,6 @@
         }
 
         .slick-slider {
-            background: #fff;
             line-height: 1;
             text-align: center;
             color: white;
@@ -1079,20 +1137,6 @@
         .slick-slider .slick-dots button:before,
         .slick-slider .slick-dots .slick-active button:before {
             color: rgba(255, 255, 255, 0.85);
-        }
-
-        .slick-slider .slick-slide {
-            background: #fff;
-        }
-
-        .slick-slider .slick-slide:nth-child(odd) {
-            
-            background: #fff;
-        }
-
-        .slick-slider .slick-slide.slick-active {
-            
-            background: #fff;
         }
 
 
