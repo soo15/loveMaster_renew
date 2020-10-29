@@ -74,6 +74,32 @@ $('.main_v_notice .slider').slick({
   arrows:true,
   nextArrow: '.main_notice___next',
   prevArrow: '.main_notice___prev',
+  responsive: [
+      {
+       breakpoint: 1024,
+        settings: { 
+        slidesToShow: 4,
+        infinite: true,
+        dots: true } 
+      },
+      {
+        breakpoint: 768,
+        settings: { 
+        slidesToShow: 3,
+        infinite: true,
+        dots: true } 
+      },
+      {
+        breakpoint: 480,
+        settings: { 
+        slidesToShow: 3,
+        infinite: true,
+        dots: true } 
+      },
+       
+      ]
+
+
 });
  
 
