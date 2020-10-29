@@ -128,8 +128,10 @@ $('.slick-camp-namum .slider').slick({
   slidesToScroll: 3,
   focusOnSelect: true,
   swipe:true,
-  arrows: true,
   draggable:true,
+  arrows:true,
+  nextArrow: '.crowd-nanum_next',
+  prevArrow: '.crowd-nanum_prev',
 });
 
 // beanTube
@@ -143,7 +145,9 @@ $('.slick-beanTube .slider').slick({
   focusOnSelect: true,
   swipe:true,
   draggable:true,
-  arrows: true,
+  arrows:true,
+  nextArrow: '.beanTube_prev',
+  prevArrow: '.beanTube_next',
   responsive: [
     {
         breakpoint: 1024,   //width 1024 이상부터
