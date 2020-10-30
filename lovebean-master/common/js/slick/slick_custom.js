@@ -145,8 +145,8 @@ $('.slick-beanTube .slider').slick({
   swipe:true,
   draggable:true,
   arrows:true,
-  nextArrow: '.beanTube_prev',
-  prevArrow: '.beanTube_next',
+  nextArrow: '.beanTube_next',
+  prevArrow: '.beanTube_prev',
   responsive: [
     {
         breakpoint: 1024,   //width 1024 이상부터
