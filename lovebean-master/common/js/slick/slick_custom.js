@@ -13,13 +13,8 @@
     arrows: true,
     nextArrow: '.main-hero__next',
     prevArrow: '.main-hero__prev',
-    // lazyLoad: 'ondemand',
-    // nextArrow: '<button class="slick-next" type="button"><span class="slick-visually-hidden">Next</span><svg class="ico" aria-hidden="true" focusable="false" width="20" height="20"><use xlink:href="#ico-arrow-right"></use></svg></button>',
-    // prevArrow: '<button class="slick-prev" type="button"><span class="slick-visually-hidden">Previous</span><svg class="ico" aria-hidden="true" focusable="false" width="20" height="20"><use xlink:href="#ico-arrow-left"></use></svg></button>'
-    
-    // nextArrow: '.next_caro',
-    // prevArrow: '.previous_caro'
   });
+  
   
   
   $(".slider-hero .slider.hero-bgs").slick({
@@ -34,19 +29,6 @@
   });
   
 
-      
-  // $(".v_notice_contents").on('mouseover', function(){
-  //   $('strong:after').text('마우스 포인터가 노란색원 안에 있습니다. ');
-  // });
-  
-  // $(".v_notice_contents").on('mouseleave', function(){
-  //   $('strong:after').text('');
-  // });\
-
-  // $('.carousel-content').slick({
-  //     prevArrow:"<img class='a-left control-c prev slick-prev' src='../images/shoe_story/arrow-left.png'>",
-  //     nextArrow:"<img class='a-right control-c next slick-next' src='../images/shoe_story/arrow-right.png'>"
-  // });
   
     $('a[data-toggle="tab"]').on('shown.bs.tab', function(e) {
       $(e.target).find('.slider-hero .slider').each(function() {
@@ -57,7 +39,7 @@
 
 
 
-  // main_sidebanner
+ //<!--notice&campaign-->
 
 $('.main_v_notice .slider').slick({
   infinite: true,
@@ -116,6 +98,7 @@ $('.slick-crowd-camp .slider').slick({
   nextArrow: '.crowd-camp_next',
   prevArrow: '.crowd-camp_prev',
 });
+
 
 // nanum
 
