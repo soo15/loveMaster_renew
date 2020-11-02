@@ -23,6 +23,7 @@
     <link rel="stylesheet" href="../../common/css/slick/slick-theme.css">
     <link rel="stylesheet" href="../../common/css/slick/slick.css">
     <link rel="stylesheet" href="../../common/css/slick/slick-custom.css">
+    <!-- <link rel="stylesheet" href="http://cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css"> -->
     <link rel="stylesheet" href="../../common/css/ui.responsive.css">
 
     <!-- Jquery -->
@@ -73,21 +74,27 @@
                 <div class="slider-hero">
                     <div class="hero-box">
                         <div class="slider hero-imgs">
-                            <div class="slide"><img src="../../common/img/re_main_2010/hero_img1.png" /></div>
-                            <div class="slide"><img src="../../common/img/re_main_2010/hero_img1.png" /></div>
+                            <div class="slide"></div>
+                            <div class="slide"></div>
                         </div>
-
                         <div class="main-hero__buttons">
                             <button type="button" class="main-hero__prev" tabindex="0" role="button">이전</button>
                             <button type="button" class="main-hero__autoplay main-hero__autoplay--pause" tabindex="0"
                                 role="button">멈춤</button>
                             <button type="button" class="main-hero__next" tabindex="0" role="button">다음</button>
+                            <!-- <span class="pagination"></span> -->
+
+                            <div class="pagination">
+                                <span class="current"></span>
+                                <span>&nbsp;/&nbsp;</span>
+                                <span class="total"></span>
+                            </div>
                         </div>
                     </div>
                     <div class="hero-bg-box">
                         <div class="slider hero-bgs">
-                            <div class="slide"><img src="../../common/img/re_main_2010/hero_img1.png" /></div>
-                            <div class="slide"><img src="../../common/img/re_main_2010/hero_img1.png" /></div>
+                            <div class="slide"></div>
+                            <div class="slide"></div>
                         </div>
                     </div>
 
@@ -107,7 +114,7 @@
                                                 에게 마음을 전해요</h2>
                                             <p>온라인 영상을 통한 2021 배분기준 및 사업 신청방법 안내.</p>
                                         </div>
-                                        <div><a><img src="http://placehold.it/80x110?text=1"></a></div>
+                                        <div><a></a></div>
                                     </div>
                                     <div class="v_notice_contents">
                                         <div>
@@ -117,7 +124,7 @@
                                                 에게 마음을 전해요</h2>
                                             <p>온라인 영상을 통한 2021 배분기준 및 사업 신청방법 안내.</p>
                                         </div>
-                                        <div><a><img src="http://placehold.it/80x110?text=1"></a></div>
+                                        <div><a></a></div>
                                     </div>
                                     <div class="v_notice_contents">
                                         <div>
@@ -127,7 +134,7 @@
                                                 에게 마음을 전해요</h2>
                                             <p>온라인 영상을 통한 2021 배분기준 및 사업 신청방법 안내.</p>
                                         </div>
-                                        <div><a><img src="http://placehold.it/80x110?text=1"></a></div>
+                                        <div><a></a></div>
                                     </div>
                                     <div class="v_notice_contents">
                                         <div>
@@ -137,7 +144,7 @@
                                                 에게 마음을 전해요</h2>
                                             <p>온라인 영상을 통한 2021 배분기준 및 사업 신청방법 안내.</p>
                                         </div>
-                                        <div><a><img src="http://placehold.it/80x110?text=1"></a></div>
+                                        <div><a></a></div>
                                     </div>
                                     <div class="v_notice_contents">
                                         <div>
@@ -147,7 +154,7 @@
                                                 에게 마음을 전해요</h2>
                                             <p>온라인 영상을 통한 2021 배분기준 및 사업 신청방법 안내.</p>
                                         </div>
-                                        <div><a><img src="http://placehold.it/80x110?text=1"></a></div>
+                                        <div><a></a></div>
                                     </div>
                                 </div>
 
@@ -170,7 +177,7 @@
             <!--//slider_hero-->
         </div>
         <!--//main_section-->
-        <!-- quick_nav(box-banner) -->
+        <!-- quick_nav(box-banner)_web -->
         <article class="quick_nav">
             <h2>주요 서비스</h2>
             <!-- quick_box -->
@@ -393,7 +400,10 @@
                                 <div class="crowd-camp-buttons">
                                     <button type="button" class="crowd-camp_prev" tabindex="0" role="button">이전</button>
                                     <button type="button" class="crowd-camp_next" tabindex="0" role="button">다음</button>
+
+                                    <span id="pagination"></span>
                                 </div>
+
                                 <!-- //button -->
                             </div>
                         </div>

@@ -1,41 +1,66 @@
 
   //main_hero
-  $(".slider-hero .slider.hero-imgs").slick({
-    infinite: true,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    asNavFor: '.slider-hero .slider.hero-bgs',
-    centerMode: true,
-    focusOnSelect: true,
-    draggable:true,
-    autoplay: false,
-    dots: false,
-    arrows: true,
-    nextArrow: '.main-hero__next',
-    prevArrow: '.main-hero__prev',
-  });
-  
-  
-  
-  $(".slider-hero .slider.hero-bgs").slick({
-    infinite: true,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    dots: false,
-    autoplay: false,
-    focusOnSelect: false,
-    asNavFor: '.slider-hero .slider.hero-imgs',
-    arrows: false,
-  });
+      var $main_hero = $('.slider-hero .slider.hero-imgs');
+      var slideCount = null;
+      
+      $( document ).ready(function() {
+        $(".slider-hero .slider.hero-imgs").slick({
+          infinite: true,
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          asNavFor: '.slider-hero .slider.hero-bgs',
+          centerMode: true,
+          focusOnSelect: true,
+          draggable:true,
+          autoplay: false,
+          arrows: true,
+          nextArrow: '.main-hero__next',
+          prevArrow: '.main-hero__prev',
+          slideCount:10,
+        });
+    });
+        
+
+    
+    $(".slider-hero .slider.hero-bgs").slick({
+      infinite: true,
+      slidesToShow: 1,
+      slidesToScroll: 1,
+      dots: false,
+      autoplay: false,
+      focusOnSelect: false,
+      asNavFor: '.slider-hero .slider.hero-imgs',
+      arrows: false,
+    });
   
 
-  
+        
+    $main_hero.on('init', function(event, slick){
+      slideCount = slick.slideCount;
+      setSlideCount();
+      setCurrentSlideNumber(slick.currentSlide);
+    });
+
+    $main_hero.on('beforeChange', function(event, slick, currentSlide, nextSlide){
+      setCurrentSlideNumber(nextSlide);
+    });
+
+    function setSlideCount() {
+      var $el = $('.pagination').find('.total');
+      $el.text(slideCount);
+    }
+
+    function setCurrentSlideNumber(currentSlide) {
+      var $el = $('.pagination').find('.current');
+      $el.text(currentSlide + 1);
+    }
+
     $('a[data-toggle="tab"]').on('shown.bs.tab', function(e) {
       $(e.target).find('.slider-hero .slider').each(function() {
         $(this).slick('setPosition');
       })
+    });
 
-  });
 
 
 
