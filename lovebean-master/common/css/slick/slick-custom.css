@@ -1,6 +1,5 @@
 @charset 'UTF-8';
 
-
         .main_notice__buttons
         {
             position: absolute;
@@ -108,7 +107,7 @@
 
                         
 
-/*button */
+        /*button */
         
         .list-link{
             position: absolute;
@@ -152,20 +151,6 @@
         .main-type2-camp .camp-namum .list-link ul li.on{
             border-bottom:1px solid #38CE75;
         }
-        /* .slick-prev,
-        .slick-next{
-            width:52px;
-            height: 52px;
-            background: blue;
-            border-radius: 100%;
-            z-index: 100;
-        }
-        .slick-prev{
-            left:-20px;
-        }
-        .slick-next{
-            right:-20px;
-        } */
 
         .hero-box .main-hero__buttons{
             position: absolute;
@@ -250,18 +235,6 @@
         border-color: transparent #fff transparent transparent;
         }
 
-        /* .main-hero__prev:after {
-        margin-left: -2px;
-        margin-top: -8px;
-        display: block;
-        width: 0;
-        height: 0;
-        border: inset 8px;
-        content: '';
-        border-left-width: 0;
-        border-right-style: solid;
-        border-color: transparent #FFF transparent transparent;
-        } */
 
         .main-hero__next:before {
         margin-left: -4px;
@@ -275,19 +248,6 @@
         border-left-style: solid;
         border-color: transparent transparent transparent #fff;
         }
-
-        /* .main-hero__next:after {
-        margin-left: -6px;
-        margin-top: -8px;
-        display: block;
-        width: 0;
-        height: 0;
-        border: inset 8px;
-        content: '';
-        border-right-width: 0;
-        border-left-style: solid;
-        border-color: transparent transparent transparent #FFF;
-        } */
 
         .main-hero__autoplay {
         float: left;
