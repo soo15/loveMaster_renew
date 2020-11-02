@@ -1042,8 +1042,12 @@
             max-width: 1280px;
             position: relative;
          }
+         
 
-        
+         .main-beanTube .slick_sub .slick-slide{
+             width: 430px;
+         }
+
         .beanTube_title{
             position: relative;
             margin-bottom:18px;
@@ -1185,6 +1189,12 @@
             font-size:14px;
             padding:11px;
             border-radius:6px;
+        }
+
+        .slick-crowd-camp a.crowd-camp-button:hover{
+            background-color: #38BFCE;
+            color: white;
+
         }
 
 
