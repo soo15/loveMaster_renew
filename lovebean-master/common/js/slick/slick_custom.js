@@ -159,8 +159,15 @@ $('.slick-beanTube .slider').slick({
     {
         breakpoint: 1024,   //width 1024 이상부터
         settings: {
-            slidesToShow: 2,
-            slidesToScroll: 2
+            slidesToShow: 3,
+            slidesToScroll: 3,
+        }
+    },
+    {
+        breakpoint: 375,   //width 1024 이상부터
+        settings: {
+            slidesToShow: 1,
+            slidesToScroll: 1,
         }
     }
   ]

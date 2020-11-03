@@ -749,8 +749,13 @@
 
         
         .contentsbox{
+<<<<<<< HEAD
             display: flex;
             max-width:100%;
+=======
+            display: inline-block;
+            width:1000px;
+>>>>>>> 0c33a83326a7e04b6aab14d883746e366e44f08f
             flex-wrap: wrap;
             justify-content: center;
             margin:auto;
