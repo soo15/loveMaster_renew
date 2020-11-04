@@ -170,8 +170,8 @@
         content: '\e93b';
         display: block;
         position: absolute;
+        top: 32%;
         left: 30%;
-        top: 36%;
         color:white;
         }
 
@@ -180,8 +180,8 @@
         content: '\e93e';
         display: block;
         position: absolute;
+        top: 32%;
         left: 30%;
-        top: 36%;
         color:white;
         }
 
@@ -191,42 +191,10 @@
         content: '\ea3b';
         display: block;
         position: absolute;
+        top: 32%;
         left: 30%;
-        top: 36%;
         color:white;
         }
-
-        /* .main-hero__prev:before {
-        margin-left: -4px;
-        margin-top: -8px;
-        display: block;
-        width: 0;
-        height: 0;
-        border: inset 8px;
-        content: '';
-        border-left-width: 0;
-        border-right-style: solid;
-        border-color: transparent #fff transparent transparent;
-        } */
-
-
-        /* .main-hero__next:before {
-        margin-left: -4px;
-        margin-top: -8px;
-        display: block;
-        width: 0;
-        height: 0;
-        border: inset 8px;
-        content: '';
-        border-right-width: 0;
-        border-left-style: solid;
-        border-color: transparent transparent transparent #fff;
-        } */
-
-        
-
-
-
 
 
         .crowd-camp-buttons
@@ -618,17 +586,49 @@
             text-align: center;
             z-index: 1000;
             border: 1px solid #EEEEEE;
+            
+            border-radius: 3px 0 0 3px;
         }
+        
+        .quick_nav-close {
+            right: -98px;
+        }
+  
 
         .btn_close{
             position: absolute;
             width: 35px;
-            height: 24px;
+            height: 34px;
+            line-height: 16px;
             background-color: #FF4049;
+            border-radius: 3px 0 0 3px;
             top:0;
             left:-36px;
-            color:wheat;
+            font-family: 'xeicon';
+            font-size: 16px;
+            color:white
         }
+
+
+        .quick_nav button.btn_close:before{
+            content: "\e93e";
+            display: block;
+            position: absolute;
+            top:30%;
+            left:20%;
+            width:20px;
+            height: 20px;
+            z-index: 10;
+        }
+        
+        .quick_nav-close button.btn_close:before{
+            content: "\e93b";
+            display: block;
+            width:20px;
+            height: 20px;
+            z-index: 10;
+        }
+
 
 
         .quick_nav h2{
@@ -646,8 +646,19 @@
         }
 
         .quick-info li{
-            margin:10px 0;
+            margin:10px;
         }
+
+        .quick-info li:not(:last-child)::after{
+            content: "";
+            display: block;
+            width: 90%;
+            height: 1px;
+            background-color: #EEEEEE;
+            margin: auto;
+        }
+
+
         .quick-info li i{
             display: block;
             width:62px;
@@ -664,7 +675,9 @@
             font-size: 12px;
             padding:4px 0 8px 0;
         }
-
+        .quick-info li:hover .txt{
+            color:#FF4049;
+        }
 
         .quick-info li i.ico-notice{
             background-position: 0 0;
@@ -696,6 +709,7 @@
 
         .box-card_campbox{
             position: relative;
+            display: flex;
             margin:auto;
             max-width: 1280px;
         }
@@ -724,7 +738,6 @@
 
         .innerbox .title{
             width:280px;
-            float: left;
         }
 
         .innerbox .title dt{
@@ -749,23 +762,28 @@
 
         
         .contentsbox{
-            display: flex;
-            max-width:100%;
+            display: inline-block;
+            position: relative;
+            width:1000px;
             flex-wrap: wrap;
             justify-content: center;
             margin:auto;
         }
 
         .contentsbox div{
+            position: relative;
             float: left;
             width: 25%;
             height:160px;
             text-align: center;
             cursor: pointer;
         }
+
+
         
 
         .contentsbox i{
+            position: relative;
             display: block;
             width:150px;
             height:100px;
@@ -773,6 +791,14 @@
             background-size: 1200px 100px;
             margin: auto;
         }
+
+
+        
+        .contentsbox .contentsbox_title{
+            margin-top:6px;
+            width:100%;
+        }
+        
 
         .contentsbox .d_icon_home{
             background-position: 0 0;
@@ -809,12 +835,46 @@
             font-size:16px;
         }
 
-        .contentsbox p,
-        .contentsbox button{
-            margin:auto;
-            width:200px;
-            font-size: 13px;
+        
+        .contentsbox i.active{
+            position: absolute;
+            top:-40px;
+            left:0;
+            right:0;
+            z-index: -1;
+        }
+
+        .contentsbox.title.disable{
             display: none;
+
+        }
+
+        .contentsbox .description .active{
+            position: absolute;
+            top:64px;
+            left:0;
+            right:0;
+            display: block;
+        }
+
+        .contentsbox .btn .active{
+            position: absolute;
+            top:120px;
+            left:0;
+            right:0;
+            display: block;
+        }
+
+        .contentsbox p{
+            display: none;
+        }
+        .contentsbox .btn{
+            display: none;
+            width:100px;
+            height:24px;
+            border: 1px solid #000;
+            border-radius: 6px;
+            margin:auto;
         }
 
 
@@ -968,6 +1028,7 @@
         }
 
 
+
         /*공지사항/최근보도/지원안내*/
         .main-bbs {
             max-width: 1280px;
@@ -981,6 +1042,7 @@
         .crowd-camp,
         .camp-namum{
             position: relative;
+            display: flex;
             width: 1280px;
             margin: auto;
         }
@@ -1002,12 +1064,29 @@
             max-width:316px;
             height:232px;
             border-radius: 6px;
-            background-color: black;
+            background-color: #FFF;
+            overflow: hidden;
+        }
+
+        .slick-crowd-camp .slider .crowd-camp-img img{
+            width: 100%;
+            -webkit-transform: scale(1);
+            transform: scale(1);
+            -webkit-transition: opacity 300ms ease, -webkit-transform 300ms ease;
+            transition: opacity 300ms ease, -webkit-transform 300ms ease;
+            transition: transform 300ms ease, opacity 300ms ease;
+            transition: transform 300ms ease, opacity 300ms ease, -webkit-transform 300ms ease;
+        }
+
+        .slick-crowd-camp .slider .slick-slide:hover .crowd-camp-img img{
+            width: 100%;
+            -webkit-transform: scale(1.2);
+            transform: scale(1.2);
+
         }
 
         .slick-crowd-camp h3{
             max-width:316px;
-            margin-left:8px;
             margin-top:12px;
             font-size:16px;
             text-align: left;
@@ -1016,25 +1095,25 @@
 
         .slick-crowd-camp p{
             font-size: 12px;
-            margin-left:8px;
             margin-top:8px;
             text-align: left;
             color:#999999;
         }
 
+
         .slick-crowd-camp a.crowd-camp-button{
             max-width:316px;
-            margin-left:8px;
             margin-top:18px;
+            margin-left:4px;
             border: 1px solid #38BFCE;
             display: block;
             color:#38BFCE;
             font-size:14px;
-            padding:11px;
+            padding:11px 0;
             border-radius:6px;
         }
 
-        .slick-crowd-camp a.crowd-camp-button:hover{
+        .slick-crowd-camp .slider .slick-slide:hover  .crowd-camp-button{
             background-color: #38BFCE;
             color: white;
 
@@ -1072,8 +1151,7 @@
         
 
         .cause-card__content {
-            padding-left: 8px;
-            padding-right: 8px;
+            padding-right: 16px;
             padding-top: 45px;
             border-left: 1px solid #fff;
             border-right: 1px solid #fff;
@@ -1177,7 +1255,27 @@
             max-width:316px;
             height:232px;
             border-radius: 6px;
-            background-color: black;
+            background-color: #FFF;
+            overflow: hidden;
+        }
+
+
+        
+        .slick-camp-namum .slider .camp-namum-img img{
+            width: 100%;
+            -webkit-transform: scale(1);
+            transform: scale(1);
+            -webkit-transition: opacity 300ms ease, -webkit-transform 300ms ease;
+            transition: opacity 300ms ease, -webkit-transform 300ms ease;
+            transition: transform 300ms ease, opacity 300ms ease;
+            transition: transform 300ms ease, opacity 300ms ease, -webkit-transform 300ms ease;
+        }
+
+        .slick-camp-namum .slider .slick-slide:hover .camp-namum-img img{
+            width: 100%;
+            -webkit-transform: scale(1.2);
+            transform: scale(1.2);
+
         }
         
         .slick-camp-namum p{

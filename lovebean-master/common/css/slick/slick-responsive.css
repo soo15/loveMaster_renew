@@ -33,9 +33,30 @@
                 height: 480px;
                 
             }
+            .sliderB_container_camp:before {
+                width: 326px;
+                height: 95px;
+                top: 158px;
+                border: 10px solid #FF4049;
+            }
 
             .main_v_notice {
                 max-width: 346px;
+            }
+
+            .main_v_notice .slider .v_notice_content{
+                height: auto;
+            }
+
+            .main_v_notice .slider .v_notice_contents {
+                height:108px;
+            }
+            .main_v_notice .slick-slider .slick-slide {
+                padding: 6px;
+            }
+            .v_notice_contents div:nth-child(2) a {
+                width: 58px;
+                height:82px;
             }
 
             .main_v_notice h1 {
@@ -72,7 +93,6 @@
             .innerbox .title {
                 width: 224px;
                 box-sizing: border-box;
-                border: 1px solid #000;
             }
             .innerbox .title dt {
                 font-size:30px;
@@ -83,10 +103,8 @@
                 display: none;
             }
 
-
-            .contentsbox .tab-pane{
+            .contentsbox {
                 max-width: 800px;
-                border: 1px solid #000;
             }
 
             .list-link {
@@ -150,7 +168,6 @@
 
             .slick_sub {
                 max-width: 800px;
-                margin:0 20px;
                 box-sizing: border-box;
             }
             
@@ -164,6 +181,11 @@
             }
 
 
+
+            .crowd-nanum__buttons{
+                left: 200px;
+                width: 820px;
+            }
             .slick-camp-namum .slider .camp-namum-img{
                 margin:0 2px;
                 box-sizing: border-box;
@@ -187,6 +209,9 @@
                 width:1000px;
             }
 
+            .main-beanTube_box .beanTube-buttons {
+                width: 1000px;
+            }
 
             
         }
