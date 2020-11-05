@@ -21,27 +21,24 @@
           slideCount:10,
         });
 
-        // quick_menu toggle
-        $(".quick_nav .btn_close").click(function() {
-          $(".quick_nav").toggleClass("quick_nav-close");
+
+        $(".slider-hero .slider.hero-bgs").slick({
+          infinite: true,
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          dots: false,
+          autoplay: false,
+          focusOnSelect: false,
+          asNavFor: '.slider-hero .slider.hero-imgs',
+          arrows: false,
         });
 
     });
     
 
     
-
-    
-    $(".slider-hero .slider.hero-bgs").slick({
-      infinite: true,
-      slidesToShow: 1,
-      slidesToScroll: 1,
-      dots: false,
-      autoplay: false,
-      focusOnSelect: false,
-      asNavFor: '.slider-hero .slider.hero-imgs',
-      arrows: false,
-    });
+        
+   
   
 
         
@@ -96,21 +93,21 @@ $('.main_v_notice .slider').slick({
         settings: { 
         slidesToShow: 4,
         infinite: true,
-        dots: true } 
+        dots: false } 
       },
       {
         breakpoint: 768,
         settings: { 
         slidesToShow: 3,
         infinite: true,
-        dots: true } 
+        dots: false } 
       },
       {
         breakpoint: 480,
         settings: { 
         slidesToShow: 3,
         infinite: true,
-        dots: true } 
+        dots: false } 
       },
        
       ]
@@ -132,6 +129,33 @@ $('.slick-crowd-camp .slider').slick({
   arrows:true,
   nextArrow: '.crowd-camp_next',
   prevArrow: '.crowd-camp_prev',
+  responsive: [
+      {
+       breakpoint: 1024,
+        settings: { 
+        slidesToShow: 2,
+        slidesToScroll: 2,
+        infinite: true,
+        dots: false } 
+      },
+      {
+        breakpoint: 768,
+        settings: { 
+        slidesToShow: 2,
+        slidesToScroll: 2,
+        infinite: true,
+        dots: false } 
+      },
+      {
+        breakpoint: 480,
+        settings: { 
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        infinite: true,
+        dots: false } 
+      },
+       
+      ]
 });
 
 
@@ -149,6 +173,33 @@ $('.slick-camp-namum .slider').slick({
   arrows:true,
   nextArrow: '.crowd-nanum_next',
   prevArrow: '.crowd-nanum_prev',
+  responsive: [
+      {
+       breakpoint: 1024,
+        settings: { 
+        slidesToShow: 2,
+        slidesToScroll: 2,
+        infinite: true,
+        dots: false } 
+      },
+      {
+        breakpoint: 768,
+        settings: { 
+        slidesToShow: 2,
+        slidesToScroll: 2,
+        infinite: true,
+        dots: false } 
+      },
+      {
+        breakpoint: 480,
+        settings: { 
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        infinite: true,
+        dots: false } 
+      },
+       
+      ]
 });
 
 // beanTube
@@ -166,21 +217,34 @@ $('.slick-beanTube .slider').slick({
   nextArrow: '.beanTube_next',
   prevArrow: '.beanTube_prev',
   responsive: [
-    {
-        breakpoint: 1024,   //width 1024 이상부터
-        settings: {
-            slidesToShow: 3,
-            slidesToScroll: 3,
-        }
-    },
-    {
-        breakpoint: 375,   //width 1024 이상부터
-        settings: {
-            slidesToShow: 1,
-            slidesToScroll: 1,
-        }
-    }
-  ]
+      {
+       breakpoint: 1024,
+        settings: { 
+        slidesToShow: 3,
+        slidesToScroll: 3,
+        infinite: true,
+        dots: false } 
+      },
+      {
+        breakpoint: 768,
+        infinite: true,
+        settings: { 
+        slidesToShow: 3,
+        slidesToScroll: 3,
+        dots: false } 
+      },
+      {
+        breakpoint: 480,
+        infinite: true,
+        settings: { 
+        slidesToShow: 3,
+        slidesToScroll: 3,
+        infinite: true,
+        arrows:false,
+        dots: true } 
+      },
+       
+      ]
 });
 
 
