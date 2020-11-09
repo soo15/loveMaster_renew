@@ -55,6 +55,11 @@
             });
 
         });
+
+        function actionToggle() {
+            const action = document.querySelector('.quick_action');
+            action.classList.toggle('quick_active')
+        }
     </script>
 </head>
 
@@ -219,6 +224,20 @@
             <!-- //quick_box -->
         </div>
         <!-- //quick_nav -->
+        <!-- quick_nav(mobile) -->
+        <div class="quick_action" onclick="actionToggle();">
+            <span>+</span>
+            <h2>주요 서비스 </h2>
+            <ul class="quick-info">
+                <li><a href="#"><i class="ico-notice"></i><em class="txt">공지사항</em></a></li>
+                <li><a href="#"><i class="ico-info"></i><em class="txt">지원안내</em></a></li>
+                <li><a href="#"><i class="ico-online"></i><em class="txt">온라인배분신청</em></a></li>
+                <li><a href="#"><i class="ico-donation1"></i><em class="txt">일시기부</em></a></li>
+                <li><a href="#"><i class="ico-donation2"></i><em class="txt">정기기부</em></a></li>
+                <li><a href="#"><i class="ico-mypage"></i><em class="txt">마이페이지</em></a></li>
+            </ul>
+        </div>
+        <!-- //quick_nav(mobile) -->
         <!--box-card_camp-->
         <div class="box-card_camp">
             <div class="box-card_campbox">
@@ -505,10 +524,14 @@
                     <div class="test-case-wrap slick-beanTube">
                         <div class="slider">
                             <div>
-                                <iframe width="100%" height="100%" src="https://www.youtube.com/embed/uhB4Am0Aakk"
-                                    frameborder="0"
-                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                    allowfullscreen></iframe>
+                                <div class="slick-beanTube_video">
+                                    <div class="video-container">
+                                        <iframe width="100%" height="100%"
+                                            src="https://www.youtube.com/embed/uhB4Am0Aakk" frameborder="0"
+                                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                            allowfullscreen></iframe>
+                                    </div>
+                                </div>
                                 <div class="beanTube_descript">
                                     <h2>#나눔 #우리가 #움직여야</h2>
                                     <p>사랑의열매2020년 연중광고
@@ -516,10 +539,14 @@
                                 </div>
                             </div>
                             <div>
-                                <iframe width="100%" height="100%" src="https://www.youtube.com/embed/uhB4Am0Aakk"
-                                    frameborder="0"
-                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                    allowfullscreen></iframe>
+                                <div class="slick-beanTube_video">
+                                    <div class="video-container">
+                                        <iframe width="100%" height="100%"
+                                            src="https://www.youtube.com/embed/uhB4Am0Aakk" frameborder="0"
+                                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                            allowfullscreen></iframe>
+                                    </div>
+                                </div>
                                 <div class="beanTube_descript">
                                     <h2>#착한오지라퍼</h2>
                                     <p>(속보)이영지, 중학교때부터 사랑의열매와 연이<br />
@@ -527,10 +554,14 @@
                                 </div>
                             </div>
                             <div>
-                                <iframe width="100%" height="100%" src="https://www.youtube.com/embed/uhB4Am0Aakk"
-                                    frameborder="0"
-                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                    allowfullscreen></iframe>
+                                <div class="slick-beanTube_video">
+                                    <div class="video-container">
+                                        <iframe width="100%" height="100%"
+                                            src="https://www.youtube.com/embed/uhB4Am0Aakk" frameborder="0"
+                                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                            allowfullscreen></iframe>
+                                    </div>
+                                </div>
                                 <div class="beanTube_descript">
                                     <h2>#사랑의 열매& JTBC</h2>
                                     <p>사랑의열매2020년 바이럴광고- 적!재!적!소!에<br />
@@ -538,10 +569,14 @@
                                 </div>
                             </div>
                             <div>
-                                <iframe width="100%" height="100%" src="https://www.youtube.com/embed/uhB4Am0Aakk"
-                                    frameborder="0"
-                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                    allowfullscreen></iframe>
+                                <div class="slick-beanTube_video">
+                                    <div class="video-container">
+                                        <iframe width="100%" height="100%"
+                                            src="https://www.youtube.com/embed/uhB4Am0Aakk" frameborder="0"
+                                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                            allowfullscreen></iframe>
+                                    </div>
+                                </div>
                                 <div class="beanTube_descript">
                                     <h2>#나눔 #우리가 #움직여야</h2>
                                     <p>사랑의열매2020년 연중광고
@@ -549,10 +584,14 @@
                                 </div>
                             </div>
                             <div>
-                                <iframe width="100%" height="100%" src="https://www.youtube.com/embed/uhB4Am0Aakk"
-                                    frameborder="0"
-                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                    allowfullscreen></iframe>
+                                <div class="slick-beanTube_video">
+                                    <div class="video-container">
+                                        <iframe width="100%" height="100%"
+                                            src="https://www.youtube.com/embed/uhB4Am0Aakk" frameborder="0"
+                                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                            allowfullscreen></iframe>
+                                    </div>
+                                </div>
                                 <div class="beanTube_descript">
                                     <h2>#나눔 #우리가 #움직여야</h2>
                                     <p>사랑의열매2020년 연중광고
