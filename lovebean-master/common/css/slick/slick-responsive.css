@@ -387,7 +387,7 @@
             }
         }
         
-        @media all and (max-width:375px) {
+        @media all and (max-width:460px) {
             
             .hero-box .hero-imgs {
                 max-width: 100%;
@@ -562,11 +562,20 @@
                 display: block;
             }
 
-            .crowd-camp-buttons, .crowd-nanum__buttons {
+            
+            .crowd-camp, 
+            .camp-namum {
+                max-width: 100%;
+            }
+
+            .crowd-camp-buttons,
+            .crowd-nanum__buttons{
                 width: 58px;
-                top:32px;
-                left:290px;
-                margin-left: 10px;
+                height: 58px;
+                top:38px;
+                left: initial;
+                right:16px;
+                margin-left: 0px;
             }
 
             .crowd-camp_prev,
@@ -590,14 +599,15 @@
             }
 
 
+
             .main-beanTube {
-                width: 375px;
+                width: 100%;
             }
 
             .main-beanTube_box .beanTube-buttons {
                 width: 58px;
                 top:-30px;
-                left:290px;
+                right: 10px;
             }
 
 

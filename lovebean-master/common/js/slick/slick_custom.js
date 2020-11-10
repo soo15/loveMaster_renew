@@ -88,31 +88,85 @@ $('.main_v_notice .slider').slick({
   nextArrow: '.main_notice___next',
   prevArrow: '.main_notice___prev',
   responsive: [
-      {
-       breakpoint: 1024,
-        settings: { 
-        slidesToShow: 4,
-        infinite: true,
-        dots: false } 
-      },
-      {
-        breakpoint: 768,
-        settings: { 
-        slidesToShow: 3,
-        infinite: true,
-        dots: false } 
-      },
-      {
-        breakpoint: 480,
-        settings: { 
-        slidesToShow: 2,
-        infinite: true,
-        dots: false } 
-      },
-       
-      ]
+    {
+     breakpoint: 1024,
+      settings: {
+      slidesToShow: 4,
+      infinite: true,
+      dots: false }
+    },
+    {
+      breakpoint: 768,
+      settings: {
+      slidesToShow: 3,
+      infinite: true,
+      dots: false }
+    },
+    {
+      breakpoint: 460,
+      settings: {
+      slidesToShow: 1,
+      infinite: true,
+      dots: false }
+    },
+    
+    ]
 
 });
+
+
+
+//<!--notice&campaign-->
+//강제 이벤트 걸기..
+// slick.main_v_notice();
+
+
+// var slick = {
+// 	main_v_notice : function() {
+// 	$('.main_v_notice .slider').slick({
+// 	 infinite: true,
+// 	 dots: false,
+// 	 speed: 300,
+// 	 slidesToShow: 4,
+// 	 slidesToScroll: 4,
+// 	 vertical: true,
+// 	 verticalSwiping: true,
+// 	 focusOnSelect: true,
+// 	 adaptiveHeight: true,
+// 	 draggable:true,
+// 	 arrows:true,
+// 	 nextArrow: '.main_notice___next',
+// 	 prevArrow: '.main_notice___prev',
+// 	 autoplay: false,
+// 	 autoplaySpeed: 1000,
+// 	 responsive: [
+// 	     {
+// 	      breakpoint: 1024,
+// 	       settings: {
+// 	       slidesToShow: 4,
+// 	       infinite: true,
+// 	       dots: false }
+// 	     },
+// 	     {
+// 	       breakpoint: 768,
+// 	       settings: {
+// 	       slidesToShow: 3,
+// 	       infinite: true,
+// 	       dots: false }
+// 	     },
+// 	     {
+// 	       breakpoint: 480,
+// 	       settings: {
+// 	       slidesToShow: 3,
+// 	       infinite: true,
+// 	       dots: false }
+// 	     },
+	     
+// 	     ]
+	
+// 	});
+// 	}
+// 	}
  
 
   // crowd
@@ -122,7 +176,7 @@ $('.slick-crowd-camp .slider').slick({
   autoplay: false,
   dots: false,
   slidesToShow: 3,
-  slidesToScroll: 1,
+  slidesToScroll: 3,
   focusOnSelect: true,
   swipe:true,
   draggable:true,
@@ -145,7 +199,7 @@ $('.slick-crowd-camp .slider').slick({
         dots: false } 
       },
       {
-        breakpoint: 480,
+        breakpoint: 460,
         settings: { 
         slidesToShow: 2,
         infinite: true,
@@ -163,7 +217,7 @@ $('.slick-camp-namum .slider').slick({
   autoplay: false,
   dots: false,
   slidesToShow: 3,
-  slidesToScroll: 1,
+  slidesToScroll: 3,
   focusOnSelect: true,
   swipe:true,
   draggable:true,
@@ -186,7 +240,7 @@ $('.slick-camp-namum .slider').slick({
         dots: false } 
       },
       {
-        breakpoint: 480,
+        breakpoint: 460,
         settings: { 
         slidesToShow: 2,
         infinite: true,
@@ -203,7 +257,7 @@ $('.slick-beanTube .slider').slick({
   autoplay: false,
   dots: false,
   slidesToShow: 3,
-  slidesToScroll: 1,
+  slidesToScroll: 3,
   focusOnSelect: true,
   swipe:true,
   draggable:true,
@@ -214,7 +268,7 @@ $('.slick-beanTube .slider').slick({
       {
        breakpoint: 1024,
         settings: { 
-        slidesToShow: 2,
+        slidesToShow: 3,
         infinite: true,
         dots: false } 
       },
@@ -222,11 +276,11 @@ $('.slick-beanTube .slider').slick({
         breakpoint: 768,
         infinite: true,
         settings: { 
-          slidesToShow: 2,
+        slidesToShow: 3,
         dots: false } 
       },
       {
-        breakpoint: 480,
+        breakpoint: 460,
         infinite: true,
         settings: { 
         slidesToShow: 2,
@@ -234,19 +288,8 @@ $('.slick-beanTube .slider').slick({
         arrows:false,
         dots: true } 
       },
-       
       ]
 });
-
-
-
-// const navbarToggleBtn = document.querySelector(".quick_nav .btn_close");
-// navbarToggleBtn.addEventListener("click", () => {
-//   var base = $('.quick_nav');
-//   base.addClass('.quick_nav-close');
-//   navbarMenu.classList.toggle("base");
-// });
-
 
 
 
