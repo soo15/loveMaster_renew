@@ -2,9 +2,9 @@
   //main_hero
       var $main_hero = $('.slider-hero .slider.hero-imgs');
       var $main_v_notice = $('.main_v_notice .slider');
-      var $slick_crowd_camp = $('.slick-crowd-camp .slider');
-      var $slick_camp_namum = $('.slick-camp-namum .slider');
-      var $slick_beanTube = $('.slick-beanTube .slider');
+      // var $slick_crowd_camp = $('.slick-crowd-camp .slider');
+      // var $slick_camp_namum = $('.slick-camp-namum .slider');
+      // var $slick_beanTube = $('.slick-beanTube .slider');
       var slideCount = null;
       
       $( document ).ready(function() {
@@ -37,8 +37,6 @@
           arrows: false,
         });
 
-    
-    
     
     
      //<!--notice&campaign-->
@@ -261,6 +259,69 @@
           ]
     });
 
+
+    // sns
+
+        $('.js-carousel').slick({
+        slide: 'a',
+        slidesToShow: 5,
+        slidesToScroll: 5, // swipeToSlide has to set to false
+        arrows: true,
+        prevArrow: '<span class="slick-prev">Previous</span>',
+        nextArrow: '<span class="slick-next">Next</span>',
+        dots: false,
+        infinite: true,
+        speed: 300,
+        swipeToSlide: false,
+        cssEase: 'cubic-bezier(0,0,.18,1)',
+        responsive: [
+          {
+            breakpoint: 769,
+            settings: {
+              slidesToShow: 2,
+              slidesToScroll: 2
+            }
+          },
+          {
+            breakpoint: 667,
+            settings: {
+              slidesToShow: 1,
+              slidesToScroll: 1
+            }
+          }
+        ]
+        });
+
+        /* [START] Custom Rewind function for slick.js */
+        let slickRewindDetector = false;
+
+        // A better solution to prevent nest the event handlers
+        $('.js-carousel.rewind').on('click', $('.slick-prev, .slick-next'), function(){
+        // console.log('currentSlide: ' + $(this).slick('slickCurrentSlide'));
+        slickRewindDetector = true;
+        });
+
+        $('.js-carousel.rewind').on('afterChange', function(event, slick){
+        if ( slickRewindDetector ) {
+          slickRewindDetector = false; // Reset the trigger
+
+          // console.log(slick);
+          // console.log('currentSlide: ' + $(this).slick('slickCurrentSlide'));
+          // console.log('slidesToShow: ' + $(this).slick('slickGetOption', 'slidesToShow'));
+          // console.log('slidesToScroll: ' + $(this).slick('slickGetOption', 'slidesToScroll'));
+
+          let slickSlideToShow = $(this).slick('slickGetOption', 'slidesToShow');
+
+          if ( slick.currentSlide == 0 ) { // If current slide is first page
+            $(this).slick('slickGoTo', slick.slideCount - 1); // Then go to the last page
+          } else if ( slick.slideCount - slick.currentSlide <= slickSlideToShow ) { // If last slide has 'active' class
+            $(this).slick('slickGoTo', 0); // Then go to the firs page
+          }
+
+        }
+        });
+
+
     });
     
 
@@ -290,6 +351,10 @@
         $(this).slick('setPosition');
       })
     });
+
+
+    
+    
         
    
   
