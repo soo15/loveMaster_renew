@@ -1062,6 +1062,10 @@
             overflow: hidden;
         }
 
+        .main-beanTube  .slick_sub img{
+            width:100%;
+        }
+
         
         .main-beanTube .slick-list{
             width: 100%;
@@ -1070,8 +1074,8 @@
         
 
         .main-beanTube .slick-slide{
-            padding:0 10px;
-
+            width: 380px;
+            padding:0 20px;
         }
 
 
@@ -1191,7 +1195,7 @@
         .slick-crowd-camp .slider .crowd-camp-img{
             display: block;
             max-width:316px;
-            height:232px;
+            height:auto;
             border-radius: 6px;
             background-color: #FFF;
             overflow: hidden;
@@ -1383,7 +1387,7 @@
             margin:0 auto;
             padding:0;
             max-width:316px;
-            height:232px;
+            height:auto;
             border-radius: 6px;
             background-color: #FFF;
             overflow: hidden;
