@@ -5,12 +5,18 @@
       // var $slick_crowd_camp = $('.slick-crowd-camp .slider');
       // var $slick_camp_namum = $('.slick-camp-namum .slider');
       // var $slick_beanTube = $('.slick-beanTube .slider');
-      var slideCount = null;
+      // var slideCount = null;
       
+      //   window.onload = function(){
+      //     $('.slider').css("visibility","visible")
+      // }
+      
+
       $( document ).ready(function() {
 
         // hero_slider
         $(".slider-hero .slider.hero-imgs").slick({
+          lazyLoad:'ondemaand',
           infinite: true,
           slidesToShow: 1,
           slidesToScroll: 1,
@@ -27,6 +33,7 @@
 
 
         $(".slider-hero .slider.hero-bgs").slick({
+          lazyLoad:'ondemaand',
           infinite: true,
           slidesToShow: 1,
           slidesToScroll: 1,
@@ -42,6 +49,7 @@
      //<!--notice&campaign-->
     
     $('.main_v_notice .slider').slick({
+      lazyLoad:'ondemaand',
       infinite: true,
       dots: false,
       speed: 300,
@@ -57,25 +65,21 @@
       prevArrow: '.main_notice___prev',
       responsive: [
         {
-         breakpoint: 1024,
+         breakpoint: 1025,
           settings: {
-          slidesToShow: 4,
-          infinite: true,
-          dots: false }
+          slidesToShow: 4
+        }
         },
         {
-          breakpoint: 768,
+          breakpoint: 769,
           settings: {
-          slidesToShow: 3,
-          infinite: true,
-          dots: false }
+          slidesToShow: 3 }
         },
         {
-          breakpoint: 460,
+          breakpoint: 461,
           settings: {
           slidesToShow: 1,
-          infinite: true,
-          dots: false }
+          slidesToScroll: 1}
         },
         
         ]
@@ -140,11 +144,12 @@
       // crowd
     
     $('.slick-crowd-camp .slider').slick({
+      lazyLoad:'ondemaand',
       infinite: true,
       autoplay: false,
       dots: false,
       slidesToShow: 3,
-      slidesToScroll: 3,
+      slidesToScroll: 1,
       focusOnSelect: true,
       swipe:true,
       draggable:true,
@@ -153,27 +158,23 @@
       prevArrow: '.crowd-camp_prev',
       responsive: [
           {
-           breakpoint: 1024,
+           breakpoint: 1025,
             settings: { 
-            slidesToShow: 2,
-            infinite: true,
-            dots: false } 
+            slidesToShow: 3,
+            slidesToScroll: 3} 
           },
           {
-            breakpoint: 768,
+            breakpoint: 769,
             settings: { 
             slidesToShow: 2,
-            infinite: true,
-            dots: false } 
+            slidesToScroll: 2} 
           },
           {
-            breakpoint: 460,
+            breakpoint: 461,
             settings: { 
-            slidesToShow: 2,
-            infinite: true,
-            dots: false } 
+              slidesToShow: 1,
+              slidesToScroll: 1} 
           },
-           
           ]
     });
     
@@ -181,11 +182,12 @@
     // nanum
     
     $('.slick-camp-namum .slider').slick({
+      lazyLoad:'ondemaand',
       infinite: true,
       autoplay: false,
       dots: false,
       slidesToShow: 3,
-      slidesToScroll: 3,
+      slidesToScroll: 1,
       focusOnSelect: true,
       swipe:true,
       draggable:true,
@@ -193,39 +195,36 @@
       nextArrow: '.crowd-nanum_next',
       prevArrow: '.crowd-nanum_prev',
       responsive: [
-          {
-           breakpoint: 1024,
-            settings: { 
-            slidesToShow: 2,
-            infinite: true,
-            dots: false } 
-          },
-          {
-            breakpoint: 768,
-            settings: { 
-            slidesToShow: 2,
-            infinite: true,
-            dots: false } 
-          },
-          {
-            breakpoint: 460,
-            settings: { 
-            slidesToShow: 2,
-            infinite: true,
-            dots: false } 
-          },
-           
-          ]
+        {
+         breakpoint: 1025,
+          settings: { 
+          slidesToShow: 3,
+          slidesToScroll: 3} 
+        },
+        {
+          breakpoint: 769,
+          settings: { 
+          slidesToShow: 2,
+          slidesToScroll: 2} 
+        },
+        {
+          breakpoint: 461,
+          settings: { 
+          slidesToShow: 1,
+          slidesToScroll: 1} 
+        },
+        ]
     });
     
     // beanTube
     
     $('.slick-beanTube .slider').slick({
+      lazyLoad:'ondemaand',
       infinite: true,
       autoplay: false,
       dots: false,
       slidesToShow: 3,
-      slidesToScroll: 3,
+      slidesToScroll: 1,
       focusOnSelect: true,
       swipe:true,
       draggable:true,
@@ -234,27 +233,27 @@
       prevArrow: '.beanTube_prev',
       responsive: [
           {
-           breakpoint: 1024,
+           breakpoint: 1025,
             settings: { 
             slidesToShow: 3,
-            infinite: true,
-            dots: false } 
+            slidesToScroll: 3,
+            infinite: true } 
           },
           {
-            breakpoint: 768,
+            breakpoint: 769,
             infinite: true,
             settings: { 
             slidesToShow: 3,
-            dots: false } 
+            slidesToScroll: 3 } 
           },
           {
-            breakpoint: 460,
+            breakpoint: 461,
             infinite: true,
             settings: { 
-            slidesToShow: 2,
+            slidesToShow: 1,
+            slidesToScroll: 1,
             infinite: true,
-            arrows:false,
-            dots: true } 
+            arrows:false } 
           },
           ]
     });
@@ -262,10 +261,11 @@
 
     // sns
 
-        $('.js-carousel').slick({
+        $('.sns_campaign').slick({
+        lazyLoad:'ondemaand',
         slide: 'a',
         slidesToShow: 5,
-        slidesToScroll: 5, // swipeToSlide has to set to false
+        slidesToScroll: 1, 
         arrows: true,
         prevArrow: '<span class="slick-prev">Previous</span>',
         nextArrow: '<span class="slick-next">Next</span>',
@@ -278,15 +278,15 @@
           {
             breakpoint: 769,
             settings: {
-              slidesToShow: 2,
-              slidesToScroll: 2
+              slidesToShow: 4,
+              slidesToScroll: 4,
             }
           },
           {
-            breakpoint: 667,
+            breakpoint: 461,
             settings: {
-              slidesToShow: 1,
-              slidesToScroll: 1
+              slidesToShow: 2,
+              slidesToScroll: 2,
             }
           }
         ]
@@ -296,19 +296,14 @@
         let slickRewindDetector = false;
 
         // A better solution to prevent nest the event handlers
-        $('.js-carousel.rewind').on('click', $('.slick-prev, .slick-next'), function(){
-        // console.log('currentSlide: ' + $(this).slick('slickCurrentSlide'));
+        $('.sns_campaign.rewind').on('click', $('.slick-prev, .slick-next'), function(){
         slickRewindDetector = true;
         });
 
-        $('.js-carousel.rewind').on('afterChange', function(event, slick){
+        $('.sns_campaign.rewind').on('afterChange', function(event, slick){
         if ( slickRewindDetector ) {
           slickRewindDetector = false; // Reset the trigger
 
-          // console.log(slick);
-          // console.log('currentSlide: ' + $(this).slick('slickCurrentSlide'));
-          // console.log('slidesToShow: ' + $(this).slick('slickGetOption', 'slidesToShow'));
-          // console.log('slidesToScroll: ' + $(this).slick('slickGetOption', 'slidesToScroll'));
 
           let slickSlideToShow = $(this).slick('slickGetOption', 'slidesToShow');
 
@@ -353,14 +348,7 @@
     });
 
 
-    
-    
-        
-   
-  
 
-        
-   
 
 
 

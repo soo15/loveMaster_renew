@@ -164,30 +164,61 @@
 
 
 
-
             /*  */
             .crowd-camp, .camp-namum {
                 max-width: 1024px;
             }
 
-            .slick_sub {
-                max-width:800px;
+            .crowd-camp-buttons{
+                left:200px;
+                width: 820px;
             }
+
+            .slick_sub {
+                max-width: 774px;
+                box-sizing: border-box;
+            }
+            
+            .slick-crowd-camp .slick-slide {
+                margin:0 8px 0 0;
+            }
+
+            .slick-crowd-camp a.crowd-camp-button{
+                display: none;
+            }
+
+            .slick-crowd-camp .slider .crowd-camp-img {
+                box-sizing: border-box;
+                height: auto;
+            }
+
+
+            .slick-camp-namum .slick-slide {
+                margin:0 8px 0 0;
+            }
+
+
+            .crowd-nanum__buttons{
+                left: 200px;
+                width: 820px;
+            }
+            .slick-camp-namum .slider .camp-namum-img{
+                box-sizing: border-box;
+                height: auto;
+            }
+            .slick-camp-namum p{
+                margin-left: 0px;
+            }
+
+
+            /*  */
             
             .main-beanTube .slick_sub {
                 max-width: 1000px;
                 margin: auto;
             }
             
-            .slick-crowd-camp a.crowd-camp-button {
-                display: none;
-            }
 
-            
-            .slick-crowd-camp .slider .crowd-camp-img,
-            .slick-camp-namum .slider .camp-namum-img {
-                height: auto;
-            }
             
             .main-beanTube .slick_sub .tab-pane{
                 width:1000px;
@@ -280,20 +311,51 @@
                 max-width: 530px;
             }
 
+            
             .slick_sub {
-                max-width: 530px;
+                max-width: 514px;
+                margin-left:10px;
             }
-            
-            
-            .slick-camp-namum p {
+
+            .slick-crowd-camp .slick-slide{
+                max-width: calc(500px/2);
+
+            }
+
+            .slick-crowd-camp .slider .crowd-camp-img {
+                max-width: 230px;
+                height: auto;
+            }
+            .slick-crowd-camp h3 {
                 max-width: 230px;
             }
 
-            .main-beanTube .slick_sub .slick-slide{
-                max-width: 500px;
+            
+            .crowd-camp-buttons,
+            .crowd-nanum__buttons {
+                width: 540px;
+                margin-left:10px;
+            }
+
+            .slick-camp-namum .slider .camp-namum-img {
+                max-width: 230px;
+                height: auto;
+            }
+
+            
+            .slick-camp-namum p {
+                max-width: 230px;
+                margin-left: 0px;
+            }
+
+            .main-beanTube .slick_sub .slick-slide, 
+            .main-beanTube .slick_sub .slick-current,
+            .main-beanTube .slick_sub .slick-a{
+                width: 400px;
             }
             .main-beanTube_box .beanTube-buttons {
                 width: 756px;
+                margin-left:10px;
             }
 
             .main-beanTube_box .slick_sub::before{
@@ -305,7 +367,7 @@
                 width:28px;
                 height: 100vh;
                 background-color: #202324;
-                z-index: 3;
+                z-index: 100;
             }
 
         }
@@ -506,17 +568,41 @@
                 max-width: 100%;
             }
 
-            
-            .slick_sub {
-                max-width: 360px;
-                margin: 0 auto;
+            .crowd-camp-buttons,
+            .crowd-nanum__buttons{
+                width: 58px;
+                height: 58px;
+                top:38px;
+                left: initial;
+                right:16px;
+                margin-left: 0px;
             }
-            
+
+            .crowd-camp_prev,
+            .crowd-nanum_prev,
+            .crowd-camp_next, 
+            .crowd-nanum_next,
+            .beanTube_prev,
+            .beanTube_next {
+                font-size:12px;
+            }
+
+            .crowd-camp_prev, 
+            .crowd-nanum_prev,
+            .crowd-camp_next,
+            .crowd-nanum_next,
+            .beanTube_prev, 
+            .beanTube_next{
+                width:28px;
+                height:28px;
+                border-radius: 0%;
+            }
+
+
 
             .main-beanTube {
                 width: 100%;
             }
-            
 
             .main-beanTube_box .beanTube-buttons {
                 width: 58px;
@@ -537,7 +623,19 @@
             .beanTube_descript p {
                 font-size: 18px;
             }
+
+            .main-beanTube .slick_sub .slick-slide,
+            .main-beanTube .slick_sub .slick-current {
+                max-width: 100%;
+                text-align: left;
+            }
+
           
+            .slick-beanTube .video-container {
+                width: 74%;
+                padding-top: 42%;
+            }
+
             .list-link {
                 display:none;
             }
