@@ -264,7 +264,7 @@
         $('.sns_campaign').slick({
         lazyLoad:'ondemaand',
         slide: 'a',
-        slidesToShow: 5,
+        slidesToShow: 1,
         slidesToScroll: 1, 
         arrows: true,
         prevArrow: '<span class="slick-prev">Previous</span>',
@@ -275,6 +275,13 @@
         swipeToSlide: false,
         cssEase: 'cubic-bezier(0,0,.18,1)',
         responsive: [
+          {
+           breakpoint: 1025,
+            settings: { 
+            slidesToShow: 5,
+            slidesToScroll: 1,
+            infinite: true } 
+          },
           {
             breakpoint: 769,
             settings: {

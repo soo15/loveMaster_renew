@@ -3,6 +3,9 @@
         /* responsive */
 
         @media all and (max-width:1024px) {
+
+            
+    
             /* main_hero_slide */
             .hero-box .hero-imgs{
                 max-width: 644px;
@@ -89,6 +92,33 @@
             }
 
 
+
+            
+            /* sns */
+            .sns_wrapper {
+                position: relative;
+                max-width: 1024px;
+                overflow: hidden;
+                margin:auto;
+              } 
+    
+    
+              .sns_wrapper .sns-box{
+                 position: absolute;
+                 display: inline;
+                 top:0;
+                 right:0;
+                 line-height: 48px;
+              } 
+
+              
+    
+            .sns_wrapper .sns_campaign{
+                display: block;
+                margin-top:30px;
+                margin-bottom: 40px;
+            } 
+
             /* contents */
             
             .innerbox{
@@ -163,8 +193,6 @@
 
 
 
-
-
             /*  */
             .crowd-camp, .camp-namum {
                 max-width: 1024px;
@@ -174,10 +202,6 @@
                 max-width:800px;
             }
             
-            .main-beanTube .slick_sub {
-                max-width: 1000px;
-                margin: auto;
-            }
             
             .slick-crowd-camp a.crowd-camp-button {
                 display: none;
@@ -187,10 +211,6 @@
             .slick-crowd-camp .slider .crowd-camp-img,
             .slick-camp-namum .slider .camp-namum-img {
                 height: auto;
-            }
-            
-            .main-beanTube .slick_sub .tab-pane{
-                width:1000px;
             }
 
             .main-beanTube_box .beanTube-buttons {
@@ -269,7 +289,14 @@
                 width: 45px;
                 height: 65px;
             }
+            /* quick_menu */
+            .quick_action {
+                bottom:200px;
+            }
 
+            .quick_action.quick_active {
+                bottom:420px;
+            }
 
             .innerbox .title {
                 width: 230px;
@@ -288,12 +315,12 @@
             .slick-camp-namum p {
                 max-width: 230px;
             }
-
-            .main-beanTube .slick_sub .slick-slide{
-                max-width: 500px;
-            }
             .main-beanTube_box .beanTube-buttons {
                 width: 756px;
+            }
+
+            .slick-beanTube .slick-slide {
+                margin: 0 17px;
             }
 
             .main-beanTube_box .slick_sub::before{
@@ -543,5 +570,8 @@
             }
             
             
+            .slick-beanTube .slick-slide {
+                margin: 0 30px;
+            }
 
-        }
+}

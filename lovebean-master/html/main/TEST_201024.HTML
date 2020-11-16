@@ -19,8 +19,8 @@
     <!-- css ÃªÂ²Â½Ã«Â¡Â  -->
     <link rel="stylesheet" href="../../common/css/ui.base.css?_v=20201015095339">
     <link rel="stylesheet" href="../../common/css/ui.main.css?_v=20201015095339">
-    <link rel="stylesheet" href="../../common/css/swiper.css">
-
+    <!-- <link rel="stylesheet" href="../../common/css/swiper.css"> -->
+    <!-- 
     <style>
         @media (orientation: portrait) {
             html {
@@ -31,7 +31,7 @@
                 left: 0;
             }
         }
-    </style>
+    </style> -->
 
 
     <!-- slick -->
@@ -52,9 +52,9 @@
     <script type="text/javascript" src="../../common/js/chest_menu.js?_v=20201015095339"></script>
     <!-- menu script -->
     <script type="text/javascript" src="../../common/js/chest_util.js"></script><!-- util script -->
-    <script type="text/javascript" src="../../common/js/chest_ajax.js"></script>
+    <!-- <script type="text/javascript" src="../../common/js/chest_ajax.js"></script> -->
     <!--ajax script -->
-    <script type="text/javascript" src="../../com mon/js/chest_com.js"></script> <!-- common script -->
+    <script type="text/javascript" src="../../common/js/chest_com.js"></script> <!-- common script -->
     <script type="text/javascript" src="../../common/js/chest_grid.js"></script><!-- grid script -->
     <script type="text/javascript" src="../../common/js/chest_date.js"></script><!-- date script -->
     <script type="text/javascript" src="../../common/js/chest_user.js"></script><!-- user script -->
@@ -63,46 +63,45 @@
     <script type="text/javascript" src="../../common/js/ui.global.js"></script>
     <script type="text/javascript" src="../../common/js/ui.plugins.js"></script>
     <script type="text/javascript" src="../../common/js/ui.common.js?_v=20201015095339"></script>
-    <script type="text/javascript" src="../../common/js/signature_pad.min.js"></script>
+    <!-- <script type="text/javascript" src="../../common/js/signature_pad.min.js"></script> -->
 
     <script type="text/javascript">
+        // window.addEventListener('load', function () {
+        //     var width = document.body.offsetWidth;
 
-        window.addEventListener('load', function () {
-            var width = document.body.offsetWidth;
+        //     var done = false;
+        //     for (var i = 0; !done && i < document.styleSheets.length; i++) {
+        //         var rules = document.styleSheets[i].cssRules;
+        //         for (var j = 0; !done && j < rules.length; j++) {
+        //             var rule = rules[j];
+        //             if (
+        //                 rule.constructor == CSSMediaRule &&
+        //                 rule.conditionText == '(orientation: portrait)'
+        //             ) {
+        //                 for (var k = 0; k < rule.cssRules.length; k++) {
+        //                     var css = rule.cssRules[k];
+        //                     if (css.selectorText == 'html') {
+        //                         css.style.top = width + 'px';
+        //                         css.style.width = '100vh';
+        //                         css.style.height = '100vw';
+        //                         if (window.orientation == 0) {
+        //                             setTimeout(function () {
+        //                                 document.querySelector('html').scrollTop = width;
+        //                             });
+        //                         }
+        //                         done = true;
+        //                         break;
+        //                     }
+        //                 }
+        //             }
+        //             continue;
+        //         }
+        //     }
 
-            var done = false;
-            for (var i = 0; !done && i < document.styleSheets.length; i++) {
-                var rules = document.styleSheets[i].cssRules;
-                for (var j = 0; !done && j < rules.length; j++) {
-                    var rule = rules[j];
-                    if (
-                        rule.constructor == CSSMediaRule
-                        && rule.conditionText == '(orientation: portrait)'
-                    ) {
-                        for (var k = 0; k < rule.cssRules.length; k++) {
-                            var css = rule.cssRules[k];
-                            if (css.selectorText == 'html') {
-                                css.style.top = width + 'px';
-                                css.style.width = '100vh';
-                                css.style.height = '100vw';
-                                if (window.orientation == 0) {
-                                    setTimeout(function () {
-                                        document.querySelector('html').scrollTop = width;
-                                    });
-                                }
-                                done = true;
-                                break;
-                            }
-                        }
-                    }
-                    continue;
-                }
-            }
+        //     window.addEventListener('orientationchange', function (e) {
 
-            window.addEventListener('orientationchange', function (e) {
-
-            })
-        });
+        //     })
+        // });
 
         $(document).ready(function () {
             // quick_menu toggle
