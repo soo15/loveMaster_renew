@@ -847,15 +847,61 @@
             padding:20px 0;
         }
 
+
+        .innerbox dl .red:after{
+            content: '';
+            display: block;
+            width: 24px;
+            height: 24px;
+            position: absolute;
+            top:6px;
+            left:142px;
+            background:url('../../img/re_main_2010/s_title_icon.png');
+            background-size: 72px 24px;
+            background-position: 0 0;
+        }
+
         .innerbox dl .red{
+            position: relative;
             color:#FD4852;
+        }
+
+        .innerbox dl .blue:after{
+            content: '';
+            display: block;
+            width: 24px;
+            height: 24px;
+            position: absolute;
+            top:-20px;
+            left:200px;
+            background:url('../../img/re_main_2010/s_title_icon.png');
+            background-size: 72px 24px;
+            background-position: 46px 0;
         }
         
         .innerbox dl .blue{
+            position: relative;
             color:#38BFCE;
         }
+
+        
+
+        .innerbox dl .green:after{
+            content: '';
+            display: block;
+            width: 24px;
+            height: 24px;
+            position: absolute;
+            top:-8px;
+            left:180px;
+            background:url('../../img/re_main_2010/s_title_icon.png');
+            background-size: 72px 24px;
+            background-position: 22px 0;
+        }
+        
         
         .innerbox dl .green{
+            position: relative;
             color:#38CE75;
         }
 
@@ -1229,10 +1275,9 @@
 
         /* crowd-camp */
         
-        
         .slick-crowd-camp .slider .crowd-camp-img{
             display: block;
-            max-width:316px;
+            max-width:100%;
             height:auto;
             border-radius: 6px;
             background-color: #FFF;
@@ -1424,7 +1469,7 @@
         .slick-camp-namum .slider .camp-namum-img{
             margin:0 auto;
             padding:0;
-            max-width:316px;
+            max-width:100%;
             height:auto;
             border-radius: 6px;
             background-color: #FFF;
@@ -1488,11 +1533,13 @@
             position: fixed;
             top:0;
             left: 0;
-            max-width: 240px;
+            max-width: 230px;
             height: auto;
             overflow: hidden;
             background-color: #FFF;
             border-radius: 3px;
+            border: 1px solid #DEDEDE;
+            z-index: 10;
           }
 
           /* .sns_wrapper {
@@ -1505,7 +1552,7 @@
           .sns_wrapper h3{
             display: inline;
             font-size:16px;
-            margin-left:28px;
+            /* margin-left:28px; */
           }
 
           .sns_wrapper strong{
@@ -1518,7 +1565,7 @@
             right:0;
             bottom:0;
             line-height: 48px;
-            margin-right:24px;
+            /* margin-right:24px; */
          }
 /* 
           .sns_wrapper .sns-box{
