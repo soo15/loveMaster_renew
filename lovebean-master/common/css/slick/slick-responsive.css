@@ -119,14 +119,29 @@
             } 
     
     
-              .sns_wrapper .sns-box{
-                 position: absolute;
-                 display: inline;
-                 top:0;
-                 right:0;
-                 line-height: 48px;
-              } 
+        .sns_wrapper .sns-box{
+            position: absolute;
+            display: inline;
+            top:0;
+            right:0;
+            line-height: 48px;
+        } 
 
+              
+          .sns_wrapper h3{
+            display: inline;
+            font-size:16px;
+            /* margin-left:28px; */
+          }
+
+          .sns_wrapper .sns-box{
+            position: absolute;
+            display: inline;
+            text-align: right;
+            right:0;
+            bottom:0;
+            line-height: 48px;
+         }
               
     
             .sns_wrapper .sns_campaign{
@@ -553,12 +568,12 @@
             }
 
             .sns_wrapper h3 {
-                display: block;
                 padding-left:16px;
             }
             .sns_wrapper .sns-box {
                 position: static;
                 display: block;
+                text-align: left;
                 padding:8px;
             }
 

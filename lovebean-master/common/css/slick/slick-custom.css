@@ -63,8 +63,9 @@
         /*button */
         
         .list-link{
+            position: absolute;
             display: block;
-            padding-top:20px;
+            bottom:8%;
         }
         
         .list-link ul{
@@ -220,7 +221,7 @@
 
         .slick-crowd-camp .slick-slide,
         .slick-camp-namum .slick-slide{
-            padding:0 24px 0 10px;
+            padding:0 18px 0 14px;
         }
 
         .crowd-camp_prev,
@@ -278,7 +279,7 @@
           
           .crowd-camp_prev,
           .crowd-nanum_prev {
-            left: -40px;
+            left: -26px;
           }
 
           
@@ -843,6 +844,7 @@
         }
 
         .innerbox{
+            position: relative;
             display: flex;
             padding:20px 0;
         }
@@ -1550,7 +1552,9 @@
           } */
           
           .sns_wrapper h3{
-            display: inline;
+            display: inline-block;
+            width: 100%;
+            text-align: center;
             font-size:16px;
             /* margin-left:28px; */
           }
@@ -1562,6 +1566,8 @@
           .sns_wrapper .sns-box{
             position: absolute;
             display: inline-block;
+            text-align: center;
+            width: 100%;
             right:0;
             bottom:0;
             line-height: 48px;
