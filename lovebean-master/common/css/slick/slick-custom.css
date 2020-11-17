@@ -83,7 +83,7 @@
             color: #FD4852;
         }
 
-        .box-card_campbox .list-link ul li.on{
+        .box-card_campbox .list-link ul li a:hover{
             border-bottom:1px solid #FD4852;
         }
 
@@ -93,7 +93,7 @@
             color: #38BFCE;
         }
 
-        .main-type2-camp .crowd-camp .list-link ul li.on{
+        .main-type2-camp .crowd-camp .list-link ul li a:hover{
             border-bottom:1px solid #38BFCE;
         }
 
@@ -102,7 +102,7 @@
             color: #38CE75;
         }
 
-        .main-type2-camp .camp-namum .list-link ul li.on{
+        .main-type2-camp .camp-namum .list-link ul li a:hover{
             border-bottom:1px solid #38CE75;
         }
 
@@ -1202,7 +1202,7 @@
         .beanTube_title .beanTube-list-link{
             float: right;
             font-size: 16px;
-            padding-right:32px;
+            padding-right:22px;
             font-weight: 100;
         }
 
@@ -1536,6 +1536,7 @@
             top:0;
             left: 0;
             max-width: 230px;
+            box-sizing: border-box;
             height: auto;
             overflow: hidden;
             background-color: #FFF;
@@ -1543,20 +1544,12 @@
             border: 1px solid #DEDEDE;
             z-index: 10;
           }
-
-          /* .sns_wrapper {
-            position: relative;
-            max-width: 1024px;
-            overflow: hidden;
-            margin:auto;
-          } */
           
           .sns_wrapper h3{
             display: inline-block;
             width: 100%;
             text-align: center;
             font-size:16px;
-            /* margin-left:28px; */
           }
 
           .sns_wrapper strong{
@@ -1571,16 +1564,8 @@
             right:0;
             bottom:0;
             line-height: 48px;
-            /* margin-right:24px; */
          }
-/* 
-          .sns_wrapper .sns-box{
-             position: absolute;
-             display: inline;
-             right:0;
-             line-height: 48px;
-             margin-right:24px;
-          } */
+
           .sns_wrapper .sns-box a {
             display: inline-block;
             width: 38px;
@@ -1650,12 +1635,7 @@
                 margin-bottom: 60px;
             } 
 
-          /* .sns_wrapper .sns_campaign:before{
-            content: "";
-            display: block;
-            margin-bottom: 40px;
-            border: 1px solid #000;
-        } */
+
 
 
           .sns_wrapper .slick-slider{
@@ -1669,31 +1649,11 @@
             padding: 0 2px;
           }
 
-          
-          .sns_wrapper .slick-prev,
-          .sns_wrapper .slick-next {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            z-index: 1;
-            width: 53px;
-            height: 53px;
-            margin-top:0;
-            border-radius: 50%;
-            background-color: #fff;
-            border:1px solid #cecece;
-            box-shadow: 0px 6px 10px rgba(134, 134, 134, 0.2);
-            font-size: 0;
-            line-height: 0;
-            cursor: pointer;
-            transition: all .2s ease-out;
-          }
 
           @media (hover: hover) {
             .sns_wrapper .slick-prev:hover,
             .sns_wrapper .slick-next:hover {
-              background-color:#cecece;
+              background-color:transparent;
             }
           }
 
@@ -1706,20 +1666,21 @@
           .sns_wrapper .slick-next:after {
             content: "";
             display: block;
-            width: 12px;
-            height: 12px;
+            width: 14px;
+            height: 14px;
             border-left: 3px solid black;
             border-bottom: 3px solid black;
             transform: translateX(4px) rotate(45deg);
           }
           
-          
+
           .sns_wrapper .slick-next{
-            right: 4px;
+            right: 18px;
           }
           .sns_wrapper .slick-prev {
-            margin-left: 20px;
+            margin-left: 38px;
           }
+          
           
           .sns_wrapper .slick-next:after {
             transform: translateX(-4px) rotate(-135deg);
