@@ -10,6 +10,8 @@
       //   window.onload = function(){
       //     $('.slider').css("visibility","visible")
       // }
+
+      //$('.slick-beanTube .slider').unbind();
       
 
       $( document ).ready(function() {

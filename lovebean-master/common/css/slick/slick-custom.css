@@ -607,7 +607,7 @@
         /*quick_nav(box-banner)*/
         .quick_nav{
             display: block;
-            position: fixed;
+            position: absolute;
             right: 0;
             top:10px;
             color:black;
@@ -1533,8 +1533,8 @@
         
         .sns_wrapper {
             position: fixed;
-            top:0;
-            left: 0;
+            top:0px;
+            left: 12px;
             max-width: 230px;
             box-sizing: border-box;
             height: auto;
@@ -1613,7 +1613,7 @@
 
           .sns_wrapper a .sns_hashtag-txt{
             font-size:14px;
-            height:38px;
+            height:36px;
             line-height: 1.3em;
             display: block;
             color:black;

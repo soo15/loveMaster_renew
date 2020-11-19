@@ -103,10 +103,25 @@
         //     })
         // });
 
+
+
         $(document).ready(function () {
             // quick_menu toggle
             $(".quick_nav .btn_close").click(function () {
                 $(".quick_nav").toggleClass("quick_nav-close");
+            });
+
+
+            //follow quick menu
+            $(window).scroll(function () {
+                var scrollTop = $(document).scrollTop();
+                if (scrollTop < 180) {
+                    scrollTop = 180;
+                }
+                $(".quick_nav").stop();
+                $(".quick_nav").animate({
+                    "top": scrollTop
+                });
             });
 
         });
@@ -379,7 +394,7 @@
                 <a href="javascript:snsMoveEvent('SNS_IS');" title="새 창 열림" class="ico-i"><span
                         class="ir_pm">인스타그램</span></a>
             </div>
-            <div class="sns_campaign rewind">
+            <div class="sns_campaign">
                 <a href="#">
                     <img src="https://source.unsplash.com/136x136/weekly?1" alt="">
                     <p class="sns_hashtag-txt">오늘의 오지랖 넓~은 기업은 바로 #삼성전자
