@@ -93,7 +93,7 @@
     //<!--notice&campaign-->
     //강제 이벤트 걸기..
     // slick.main_v_notice();
-    
+    //$('.sns_campaign').unbind();
     
     // var slick = {
     // 	main_v_notice : function() {
