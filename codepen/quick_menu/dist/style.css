@@ -1,0 +1,23 @@
+body {margin:0; padding:0; font-weight:bold;}
+	#header {height:80px; border-bottom:1px solid #ddd; background:#f1f1f1; text-align:center; line-height:80px;}
+	#container {width:1100px; height:1500px; margin:20px auto; border:1px solid #ddd; text-align:center; line-height:1500px;} 
+	#footer {height:50px; border-top:1px solid #ddd; background:#f1f1f1; text-align:center; line-height:50px;}
+	.quick_menu {position:absolute; right:0; top:100px; width:100px; height:200px; line-height:30px; border-radius:10px; color:#fff; text-align:center; background:linear-gradient(130deg, #fffb38, #20a54e); background-size:200% 200%; 
+		-webkit-animation: nono 5s ease infinite;
+		-moz-animation: nono 5s ease infinite;
+		animation: nono 5s ease infinite;}
+		@-webkit-keyframes nono {
+		    0%{background-position:0% 50%}
+		    50%{background-position:100% 50%}
+		    100%{background-position:0% 50%}
+		}
+		@-moz-keyframes nono {
+		    0%{background-position:0% 50%}
+		    50%{background-position:100% 50%}
+		    100%{background-position:0% 50%}
+		}
+		@keyframes nono { 
+		    0%{background-position:0% 50%}
+		    50%{background-position:100% 50%}
+		    100%{background-position:0% 50%}
+		}

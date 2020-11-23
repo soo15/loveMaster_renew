@@ -113,15 +113,34 @@
 
 
             //follow quick menu
+            // $(window).scroll(function () {
+            //     var scrollTop = $(document).scrollTop();
+            //     if (scrollTop < 180) {
+            //         scrollTop = 180;
+            //     }
+            //     $(".quick_nav").stop();
+            //     $(".quick_nav").animate({
+            //         "top": scrollTop
+            //     });
+            // });
+
+            var $quickMenu = $(".quick_nav");
             $(window).scroll(function () {
-                var scrollTop = $(document).scrollTop();
-                if (scrollTop < 180) {
-                    scrollTop = 180;
+                var scrollValue = $(window).scrollTop(); //스크롤 위치변수선언
+
+                //퀵메뉴 가운데 위치값 계산
+                var centerPosition = ($(window).height() - $quickMenu.height()) / 2 + $(window)
+                    .scrollTop();
+
+                if (scrollValue < 100) { //스크롤 위치값이 100 이하
+                    $quickMenu.stop().animate({
+                        'top': 26 + 'px'
+                    }, 1000);
+                } else if (scrollValue > 300) { //스크롤 위치값이 100이하
+                    $quickMenu.stop().animate({
+                        'top': centerPosition + 'px'
+                    }, 1000);
                 }
-                $(".quick_nav").stop();
-                $(".quick_nav").animate({
-                    "top": scrollTop
-                });
             });
 
         });
