@@ -609,7 +609,7 @@
             display: block;
             position: absolute;
             right: 0;
-            top:10px;
+            top:26px;
             color:black;
             background-color: #fff;
             text-align: center;
@@ -1532,8 +1532,8 @@
         /* sns */
         
         .sns_wrapper {
-            position: fixed;
-            top:0px;
+            position: absolute;
+            top:660px;
             left: 12px;
             max-width: 230px;
             box-sizing: border-box;
