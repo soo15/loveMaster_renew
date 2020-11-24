@@ -66,82 +66,82 @@
     <!-- <script type="text/javascript" src="../../common/js/signature_pad.min.js"></script> -->
 
     <script type="text/javascript">
-        // window.addEventListener('load', function () {
-        //     var width = document.body.offsetWidth;
+        // $(document).ready(function () {
+        //     // quick_menu toggle
+        //     $(".quick_nav .btn_close").click(function () {
+        //         $(".quick_nav").toggleClass("quick_nav-close");
+        //     });
 
-        //     var done = false;
-        //     for (var i = 0; !done && i < document.styleSheets.length; i++) {
-        //         var rules = document.styleSheets[i].cssRules;
-        //         for (var j = 0; !done && j < rules.length; j++) {
-        //             var rule = rules[j];
-        //             if (
-        //                 rule.constructor == CSSMediaRule &&
-        //                 rule.conditionText == '(orientation: portrait)'
-        //             ) {
-        //                 for (var k = 0; k < rule.cssRules.length; k++) {
-        //                     var css = rule.cssRules[k];
-        //                     if (css.selectorText == 'html') {
-        //                         css.style.top = width + 'px';
-        //                         css.style.width = '100vh';
-        //                         css.style.height = '100vw';
-        //                         if (window.orientation == 0) {
-        //                             setTimeout(function () {
-        //                                 document.querySelector('html').scrollTop = width;
-        //                             });
-        //                         }
-        //                         done = true;
-        //                         break;
-        //                     }
-        //                 }
-        //             }
-        //             continue;
+
+        //     //follow quick menu
+        //     // $(window).scroll(function () {
+        //     //     var scrollTop = $(document).scrollTop();
+        //     //     if (scrollTop < 180) {
+        //     //         scrollTop = 180;
+        //     //     }
+        //     //     $(".quick_nav").stop();
+        //     //     $(".quick_nav").animate({
+        //     //         "top": scrollTop
+        //     //     });
+        //     // });
+
+
+
+        //     var $quickMenu = $(".quick_nav");
+        //     $(window).scroll(function () {
+        //         var scrollValue = $(window).scrollTop(); //스크롤 위치변수선언
+
+        //         //퀵메뉴 가운데 위치값 계산
+        //         var centerPosition = ($(window).height() - $quickMenu.height()) / 2 + $(window)
+        //             .scrollTop();
+
+        //         if (scrollValue < 100) { //스크롤 위치값이 100 이하
+        //             $quickMenu.stop().animate({
+        //                 'top': 26 + 'px'
+        //             }, 1000);
+        //         } else if (scrollValue > 300) { //스크롤 위치값이 100이하
+        //             $quickMenu.stop().animate({
+        //                 'top': centerPosition + 'px'
+        //             }, 1000);
         //         }
-        //     }
+        //     });
 
-        //     window.addEventListener('orientationchange', function (e) {
-
-        //     })
         // });
 
-
+        // function actionToggle() {
+        //     const action = document.querySelector('.quick_action');
+        //     action.classList.toggle('quick_active')
+        // }
 
         $(document).ready(function () {
+
             // quick_menu toggle
             $(".quick_nav .btn_close").click(function () {
                 $(".quick_nav").toggleClass("quick_nav-close");
             });
 
-
-            //follow quick menu
-            // $(window).scroll(function () {
-            //     var scrollTop = $(document).scrollTop();
-            //     if (scrollTop < 180) {
-            //         scrollTop = 180;
-            //     }
-            //     $(".quick_nav").stop();
-            //     $(".quick_nav").animate({
-            //         "top": scrollTop
-            //     });
-            // });
-
-            var $quickMenu = $(".quick_nav");
-            $(window).scroll(function () {
-                var scrollValue = $(window).scrollTop(); //스크롤 위치변수선언
-
-                //퀵메뉴 가운데 위치값 계산
-                var centerPosition = ($(window).height() - $quickMenu.height()) / 2 + $(window)
-                    .scrollTop();
-
-                if (scrollValue < 100) { //스크롤 위치값이 100 이하
-                    $quickMenu.stop().animate({
-                        'top': 26 + 'px'
-                    }, 1000);
-                } else if (scrollValue > 300) { //스크롤 위치값이 100이하
-                    $quickMenu.stop().animate({
-                        'top': centerPosition + 'px'
-                    }, 1000);
+            // 퀵메뉴
+            const quick_nav = document.querySelector(".quick_nav ");
+            document.addEventListener("scroll", () => {
+                var scrollTop = $(document).scrollTop();
+                if (scrollTop < 300) {
+                    scrollTop = 26;
                 }
+                $(".quick_nav").stop();
+                $(".quick_nav").animate({
+                    "top": scrollTop
+                });
             });
+
+
+
+
+
+            //cause-card__progress
+            const progress = document.querySelectorAll('.cause-card__progress span');
+            let result = document.querySelector('.cause-card__progress');
+            result.innerText = div.offsetWidth + 'x' + div.offsetHeight;
+            console.log(result)
 
         });
 
