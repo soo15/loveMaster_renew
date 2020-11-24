@@ -52,7 +52,10 @@
     <script type="text/javascript" src="../../common/js/chest_menu.js?_v=20201015095339"></script>
     <!-- menu script -->
     <script type="text/javascript" src="../../common/js/chest_util.js"></script><!-- util script -->
-    <!-- <script type="text/javascript" src="../../common/js/chest_ajax.js"></script> -->
+    <script type="text/javascript" src="../../common/js/chest_ajax.js"></script>
+
+
+    <!-- <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script> -->
     <!--ajax script -->
     <script type="text/javascript" src="../../common/js/chest_com.js"></script> <!-- common script -->
     <script type="text/javascript" src="../../common/js/chest_grid.js"></script><!-- grid script -->
@@ -111,6 +114,17 @@
                 $(".quick_nav").toggleClass("quick_nav-close");
             });
 
+            // var HPosition = parseInt($("#baseMain").css("height"));
+            var quickPosition = parseInt($(".quick_nav").css("top"));
+            $(window).scroll(function () {
+                var position = $(window).scrollTop(); // 현재 스크롤바의 위치값을 반환합니다.
+                var quicktotal = quickPosition + position + 450;
+
+                // if (position < HPosition) {
+                //     position = quickPosition + position + 450;
+                // }
+                $(".quick_nav").stop().animate({ "top": position + quickPosition + "px" }, 500);
+            });
 
             //follow quick menu
             // $(window).scroll(function () {
@@ -124,28 +138,13 @@
             //     });
             // });
 
-            var $quickMenu = $(".quick_nav");
-            $(window).scroll(function () {
-                var scrollValue = $(window).scrollTop(); //스크롤 위치변수선언
 
-                //퀵메뉴 가운데 위치값 계산
-                var centerPosition = ($(window).height() - $quickMenu.height()) / 2 + $(window)
-                    .scrollTop();
-
-                if (scrollValue < 100) { //스크롤 위치값이 100 이하
-                    $quickMenu.stop().animate({
-                        'top': 26 + 'px'
-                    }, 1000);
-                } else if (scrollValue > 300) { //스크롤 위치값이 100이하
-                    $quickMenu.stop().animate({
-                        'top': centerPosition + 'px'
-                    }, 1000);
-                }
-            });
 
         });
 
-        function actionToggle() {
+
+
+        function actiontoggle() {
             const action = document.querySelector('.quick_action');
             action.classList.toggle('quick_active')
         }
@@ -154,7 +153,7 @@
 </head>
 
 <body>
-    <div class="base-main" id="baseMain" style="overflow-x: hidden;">
+    <div class="base-main" id="baseMain">
         <!--main_section-->
         <div class="main__vs">
             <!--slider_hero-->
