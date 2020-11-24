@@ -176,8 +176,8 @@
         function snsScroll() {
             $(window).scroll(function () {
                 var scrollTop = $(document).scrollTop();
-                if (scrollTop < 26) {
-                    scrollTop = 0;
+                if (scrollTop < 660) {
+                    scrollTop = 660;
                 }
                 $(".sns_wrapper").stop();
                 $(".sns_wrapper").animate({
