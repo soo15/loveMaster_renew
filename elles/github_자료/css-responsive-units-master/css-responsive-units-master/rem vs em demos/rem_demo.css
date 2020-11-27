@@ -1,3 +1,27 @@
+<<<<<<< HEAD
 version https://git-lfs.github.com/spec/v1
 oid sha256:c8752c3bb3eb96e97472f9e0f1a11643da4e36e7787e2efb30875b07a203e8b5
 size 290
+=======
+.component {
+  width: 50%;
+  border: 1px solid burlywood;
+  font-size: 2rem;
+}
+
+.title {
+  padding: 0.5em 0.5rem;
+  background-color: burlywood;
+}
+
+.contents {
+  font-size: 1rem;
+  padding: 0.5em 0.5rem;
+}
+
+@media screen and (max-width: 780px) {
+  .component {
+    font-size: 1.5rem;
+  }
+}
+>>>>>>> b5bcfaee1171b19d6c037cb3e04951c60adec453

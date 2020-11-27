@@ -1,3 +1,24 @@
+<<<<<<< HEAD
 version https://git-lfs.github.com/spec/v1
 oid sha256:a56ffbd25feece93d8ced6b698b1fb182c8769b3ba19a984eaca3e5e530c0fa4
 size 252
+=======
+h1 {
+  display: inline-block;
+  font-size: 5em;
+  background-color: mediumaquamarine;
+  padding: 1em;
+}
+
+@media screen and (max-width: 780px) {
+  h1 {
+    font-size: 3em;
+  }
+}
+
+@media screen and (max-width: 680px) {
+  h1 {
+    font-size: 1.5em;
+  }
+}
+>>>>>>> b5bcfaee1171b19d6c037cb3e04951c60adec453

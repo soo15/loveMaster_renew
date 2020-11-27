@@ -1,3 +1,21 @@
+<<<<<<< HEAD
 version https://git-lfs.github.com/spec/v1
 oid sha256:517e0c5d230db90ef4072861885dfff2ee680d14135ae368d66d07997e4b7ed5
 size 123
+=======
+.level1 {
+  font-size: 2em;
+}
+
+.level2 {
+  font-size: 2em;
+}
+
+.level3 {
+  font-size: 2em;
+}
+
+.level4 {
+  font-size: 2em;
+}
+>>>>>>> b5bcfaee1171b19d6c037cb3e04951c60adec453
