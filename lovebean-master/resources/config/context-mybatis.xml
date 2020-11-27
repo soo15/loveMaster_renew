@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:mybatis="http://mybatis.org/schema/mybatis-spring"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+                           http://mybatis.org/schema/mybatis-spring http://mybatis.org/schema/mybatis-spring.xsd
+                           http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
+
+    <bean id="hikariConfig" class="com.zaxxer.hikari.HikariConfig">
+        <property name="poolName" value="springHikariCP" />
+        <property name="driverClassName" value="#{jdbc['jdbc.driverClassName']}"/>
+        <property name="jdbcUrl" value="#{jdbc['jdbc.url']}"/>
+        <property name="username" value="#{jdbc['jdbc.username']}" />
+        <property name="password" value="#{jdbc['jdbc.password']}" />
+        <property name="minimumIdle" value="5" />
+        <property name="maximumPoolSize" value="10" />
+        <property name="connectionTestQuery" value="select 1" />
+        <property name="connectionTimeout"  value="300000" />
+    </bean>
+
+   <bean id="dataSourceSpied" class="com.zaxxer.hikari.HikariDataSource" destroy-method="close">
+        <constructor-arg ref="hikariConfig" />
+    </bean>
+
+    <bean id="dataSource" class="net.sf.log4jdbc.Log4jdbcProxyDataSource">
+        <constructor-arg ref="dataSourceSpied" />
+        <property name="logFormatter">
+            <bean class="net.sf.log4jdbc.tools.Log4JdbcCustomFormatter">
+                <property name="loggingType" value="MULTI_LINE"></property>
+            </bean>
+        </property>
+    </bean>
+
+    <!-- dbcp2 방식
+    <bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource" destroy-method="close" >
+        <property name="driverClassName" value="#{jdbc['jdbc.driverClassName']}" />
+        <property name="url" value="#{jdbc['jdbc.url']}" />
+        <property name="username" value="#{jdbc['jdbc.username']}" />
+        <property name="password" value="#{jdbc['jdbc.password']}" />
+        <property name="validationQuery" value="SELECT 1" />
+        <property name="testWhileIdle" value="true" />
+        <property name="testOnBorrow" value="true" />
+        <property name="testOnReturn" value="true" />
+        <property name="timeBetweenEvictionRunsMillis" value="60000" />
+    </bean>
+    -->
+
+    <!-- mybatis SqlSessionFactoryBean 설정 -->
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="dataSource" />
+        <property name="configLocation" value="classpath:/config/mybatis-config.xml"/>
+        <property name="mapperLocations" value="classpath:/sql/**/sql-*.xml" />
+    </bean>
+
+    <bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
+        <constructor-arg index="0" ref="sqlSessionFactory" />
+    </bean>
+
+    <!-- Mapper Interface 구현을 위한 스캐너 -->
+    <bean id="mapperScanner" class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="basePackage" value="com.**.mapper, com.chest.**.mapper" />
+        <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory" />
+        <property name="sqlSessionFactory" ref="sqlSessionFactory" />
+    </bean>
+
+    <!-- scan 설정 : mapper, servise, aop 등 -->
+    <!--
+    <mybatis:scan base-package="com.**.mapper, com.chest.**.mapper" />
+    <context:component-scan base-package="[service 패키지 위치 표시]"></context:component-scan>
+    <context:component-scan base-package="[aop 패키지 위치 표시]"></context:component-scan>
+    <aop:aspectj-autoproxy></aop:aspectj-autoproxy>
+    -->
+
+    <!-- Transaction 설정 -->
+    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSource" />
+    </bean>
+    
+    <!-- lock provider of your choice (jdbc/zookeeper/mongo/whatever) -->
+	<bean id="lockProvider" class="net.javacrumbs.shedlock.provider.jdbctemplate.JdbcTemplateLockProvider">
+	    <constructor-arg ref="dataSource"/>
+	</bean>
+
+    <!-- <tx:annotation-driven transaction-manager="transactionManager" proxy-target-class="true"/> -->
+</beans>

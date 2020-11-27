@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.chest.ct.mapper.EntcntrbMapper">
+
+      <!-- 상담지역 조회 -->
+     <select id="selectCodeList" parameterType="HashMap" resultType="com.common.map.ComCamelMap">
+          SELECT '선택하세요' AS BHF_CODE_NM , '' AS BHF_CODE
+          UNION ALL
+          SELECT CMMN_CODE_NM AS BHF_CODE_NM
+               , CMMN_CODE    AS BHF_CODE
+          FROM   TCM_CmmnCode B
+          WHERE GROUP_CODE = 'HP0010'
+    </select>
+
+	<!--  기부상담신청 -->
+	<insert id="insertTHP_CntrCnsltReqst" parameterType="HashMap">
+		<selectKey keyProperty="cnsltSn" resultType="String" order="BEFORE">
+    		SELECT ISNULL ( MAX( CNSLT_SN ) + 1 , 1 ) FROM THP_CntrCnsltReqst
+  		</selectKey>
+		INSERT INTO THP_CntrCnsltReqst (
+			CNSLT_SN         /* 기부상담신청순번  */
+			,BHF_CODE        /* 지회코드 */
+			,REQST_MANAGE_TY /* 기부신청관리유형 */
+			,NM              /* 성명 */
+			,TELNO           /* 회신연락처 */
+			,EMAIL           /* 회신이메일 */
+			,REQST_CN        /* 상담신청내용 */
+			,PROGRS_STTUS    /* 진행상태 */
+			,AGRE_AT         /* 개인정보제공동의여부 */
+			,AGRE_RGSDE      /* 제공동일등록일 */
+			,REGISTER        /* 등록자 */
+			,RGSDE           /* 등록일 */
+			,UPDUSR          /* 수정자 */
+			,UPDDE           /* 수정일 */
+		) VALUES (
+			( SELECT ISNULL ( MAX( CNSLT_SN ) + 1 , 1 ) FROM THP_CntrCnsltReqst )
+			,#{bhfCode}
+			,#{reqstManageTy}
+			,#{nm}
+			,#{telno}
+			,#{email}
+			,#{reqstCn}
+			,#{progrsSttus}
+			,#{agreAt}
+			,GETDATE()
+			,'user'
+			,GETDATE()
+			,'user'
+			,GETDATE()
+		)
+	</insert>
+
+	<!-- THP_CntrCnsltHist 기부상담이력 -->
+	<insert id="insertTHP_CntrCnsltHist" parameterType="HashMap">
+		INSERT INTO THP_CntrCnsltHist (
+			CNSLT_SN      /* 기부상담신청순번 */
+			,HIST_SN      /* 이력순번 */
+			,PROGRS_STTUS /* 진행상태 */
+			,CN           /* 내용 */
+			,REGISTER     /* 등록자 */
+			,RGSDE        /* 등록일 */
+			,UPDUSR       /* 수정자 */
+			,UPDDE        /* 수정일 */
+		) VALUES (
+			#{cnsltSn }
+			,( SELECT ISNULL( MAX(HIST_SN ) + 1 ,  1 ) FROM THP_CntrCnsltHist )
+			,#{progrsSttus }
+			,#{cn}
+			,'user'
+			,GETDATE()
+			,'user'
+			,GETDATE()
+		)
+	</insert>
+
+
+</mapper>

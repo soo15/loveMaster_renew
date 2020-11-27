@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--
+ * ************************************************************************************************
+ * System Name : 사랑의 열매 사용자 System
+ * Class Name  : sql-sca.xml
+ * Author      : Chest Front
+ * Date        : 2019. 9. 18.
+ * Description : [ 나눔문화활성화 ]
+ * History     :
+ * ************************************************************************************************
+ * No.     Date           Name             Description
+ * ************************************************************************************************
+ * CH_OO   2019. 9. 18.    권민      Initial Release
+ * CH_01
+ *************************************************************************************************
+-->
+<mapper namespace="com.chest.bn.mapper.ScaMapper">
+
+   <!--  [나눔체험신청] 신청 및 변경  -->
+    <insert id="insertTHP_LnbnsReqst" parameterType="HashMap">
+		MERGE INTO THP_LnbnsReqst 
+		USING (VALUES (1))
+		            AS Source (Number)      
+		            ON LNBNS_SN = convert(int,#{lnbnsSn})  
+		WHEN MATCHED THEN
+		    UPDATE SET 
+		             APPLCNT_NM          = #{applcntNm}      /* 신청자명*/
+		            ,APPLCNT_MBTLNUM     = #{applcntMbtlnum} /* 신청자휴대번호*/
+		            ,APPLCNT_EMAIL       = #{applcntEmail}   /* 신청자이메일*/
+		            ,APPLCNT_INSTT_NM    = #{applcntInsttNm} /* 신청기관명*/
+		            ,APPLCNT_INSTT_TY    = #{applcntInsttTy} /* 기관유형*/
+		            ,ZIP                 = #{zip}            /* 우편번호*/
+		            ,ADRES1              = #{adres1}         /* 주소1*/
+		            ,ADRES2              = #{adres2}         /* 주소2*/
+		            ,VISIT_HOPE_DE       = #{visitHopeDe}    /* 희망일자*/
+		            ,VISIT_HOPE_TIME     = #{visitHopeTime}  /* 방문시간*/
+		            ,AGRDE               = #{agrde}          /* 연령대*/
+		            ,LNBNS_TRGET_TY      = #{lnbnsTrgetTy}   /* 견학대상유형*/
+		            ,LNBNS_NMPR          = #{lnbnsNmpr}      /* 견학인원수*/
+		            ,CHARGER_NM          = #{chargerNm}      /* 담당교사명*/
+		            ,CHARGER_MBTLNUM     = #{chargerMbtlnum} /* 담당교사휴대폰*/
+		            ,CHARGER_EMAIL       = #{chargerEmail}   /* 담당교사이메일*/
+		            ,PARTCLR_MATTER      = #{partclrMatter}  /* 특이사항*/
+		            ,PROGRS_STEP         = #{progrsStep}     /* 처리단계*/
+<!--                     ,AGRE_AT             = #{agreAt} -->
+<!-- 		            ,THPTY_AGRE_AT       = #{thptyAgreAt} -->
+		            ,UPDDE               = GETDATE()          /* 변경일 */ 
+		WHEN NOT MATCHED THEN  
+		INSERT (
+					 APPLCNT_NM          /* 신청자명*/
+					,APPLCNT_MBTLNUM     /* 신청자휴대번호*/
+					,APPLCNT_EMAIL       /* 신청자이메일*/
+					,APPLCNT_INSTT_NM    /* 신청기관명*/
+					,APPLCNT_INSTT_TY    /* 기관유형*/
+					,ZIP                 /* 우편번호*/
+					,ADRES1              /* 주소1*/
+					,ADRES2              /* 주소2*/
+					,VISIT_HOPE_DE       /* 희망일자*/
+					,VISIT_HOPE_TIME     /* 방문시간*/
+					,AGRDE               /* 연령대*/
+					,LNBNS_TRGET_TY      /* 견학대상유형*/
+					,LNBNS_NMPR          /* 견학인원수*/
+					,CHARGER_NM          /* 담당교사명*/
+					,CHARGER_MBTLNUM     /* 담당교사휴대폰*/
+					,CHARGER_EMAIL       /* 담당교사이메일*/
+					,PARTCLR_MATTER      /* 특이사항*/
+					,AGRE_AT             /* 개인정보제공동의여부*/
+					,AGRE_RGSDE          /* 제공동의등록일*/
+					,THPTY_AGRE_AT       /* 제3자제공이용동의*/
+					,THPTY_AGRE_RGSDE    /* 제공동의등록일*/
+					,RGSDE               /* 등록일*/
+					,PROGRS_STEP         /* 처리단계*/
+		        ) VALUES (
+		             #{applcntNm}
+		            ,#{applcntMbtlnum}
+		            ,#{applcntEmail}
+		            ,#{applcntInsttNm}
+		            ,#{applcntInsttTy}
+		            ,#{zip}
+		            ,#{adres1}
+		            ,#{adres2}
+		            ,#{visitHopeDe}
+		            ,#{visitHopeTime}
+		            ,#{agrde}
+		            ,#{lnbnsTrgetTy}
+		            ,#{lnbnsNmpr}
+		            ,#{chargerNm}
+		            ,#{chargerMbtlnum}
+		            ,#{chargerEmail}
+		            ,#{partclrMatter}
+		            ,#{agreAt}
+		            ,GETDATE()
+		            ,#{thptyAgreAt}
+		            ,GETDATE()
+		            ,GETDATE()
+		            ,#{progrsStep}
+		        );    
+    </insert>
+
+    <!-- [ 나눔체험신청 ] 신청내역 취소  -->
+    <update id="updateCancelTHP_LnbnsReqst" parameterType="HashMap">
+    UPDATE THP_LnbnsReqst
+    SET 
+             CANCL_AT             = 'Y'                /* 취소여부 */
+            ,CANCL_DE             =  GETDATE()         /* 취소신청일 */
+            ,UPDDE                =  GETDATE()         /* 변경일 */ 
+    WHERE  1=1 
+         AND   LNBNS_SN = #{lnbnsSn}    
+    </update>
+    
+    <!-- 나눔체험신청 조회 -->
+    <select id="selectTHP_LnbnsReqst" parameterType="HashMap" resultType="com.common.map.ComCamelMap">
+    SELECT 
+			 LNBNS_SN            /* 견학일련번호 */ 
+			,APPLCNT_NM          /* 신청자명*/
+			,APPLCNT_MBTLNUM     /* 신청자휴대번호*/
+			,APPLCNT_EMAIL       /* 신청자이메일*/
+			,APPLCNT_INSTT_NM    /* 신청기관명*/
+			,APPLCNT_INSTT_TY    /* 기관유형*/
+			,ZIP                 /* 우편번호*/
+			,ADRES1              /* 주소1*/
+			,ADRES2              /* 주소2*/
+			,VISIT_HOPE_DE       /* 희망일자*/
+			,VISIT_HOPE_TIME     /* 방문시간*/
+			,AGRDE               /* 연령대*/
+			,LNBNS_TRGET_TY      /* 견학대상유형*/
+			,LNBNS_NMPR          /* 견학인원수*/
+			,CHARGER_NM          /* 담당교사명*/
+			,CHARGER_MBTLNUM     /* 담당교사휴대폰*/
+			,CHARGER_EMAIL       /* 담당교사이메일*/
+			,PARTCLR_MATTER      /* 특이사항*/
+			,AGRE_AT             /* 개인정보제공동의여부*/
+			,AGRE_RGSDE          /* 제공동의등록일*/
+			,THPTY_AGRE_AT       /* 제3자제공이용동의*/
+			,THPTY_AGRE_RGSDE    /* 제공동의등록일*/
+			,RGSDE               /* 등록일*/
+			,PROGRS_STEP         /* 처리단계*/
+			,CANCL_AT            /* 취소여부*/
+            ,CANCL_DE            /* 취소일 */
+			,UPDDE               /* 변경일*/
+     FROM  THP_LnbnsReqst
+     WHERE 1=1
+     <if test='lnbnsSn != null and lnbnsSn != ""'>          
+     AND LNBNS_SN = #{lnbnsSn}
+     </if>
+    </select>
+    
+    
+    <!-- [ 나눔체험신청 ] Page 리스트 Count 조회 -->
+    <select id="selectReqstListCount" parameterType="HashMap" resultType="String">
+        <![CDATA[
+            SELECT  COUNT(*) AS CNT
+            FROM    THP_LnbnsReqst A
+            WHERE 1=1
+            AND APPLCNT_NM = #{applcntNm}
+            AND APPLCNT_MBTLNUM  = #{applcntMbtlnum}
+            
+        ]]>
+<!--             <include refid="ListCondition" /> -->
+    </select>     
+    
+    <!-- [ 나눔체험신청 ] 리스트 조회  -->
+    <select id="selectReqstList" parameterType="HashMap" resultType="com.common.map.ComCamelMap">
+        <![CDATA[
+            SELECT  ROW_NUMBER() OVER(ORDER BY LNBNS_SN DESC) AS NO  /* 번호 */
+                    , LNBNS_SN               /* 견학일련번호 */
+                    ,APPLCNT_INSTT_NM        /* 신청기관명 */
+                    ,APPLCNT_NM              /* 신청자명 */
+                    ,SUBSTRING(VISIT_HOPE_DE,1,4)+'-'+ SUBSTRING(VISIT_HOPE_DE,5,2)+'-'+SUBSTRING(VISIT_HOPE_DE,7,2) +' '
+                    +
+                    ( SELECT LTRIM(SUBSTRING(CMMN_CODE_NM,6,13))  
+                        FROM TCM_CmmnCode C 
+                       WHERE C.CMMN_CODE = VISIT_HOPE_TIME 
+                         AND GROUP_CODE = 'HP0031'  
+                         AND USE_AT = 'Y')  AS VISIT_HOPE  /* 방문일시*/
+                    ,VISIT_HOPE_DE
+                    ,PROGRS_STEP             /* 처리단계 */
+                    , CASE PROGRS_STEP WHEN '01' THEN '접수완료'
+                                       WHEN '02' THEN '취소완료'
+                                       WHEN '03' THEN '승인완료'
+                                       ELSE ' ' 
+                                       END PROGRS_STEP_NM   /* 신청상태 */
+                    ,CANCL_AT                /* 취소여부 */
+                    ,CASE CANCL_AT WHEN 'Y' THEN '취소'
+                                   ELSE '취소가능' 
+                                   END CANCL_AT_NM  /* 취소여부상태 */
+            FROM    THP_LnbnsReqst
+            WHERE 1=1
+            AND APPLCNT_NM = #{applcntNm}
+            AND APPLCNT_MBTLNUM  = #{applcntMbtlnum}
+        ]]>
+<!--             <include refid="ListCondition" /> -->
+        <![CDATA[
+            ORDER BY LNBNS_SN DESC
+            OFFSET (CONVERT(int, #{currPageNo}) - 1) * CONVERT(int, #{pageCount}) ROWS FETCH NEXT CONVERT(int, #{pageCount}) ROWS ONLY
+        ]]>
+    </select>   
+    
+    <!-- [ 나눔체험신청 ] 게시물 리스트 Common Condition Query  ( 신청자 전화번호  )  -->
+<!--     <sql id="ListCondition"> -->
+<!--         [조회 조건] SJ -->
+<!--           <if test='applcntNm != null and applcntNm != ""'> -->
+<!--             AND APPLCNT_NM LIKE '%' + #{applcntNm} + '%' -->
+<!--           </if>            -->
+<!--           <if test='applcntMbtlnum != null and applcntMbtlnum != ""'> -->
+<!--             AND APPLCNT_MBTLNUM  = #{applcntMbtlnum} -->
+<!--           </if>            -->
+<!--     </sql>      -->
+    
+</mapper>

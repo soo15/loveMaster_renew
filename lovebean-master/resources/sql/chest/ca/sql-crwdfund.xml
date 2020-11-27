@@ -1,0 +1,313 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--
+ * ************************************************************************************************
+ * System Name : 사랑의 열매 사용자 System
+ * Class Name  : sql-crwdfund.xml
+ * Author      : Chest Front
+ * Date        : 2019. 10. 21.
+ * Description : [ 캠페인 ]
+ * History     :
+ * ************************************************************************************************
+ * No.     Date           Name             Description
+ * ************************************************************************************************
+ * CH_OO   2019. 10. 21.    권민      Initial Release
+ * CH_01
+ *************************************************************************************************
+-->
+<mapper namespace="com.chest.ca.mapper.CrwdfundMapper">
+
+    <!-- [ 캠페인 ] 클라우드 펀딩 신청 !! -->
+    <insert id="reqstCrwdfund" parameterType="HashMap">
+        <selectKey keyProperty="propse_sn" resultType="String" order="AFTER">
+            SELECT IDENT_CURRENT('THP_FundMysPropse')
+        </selectKey>
+        <![CDATA[
+            INSERT INTO THP_FundMysPropse
+            (
+                PROPSE_INSTT_NM
+				, PROPSE_INSTT_BIZRNO
+				, PROPSE_BSNS_NM
+				, PROPSE_BSNS_BSR
+				, BSNS_SJ
+				, BSNS_NCSSTY
+				, BSNS_INTRCN
+				, BSNS_SCHDUL
+				, MYS_BGNDE
+				, MYS_ENDDE
+				, BSNS_BGNDE
+				, BSNS_ENDDE
+				, PRTCPNT_CNT
+				, SVC_AREA
+				, SVC_TRGET
+				, GOAL_AMOUNT
+				, GOAL_AMOUNT_USE_PLAN
+				, GOAL_AMOUNT_LACK_PLAN
+				, PROPSE_CHARGER_NM
+				, PROPSE_CHARGER_PHONE
+				, PROPSE_CHARGER_EMAIL
+				, RGSDE
+				, CANCL_AT
+				, PROGRS_STEP
+            )
+            VALUES
+            (
+                #{propseInsttNm}
+                , #{propseInsttBizrno}
+                , #{propseBsnsNm}
+                , #{propseBsnsBsr}
+                , #{bsnsSj}
+                , #{bsnsNcssty}
+				, #{bsnsIntrcn}
+				, #{bsnsSchdul}
+                , #{mysBgnde}
+                , #{mysEndde}
+                , #{bsnsBgnde}
+                , #{bsnsEndde}
+                , #{prtcpntCnt}
+                , #{svcArea}
+                , #{svcTrget}
+                , #{goalAmount}
+                , #{goalAmountUsePlan}
+                , #{goalAmountLackPlan}
+                , #{propseChargerNm}
+                , #{propseChargerPhone}
+                , #{propseChargerEmail}
+                , GETDATE()
+                , 'N'
+                , '01'
+            )
+        ]]>
+    </insert>
+
+    <!-- [ 캠페인 ] 클라우드 펀딩 신청 이력 !! -->
+    <insert id="reqstCrwdfundHist" parameterType="HashMap">
+        <![CDATA[
+            INSERT INTO THP_FundMysPropseHist
+            (
+				PROPSE_SN
+				, PROCESS_STEP
+				, PROCESS_RESN
+				, CHARGER_NM
+				, RGSDE
+            )
+            VALUES
+            (
+                #{propseSn}
+                , '01'
+                , '최초 접수'
+                , #{propseChargerNm}
+                , GETDATE()
+            )
+        ]]>
+    </insert>
+
+    <!-- [ 캠페인 ] 클라우드 펀딩 게시물 Page 리스트 Count 조회 !! -->
+    <select id="selectCrwdfundListCount" parameterType="HashMap" resultType="String">
+        <![CDATA[
+            SELECT  COUNT(*) AS CNT
+            FROM    THP_FundMysNtce WITH (NOLOCK)
+            WHERE   1 = 1
+        ]]>
+        <choose>
+            <!-- 현재일자가 모금시작일과 모금종료일 사이에 있을 때 -->
+            <when test='pEndAt == "P"'>
+            AND     (CONVERT(VARCHAR(10), GETDATE(), 112) BETWEEN MYS_BGNDE AND MYS_ENDDE
+                    OR PRCSNG_EXPSR_AT = 'Y')
+            </when>
+            <!-- 현재일자가 모금종료일 보다 클 때 -->
+            <otherwise>
+            AND     CONVERT(VARCHAR(10), GETDATE(), 112) <![CDATA[>]]> MYS_ENDDE
+            AND     PRCSNG_EXPSR_AT = 'N'
+            </otherwise>
+        </choose>
+    </select>
+
+    <!-- [ 캠페인 ] 클라우드 펀딩 게시물 Page 리스트 조회 !! -->
+    <select id="selectCrwdfundList" parameterType="HashMap" resultType="com.common.map.ComCamelMap">
+        <![CDATA[
+            SELECT  A.PROPSE_SN
+					, A.BSNS_SJ
+					, A.THUMB_FILE_NM
+					, A.FLPTH
+					, A.SERVER_FILE_NM
+					, A.FILE_EXTSN
+					, A.GOAL_AMOUNT
+					, A.MYS_BGNDE
+					, A.MYS_ENDDE
+					, A.GOAL_AMOUNT_USE_PLAN
+					, A.EVENT_CODE
+					, ISNULL(
+                    (
+		                SELECT  SUM(CNTR_AMOUNT)
+		                FROM    THP_InipayLog B WITH (NOLOCK)
+		                WHERE   B.EVENT_CODE  IN  (
+		                                              SELECT  C.EVENT_CODE
+		                                              FROM    THP_MysCodeMapping C WITH (NOLOCK)
+		                                              WHERE   C.EVENT_GROUP = (
+		                                                                      SELECT  D.EVENT_GROUP
+		                                                                      FROM    THP_MysCodeMapping D WITH (NOLOCK)
+		                                                                      WHERE   D.EVENT_CODE =  A.EVENT_CODE
+		                                                                    )
+                                                  )
+		                AND     B.RESULT_CODE IN ('00','0000')  -- 정상처리
+		            ), 0) AS CNTR_AMOUNT_SUM
+		            , ISNULL((
+                        SELECT  COUNT(1)
+                        FROM    THP_InipayLog B WITH (NOLOCK)
+                        WHERE   B.EVENT_CODE IN (
+                                                    SELECT  C.EVENT_CODE
+                                                    FROM    THP_MysCodeMapping C WITH (NOLOCK)
+                                                    WHERE   C.EVENT_GROUP  = (
+                                                                                SELECT  D.EVENT_GROUP
+                                                                                FROM    THP_MysCodeMapping D WITH (NOLOCK)
+                                                                                WHERE   D.EVENT_CODE = A.EVENT_CODE
+                                                                             )
+                                                )
+                        AND     B.RESULT_CODE IN ('0000', '00')
+                    ), 0) AS CNTR_AMOUNT_CNT
+                    , CASE WHEN (CONVERT(VARCHAR(10), GETDATE(), 112) BETWEEN A.MYS_BGNDE AND A.MYS_ENDDE) THEN 'P' ELSE 'E' END AS END_AT
+            FROM    THP_FundMysNtce A WITH (NOLOCK)
+            WHERE   1 = 1
+        ]]>
+        <choose>
+            <!-- 현재일자가 모금시작일과 모금종료일 사이에 있을 때 -->
+            <when test='pEndAt == "P"'>
+            AND     (CONVERT(VARCHAR(10), GETDATE(), 112) BETWEEN A.MYS_BGNDE AND A.MYS_ENDDE
+                    OR PRCSNG_EXPSR_AT = 'Y')
+            </when>
+            <!-- 현재일자가 모금종료일 보다 클 때 -->
+            <otherwise>
+            AND     CONVERT(VARCHAR(10), GETDATE(), 112) <![CDATA[>]]> A.MYS_ENDDE
+            AND     PRCSNG_EXPSR_AT = 'N'
+            </otherwise>
+        </choose>
+            ORDER BY A.SORT ASC
+        <![CDATA[
+            OFFSET (CONVERT(int, #{currPageNo}) - 1) * CONVERT(int, #{pageCount}) ROWS FETCH NEXT CONVERT(int, #{pageCount}) ROWS ONLY
+        ]]>
+    </select>
+
+    <!-- [ 캠페인 ] 클라우드 펀딩 게시물 한 건 조회 !! -->
+    <select id="selectCrwdfundInfo" parameterType="HashMap" resultType="com.common.map.ComCamelMap">
+        <![CDATA[
+            SELECT  A.PROPSE_SN
+                    , A.BSNS_SJ
+                    , A.BSNS_CN
+                    , A.THUMB_FILE_NM
+                    , A.FLPTH
+                    , A.SERVER_FILE_NM
+                    , A.PROPSE_INSTT_NM
+                    , A.PROPSE_INSTT_FILE_NM
+                    , A.GOAL_AMOUNT
+                    , A.MYS_BGNDE
+                    , A.MYS_ENDDE
+                    , CONVERT(VARCHAR, CONVERT(DATE, A.MYS_BGNDE), 102) + ' ~ ' + CONVERT(VARCHAR, CONVERT(DATE, A.MYS_ENDDE), 102) AS MYS_PD
+                    , CONVERT(VARCHAR, CONVERT(DATE, B.BSNS_BGNDE), 102) + ' ~ ' + CONVERT(VARCHAR, CONVERT(DATE, B.BSNS_ENDDE), 102) AS BSNS_PD
+                    , A.GOAL_AMOUNT_USE_PLAN
+                    , A.EVENT_CODE
+                    , ISNULL((
+                        SELECT  SUM(CNTR_AMOUNT)
+                        FROM    THP_InipayLog B WITH (NOLOCK)
+                        WHERE   B.EVENT_CODE  IN  (
+                                                      SELECT  C.EVENT_CODE
+                                                      FROM    THP_MysCodeMapping C WITH (NOLOCK)
+                                                      WHERE   C.EVENT_GROUP = (
+                                                                              SELECT  D.EVENT_GROUP
+                                                                              FROM    THP_MysCodeMapping D WITH (NOLOCK)
+                                                                              WHERE   D.EVENT_CODE =  A.EVENT_CODE
+                                                                            )
+                                                  )
+                        AND     B.RESULT_CODE IN ('00','0000')  -- 정상처리
+                    ), 0) AS CNTR_AMOUNT_SUM
+                    , ISNULL((
+                        SELECT  COUNT(1)
+                        FROM    THP_InipayLog B WITH (NOLOCK)
+                        WHERE   B.EVENT_CODE IN (
+                                                    SELECT  C.EVENT_CODE
+                                                    FROM    THP_MysCodeMapping C WITH (NOLOCK)
+                                                    WHERE   C.EVENT_GROUP  = (
+                                                                                SELECT  D.EVENT_GROUP
+                                                                                FROM    THP_MysCodeMapping D WITH (NOLOCK)
+                                                                                WHERE   D.EVENT_CODE = A.EVENT_CODE
+                                                                             )
+                                                )
+                        AND     B.RESULT_CODE IN ('0000', '00')
+                    ), 0) AS CNTR_AMOUNT_CNT
+                    , CASE WHEN (CONVERT(VARCHAR(10), GETDATE(), 112) BETWEEN A.MYS_BGNDE AND A.MYS_ENDDE) THEN 'P' ELSE 'E' END AS END_AT
+            FROM    THP_FundMysNtce A WITH (NOLOCK)
+                    , THP_FundMysPropse B WITH (NOLOCK)
+        ]]>
+            WHERE   A.PROPSE_SN = B.PROPSE_SN
+            AND     A.PROPSE_SN = #{propseSn}
+    </select>
+
+    <!-- [ 캠페인 ] 클라우드 펀딩 댓글 Page 리스트 Count 조회 !! -->
+    <select id="selectCrwdfundAnswerListCount" parameterType="HashMap" resultType="String">
+        <![CDATA[
+            SELECT  COUNT(*) AS CNT
+            FROM    THP_FundMysAnswer WITH (NOLOCK)
+        ]]>
+            WHERE   DELETE_AT = 'N'
+            AND     PROPSE_SN = #{propseSn}
+    </select>
+
+    <!-- [ 캠페인 ] 클라우드 펀딩 댓글 Page 리스트 조회 !! -->
+    <select id="selectCrwdfundAnswerList" parameterType="HashMap" resultType="com.common.map.ComCamelMap">
+        <![CDATA[
+            SELECT  ANSWER_SN
+					, PROPSE_SN
+					, ANSWER_CN
+					, STUFF(CHARGER_NM, LEN(CHARGER_NM), 1 ,'*') AS CHARGER_NM
+					, FORMAT(RGSDE, 'yyyy년 MM월 dd일', 'ko-kr') AS RGSDE
+					, DELETE_AT
+					, DELETE_DE
+            FROM    THP_FundMysAnswer WITH (NOLOCK)
+            WHERE   DELETE_AT = 'N'
+        ]]>
+            AND     PROPSE_SN = #{propseSn}
+            ORDER BY RGSDE DESC
+        <![CDATA[
+            OFFSET (CONVERT(int, #{currPageNo}) - 1) * CONVERT(int, #{pageCount}) ROWS FETCH NEXT CONVERT(int, #{pageCount}) ROWS ONLY
+        ]]>
+    </select>
+
+    <!-- [ 캠페인 ] 클라우드 펀딩 답글 비밀번호 체크 !! -->
+    <select id="checkReplyPw" parameterType="HashMap" resultType="int">
+        SELECT  COUNT(*) AS CNT
+        FROM    THP_FundMysAnswer WITH (NOLOCK)
+        WHERE   ANSWER_SN = #{answerSn}
+        AND     CHARGER_PW = #{chargerPw}
+    </select>
+
+    <!-- [ 캠페인 ] 클라우드 펀딩 답글 한 건 삭제 !! -->
+    <update id="deleteReply" parameterType="HashMap">
+        UPDATE  THP_FundMysAnswer
+        SET
+                DELETE_AT = 'Y'
+                , DELETE_DE = GETDATE()
+        WHERE   ANSWER_SN = #{answerSn}
+    </update>
+
+    <!-- [ 캠페인 ] 클라우드 펀딩 답글 한 건 조회 !! -->
+    <select id="selectCrwdfundReplyInfo" parameterType="HashMap" resultType="com.common.map.ComCamelMap">
+        SELECT  ANSWER_SN
+                , PROPSE_SN
+                , ANSWER_CN
+                , CHARGER_NM
+                , CHARGER_PW
+        FROM    THP_FundMysAnswer WITH (NOLOCK)
+        WHERE   ANSWER_SN = #{answerSn}
+    </select>
+
+    <!-- [ 캠페인 ] 클라우드 펀딩 답글 한 건 수정 !! -->
+    <update id="updateReply" parameterType="HashMap">
+        UPDATE  THP_FundMysAnswer
+        SET
+                ANSWER_CN = #{answerCn}
+                , CHARGER_NM = #{chargerNm}
+                , CHARGER_PW = #{chargerPw}
+        WHERE   ANSWER_SN = #{answerSn}
+    </update>
+</mapper>

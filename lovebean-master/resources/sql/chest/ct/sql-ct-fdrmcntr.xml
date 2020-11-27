@@ -1,0 +1,674 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.chest.ct.mapper.FdrmcntrMapper">
+
+	<select id="payInfo" parameterType="HashMap" resultType="com.common.map.ComCamelMap">
+		WITH MAIN_TABLE AS (
+			SELECT
+				CNTR_SN , NM , MBTLNUM
+				FROM THP_CntrbtrInfo
+			WHERE 1=1
+			  AND CNTR_SN = #{cntrSn ,jdbcType=NUMERIC }
+			  AND MBTLNUM = #{mbtlnum}
+		)
+		SELECT
+			B.CNTR_SN
+			, NM
+			, MBTLNUM
+			, REPLACE(CONVERT(VARCHAR, CAST( CNTR_AMOUNT AS MONEY),1),'.00','') + ' 원' AS CNTR_AMOUNT							--기부금액
+			, CONVERT( VARCHAR , CONVERT( DATETIME , B.CNTR_BGNMT +''+ CNTR_TRANSFR_DE , 102 ) ,102 ) AS CNTR_BGNMT		--결제일(이체일)
+			, dbo.FNC_GetCmmnCodeNm('HP0004', METPAY_SE)  AS METPAY_SE_NM												--지불결제수단
+			, METPAY_SE
+			, CASE
+				WHEN METPAY_SE = 01 THEN CARD_NO
+				WHEN METPAY_SE = 03 THEN ACNUTNO
+			END AS METPAY_NO
+			, '일시불' AS PERIOD_NM
+			, CONVERT( VARCHAR , GETDATE() , 102 ) AS NOW_DATE
+			, CONVERT( VARCHAR , GETDATE() , 8 ) AS NOW_TIME
+		FROM MAIN_TABLE A , THP_CntrEnggReqst B
+		WHERE A.CNTR_SN = B.CNTR_SN
+	</select>
+
+    <select id="selectBankList" parameterType="HashMap" resultType="com.common.map.ComCamelMap">
+		SELECT
+			GROUP_CODE , CMMN_CODE , CMMN_CODE_NM
+		FROM [DBO].[TCM_CMMNCODE]
+		WHERE GROUP_CODE = 'CM0002'
+		ORDER BY CMMN_CODE
+    </select>
+    
+    <select id="getBankNm" parameterType="HashMap" resultType="String">
+    	SELECT
+			CMMN_CODE_NM
+		FROM [DBO].[TCM_CMMNCODE]
+		WHERE GROUP_CODE = 'CM0002'
+		  AND CMMN_CODE = #{acnutBank}
+    </select>
+
+     <select id="selectCodeList" parameterType="HashMap" resultType="com.common.map.ComCamelMap">
+     	<if test='speclMysAt == ""'>
+     	SELECT '' AS EVENT_CODE , '선택하세요' AS BHF_CODE_NM , '' AS BHF_CODE
+		UNION SELECT
+			EVENT_CODE
+			, ( SELECT CMMN_CODE_NM FROM TCM_CmmnCode B WHERE GROUP_CODE = 'HP0010' AND A.BHF_CODE = B.CMMN_CODE ) AS BHF_CODE_NM
+			, BHF_CODE
+		FROM THP_MysCodeMapping A
+		WHERE 1=1
+		  AND MYS_CL1 = #{mysCl1}
+  		  AND MYS_CL2 = #{mysCl2}
+  		  AND SPECL_MYS_AT = 'N'
+		  <if test=" setleMthd != null and setleMthd != '' ">
+	  	  AND SETLE_MTHD = #{setleMthd}
+	  	  </if>
+  		</if>
+  		<if test=' speclMysAt.equals("Y") '>
+ 		SELECT
+			EVENT_CODE
+			,ENGG_GROUP_CODE
+			, ( SELECT CMMN_CODE_NM FROM TCM_CmmnCode B WHERE GROUP_CODE = 'HP0010' AND A.BHF_CODE = B.CMMN_CODE ) AS BHF_CODE_NM
+			, BHF_CODE
+			, EVENT_NM
+			, SETLE_MTHD
+			, MYS_CL1
+			, MYS_CL2
+		FROM THP_MysCodeMapping A
+		WHERE 1=1
+	  	  AND SETLE_MTHD = #{setleMthd}
+		  AND MYS_CL2 = #{mysCl2}
+		   <!-- AND ENGG_GROUP_CODE = ( SELECT ENGG_GROUP_CODE FROM THP_MysCodeMapping WHERE EVENT_CODE = #{eventCode} ) -->
+		  AND EVENT_GROUP = ( SELECT EVENT_GROUP FROM THP_MysCodeMapping WHERE EVENT_CODE = #{eventCode} )
+
+  		</if>
+    </select>
+
+    <insert id="insertTHP_InipayLog" parameterType="HashMap">
+		INSERT INTO THP_InipayLog (
+			ORDER_NO , NM ,MBTLNUM
+			,BRTHDY ,ZIP ,ADRES
+			,EMAIL ,IHIDNUM_BIZNO ,RCIPT_REQST_AT
+			,EVENT_CODE
+			,CNTR_AMOUNT
+			,INTRST_REALM
+			,AGRE_AT1 ,AGRE_AT2
+			,INICIS_CRTFC_NO
+			,RESULT_CODE
+			,RESULT_MSSAGE
+			,CARD_NO
+			,CARD_EXPDATE
+			,SETLE_MTHD
+			,RGSDE
+			) VALUES (
+			#{mid} + '_' + #{timestamp}
+			, #{nm} ,#{mbtlnum}
+			, #{brthdy} ,#{zip} ,#{adres}
+			, #{email} ,#{ihidnumBizno} ,#{rciptReqstAt}
+			, #{eventCode}
+			, REPLACE(  #{cntrAmount} , ',' , ''  )
+			, #{intrstRealm}
+			, #{agreAt1} ,#{agreAt2}
+			, #{tid}
+			, #{resultCode}
+			, #{resultMsg}
+			, #{cardNo}
+			, #{cardExpdate}
+			, ( SELECT SETLE_MTHD FROM THP_MysCodeMapping WHERE EVENT_CODE = #{eventCode} )
+			, GETDATE()
+		)
+     </insert>
+
+    <!-- 기부자 정보  -->
+    <insert id="insertTHP_CntrbtrInfo" parameterType="HashMap">
+    	<selectKey keyProperty="cntrSn" resultType="String" order="BEFORE">
+    		SELECT ISNULL ( MAX( CNTR_SN ) + 1 , 1 ) FROM THP_CntrbtrInfo
+  		</selectKey>
+  		INSERT INTO THP_CntrbtrInfo (
+			CNTR_SN
+			,NM ,MBTLNUM ,BRTHDY ,ZIP ,ADRES
+			,EMAIL ,IHIDNUM_BIZNO ,RCIPT_REQST_AT ,CHARGER_CNFIRM_AT
+		    ,REGISTER ,RGSDE ,UPDUSR ,UPDDE
+		) VALUES (
+			( SELECT ISNULL ( MAX( CNTR_SN ) + 1 , 1 ) FROM THP_CntrbtrInfo )
+			, #{nm} ,#{mbtlnum} ,#{brthdy} ,#{zip} ,#{adres}
+			,#{email} ,#{ihidnumBizno} ,#{rciptReqstAt}
+			,#{chargerCnfirmAt}
+			,'user' , GETDATE() ,'user' , GETDATE()
+		)
+    </insert>
+
+    <!-- 기부자 약정신청 -->
+    <insert id="insertTHP_CntrEnggReqst" parameterType="HashMap">
+    	<selectKey keyProperty="enggSn" resultType="int" order="BEFORE">
+    		SELECT ISNULL ( MAX( ENGG_SN ) + 1 , 1 ) FROM THP_CntrEnggReqst
+  		</selectKey>
+    	INSERT INTO THP_CntrEnggReqst (
+			CNTR_SN ,ENGG_SN ,EVENT_CODE ,RPRSNTV_NM ,BPLC_NM
+			,EPRSS_NM ,FAMILY_OSV ,METPAY_SE ,CNTR_AMOUNT ,CNTR_BGNMT
+			,CNTR_ENDMT ,CNTR_TRANSFR_DE ,CARD_NO ,CARD_EXPDATE ,ACNUT_BANK
+			,ACNUTNO ,DPSTR ,DPSTR_BRTHDY ,CHARGER_CNFIRM_AT
+			,CARD_CMPNY , CARD_BILL_KEY
+			,REGISTER ,RGSDE ,UPDUSR ,UPDDE
+		) VALUES (
+			#{cntrSn}
+			, ( SELECT ISNULL ( MAX( ENGG_SN ) + 1 , 1 ) FROM THP_CntrEnggReqst )
+			,#{eventCode} ,#{rprsntvNm} ,#{bplcNm}
+			,#{eprssNm} ,#{familyOsv} ,#{metpaySe} , REPLACE(  #{cntrAmount} , ',' , ''  ) ,#{cntrBgnmt}
+			,#{cntrEndmt} ,#{cntrTransfrDe} ,#{cardNo} ,#{cardExpdate} ,#{acnutBank}
+			,#{acnutno} ,#{dpstr} ,#{brthdy} ,#{chargerCnfirmAt}
+			,#{cardCmpny},#{cardBillKey}
+			,'user' , GETDATE() ,'user' , GETDATE()
+		)
+    </insert>
+
+    <!-- 기부관심분야 -->
+    <insert id="insertTHP_CntrIntrst" parameterType="HashMap">
+    	INSERT INTO THP_CntrIntrst (
+			CNTR_SN ,INTRST_REALM ,INTRST_AT
+			,REGISTER ,RGSDE ,UPDUSR ,UPDDE
+		) VALUES (
+			#{cntrSn} ,#{intrstRealm} ,#{intrstAt}
+			,'user' , GETDATE() ,'user' , GETDATE()
+		)
+    </insert>
+
+    <!-- 개인정보 정보제공 -->
+	<insert id="insertTHP_CntrInfoAgre" parameterType="HashMap">
+		INSERT INTO THP_CntrInfoAgre (
+			CNTR_SN
+			,EVENT_CODE
+			,IEM_CODE ,AGRE_AT
+			,REGISTER ,RGSDE ,UPDUSR ,UPDDE
+		) VALUES (
+			#{cntrSn}
+			,#{eventCode}
+			,#{iemCode}
+			,#{agreAt}
+			,'user' , GETDATE() ,'user' , GETDATE()
+		)
+	</insert>
+
+	<!-- 기부신청첨부파일 -->
+	<insert id="insertTHP_CntrReqstFile" parameterType="HashMap">
+		INSERT INTO THP_CntrReqstFile (
+			CNTR_SN
+			,ENGG_SN
+			,PRUF_DTA_TY
+			,FLPTH
+			,SERVER_FILE_NM  ,ORGINL_FILE_NM ,FILE_EXTSN
+			,REGISTER ,RGSDE ,UPDUSR ,UPDDE
+		) VALUES (
+			#{cntrSn}
+			,#{enggSn}
+			,#{prufDtaTy}
+			,#{flpth}
+			,#{fileName}  ,#{fileName} ,#{extsn}
+			,'user' , GETDATE() ,'user' , GETDATE()
+		);
+	</insert>
+
+	<!-- THP_CntrCnsltReqst 기부상담신청 -->
+	<insert id="insertTHP_CntrCnsltReqst" parameterType="HashMap">
+		<selectKey keyProperty="cnsltSn" resultType="String" order="BEFORE">
+    		SELECT ISNULL ( MAX( CNSLT_SN ) + 1 , 1 ) FROM THP_CntrCnsltReqst
+  		</selectKey>
+		INSERT INTO THP_CntrCnsltReqst (
+			CNSLT_SN
+			,BHF_CODE ,REQST_MANAGE_TY
+			,NM ,TELNO ,EMAIL ,REQST_CN ,PROGRS_STTUS
+			,AGRE_AT ,AGRE_RGSDE
+			,REGISTER ,RGSDE ,UPDUSR ,UPDDE
+		) VALUES (
+			( SELECT ISNULL ( MAX( CNSLT_SN ) + 1 , 1 ) FROM THP_CntrCnsltReqst )
+			,#{bhfCode} ,#{reqstManageTy}
+			,#{nm} ,#{telno} ,#{email} ,#{reqstCn} ,#{progrsSttus}
+			,#{agreAt} ,GETDATE()
+			,'user' , GETDATE() , 'user' , GETDATE()
+		)
+	</insert>
+
+
+	<!-- THP_CntrCnsltHist 기부상담이력 -->
+	<insert id="insertTHP_CntrCnsltHist" parameterType="HashMap">
+		INSERT INTO THP_CntrCnsltHist (
+			CNSLT_SN ,HIST_SN ,PROGRS_STTUS ,CN
+			,REGISTER ,RGSDE ,UPDUSR ,UPDDE
+		) VALUES (
+			#{cnsltSn }
+			, ( SELECT ISNULL( MAX(HIST_SN ) + 1 ,  1 ) FROM THP_CntrCnsltHist )
+			, #{progrsSttus },#{cn}
+			,'user' , GETDATE() , 'user' , GETDATE()
+		)
+	</insert>
+
+	<insert id="insertTHP_NaverPayLog" parameterType="HashMap">
+		INSERT INTO THP_NaverpayLog (
+			ORDER_NO, CNTR_SN
+			,NM ,MBTLNUM, BRTHDY 
+			,EVENT_CODE
+			,CNTR_AMOUNT
+			,PAY_TYPE
+			,PAYMENT_ID
+			,PAY_HIST_ID
+			,ADMISSION_TYPE_CODE
+			,ADMISSION_YMDT
+			,ADMISSION_STATE
+			,RESULT_CODE
+			,RESULT_MSSAGE
+			,RECURRENT_ID
+			,TOTAL_PAY_AMOUNT
+			,NPOINT_PAY_AMOUNT
+			,PRIMARY_PAY_MEANS
+			,CARD_CORP_CODE
+			,CARD_NO
+			,CARD_AUTH_NO
+			,CARD_INST_COUNT
+			,BANK_CORP_CODE
+			,BANK_ACCOUNT_NO
+			,RGSDE
+			) VALUES (
+			 #{timestamp}, #{cntrSn}
+			, #{nm} ,#{mbtlnum}, #{brthdy} 
+			, #{eventCode}
+			, REPLACE(  #{cntrAmount} , ',' , ''  )
+			, #{payType} ,#{paymentId}
+			, #{payHistId} 
+			, #{admissionTypeCode} ,#{admissionYmdt}, #{admissionState}			
+			, #{code}			
+			, #{message} 
+			, #{recurrentId}
+			, REPLACE(  #{totalPayAmount} , ',' , ''  )
+			, REPLACE(  #{npointPayAmount} , ',' , ''  )
+			, #{primaryPayMeans}
+			, #{cardCorpCode}
+			, #{cardNo}
+			, #{cardAuthNo}
+			, #{cardInstCount}
+			, #{bankCorpCode}
+			, #{bankAccountNo}
+			, GETDATE()
+		)
+  		   
+     </insert>
+     
+     <update id="updateTHP_NaverpayLog" parameterType="HashMap">
+		UPDATE THP_NaverpayLog 
+		SET	  RESULT_CODE = #{code}			--결과코드
+			, RESULT_MSSAGE = #{message}			--결과메세지
+			<if test="recurrentId != ''">
+			, RECURRENT_ID = #{recurrentId}
+			, CNTR_SN = #{cntrSn}
+			, PAYMENT_ID = #{paymentId}		--TID			
+			, PAY_HIST_ID = #{payHistId}	--결제이력번호
+			, ADMISSION_TYPE_CODE = #{admissionTypeCode}
+			, ADMISSION_YMDT = #{admissionYmdt}
+			, ADMISSION_STATE = #{admissionState}
+			, TOTAL_PAY_AMOUNT = REPLACE(  #{totalPayAmount} , ',' , ''  )
+			, NPOINT_PAY_AMOUNT = REPLACE(  #{npointPayAmount} , ',' , ''  )
+			, PRIMARY_PAY_MEANS = #{primaryPayMeans}
+			, CARD_CORP_CODE = #{cardCorpCode}
+			, CARD_NO = #{cardNo}
+			, CARD_AUTH_NO = #{cardAuthNo}
+			, CARD_INST_COUNT = #{cardInstCount}
+			, BANK_CORP_CODE = #{bankCorpCode}
+			, BANK_ACCOUNT_NO = #{bankAccountNo}
+			</if>
+		WHERE ORDER_NO = #{timestamp}
+		;
+		
+		UPDATE THP_CntrEnggReqst SET CARD_BILL_KEY = #{recurrentId}
+		 WHERE CNTR_SN = #{cntrSn}
+  		   AND ENGG_SN = #{enggSn}
+	</update>
+     
+    <select id="getNaverpayFrmData" parameterType="HashMap" resultType="com.common.map.ComCamelMap">
+		SELECT 
+			NM
+			, MBTLNUM
+			, RESULT_MSSAGE
+		  FROM THP_NaverpayLog 
+	     WHERE ORDER_NO = #{orderNo}
+    </select>
+     
+    <select id="selectNpayApprList" parameterType="HashMap" resultType="com.common.map.ComCamelMap">
+	
+		SELECT ORDER_NO, AUTH_SN
+				, RECURRENT_ID, TOTAL_PAY_AMOUNT, TAX_SCOPE_AMOUNT, TAX_EX_SCOPE_AMOUNT, PRODUCT_NAME
+				, MERCHANT_PAY_ID
+				, (SELECT M.BHF_CODE
+					 FROM THP_NaverpayLog L INNER JOIN THP_MysCodeMapping M ON L.EVENT_CODE=M.EVENT_CODE
+					WHERE L.ORDER_NO = A.ORDER_NO) AS BHF_CODE
+		  FROM THP_NaverpayAppr A
+		 WHERE CNTR_DE = CONVERT( VARCHAR , GETDATE() , 112 )
+		   AND RESULT_CODE IS NULL
+		   
+     </select>
+     
+     <update id="updateNpayApprResult" parameterType="HashMap">
+     
+		UPDATE THP_NaverpayAppr
+		   SET 
+				RESULT_CODE = #{code}					/* 결과코드 */
+				, RESULT_MSSAGE = #{message}			/* 결과메세지  */
+				, PAYMENT_ID = #{paymentId}					/* 결제번호 */
+				<if test="payHistId != null and payHistId != ''">
+				, PAY_HIST_ID = #{payHistId}					/* 결제이력번호 */
+				, ADMISSION_TYPE_CODE = #{admissionTypeCode}	/* 결제승인유형 */
+				, ADMISSION_YMDT = #{admissionYmdt}			/* 결제일시 */
+				, ADMISSION_STATE = #{admissionState}			/* 결제 최종결과 */
+				, NPOINT_PAY_AMOUNT = #{npointPayAmount}		/* 포인트결제금액 */
+				, PRIMARY_PAY_MEANS = #{primaryPayMeans}		/* 주결제수단 */
+				, CARD_CORP_CODE = #{cardCorpCode}			/* 카드사 */
+				, CARD_NO = #{cardNo}							/* 카드번호 */
+				, CARD_AUTH_NO = #{cardAuthNo}				/* 카드승인번호 */
+				, CARD_INST_COUNT = #{cardInstCount}			/* 할부개월수 */
+				, BANK_CORP_CODE = #{bankCorpCode}			/* 주결제수단은행 */
+				, BANK_ACCOUNT_NO = #{bankAccountNo}			/* 계좌번호 */
+				, RGSDE = GETDATE()
+				</if>
+		 WHERE  ORDER_NO = #{orderNo}
+		   AND  AUTH_SN = #{authSn}  
+		     
+    </update>
+    
+    <insert id="insertNaverPayHistory" parameterType="java.util.List">
+    
+    	MERGE THP_NaverpayExcclc AS H
+    		USING (
+    			<foreach collection="list" item="item" open="" close="" separator="union">
+    			SELECT (SELECT '01' FROM THP_NaverpayLog WHERE PAYMENT_ID = #{item.paymentId} UNION 
+					    SELECT '02' FROM THP_NaverpayAppr WHERE PAYMENT_ID = #{item.paymentId}) AS MYS_CL2
+					    , (SELECT RECURRENT_ID FROM THP_NaverpayAppr WHERE PAYMENT_ID = #{item.paymentId}) RECURRENT_ID
+						, #{item.paymentId} PAYMENT_ID, #{item.admissionYmdt} ADMISSION_YMDT
+						, #{item.inqireBgnde} INQIRE_BGNDE, #{item.inqireEndde} INQIRE_ENDDE, #{item.excclcAt} EXCCLC_AT
+						, #{item.rcpmnyAmount} RCPMNY_AMOUNT, #{item.feeAmount} FEE_AMOUNT
+						, #{item.admissionTypeCode} ADMISSION_TYPE
+    			</foreach>
+    			 
+    		) AS T
+    		ON (H.PAYMENT_ID = T.PAYMENT_ID)
+    		WHEN NOT MATCHED AND T.ADMISSION_TYPE = '01' THEN
+    			INSERT 
+    			<trim prefix="(" suffix=")" suffixOverrides=",">
+    			PAYMENT_ID
+    			, RECURRENT_ID
+    			, MYS_CL2
+    			, ADMISSION_YMDT
+    			, INQIRE_BGNDE
+    			, INQIRE_ENDDE
+    			, EXCCLC_AT
+    			, RCPMNY_AMOUNT
+    			, FEE_AMOUNT
+    			, RGSDE
+    			</trim>
+    			<trim prefix="values (" suffix=")" suffixOverrides=",">
+    			T.PAYMENT_ID
+    			, T.RECURRENT_ID
+    			, T.MYS_CL2
+    			, T.ADMISSION_YMDT
+    			, T.INQIRE_BGNDE
+    			, T.INQIRE_ENDDE
+    			, T.EXCCLC_AT
+    			, T.RCPMNY_AMOUNT
+    			, T.FEE_AMOUNT
+    			, GETDATE()
+    			</trim>
+    		WHEN MATCHED AND T.ADMISSION_TYPE = '01' AND H.EXCCLC_AT = 'false'  AND H.PROGRS_STTUS IS NULL THEN
+    			UPDATE SET H.EXCCLC_AT = T.EXCCLC_AT
+    					, H.RCPMNY_AMOUNT = T.RCPMNY_AMOUNT
+    					, H.FEE_AMOUNT = T.FEE_AMOUNT
+    		WHEN MATCHED AND T.ADMISSION_TYPE != '01' AND H.PROGRS_STTUS IS NULL THEN
+    			DELETE
+    	;
+    	
+    </insert>
+    
+    <select id="getInqireEndde" parameterType="HashMap" resultType="String">
+    	SELECT MAX(INQIRE_ENDDE) INQIRE_ENDDE
+  		  FROM THP_NaverpayExcclc  		 
+  		 
+    </select>
+
+	<!-- 카카오페이 결제승인결과 업데이트 -->
+	<update id="updateTHP_KakaopayLog" parameterType="HashMap">
+		UPDATE THP_KakaopayLog 
+		SET	  RESULT_CODE = #{code}			--결과코드
+			, RESULT_MSSAGE = #{message}			--결과메세지
+			<if test=" aid != null and aid != '' ">
+			, CNTR_SN = #{cntrSn}
+			, AID = #{aid}
+			, CID = #{cid}
+			, SID = #{sid}
+			, PAYMENT_METHOD_TYPE = #{payment_method_type}
+			, TOTAL = #{total}
+			, TAX_FREE = #{tax_free}
+			, POINT = #{point}
+			, ITEM_NAME = #{item_name}
+			, ITEM_CODE = #{item_code}
+			, APPROVED_AT = #{approved_at}
+			, PURCHASE_CORP = #{purchase_corp}
+			, CARD_TYPE = #{card_type}
+			, INSTALL_MONTH = #{install_month}
+			, APPROVED_ID = #{approved_id}
+			</if>
+		WHERE ORDER_NO = #{orderNo}
+		;
+		
+		<if test=" sid != null and sid != '' ">
+		UPDATE THP_CntrEnggReqst SET CARD_BILL_KEY = #{sid}
+		 WHERE CNTR_SN = #{cntrSn}
+  		   AND ENGG_SN = #{enggSn}
+  		</if>
+	</update>
+	
+	<!-- 카카오페이 결제로그 등록 -->
+	<insert id="insertTHP_KakaopayLog" parameterType="HashMap">
+		    INSERT INTO THP_KakaopayLog (
+				  ORDER_NO
+				, CNTR_SN
+				, NM
+				, MBTLNUM
+				, BRTHDY
+				, EVENT_CODE
+				, CNTR_AMOUNT
+				, FRM_DATA
+				, REFERER
+				, RESULT_CODE
+				, RESULT_MSSAGE
+				, PAY_TYPE
+				, TID
+				, AID
+				, CID
+				, SID
+				, PARTNER_USER_ID
+				, RGSDE
+				) VALUES (
+				 #{orderNo}
+				, #{cntrSn}
+				, #{nm}
+				, #{mbtlnum}
+				, #{brthdy} 
+				, #{eventCode}
+				, REPLACE(  #{cntrAmount} , ',' , ''  )
+				, #{frmData}
+				, #{referer}
+				, #{code}			
+				, #{message} 
+				, #{payType} 
+				, #{tid}	
+				, #{aid}
+				, #{cid}
+				, #{sid}
+				, #{partner_user_id}
+				, GETDATE()
+			)
+		    
+     </insert>
+    
+    <!-- 카카오페이 결제승인전 form 데이타 조회 -->
+    <select id="getKakaopayFrmData" parameterType="HashMap" resultType="com.common.map.ComCamelMap">
+		SELECT NM
+			, MBTLNUM
+			, RESULT_MSSAGE
+			, FRM_DATA
+			, REFERER
+			, TID
+			, CID
+			, ORDER_NO			
+		  FROM THP_KakaopayLog 
+	     WHERE ORDER_NO = #{orderNo}
+    </select>
+    
+    <select id="selectKpayApprList" parameterType="HashMap" resultType="com.common.map.ComCamelMap">
+	
+		SELECT ORDER_NO, AUTH_SN
+				, CID, SID
+				, PARTNER_ORDER_ID, PARTNER_USER_ID
+				, TOTAL_AMOUNT, TAX_FREE_AMOUNT				
+		  FROM THP_KakaopayAppr A
+		 WHERE CNTR_DE = CONVERT( VARCHAR , GETDATE() , 112 )
+		   AND RESULT_CODE IS NULL
+		   
+     </select>
+     
+     <update id="updateKpayApprResult" parameterType="HashMap">
+     
+		UPDATE THP_KakaopayAppr
+		   SET 
+				RESULT_CODE = #{code}							/* 결과코드 */
+				, RESULT_MSSAGE = #{message}					/* 결과메세지  */
+				<if test="aid != null and aid != ''">
+				, AID = #{aid}									/* Request 고유 번호 */
+				, TID = #{tid}									/* 결제 고유 번호 */
+				, PAYMENT_METHOD_TYPE = #{payment_method_type}	/* 결제수단 */
+				, APPROVED_AT = #{approved_at}					/* 결제승인시각 */
+				, TOTAL = #{total}								/* 전체결제금액 */
+				, TAX_FREE = #{tax_free}						/* 비과세금액 */
+				, VAT = #{vat}									/* 부가세 금액 */
+				, PURCHASE_CORP = #{purchase_corp}				/* 매입카드사 */
+				, CARD_TYPE = #{card_type}						/* 카드타입 */
+				, INSTALL_MONTH = #{install_month}				/* 할부개월수 */
+				, APPROVED_ID = #{approved_id}					/* 카드사 승인번호 */
+				, RGSDE = GETDATE()
+				</if>
+		 WHERE  ORDER_NO = #{orderNo}
+		   AND  AUTH_SN = #{authSn}
+		     
+    </update>
+    
+    <insert id="insertKakaoPayHistory" parameterType="java.util.List">
+    
+    	MERGE THP_KakaopayExcclc AS H
+    		USING (
+    			<foreach collection="list" item="item" open="" close="" separator="union">
+    			SELECT (SELECT '01' FROM THP_KakaopayLog WHERE TID = #{item.tid} UNION 
+					    SELECT '02' FROM THP_KakaopayAppr WHERE TID = #{item.tid}) AS MYS_CL2
+					    , (SELECT SID FROM THP_KakaopayAppr WHERE TID = #{item.tid}) SID
+						, #{item.tid} TID
+						, #{item.approved_at} APPROVED_AT
+						, #{item.amount} AMOUNT
+						, #{item.amount_payable} AMOUNT_PAYABLE
+						, #{item.fee} FEE
+						, #{item.fee_vat} FEE_VAT						
+						, #{item.target_date} TARGET_DATE
+						, #{item.from_date} FROM_DATE
+						, #{item.to_date} TO_DATE
+    			</foreach>
+    			 
+    		) AS T
+    		ON (H.TID = T.TID)
+    		WHEN NOT MATCHED THEN
+    			INSERT 
+    			<trim prefix="(" suffix=")" suffixOverrides=",">
+    			TID
+    			, SID
+    			, MYS_CL2
+    			, TARGET_DATE
+    			, APPROVED_AT
+    			, FROM_DATE
+    			, TO_DATE
+    			, AMOUNT
+    			, AMOUNT_PAYABLE
+    			, FEE
+    			, FEE_VAT    			
+    			, RGSDE
+    			</trim>
+    			<trim prefix="values (" suffix=")" suffixOverrides=",">
+    			T.TID
+    			, T.SID
+    			, T.MYS_CL2
+    			, T.TARGET_DATE
+    			, T.APPROVED_AT
+    			, T.FROM_DATE
+    			, T.TO_DATE
+    			, T.AMOUNT
+    			, T.AMOUNT_PAYABLE
+    			, T.FEE
+    			, T.FEE_VAT
+    			, GETDATE()
+    			</trim>
+    		
+    	;
+    	
+    </insert>
+    
+    <insert id="insertKakaoPaySttlm" parameterType="java.util.List">
+    
+    	MERGE THP_KakaopaySttlm AS H
+    		USING (
+    			<foreach collection="list" item="item" open="" close="" separator="union">
+    			SELECT (SELECT '01' FROM THP_KakaopayLog WHERE TID = #{item.tid} UNION 
+					    SELECT '02' FROM THP_KakaopayAppr WHERE TID = #{item.tid}) AS MYS_CL2
+					    , (SELECT SID FROM THP_KakaopayAppr WHERE TID = #{item.tid}) SID
+					    , #{item.aid} AID
+						, #{item.tid} TID
+						, #{item.target_date} TARGET_DATE
+						, #{item.approved_at} APPROVED_AT						
+						, #{item.payment_action_type} PAYMENT_ACTION_TYPE
+						, #{item.payment_detail_action_type} PAYMENT_DETAIL_ACTION_TYPE						
+						, #{item.amount} AMOUNT
+						, #{item.amount_payable} AMOUNT_PAYABLE
+						, #{item.fee} FEE
+						, #{item.fee_vat} FEE_VAT
+						, #{item.deposit_date} DEPOSIT_DATE						
+						
+    			</foreach>
+    			 
+    		) AS T
+    		ON (H.AID = T.AID)
+    		WHEN NOT MATCHED THEN
+    			INSERT 
+    			<trim prefix="(" suffix=")" suffixOverrides=",">
+    			  AID, TID, SID
+    			, MYS_CL2
+    			, TARGET_DATE
+    			, APPROVED_AT
+    			, PAYMENT_ACTION_TYPE
+    			, PAYMENT_DETAIL_ACTION_TYPE    			
+    			, AMOUNT
+    			, AMOUNT_PAYABLE
+    			, FEE
+    			, FEE_VAT    			
+    			, DEPOSIT_DATE
+    			, RGSDE
+    			</trim>
+    			<trim prefix="values (" suffix=")" suffixOverrides=",">
+    			  T.AID, T.TID, T.SID
+    			, T.MYS_CL2
+    			, T.TARGET_DATE
+    			, T.APPROVED_AT
+    			, T.PAYMENT_ACTION_TYPE
+    			, T.PAYMENT_DETAIL_ACTION_TYPE
+    			, T.AMOUNT
+    			, T.AMOUNT_PAYABLE
+    			, T.FEE
+    			, T.FEE_VAT
+    			, T.DEPOSIT_DATE
+    			, GETDATE()
+    			</trim>
+    		
+    	;
+    	
+    </insert>
+    
+</mapper>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--
+ * ************************************************************************************************
+ * System Name : 사랑의 열매 사용자 System
+ * Class Name  : sql-sportbnsn.xml
+ * Author      : Chest Front
+ * Date        : 2019. 9. 19.
+ * Description : [ 지원사업 ]
+ * History     :
+ * ************************************************************************************************
+ * No.     Date           Name             Description
+ * ************************************************************************************************
+ * CH_OO   2019. 9. 19.    권민      Initial Release
+ * CH_01
+ *************************************************************************************************
+-->
+<mapper namespace="com.chest.bn.mapper.SportbsnsMapper">
+    
+</mapper>

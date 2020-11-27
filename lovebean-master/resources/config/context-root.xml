@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+                           http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.2.xsd">
+    
+    <!-- Application Configure Properties Settings -->
+    
+    <util:properties id="chest" location="classpath:/properties/chest.properties"/>    
+    <util:properties id="iniPay" location="classpath:/properties/iniPay.properties"/>
+    <util:properties id="jdbc" location="classpath:/properties/jdbc.properties"/>
+    <util:properties id="naverPay" location="classpath:/properties/naverPay.properties"/>
+    <util:properties id="kakaoPay" location="classpath:/properties/kakaoPay.properties"/>
+    
+    <!-- ###################################################################### -->
+    <!-- 개발서버-->
+    <!-- ###################################################################### -->    
+<!--     <util:properties id="chest" location="classpath:/properties/chest_dev.properties"/>     -->
+<!--     <util:properties id="iniPay" location="classpath:/properties/iniPay_dev.properties"/> -->
+<!--     <util:properties id="jdbc" location="classpath:/properties/jdbc_dev.properties"/> -->
+    
+    
+    <!-- ###################################################################### -->
+    <!-- 운영서버-->
+    <!-- ###################################################################### -->
+<!--         <util:properties id="chest" location="classpath:/properties/chest_real.properties"/> -->
+<!-- 	    <util:properties id="iniPay" location="classpath:/properties/iniPay_real.properties"/> -->
+<!--         <util:properties id="jdbc" location="classpath:/properties/jdbc_real.properties"/> -->
+    
+    <!-- checkPlus 본인인증 add : kms -->    
+    <util:properties id="checkPlus" location="classpath:/properties/checkPlus.properties"/>    
+    <!-- 계좌인증 add : kms -->
+    <util:properties id="ksnet" location="classpath:/properties/ksnet.properties"/>
+    
+</beans>

@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--
+ * ************************************************************************************************
+ * System Name : 사랑의 열매 사용자 System
+ * Class Name  : sql-com.xml
+ * Author      : Chest Admin
+ * Date        : 2019. 8. 1.
+ * Description : [ Common ] Common 관련
+ *
+ * History     :
+ * ************************************************************************************************
+ * No.     Date           Name             Description
+ * ************************************************************************************************
+ * CH_OO   2019. 8. 1.    Chest Admin      Initial Release
+ * CH_01
+ *************************************************************************************************
+-->
+<mapper namespace="com.common.mapper.ComMapper">
+    <select id="selectCmmnCodeList" parameterType="HashMap" resultType="com.common.map.ComCamelMap">
+        <![CDATA[
+            SELECT GROUP_CODE
+                  ,CMMN_CODE
+                  ,CMMN_CODE_NM
+              FROM TCM_CMMNCODE
+             WHERE GROUP_CODE = #{groupCode}
+               AND USE_AT     = 'Y'
+        ]]>
+
+        <!-- 추가조건 -->
+        <if test='addCond != null and addCond != ""'>
+            AND ${addCond}
+        </if>
+
+        <![CDATA[
+             ORDER BY SORT_ORDR
+        ]]>
+    </select>
+
+    <select id="selectFileList" parameterType="HashMap" resultType="com.common.map.ComCamelMap">
+        
+            SELECT  ATCHMNFL_SN
+                    , LIST_SN
+                    , BHF_CODE
+                    , OLD_SN
+    	<choose>  
+    	<when test='hideFlpth == "Y"'>              
+                    , ATCHMNFL_SN FLPTH
+        </when>
+        <otherwise>
+        			, FLPTH
+        </otherwise>
+        </choose>            
+                    , SERVER_FILE_NM
+                    , ORGINL_FILE_NM
+                    , FILE_EXTSN
+                    , FILE_MG
+                    , FILE_SE
+                    , CONVERT(VARCHAR(10), RGSDE, 20) AS RGSDE
+                    , REGISTER
+            FROM    THP_BbsFileDetail
+        
+            WHERE   LIST_SN = #{listSn}
+        <![CDATA[
+             ORDER BY ATCHMNFL_SN
+        ]]>
+    </select>
+
+    <!-- [ 기부공통 ] 모금코드 매핑 한 건 조회 !! !! -->
+    <select id="selectMysCodeMappingInfo" parameterType="HashMap" resultType="com.common.map.ComCamelMap">
+        <![CDATA[
+            SELECT  EVENT_CODE
+					, EVENT_NM
+					, BHF_CODE
+					, MYS_CL1
+					, MYS_CL2
+					, SETLE_MTHD
+					, ENGG_GROUP_CODE
+					, INDICT_NM
+					, PRVUSE_ACNUTNO
+					, EVENT_USE_AT
+					, EVENT_BGNDE
+					, EVENT_ENDDE
+					, MYS_REQST_URL
+					, BSNS_INTRCN
+					, DELETE_POSBL_AT
+					, SPECL_MYS_AT
+					, REGISTER
+					, RGSDE
+					, UPDUSR
+					, UPDDE
+            FROM    THP_MysCodeMapping
+        ]]>
+            WHERE   EVENT_CODE = #{eventCode}
+    </select>
+    
+    <!-- [ 게시판 ] 게시물 첨부파일 경로조회  -->
+    <select id="selectFileDetailInfo" parameterType="HashMap" resultType="com.common.map.ComCamelMap">	
+            SELECT  A.FLPTH
+              FROM  THP_BbsFileDetail A WITH (NOLOCK)                    
+             WHERE  A.ATCHMNFL_SN = #{filePath}
+    </select>
+    
+</mapper>

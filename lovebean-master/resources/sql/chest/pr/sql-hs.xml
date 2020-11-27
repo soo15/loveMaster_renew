@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--
+ * ************************************************************************************************
+ * System Name : 사랑의 열매 사용자 System
+ * Class Name  : sql-hs.xml
+ * Author      : Chest Front
+ * Date        : 2019. 9. 25.
+ * Description : [ 아너소사이어티 ]
+ * History     :
+ * ************************************************************************************************
+ * No.     Date           Name             Description
+ * ************************************************************************************************
+ * CH_OO   2019. 9. 25.    권민      Initial Release
+ * CH_01
+ *************************************************************************************************
+-->
+<mapper namespace="com.chest.pr.mapper.HsMapper">
+    <!-- [ Mberintrcn ] List Common Condition Query !! -->
+    <sql id="mberintrcnListCondition">
+
+        <!-- [조회 조건] HONOR_NM 회원이름 -->
+        <if test='pHonorNm != null and pHonorNm != ""'>
+            AND HONOR_NM LIKE '%' + #{pHonorNm} + '%'
+        </if>
+    </sql>
+
+    <!-- [ 아너소사이어티] 회원소개 Page 리스트 Count 조회 !! -->
+    <select id="selectMberintrcnListCount" parameterType="HashMap" resultType="String">
+        <![CDATA[
+            SELECT  COUNT(*) AS CNT
+            FROM    THP_Honor WITH (NOLOCK)
+            WHERE   (OUTTRST_DE IS NULL
+			OR      OUTTRST_DE = ''
+			OR      RLNM_OTHBC_AT = 'Y')
+        ]]>
+            <include refid="mberintrcnListCondition" />
+    </select>
+
+    <!-- [ 아너소사이어티] 회원소개 Page 리스트 조회 !! -->
+    <select id="selectMberintrcnList" parameterType="HashMap" resultType="com.common.map.ComCamelMap">
+        <![CDATA[
+            SELECT  HONOR_SN
+                    , BHF_CODE
+                    , BHF_HONOR_SN
+                    , (CASE WHEN RLNM_OTHBC_AT = 'N' THEN '익명' ELSE HONOR_NM END) AS HONOR_NM
+                    , OCCP
+                    , RSPOFC
+                    , PSITN
+                    , MSSAGE
+                    , ENTRST_DE
+                    , FLPTH
+					, SERVER_FILE_NM
+					, ORGINL_FILE_NM
+					, FILE_EXTSN
+                    , CONVERT(VARCHAR(10), RGSDE, 20) AS RGSDE
+            FROM    THP_Honor WITH (NOLOCK)
+            WHERE   (OUTTRST_DE IS NULL
+            OR      OUTTRST_DE = ''
+            OR      RLNM_OTHBC_AT = 'Y')
+        ]]>
+            <include refid="mberintrcnListCondition" />
+        <![CDATA[
+            ORDER BY HONOR_SN DESC
+            OFFSET (CONVERT(int, #{currPageNo}) - 1) * CONVERT(int, #{pageCount}) ROWS FETCH NEXT CONVERT(int, #{pageCount}) ROWS ONLY
+        ]]>
+    </select>
+
+</mapper>

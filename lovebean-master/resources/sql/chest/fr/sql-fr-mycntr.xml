@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.chest.fr.mapper.FrmycntrMapper">
+
+    <select id="selectListCount" parameterType="HashMap" resultType="String">
+        <![CDATA[
+        	WITH MAIN_TABLE AS (
+            SELECT 
+            	CNTR_SN , NM , MBTLNUM 
+			FROM THP_CntrbtrInfo            	
+			WHERE 1=1 
+	  		  AND NM = #{nm}
+	  		  AND MBTLNUM = #{mbtlnum}
+			)
+			SELECT SUM( T.CNT ) AS COUNT FROM (
+				SELECT 
+					COUNT(*) CNT
+				FROM MAIN_TABLE A , THP_CntrEnggReqst B 
+				WHERE A.CNTR_SN = B.CNTR_SN
+				UNION ALL
+				SELECT 
+					COUNT(*) CNT
+				FROM MAIN_TABLE A , THP_CntrSingl B 
+				WHERE A.CNTR_SN = B.CNTR_SN
+			) T
+        ]]>
+    </select>
+    
+    <select id="selectList" parameterType="HashMap" resultType="com.common.map.ComCamelMap">
+        <![CDATA[
+			WITH MAIN_TABLE AS (
+				SELECT 
+					CNTR_SN , NM , MBTLNUM 
+					FROM THP_CntrbtrInfo
+				WHERE 1=1 
+				  AND NM = #{nm}
+				  AND MBTLNUM = #{mbtlnum}
+			)
+			SELECT 
+				B.CNTR_SN
+				, '개인정기' AS GUBUN
+				, REPLACE(CONVERT(VARCHAR, CAST( CNTR_AMOUNT AS MONEY),1),'.00','') AS CNTR_AMOUNT
+				, dbo.FNC_GetCmmnCodeNm('HP0004', METPAY_SE)  AS METPAY_SE_NM
+				, dbo.FNC_GetCmmnCodeNm('HP0010', ( SELECT BHF_CODE FROM THP_MysCodeMapping WHERE EVENT_CODE = B.EVENT_CODE) )  AS BHF_CODE_NM
+				, CONVERT( VARCHAR , CONVERT( DATETIME , B.CNTR_BGNMT +''+ CNTR_TRANSFR_DE , 102 ) ,102 ) AS CNTR_BGNMT
+			FROM MAIN_TABLE A , THP_CntrEnggReqst B 
+			WHERE A.CNTR_SN = B.CNTR_SN
+			UNION ALL
+			SELECT 
+				B.CNTR_SN
+				,'개인일시'
+				, REPLACE(CONVERT(VARCHAR, CAST( CNTR_AMOUNT AS MONEY),1),'.00','') AS CNTR_AMOUNT
+				, dbo.FNC_GetCmmnCodeNm('HP0004', METPAY_SE)  AS METPAY_SE_NM
+				, dbo.FNC_GetCmmnCodeNm('HP0010', ( SELECT BHF_CODE FROM THP_MysCodeMapping WHERE EVENT_CODE = ( SELECT DISTINCT EVENT_CODE FROM THP_CntrInfoAgre C WHERE C.CNTR_SN = A.CNTR_SN ) ) ) AS BHF_CODE_NM
+				, CONVERT( VARCHAR , CONVERT( DATETIME , B.RGSDE , 102 ) ,102 ) AS CNTR_BGNMT
+			FROM MAIN_TABLE A , THP_CntrSingl B 
+			WHERE A.CNTR_SN = B.CNTR_SN
+        ]]>
+        <![CDATA[
+            ORDER BY CNTR_BGNMT DESC
+            OFFSET (CONVERT(int, #{currPageNo}) - 1) * CONVERT(int, #{pageCount}) ROWS FETCH NEXT CONVERT(int, #{pageCount}) ROWS ONLY
+        ]]>
+    </select>
+    
+    <select id="selectDetail" parameterType="HashMap" resultType="com.common.map.ComCamelMap">
+		WITH MAIN_TABLE AS (
+			SELECT CNTR_SN , NM , MBTLNUM , RGSDE FROM THP_CntrbtrInfo
+			WHERE 1=1 
+			  AND NM = #{nm}
+			  AND MBTLNUM = #{mbtlnum}
+		)
+		SELECT 
+			MIN( T.FIRST_PERIOD ) AS FIRST_PERIOD 
+			, MAX( T.LAST_PERIOD ) AS LAST_PERIOD 
+			, REPLACE(CONVERT(VARCHAR, CAST(SUM(T.CNTR_AMOUNT) AS MONEY),1),'.00','')  AS CNTR_AMOUNT
+		FROM (
+		SELECT 
+			CONVERT( VARCHAR , CONVERT( DATETIME , MIN( B.CNTR_BGNMT ) + MIN( CNTR_TRANSFR_DE )  , 102 ) ,102 ) AS FIRST_PERIOD
+			, CONVERT( VARCHAR , CONVERT( DATETIME , MAX ( B.CNTR_BGNMT ) + MAX( CNTR_TRANSFR_DE ) , 102 ) , 102 ) AS LAST_PERIOD 
+			, SUM( CNTR_AMOUNT ) AS CNTR_AMOUNT
+		FROM MAIN_TABLE A  , THP_CntrEnggReqst B
+		WHERE 1=1 
+			AND A.CNTR_SN = B.CNTR_SN
+		UNION ALL
+		SELECT 
+			CONVERT( VARCHAR , CONVERT( DATETIME , MIN( B.RGSDE )  , 102 ) ,102 ) AS FIRST_PERIOD
+			, CONVERT( VARCHAR , CONVERT( DATETIME , MAX ( B.RGSDE )  , 102 ) , 102 ) AS LAST_PERIOD 
+			, SUM( CNTR_AMOUNT ) AS CNTR_AMOUNT
+		FROM MAIN_TABLE A  , THP_CntrSingl B
+		WHERE 1=1 
+		  AND A.CNTR_SN = B.CNTR_SN
+		) T
+  	</select>
+  	
+  	<select id="getIhidnumBizrno" parameterType="HashMap" resultType="String">
+  	<![CDATA[
+            { 
+            	CALL LS_HR.CICSDB.fms.up_searchCntrBtr_Hmpg ( 
+                	#{nm			,mode=IN ,jdbcType=VARCHAR ,javaType=string},
+            		#{yymmdd		,mode=IN ,jdbcType=VARCHAR ,javaType=string},
+                	#{mbtlnum		,mode=IN ,jdbcType=VARCHAR ,javaType=string}
+                )
+            }
+        ]]>
+  	</select>
+  	
+  	<select id="selectCicsList" parameterType="HashMap" resultType="com.common.map.ComCamelMap">
+  	<![CDATA[
+            { 
+            	CALL LS_HR.CICSDB.fms.up_searchIndvdlzCntrDstbDtls ( 
+                	#{juminNo			,mode=IN ,jdbcType=VARCHAR ,javaType=string},
+            		#{currPageNo		,mode=IN ,jdbcType=VARCHAR ,javaType=string},
+                	#{pageCount			,mode=IN ,jdbcType=VARCHAR ,javaType=string}
+                )
+            }
+        ]]>
+  	</select>
+    
+    <insert id="insert" parameterType="HashMap">
+        INSERT INTO THP_RciptReqst ( 
+            NM
+            ,MBTLNUM
+            ,BHF_CODE
+            ,CNTR_BGN
+            ,CNTR_END
+            ,CNTR_AMOUNT
+            ,IHIDNUM_BIZNO
+            ,ZIP
+            ,ADRES
+            ,ISSU_MTH
+            ,EMAIL
+            ,FAX_NO
+            ,IEM_CODE1
+            ,AGRE_AT1
+            ,IEM_CODE2
+            ,AGRE_AT2
+            ,RCIPT_REQST_DE
+            ,AGRE_DE
+            ,BPLC_NM 
+        ) VALUES (
+            #{nm}
+            ,#{mbtlnum}
+            ,#{bhfCode}
+            ,#{cntrBgn}
+            ,#{cntrEnd}
+            ,CONVERT( INTEGER , #{cntrAmount} ) 
+            ,#{ihidnumBizno}
+            ,#{zip}
+            ,#{adres}
+            ,#{issuMth}
+            ,#{email}
+            ,#{faxNo}
+            ,'01'
+            ,'Y'
+            ,'02'
+            ,'Y'
+            ,GETDATE()
+            ,GETDATE()
+            ,#{bplcNm}
+        )
+    
+    </insert>
+    
+    <select id="insert_cntr" parameterType="HashMap" statementType="CALLABLE">
+    <![CDATA[
+            { 
+                CALL LS_HR.CICSDB.dbo.sp_CreateHmpgCntrbtrInfo ( 
+		            #{nm           ,mode=IN ,jdbcType=VARCHAR ,javaType=string},
+		            #{mbtlnum      ,mode=IN ,jdbcType=VARCHAR ,javaType=string},
+		            #{bhfCode      ,mode=IN ,jdbcType=VARCHAR ,javaType=string},
+		            #{cntrBgn      ,mode=IN ,jdbcType=VARCHAR ,javaType=string},
+		            #{cntrEnd      ,mode=IN ,jdbcType=VARCHAR ,javaType=string},
+		            #{cntrAmount   ,mode=IN ,jdbcType=VARCHAR ,javaType=string},
+		            #{ihidnumBizno ,mode=IN ,jdbcType=VARCHAR ,javaType=string},
+		            #{zip          ,mode=IN ,jdbcType=VARCHAR ,javaType=string},
+		            #{adres        ,mode=IN ,jdbcType=VARCHAR ,javaType=string},
+		            #{issuMth      ,mode=IN ,jdbcType=VARCHAR ,javaType=string},
+		            #{email        ,mode=IN ,jdbcType=VARCHAR ,javaType=string},
+		            #{faxNo        ,mode=IN ,jdbcType=VARCHAR ,javaType=string},
+		            #{bplcNm       ,mode=IN ,jdbcType=VARCHAR ,javaType=string}
+                )
+            }
+        ]]>
+    </select>
+    
+                    
+</mapper>

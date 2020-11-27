@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--
+ * ************************************************************************************************
+ * System Name : 사랑의 열매 사용자 System
+ * Class Name  : sql-sc.xml
+ * Author      : Chest Front
+ * Date        : 2020. 07. 23.
+ * Description : [ 나눔문화캠페인 ]
+ * History     :
+ * ************************************************************************************************
+ * No.     Date           Name             Description
+ * ************************************************************************************************
+ * CH_OO   2020. 07. 23.  Chest Front       Initial Release
+ * CH_01
+ *************************************************************************************************
+-->
+<mapper namespace="com.chest.ca.mapper.ScMapper">
+
+   <!--  [나눔문화캠페인] 투표하기 등록  -->
+    <insert id="insertTHP_EryndReqstRegist" parameterType="HashMap">
+		<selectKey keyProperty="reqregSn" resultType="int" order="BEFORE">
+    		SELECT ISNULL ( MAX( REQREG_SN ) + 1 , 1 ) FROM THP_EryndReqstRegist
+			 WHERE 1=1
+			   AND REQREG_CODE = #{reqregCode}
+  		</selectKey>
+		INSERT INTO THP_EryndReqstRegist (
+			REQREG_CODE         /* 공통코드의 HP0046  */
+			,REQREG_SN        	/* 순차채번 */
+			,NM              	/* 성명 */
+			,MBTLNUM           	/* 인증 휴대번호 */
+			,CN           		/* 투표번호 */
+			,IEM_CODE1        	/* 동의코드(01) */
+			,AGRE_AT1    		/* 개인정보수집 동의여부(Y) */
+			,IEM_CODE2         	/* 동의코드(02) */
+			,AGRE_AT2      		/* 개인정보 제3자 제공 동의여부(Y) */
+			,RGSDE           	/* 등록일 */
+			,AGRE_DE           	/* 동의일자 */
+		) VALUES (
+			#{reqregCode}
+			,#{reqregSn}
+			,#{nm}
+			,#{mbtlnum}
+			,#{cn}
+			,#{iemCode1}
+			,#{agreAt1}
+			,#{iemCode2}
+			,#{agreAt2}
+			,GETDATE()
+			,GETDATE()
+		)
+		  
+    </insert>
+     
+    
+    <!-- [나눔문화캠페인] 투표여부 조회 -->
+    <select id="selectReqstCheck" parameterType="HashMap" resultType="int">
+        <![CDATA[
+            SELECT COUNT(*) AS CNT
+              FROM THP_EryndReqstRegist A
+             WHERE MBTLNUM = #{mbtlnum}
+            
+        ]]>
+    </select>     
+        
+</mapper>

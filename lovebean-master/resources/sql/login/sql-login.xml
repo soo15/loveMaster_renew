@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--
+ * ************************************************************************************************
+ * System Name : 사랑의 열매 사용자 System
+ * Class Name  : sql-login.xml
+ * Author      : Chest Admin
+ * Date        : 2019. 8. 1.
+ * Description : [ Login ] Login 관련
+ *
+ * History     :
+ * ************************************************************************************************
+ * No.     Date           Name             Description
+ * ************************************************************************************************
+ * CH_OO   2019. 8. 1.    Chest Admin      Initial Release
+ * CH_01
+ *************************************************************************************************
+-->
+<mapper namespace="com.login.mapper.LoginMapper">
+
+</mapper>

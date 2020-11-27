@@ -1,0 +1,311 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--
+ * ************************************************************************************************
+ * System Name : 사랑의 열매 사용자 System
+ * Class Name  : sql-main.xml
+ * Author      : Chest Admin
+ * Date        : 2019. 8. 1.
+ * Description : [ Main ] Main 관련
+ *
+ * History     :
+ * ************************************************************************************************
+ * No.     Date           Name             Description
+ * ************************************************************************************************
+ * CH_OO   2019. 8. 1.    Chest Admin      Initial Release
+ * CH_01
+ *************************************************************************************************
+-->
+<mapper namespace="com.main.mapper.MainMapper">
+
+    <select id="searchLoginUserRoleList" parameterType="HashMap" resultType="HashMap">
+        <![CDATA[
+           WITH CTE ( MENU_NM
+                      ,UPPER_MENU_NO
+                      ,MENU_NO
+                      ,LVL
+                      ,MENU_URL
+                      ,PATH_NO
+                      ,PATH_NM
+                      ,MENU_ORDR
+                      , SORT
+                      , DEPTH_FULLNAME
+            ) AS
+            ( SELECT MENU_NM
+                    ,UPPER_MENU_NO
+                    ,MENU_NO
+                    ,1 AS LVL
+                    ,PROGRM_FILE_NM                     AS MENU_URL
+                    ,CONVERT(nvarchar, MENU_NO)         AS PATH_NO
+                    ,CONVERT(nvarchar, MENU_NM)         AS PATH_NM
+                    ,CONVERT(nvarchar, MENU_ORDR)       AS MENU_ORDR
+                    , convert(varchar(255), MENU_NO)    AS SORT
+                    , convert(varchar(255), MENU_NM)    AS DEPTH_FULLNAME
+
+                FROM THP_MENUINFO
+               WHERE UPPER_MENU_NO IS NULL
+                 AND MENU_SE   = '001'  /* 홈페이지  */
+                 AND DELETE_AT = 'N'    /* 삭제여부 N */
+              UNION ALL
+              SELECT A.MENU_NM
+                    ,A.UPPER_MENU_NO
+                    ,A.MENU_NO
+                    ,LVL + 1
+                    ,A.PROGRM_FILE_NM
+                    ,CONVERT(nvarchar, B.PATH_NO   + '|' + CONVERT(nvarchar, A.MENU_NO))
+                    ,CONVERT(nvarchar, B.PATH_NM   + '|' + A.MENU_NM)
+                    ,CONVERT(nvarchar, B.MENU_ORDR + '|' + CONVERT(nvarchar, A.MENU_ORDR)) AS MENU_ORDR
+                    , CONVERT(VARCHAR(255), CONVERT(NVARCHAR,   B.MENU_NO ) + ' > '  + CONVERT(VARCHAR(255),A.MENU_NO)) AS  SORT
+                    , CONVERT(VARCHAR(255), CONVERT(NVARCHAR, B.MENU_NM) + ' > '  + CONVERT(VARCHAR(255), A.MENU_NM))   AS   DEPTH_FULLNAME
+                FROM THP_MENUINFO A INNER JOIN CTE B
+                                       ON A.UPPER_MENU_NO = B.MENU_NO
+               WHERE A.MENU_SE   = '001'  /* 홈페이지  */
+                 AND A.DELETE_AT = 'N'    /* 삭제여부 N */
+            )
+            SELECT Q.MENU_NO
+                  ,Q.MENU_NM
+                  ,Q.UPPER_MENU_NO
+                  ,Q.LVL
+                  ,Q.MENU_URL
+                  ,Q.PATH_NO
+                  ,Q.PATH_NM
+                  ,CASE WHEN Z.UPPER_MENU_NO IS NULL THEN 'Y' ELSE 'N' END AS LEAF_YN
+
+                  , Q.MENU_NM
+                  ,Q.PATH_NM
+                  , Q.SORT
+                  , Q.DEPTH_FULLNAME
+
+              FROM CTE Q LEFT OUTER JOIN ( SELECT UPPER_MENU_NO
+                                             FROM THP_MENUINFO
+                                            GROUP BY UPPER_MENU_NO
+                                         ) Z
+                                 ON Z.UPPER_MENU_NO = Q.MENU_NO
+             ORDER BY Q.MENU_NO,Q.MENU_ORDR
+
+        ]]>
+    </select>
+
+    <select id="selectBanrList" parameterType="HashMap" resultType="com.common.map.ComCamelMap">
+        <![CDATA[
+            SELECT  T.*
+            FROM    (
+			            SELECT A.BHF_CODE
+			                    , A.PC_FLPTH
+			                    , A.PC_SERVER_FILE_NM
+			                    , A.PC_ORGINL_FILE_NM
+			                    , A.PC_FILE_EXTSN
+			                    , A.PC_FILE_MG
+			                    , A.MOBILE_FLPTH
+			                    , A.MOBILE_SERVER_FILE_NM
+			                    , A.MOBILE_ORGINL_FILE_NM
+			                    , A.MOBILE_FILE_EXTSN
+			                    , A.MOBILE_FILE_MG
+			                    , A.CNNC_PGE_URL
+			                    , A.ALT_TEXT
+			                    , A.NEW_AT
+			                    , A.PRIORT
+			                    , A.USE_AT
+			                    , A.COMMON_AT
+			                    , A.BGNDE + A.BGNTM AS BGNDT
+			                    , A.ENDDE + A.ENDTM AS ENDDT
+			                    , CONVERT(nvarchar, GETDATE(), 112) + SUBSTRING(REPLACE(CONVERT(nvarchar, GETDATE(), 108), ':', ''), 1, 4) AS DT
+			            FROM    THP_MainBannerManage AS A WITH(NOLOCK, INDEX(IDX_THP_MainBannerManage_01))
+			            WHERE   A.USE_AT = 'Y'
+			            AND     A.COMMON_AT = 'Y'
+			            AND     A.DELETE_AT = 'N'
+			            UNION ALL
+			            SELECT  B.BHF_CODE
+			                    , B.PC_FLPTH
+			                    , B.PC_SERVER_FILE_NM
+			                    , B.PC_ORGINL_FILE_NM
+			                    , B.PC_FILE_EXTSN
+			                    , B.PC_FILE_MG
+			                    , B.MOBILE_FLPTH
+			                    , B.MOBILE_SERVER_FILE_NM
+			                    , B.MOBILE_ORGINL_FILE_NM
+			                    , B.MOBILE_FILE_EXTSN
+			                    , B.MOBILE_FILE_MG
+			                    , B.CNNC_PGE_URL
+			                    , B.ALT_TEXT
+			                    , B.NEW_AT
+			                    , B.PRIORT
+			                    , B.USE_AT
+			                    , B.COMMON_AT
+			                    , B.BGNDE + B.BGNTM AS BGNDT
+			                    , B.ENDDE + B.ENDTM AS ENDDT
+			                    , CONVERT(nvarchar, GETDATE(), 112) + SUBSTRING(REPLACE(CONVERT(nvarchar, GETDATE(), 108), ':', ''), 1, 4) AS DT
+			            FROM    THP_MainBannerManage AS B WITH(NOLOCK, INDEX(IDX_THP_MainBannerManage_01))
+			            WHERE   B.BHF_CODE = #{pBhfCode}
+		                AND     B.USE_AT = 'Y'
+		                AND     B.COMMON_AT ='N'
+		                AND     B.DELETE_AT = 'N'
+                    ) T
+            WHERE   T.DT BETWEEN T.BGNDT AND T.ENDDT
+            ORDER BY T.COMMON_AT ASC, T.PRIORT ASC
+        ]]>
+    </select>
+
+    <select id="selectBhfBanrList" parameterType="HashMap" resultType="com.common.map.ComCamelMap">
+        <![CDATA[
+            SELECT  T.*
+                 , CASE WHEN T.DT BETWEEN T.BGNDT AND T.ENDDT THEN 'Y'
+                        ELSE 'N'
+                    END AS ON_YN
+            FROM    (
+                        SELECT  B.BHF_CODE
+                                , B.FLPTH
+                                , B.SERVER_FILE_NM
+                                , B.ORGINL_FILE_NM
+                                , B.FILE_EXTSN
+                                , B.FILE_MG
+                                , B.CNNC_PGE_URL
+                                , B.TITLE_TEXT
+                                , B.DC_TEXT
+                                , B.NEW_AT
+                                , B.PRIORT
+                                , B.USE_AT
+                                , B.NTCE_SE
+                                , B.BGNDE + B.BGNTM AS BGNDT
+                                , B.ENDDE + B.ENDTM AS ENDDT
+                                , CONVERT(nvarchar, GETDATE(), 112) + SUBSTRING(REPLACE(CONVERT(nvarchar, GETDATE(), 108), ':', ''), 1, 4) AS DT
+                        FROM    THP_MainBannerBhfManage AS B WITH(NOLOCK, INDEX(IDX_THP_MainBannerBhfManage_01))
+                        WHERE   B.BHF_CODE = #{pBhfCode}
+                        AND     B.USE_AT = 'Y'
+                        AND     B.DELETE_AT = 'N'
+                    ) T
+            ORDER BY T.NTCE_SE, T.PRIORT ASC
+        ]]>
+    </select>
+
+    <!-- [ 메인 ] 게시판 리스트 조회 !! -->
+    <select id="selectMainBbsList" parameterType="HashMap" resultType="com.common.map.ComCamelMap">
+
+        <choose>
+        <when test='topNum != null and topNum != ""'>
+            <![CDATA[
+            SELECT TOP (CAST(#{topNum} AS INT))
+            ]]>
+        </when>
+        <otherwise>
+            <![CDATA[
+            SELECT TOP 4
+            ]]>
+        </otherwise>
+        </choose>
+        <![CDATA[
+                    A.LIST_SN
+                  , ISNULL((
+                            SELECT  CMMN_CODE_NM
+                              FROM  dbo.TCM_CmmnCode WITH(NOLOCK)
+                             WHERE  GROUP_CODE = 'HP0010'
+                               AND  CMMN_CODE = A.BHF_CODE
+                            ), '') AS CMMN_CODE_NM
+                      , A.SJ
+                  , SUBSTRING(CONVERT(NVARCHAR(8), A.RGSDE, 112), 7, 2) AS RESD
+                  , CONVERT(NVARCHAR(7), A.RGSDE, 102) AS RESYM
+                  , D.FLPTH
+                  , D.SERVER_FILE_NM
+                  , D.FILE_EXTSN
+                  , CASE WHEN ISNULL(D.SERVER_FILE_NM, '') <> ''
+                         THEN SUBSTRING(D.SERVER_FILE_NM, 0, LEN(D.SERVER_FILE_NM) - CHARINDEX('.', REVERSE(D.SERVER_FILE_NM))+1) + '_thumb' + D.FILE_EXTSN
+                    ELSE ''
+                    END AS THUMB_FILE_NM
+               FROM THP_BbsList A WITH(NOLOCK) LEFT OUTER JOIN
+                    THP_BbsFileDetail D WITH(NOLOCK) ON A.LIST_SN = D.LIST_SN
+                                                    AND A.BHF_CODE = D.BHF_CODE
+                                                    AND D.FILE_SE = 'T' INNER JOIN
+                    THP_BbsInfo B WITH(NOLOCK)       ON A.BBS_SN = B.BBS_SN
+              WHERE A.DELETE_AT = 'N'
+                AND A.BBS_SN = #{pBbsSn}
+                AND A.DELETE_AT = 'N'
+                AND A.BBS_SN = #{pBbsSn}
+                AND A.RGSDE >= DATEADD(YEAR, -1, GETDATE())
+        ]]>
+        <if test='topNum == null or topNum == ""'>
+            <if test='pBhfCode != null and pBhfCode != ""'>
+                AND A.BHF_CODE = #{pBhfCode}
+            </if>
+        </if>
+        <![CDATA[
+            ORDER BY (case when CONVERT(varchar, GETDATE(), 112) between a.BGNDE and a.endde then a.PRIORT else '99' end), A.LIST_SN DESC
+        ]]>
+    </select>
+
+    <!-- [ 메인 ] 게시판 리스트 조회 !! -->
+    <select id="selectMainList3" parameterType="HashMap" resultType="com.common.map.ComCamelMap">
+        <![CDATA[
+            SELECT  TOP 6
+                      A.PROPSE_SN
+                    , A.BSNS_SJ
+                    , A.PROPSE_INSTT_NM
+                    , A.THUMB_FILE_NM
+                    , A.FLPTH
+                    , A.SERVER_FILE_NM
+                    , A.FILE_EXTSN
+                    , A.GOAL_AMOUNT
+                    , A.MYS_BGNDE
+                    , A.MYS_ENDDE
+                    , A.GOAL_AMOUNT_USE_PLAN
+                    , A.EVENT_CODE
+                    , ISNULL(
+                        (
+                          SELECT  SUM(CNTR_AMOUNT)
+                            FROM    THP_InipayLog B
+                            WHERE   1 = 1
+                            AND     B.EVENT_CODE IN ( SELECT C.EVENT_CODE
+                                                      FROM THP_MysCodeMapping  C
+                                                      WHERE C.EVENT_GROUP  = (
+                                                         SELECT D.EVENT_GROUP FROM THP_MysCodeMapping D WHERE D.EVENT_CODE = A.EVENT_CODE)
+                             )
+                            AND     B.RESULT_CODE IN ('0000', '00')
+                        ), 0) AS CNTR_AMOUNT_SUM
+                    , ISNULL(
+                        (
+                          SELECT  COUNT(1)
+                            FROM    THP_InipayLog B
+                            WHERE   1 = 1
+                            AND     B.EVENT_CODE IN ( SELECT C.EVENT_CODE
+                                                      FROM THP_MysCodeMapping  C
+                                                      WHERE C.EVENT_GROUP  = (
+                                                         SELECT D.EVENT_GROUP FROM THP_MysCodeMapping D WHERE D.EVENT_CODE = A.EVENT_CODE)
+                             )
+                            AND     B.RESULT_CODE IN ('0000', '00')
+                        ), 0) AS CNTR_AMOUNT_CNT
+                     , M.MYS_CL1, M.MYS_CL2
+            FROM    THP_FundMysNtce A LEFT OUTER JOIN THP_MysCodeMapping M ON M.EVENT_CODE = A.EVENT_CODE
+            WHERE   1 = 1
+             AND     (CONVERT(VARCHAR(10), GETDATE(), 112) BETWEEN A.MYS_BGNDE AND A.MYS_ENDDE
+                    OR A.PRCSNG_EXPSR_AT = 'Y')
+             ORDER BY A.SORT ASC
+        ]]>
+    </select>
+
+    <!-- [ 메인 ] 사랑의 온도탑 조회 !! -->
+    <select id="selectTpTopInfo" parameterType="HashMap" resultType="com.common.map.ComCamelMap">
+        <![CDATA[
+            SELECT  BHF_CODE
+                    , CASE
+			            WHEN GOAL IS NOT NULL THEN CONVERT(NUMERIC(15,0), ROUND((GOAL / 100000000), 0))
+			            ELSE 0
+			        END AS GOAL
+			        , CASE
+			            WHEN ACMSLT IS NOT NULL THEN CONVERT(NUMERIC(15,1), ROUND((ACMSLT / 100000000), 1))
+			            ELSE 0
+			        END AS ACMSLT
+			        , CASE
+                        --WHEN PT IS NOT NULL THEN CONVERT(NUMERIC(5,0), PT)
+                        WHEN PT IS NOT NULL THEN CONVERT(NUMERIC(5,1), PT)
+                        ELSE 0
+                    END AS PT
+                    , REGISTER
+                    , RGSDE
+                    , UPDUSR
+                    , UPDDE
+            FROM    THP_TpTop WITH (NOLOCK)
+       ]]>
+            WHERE   BHF_CODE = #{pBhfCode}
+            AND   YEAR = '2021'
+    </select>
+</mapper>

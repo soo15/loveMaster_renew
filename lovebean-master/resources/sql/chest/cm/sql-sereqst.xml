@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--
+ * ************************************************************************************************
+ * System Name : 사랑의 열매 관리자 System
+ * Class Name  : sql-sereqst.xml
+ * Date        : 2019. 7. 26.
+ * Description : [ 각종신청-기관방문신청]
+ * History     :
+ * ************************************************************************************************
+ * No.     Date           Name             Description
+ * ************************************************************************************************
+ * CH_OO   2019. 7. 26.    김민수      Initial Release
+ * CH_01   
+ *************************************************************************************************
+-->
+<mapper namespace="com.chest.cm.mapper.SereqstMapper">
+	
+	
+<!--     [ 기관방문신청 ] visitSn 의 가장 큰 값을 구한다. -->
+<!--     <select id="selectMaxVisitSn" parameterType="HashMap" resultType="int"> -->
+<!--             SELECT ISNULL ( MAX( VISIT_SN ) + 1 , 1 ) AS MAX_VISIT_SN -->
+<!--               FROM THP_InsttVisitReqst -->
+<!--     </select>   -->
+    	
+    <!--  기관방문신청 -->
+    <insert id="insertTHP_InsttVisitReqst" parameterType="HashMap">
+		MERGE INTO THP_InsttVisitReqst 
+        USING (VALUES (1))
+            AS Source (Number)		
+            ON VISIT_SN = convert(int,#{visitSn})  
+		WHEN MATCHED THEN
+		UPDATE SET 
+		             APPLCNT_NM           = #{applcntNm}       /* 신청자명 */
+		            ,APPLCNT_MBTLNUM      = #{applcntMbtlnum}  /* 신청자휴대번호 */
+		            ,APPLCNT_INSTT_NM     = #{applcntInsttNm}  /* 신청기관명 */
+		            ,PSITN                = #{psitn}           /* 소속 */
+		            ,PSITN_PHONE          = #{psitnPhone}      /* 소속처연락처 */
+		            ,PSITN_EMAIL          = #{psitnEmail}      /* 소속처이메일 */
+		            ,ATNLC_SBJECT         = #{atnlcSbject}     /* 수강과목 */
+		            ,PROFSR               = #{profsr}          /* 교수명 */
+		            ,WHLRS                = #{whlrs}           /* 총인원 */
+		            ,VISIT_YN             = #{visitYn}         /* 인솔자방문여부 */
+		            ,FLPTH                = #{flpth}           /* 파일저장경로 */
+		            ,SERVER_FILE_NM       = #{fileName}        /* 서버파일명 */
+		            ,ORGINL_FILE_NM       = #{fileName}        /* 원파일명 */
+		            ,FILE_EXTSN           = #{extsn}           /* 파일확장자 */
+		            ,FILE_MG              = #{fileMg}          /* 파일크기 */
+		            ,PRM_HOPE_DE          = #{prmHopeDe}       /* 1차희망방문일자 */
+		            ,PRM_HOPE_TM          = #{prmHopeTm}       /* 1차희망방문일시 */
+		            ,SCD_HOPE_DE          = #{scdHopeDe}       /* 2차희망방문일자 */
+		            ,SCD_HOPE_TM          = #{scdHopeTm}       /* 2차희망방문일시 */
+		            ,VISIT_PURPS          = #{visitPurps}      /* 방문목적 */
+		            ,PHOTO_AT             = #{photoAt}         /* 사진촬영여부 */
+		            ,QESTN                = #{qestn}           /* 질문내용 */
+		            ,AGRE_AT              = #{agreAt}          /* 개인정보제공동의여부 */
+<!-- 		            ,AGRE_RGSDE           = #{agreRgsde}       /* 제공동의등록일 */ -->
+		            ,THPTY_AGRE_AT        = #{thptyAgreAt}     /* 제3자제공이용동의 */
+<!-- 		            ,THPTY_AGRE_RGSDE     = #{thptyAgreRgsde}  /* 제공동의등록일 */ -->
+		            ,PROGRS_STEP          = #{progrsStep}      /* 처리단계 */   
+		            ,UPDDE                = GETDATE()          /* 변경일 */
+		WHEN NOT MATCHED THEN 
+		INSERT (
+		             APPLCNT_NM              /* 신청자명 */
+		            ,APPLCNT_MBTLNUM         /* 신청자휴대번호 */
+		            ,APPLCNT_INSTT_NM        /* 신청기관명 */
+		            ,PSITN                   /* 소속 */
+		            ,PSITN_PHONE             /* 소속처연락처 */
+		            ,PSITN_EMAIL             /* 소속처이메일 */
+		            ,ATNLC_SBJECT            /* 수강과목 */
+		            ,PROFSR                  /* 교수명 */
+		            ,WHLRS                   /* 총인원 */
+		            ,VISIT_YN                /* 인솔자방문여부 */
+		            ,FLPTH                   /* 파일저장경로 */
+		            ,SERVER_FILE_NM          /* 서버파일명 */
+		            ,ORGINL_FILE_NM          /* 원파일명 */
+		            ,FILE_EXTSN              /* 파일확장자 */
+		            ,FILE_MG                 /* 파일크기 */
+		            ,PRM_HOPE_DE             /* 1차희망방문일자 */
+		            ,PRM_HOPE_TM             /* 1차희망방문일시 */
+		            ,SCD_HOPE_DE             /* 2차희망방문일자 */
+		            ,SCD_HOPE_TM             /* 2차희망방문일시 */
+		            ,VISIT_PURPS             /* 방문목적 */
+		            ,PHOTO_AT                /* 사진촬영여부 */
+		            ,QESTN                   /* 질문내용 */
+		            ,AGRE_AT                 /* 개인정보제공동의여부 */
+		            ,AGRE_RGSDE              /* 제공동의등록일 */
+		            ,THPTY_AGRE_AT           /* 제3자제공이용동의 */
+		            ,THPTY_AGRE_RGSDE        /* 제공동의등록일 */
+		            ,RGSDE                   /* 등록일 */
+		            ,PROGRS_STEP             /* 처리단계 */
+            ) VALUES (
+		             #{applcntNm}
+		            ,#{applcntMbtlnum}
+		            ,#{applcntInsttNm}
+		            ,#{psitn}
+		            ,#{psitnPhone}
+		            ,#{psitnEmail}
+		            ,#{atnlcSbject}
+		            ,#{profsr}
+		            ,#{whlrs}
+		            ,#{visitYn}
+		            ,#{flpth}
+		            ,#{fileName}
+		            ,#{fileName}
+		            ,#{extsn}
+		            ,#{fileMg}
+		            ,#{prmHopeDe}
+		            ,#{prmHopeTm}
+		            ,#{scdHopeDe}
+		            ,#{scdHopeTm}
+		            ,#{visitPurps}
+		            ,#{photoAt}
+		            ,#{qestn}
+		            ,#{agreAt}
+		            ,GETDATE()
+		            ,#{thptyAgreAt}
+		            , GETDATE()
+		            , GETDATE()
+		            ,#{progrsStep}
+		        );
+    </insert>
+    	
+    <!-- [ 기관방문신청 ] 신청내역 취소  -->
+    <update id="updateCancelTHP_InsttVisitReqst" parameterType="HashMap">
+    UPDATE THP_InsttVisitReqst
+    SET 
+             CANCL_AT             = 'Y'                /* 취소여부 */
+            ,CANCL_DE             =  GETDATE()         /* 취소신청일 */
+            ,UPDDE                =  GETDATE()         /* 변경일 */ 
+    WHERE  1=1 
+         AND   VISIT_SN = #{visitSn}    
+    </update>
+            
+    
+     <!-- 기관방문신청 조회 -->
+     <select id="selectInsttVisitReqst" parameterType="HashMap" resultType="com.common.map.ComCamelMap">
+        SELECT 
+             VISIT_SN                /* 신청일련번호 */
+            ,APPLCNT_NM              /* 신청자명 */
+            ,APPLCNT_MBTLNUM         /* 신청자휴대번호 */
+            ,APPLCNT_INSTT_NM        /* 신청기관명 */
+            ,PSITN                   /* 소속 */
+            ,PSITN_PHONE             /* 소속처연락처 */
+            ,PSITN_EMAIL             /* 소속처이메일 */
+            ,ATNLC_SBJECT            /* 수강과목 */
+            ,PROFSR                  /* 교수명 */
+            ,WHLRS                   /* 총인원 */
+            ,VISIT_YN                /* 인솔자방문여부 */
+            ,FLPTH                   /* 파일저장경로 */
+            ,SERVER_FILE_NM          /* 서버파일명 */
+            ,ORGINL_FILE_NM          /* 원파일명 */
+            ,FILE_EXTSN              /* 파일확장자 */
+            ,FILE_MG                 /* 파일크기 */
+            ,PRM_HOPE_DE             /* 1차희망방문일자 */
+            ,PRM_HOPE_TM             /* 1차희망방문일시 */
+            ,SUBSTRING(PRM_HOPE_DE,1,4)+'-'+ SUBSTRING(PRM_HOPE_DE,5,2)+'-'+SUBSTRING(PRM_HOPE_DE,7,2) +' '
+              + SUBSTRING(PRM_HOPE_TM,1,2)+':'+SUBSTRING(PRM_HOPE_TM,3,2) AS PRM_HOPE  /* 1차 방문일시*/
+            ,SCD_HOPE_DE             /* 2차희망방문일자 */
+            ,SCD_HOPE_TM             /* 2차희망방문일시 */
+            ,SUBSTRING(SCD_HOPE_DE,1,4)+'-'+ SUBSTRING(SCD_HOPE_DE,5,2)+'-'+SUBSTRING(SCD_HOPE_DE,7,2) +' '
+              + SUBSTRING(SCD_HOPE_TM,1,2)+':'+SUBSTRING(SCD_HOPE_TM,3,2) AS SCD_HOPE /* 2차 방문일시*/
+            ,VISIT_PURPS             /* 방문목적 */
+            ,PHOTO_AT                /* 사진촬영여부 */
+            ,QESTN                   /* 질문내용 */
+            ,AGRE_AT                 /* 개인정보제공동의여부 */
+            ,AGRE_RGSDE              /* 제공동의등록일 */
+            ,THPTY_AGRE_AT           /* 제3자제공이용동의 */
+            ,THPTY_AGRE_RGSDE        /* 제공동의등록일 */
+            ,RGSDE                   /* 등록일 */
+            ,PROGRS_STEP             /* 처리단계 */
+            , CASE PROGRS_STEP WHEN '01' THEN '접수완료'
+                               WHEN '02' THEN '취소완료'
+                               WHEN '03' THEN '승인완료'
+                               ELSE ' ' 
+                               END PROGRS_STEP_NM   /* 신청상태 */
+            ,CANCL_AT                /* 취소여부 */
+            ,CANCL_DE                /* 취소신청일 */
+            ,UPDDE                   /* 변경일*/
+          FROM   THP_InsttVisitReqst
+          WHERE 1=1
+          <if test='visitSn != null and visitSn != ""'>          
+          AND VISIT_SN = #{visitSn}
+          </if> 
+    </select>
+    
+
+    
+    <!-- [ 신청내역조회 ] Page 리스트 Count 조회 -->
+    <select id="selectReqstListCount" parameterType="HashMap" resultType="String">
+        <![CDATA[
+            SELECT  COUNT(*) AS CNT
+            FROM    THP_InsttVisitReqst A
+            WHERE 1=1
+            AND APPLCNT_NM  =#{applcntNm} 
+            AND APPLCNT_MBTLNUM  =#{applcntMbtlnum}
+        ]]>
+<!--             <include refid="ListCondition" /> -->
+    </select>    
+	
+
+    <!-- [ 신청내역조회 ] 리스트 조회  -->
+    <select id="selectReqstList" parameterType="HashMap" resultType="com.common.map.ComCamelMap">
+        <![CDATA[
+            SELECT  ROW_NUMBER() OVER(ORDER BY VISIT_SN DESC) AS NO  /* 번호 */
+                    , VISIT_SN               /* 신청일련번호 */
+                    ,APPLCNT_INSTT_NM        /* 신청기관명 */
+                    ,APPLCNT_NM              /* 신청자명 */
+                    ,CASE LEN(PRM_HOPE_DE) 
+                     WHEN 0 THEN ''
+                     ELSE
+	                    SUBSTRING(PRM_HOPE_DE,1,4)+'-'+ SUBSTRING(PRM_HOPE_DE,5,2)+'-'+SUBSTRING(PRM_HOPE_DE,7,2) +' '
+	                      + SUBSTRING(PRM_HOPE_TM,1,2)+':'+SUBSTRING(PRM_HOPE_TM,3,2) 
+	                END  AS PRM_HOPE  /* 1차 방문일시*/
+	                ,CASE LEN(SCD_HOPE_DE) 
+                     WHEN 0 THEN ''
+                     ELSE
+                        SUBSTRING(SCD_HOPE_DE,1,4)+'-'+ SUBSTRING(SCD_HOPE_DE,5,2)+'-'+SUBSTRING(SCD_HOPE_DE,7,2) +' '
+		              + SUBSTRING(SCD_HOPE_TM,1,2)+':'+SUBSTRING(SCD_HOPE_TM,3,2) 
+		            END  AS SCD_HOPE /* 2차 방문일시*/
+		            ,PRM_HOPE_DE
+		            ,SCD_HOPE_DE
+		            ,PROGRS_STEP             /* 처리단계 */
+		            , CASE PROGRS_STEP WHEN '01' THEN '접수완료'
+		                               WHEN '02' THEN '취소완료'
+		                               WHEN '03' THEN '승인완료'
+		                               ELSE ' ' 
+		                               END PROGRS_STEP_NM   /* 신청상태 */
+		            ,CANCL_AT                /* 취소여부 */
+		            ,CASE CANCL_AT WHEN 'Y' THEN '취소'
+		                           ELSE '취소가능' 
+		                           END CANCL_AT_NM  /* 취소여부상태 */
+                    ,APPLCNT_MBTLNUM         /* 신청자휴대번호 */
+            FROM    THP_InsttVisitReqst
+            WHERE 1=1
+            AND APPLCNT_NM =#{applcntNm} 
+            AND APPLCNT_MBTLNUM  =#{applcntMbtlnum}
+            
+        ]]>
+<!--             <include refid="ListCondition" /> -->
+        <![CDATA[
+            ORDER BY VISIT_SN DESC
+            OFFSET (CONVERT(int, #{currPageNo}) - 1) * CONVERT(int, #{pageCount}) ROWS FETCH NEXT CONVERT(int, #{pageCount}) ROWS ONLY
+        ]]>
+    </select>	
+	
+    <!-- [ 신청내역조회 ] 게시물 리스트 Common Condition Query  ( 신청자 전화번호   && 신청자명)  -->
+<!--     <sql id="ListCondition"> -->
+<!--         [조회 조건] SJ -->
+<!--           <if test='applcntNm != null and applcntNm != ""'> -->
+<!--             AND APPLCNT_NM LIKE '%' + #{applcntNm} + '%' -->
+<!--             AND APPLCNT_NM LIKE  =#{applcntNm}  -->
+<!--           </if>            -->
+<!--           <if test='applcntMbtlnum != null and applcntMbtlnum != ""'> -->
+<!--             AND APPLCNT_MBTLNUM  = #{applcntMbtlnum} -->
+<!--           </if>            -->
+<!--     </sql>  	 -->
+</mapper>

@@ -1,0 +1,639 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--
+ * ************************************************************************************************
+ * System Name : 사랑의 열매 관리자 System
+ * Class Name  : sql-rmditail.xml
+ * Date        : 2019. 7. 26.
+ * Description : [ 대관관리 - 대관현황 ]
+ * History     :
+ * ************************************************************************************************
+ * No.     Date           Name             Description
+ * ************************************************************************************************
+ * CH_OO   2019. 7. 26.    김민수      Initial Release
+ * CH_01   
+ *************************************************************************************************
+-->
+<mapper namespace="com.chest.cm.mapper.RentreqstMapper">
+	
+	<sql id="listCondition">
+    	<if test=" startDate == null or endDate == null " >
+			AND ( ELST_USE_BGNDE BETWEEN CONVERT( CHAR(10), DATEADD( DAY, CONVERT( INT , -90 , 112 ) , GETDATE() ) , 112 )    
+					AND CONVERT( CHAR(10), DATEADD( DAY, 0 , GETDATE() ) , 112 )
+				OR ELST_USE_ENDDE BETWEEN CONVERT( CHAR(10), DATEADD( DAY, 0 , GETDATE() ) , 112 ) AND CONVERT( CHAR(10), DATEADD( DAY, 0 , GETDATE() ) , 112 )
+			)		
+		</if>
+		<if test=" startDate != null and startDate != '' and endDate != null and endDate != '' ">
+			AND ( 
+				ELST_USE_BGNDE BETWEEN #{endDate} AND #{startDate}
+				OR ELST_USE_ENDDE BETWEEN #{endDate} AND #{startDate}  
+			)
+		</if>
+	    <if test=" reqstInsttNm1 != null and reqstInsttNm1 != ''  ">
+			AND REQST_INSTT_NM LIKE '%' + #{reqstInsttNm1} + '%'
+		</if>	
+		AND ELST_CODE = #{elstCode3}
+    </sql>
+    
+    <select id="selectDetailModify" parameterType="HashMap" resultType="com.common.map.ComCamelMap">
+		<![CDATA[
+		SELECT 
+			REQST_SN 		
+			,REQST_INSTT_NM  	
+			,REQST_INSTT_TELNO	
+			,REQST_INSTT_EMAIL 	
+			,REQST_INSTT_MBTLNUM	
+			,REQST_INSTT_FAX 	
+			,EVENT_NM		
+			,EVENT_CN 		
+			,ELST_CODE		
+			,CONVERT( VARCHAR , CONVERT( DATETIME , MIN( ELST_USE_BGNDE ) , 23 ) ,23 ) AS ELST_USE_BGNDE 	
+			,MAX( ELST_USE_BGNTM ) AS ELST_USE_BGNTM
+			,CONVERT( VARCHAR , CONVERT( DATETIME , MAX( ELST_USE_ENDDE ) , 23 ) ,23 ) AS ELST_USE_ENDDE 	
+			,MIN( ELST_USE_ENDTM) AS ELST_USE_ENDTM		
+			,SUM( ELST_TOT_USETM ) AS ELST_TOT_USETM	
+			,BIM_USE_AT		
+			,RDCXPT_SE_RESN
+			,ESTMT_AMOUNT 		
+			,DCSN_AMOUNT 		
+			,USER_PASSWORD          
+			,FLPTH			
+			,SERVER_FILE_NM		    
+		FROM THP_ElstReqst 
+		WHERE ERNT_SN = #{erntSn}
+		  AND PROGRS_STEP <> 03  
+		GROUP BY REQST_SN , REQST_INSTT_NM  , REQST_INSTT_TELNO , REQST_INSTT_EMAIL 
+		, REQST_INSTT_MBTLNUM , REQST_INSTT_FAX , EVENT_NM , EVENT_CN , ELST_CODE , BIM_USE_AT , RDCXPT_SE_RESN , ESTMT_AMOUNT , DCSN_AMOUNT , USER_PASSWORD , FLPTH , SERVER_FILE_NM
+		]]>		
+	</select>
+    
+	<select id="reserveCheck" parameterType="HashMap" resultType="int">
+	<![CDATA[
+		SELECT COUNT(*) FROM ( 
+			SELECT 
+				 ELST_USE_BGNDE  
+				, ELST_USE_ENDDE 
+				, ELST_USE_BGNTM
+				, ELST_USE_ENDTM
+				, ERNT_SN 
+				, ELST_CODE
+			FROM THP_ElstReqst  WITH(NOLOCK)			
+			WHERE ELST_CODE = #{elstCode}
+			  AND PROGRS_STEP <> 03				  
+		]]>
+		<if test=" erntSn != null and erntSn != '' ">
+		<![CDATA[
+		AND ERNT_SN <> #{erntSn}
+		]]>
+		</if>
+	<![CDATA[			  
+		) T 
+		WHERE 1=1 
+	      AND ELST_USE_BGNDE = REPLACE( #{elstUseBgnde} , '-' , '' )
+	  	  AND ( ELST_USE_BGNTM BETWEEN CONVERT( INTEGER , #{elstUseBgntm} ) AND CONVERT( INTEGER , #{elstUseEndtm} ) 
+	  	  		OR ELST_USE_ENDTM BETWEEN CONVERT( INTEGER ,  #{elstUseBgntm} ) AND CONVERT( INTEGER , #{elstUseEndtm} )  
+			)
+	   ]]>	
+	</select>
+	
+	<select id="reserveCheckSetupTable" parameterType="HashMap" resultType="int">
+	<![CDATA[
+	SELECT 
+		COUNT(*) 
+	FROM THP_ElstLmttSetup 
+	WHERE ELST_CODE = #{elstCode}
+  	  AND ( 
+  	  		LMTT_BGNDE BETWEEN REPLACE( #{elstUseBgnde} , '-' , '' ) AND REPLACE( #{elstUseEndde} , '-' , '' )
+  	  		OR 
+  	  		LMTT_ENDDE BETWEEN REPLACE( #{elstUseBgnde} , '-' , '' ) AND REPLACE( #{elstUseEndde} , '-' , '' ) 
+		)
+	]]>	
+	</select>
+	
+	
+	<select id="passwordCheck" parameterType="HashMap" resultType="int">
+		SELECT COUNT(*) FROM THP_ElstReqst 
+		WHERE 1=1 
+		  AND ERNT_SN = #{erntSn}
+		  AND USER_PASSWORD = #{password}
+			  
+	</select>		
+	
+	<select id="diffList" parameterType="HashMap" resultType="com.common.map.ComCamelMap">
+	<![CDATA[
+		WITH DATE_LIST AS
+	  	(
+		      SELECT CONVERT( datetime , REPLACE( #{sDate} , '-' , '' ) ) AS DT , DATEPART(weekday , REPLACE( #{sDate} , '-' , '' ) )  AS DP
+		      UNION ALL
+		      SELECT DATEADD(DAY,1,DT)  , DATEPART(weekday ,DATEADD(DAY,1, DT) )
+		      FROM DATE_LIST
+		      WHERE DATEADD(DAY,1, DT) <= REPLACE( #{eDate} , '-' , '' )
+	  	)
+		SELECT 
+			CONVERT( VARCHAR , DT , 112 ) AS DT
+		FROM DATE_LIST
+		WHERE DP NOT IN (7, 1) 
+	]]>
+  	</select>
+  	
+  	<select id="emplChk" parameterType="HashMap" resultType="com.common.map.ComCamelMap">
+  		<![CDATA[
+            { CALL LS_HR.PSWD.dbo.SP_LOGIN_WEB
+                ( #{emplId, mode=IN, jdbcType=VARCHAR, javaType=string},
+                  #{emplPass,     mode=IN, jdbcType=VARCHAR, javaType=string}
+                )
+            }
+        ]]>
+  	</select>
+	
+	<select id="selectDetailList" parameterType="HashMap" resultType="com.common.map.ComCamelMap">
+	<![CDATA[
+		SELECT 
+			ERNT_SN
+        	, REQST_SN
+			, CONVERT( VARCHAR , RGSDE  , 23 ) AS RGSDE
+			, REQST_INSTT_NM 
+			, ( SELECT ELST_NM FROM THP_ElstInfo C WHERE C.ELST_CODE = A.ELST_CODE ) ELST_NM
+			, CONVERT( VARCHAR , CONVERT( DATETIME , ELST_USE_BGNDE , 23 ) , 23 ) + ' ' + '<font color=red>' + ELST_USE_BGNTM + '시' + '</font>' AS ELST_USE_BGNDE
+			, CONVERT( VARCHAR , CONVERT( DATETIME , ELST_USE_ENDDE , 23 ) , 23 ) + ' ' + '<font color=red>' + ELST_USE_ENDTM + '시' + '</font>' AS ELST_USE_ENDDE
+			, EVENT_NM
+			, CASE 
+				WHEN PROGRS_STEP = '01' THEN '접수' 
+				WHEN PROGRS_STEP = '02' THEN '승인' 
+				WHEN PROGRS_STEP = '03' THEN '취소' 
+				WHEN PROGRS_STEP = '04' THEN '취소승인' 
+				WHEN PROGRS_STEP = '05' THEN '입금완료' 
+				END AS PROGRS_STEP_NM
+			, PROGRS_STEP				
+		FROM THP_ELSTREQST A
+		WHERE 1=1
+		  AND ELST_USE_BGNDE = #{thisyear} + '' + #{thismonth} + '' + #{today} 
+		  AND ELST_CODE = #{elstCode}
+		ORDER BY ELST_USE_BGNDE DESC
+		]]>
+	</select>
+	
+	<select id="selectDetail" parameterType="HashMap" resultType="com.common.map.ComCamelMap">
+	<![CDATA[
+		SELECT 
+			ERNT_SN
+        	, REQST_SN
+			, CONVERT( VARCHAR , RGSDE  , 23 ) AS RGSDE
+			, REQST_INSTT_NM 
+			, ( SELECT ELST_NM FROM THP_ElstInfo C WHERE C.ELST_CODE = A.ELST_CODE ) ELST_NM
+			, CONVERT( VARCHAR , CONVERT( DATETIME , ELST_USE_BGNDE , 23 ) , 23 ) + ' ' + '<font color=red>' + ELST_USE_BGNTM + '시' + '</font>' AS ELST_USE_BGNDE
+			, CONVERT( VARCHAR , CONVERT( DATETIME , ELST_USE_ENDDE , 23 ) , 23 ) + ' ' + '<font color=red>' + ELST_USE_ENDTM + '시' + '</font>' AS ELST_USE_ENDDE
+			, EVENT_NM
+			, CONVERT( VARCHAR(7) , CONVERT( DATETIME , ELST_USE_BGNDE , 23 ) , 102 )  AS TXTDATE
+			, CASE 
+				WHEN PROGRS_STEP = '01' THEN '접수' 
+				WHEN PROGRS_STEP = '02' THEN '승인' 
+				WHEN PROGRS_STEP = '03' THEN '취소' 
+				WHEN PROGRS_STEP = '04' THEN '취소승인' 
+				WHEN PROGRS_STEP = '05' THEN '입금완료' 
+				END AS PROGRS_STEP_NM
+			, PROGRS_STEP						
+		FROM THP_ELSTREQST A
+		WHERE 1=1
+		  AND ELST_USE_BGNDE = #{yyyyMmDd}
+		  AND ELST_CODE = #{elstCode}
+		  AND ELST_USE_ENDTM BETWEEN CONVERT( INT , #{hour} ) AND 18
+		ORDER BY ELST_CODE ASC , RGSDE DESC
+		]]>
+	</select>
+	
+    <select id="selectReserveDetailList" parameterType="HashMap" resultType="com.common.map.ComCamelMap">
+        <![CDATA[
+       	SELECT 
+        	ERNT_SN
+        	, REQST_SN
+			, CONVERT( VARCHAR , RGSDE  , 23 ) AS RGSDE
+			, REQST_INSTT_NM 
+			, ( SELECT ELST_NM FROM THP_ElstInfo C WHERE C.ELST_CODE = A.ELST_CODE ) ELST_NM
+			, CONVERT( VARCHAR , CONVERT( DATETIME , ELST_USE_BGNDE , 23 ) , 23 ) + ' ' + '<font color=red>' + ELST_USE_BGNTM + '시' + '</font>' AS ELST_USE_BGNDE
+			, CONVERT( VARCHAR , CONVERT( DATETIME , ELST_USE_ENDDE , 23 ) , 23 ) + ' ' + '<font color=red>' + ELST_USE_ENDTM + '시' + '</font>' AS ELST_USE_ENDDE
+			, EVENT_NM
+			, CONVERT( VARCHAR(7) , CONVERT( DATETIME , ELST_USE_BGNDE , 23 ) , 102 )  AS TXTDATE
+			, CASE 
+				WHEN PROGRS_STEP = '01' THEN '접수' 
+				WHEN PROGRS_STEP = '02' THEN '승인' 
+				WHEN PROGRS_STEP = '03' THEN '취소' 
+				WHEN PROGRS_STEP = '04' THEN '취소승인' 
+				WHEN PROGRS_STEP = '05' THEN '입금완료' 
+				END AS PROGRS_STEP_NM
+			, PROGRS_STEP						
+		FROM THP_ELSTREQST A
+		WHERE 1=1
+		]]>
+		<include refid="listCondition" />				  	
+        <![CDATA[
+            ORDER BY ELST_USE_ENDDE DESC
+            OFFSET (CONVERT(int, #{currPageNo}) - 1) * CONVERT(int, #{pageCount}) ROWS FETCH NEXT CONVERT(int, #{pageCount}) ROWS ONLY
+        ]]>
+    </select>
+    
+    <select id="selectListCount" parameterType="HashMap" resultType="String">
+        <![CDATA[
+       	SELECT 
+        	COUNT(*) AS CNT
+		FROM THP_ELSTREQST A
+		WHERE 1=1
+		]]>
+		<include refid="listCondition" />				  	
+    </select>
+    
+     <select id="selectList" parameterType="HashMap" resultType="com.common.map.ComCamelMap">
+        <![CDATA[
+		SELECT 
+			ELST_CODE 
+			, ELST_SE
+			, ( SELECT CMMN_CODE_NM FROM TCM_CmmnCode C WHERE C.CMMN_CODE = A.ELST_SE AND GROUP_CODE = 'HP0005' )  AS ELST_SE_NM	 	
+			, ELST_NM		 
+		FROM THP_ElstInfo A ORDER BY ELST_CODE ASC
+        ]]>
+    </select>
+    
+	<select id="weekList" parameterType="HashMap" resultType="com.common.map.ComCamelMap">
+	<![CDATA[
+		WITH CTE_DATE AS
+		(
+			SELECT
+				CONVERT( datetime , #{firstDate} ) AS DT 
+				, CONVERT(DATETIME, #{firstDate} ) DATE
+				, DATEPART(DW,CONVERT(DATETIME, #{firstDate} ) ) T
+				, DATEPART(weekday , #{firstDate} )   AS DP
+			UNION ALL
+			SELECT 
+				DATEADD(DAY,1,DT)
+				, DATE + 1
+				, DATEPART(DW,DATE + 1) 
+				, DATEPART(weekday ,DATEADD(DAY,1, DT) )
+			FROM CTE_DATE
+			WHERE DATE + 1 < DATEADD(M,1, #{firstDate} )
+		)
+		SELECT T.* FROM 
+		(
+		SELECT 
+			LTRIM(STR(DATEPART(WK,DATE)-DATEPART(WK, #{firstDate} )+1) ) AS WEEK_LIST
+			, CONVERT(CHAR(8),DATE,112) DATE_LIST
+			, SUBSTRING( DATENAME(DW,DATE)  , 1 , 1 ) AS DAY_WEEK		
+			, DP
+		 FROM CTE_DATE
+		 ) T
+		 WHERE 1=1
+		]]>
+		<if test=" weekNum != null and weekNum != '' ">
+		   AND WEEK_LIST = #{weekNum}
+    	</if>
+		   AND DP NOT IN (7,1)
+	</select>
+    
+	 
+    <select id="selectTHP_ElstLmttSetup" parameterType="HashMap" resultType="com.common.map.ComCamelMap">
+    	SELECT LMTT_BGNDE AS SDATE , LMTT_ENDDE AS EDATE FROM THP_ElstLmttSetup WHERE ELST_CODE = #{elstCode} 
+    </select>
+    
+    <select id="selectListIgnore" parameterType="HashMap" resultType="com.common.map.ComCamelMap">
+        <![CDATA[
+		    WITH IGNORE AS (
+				SELECT CONVERT( DATETIME ,  #{sdate} )  LV 
+				UNION ALL 
+				SELECT CONVERT( DATETIME , LV+1 ) FROM IGNORE WHERE LV+1 <= #{edate}
+			)
+			SELECT 
+				CONVERT( VARCHAR , LV , 112 ) AS LV
+			FROM IGNORE
+			WHERE LV BETWEEN #{firstDate} AND #{endDate} 
+			OPTION (MAXRECURSION 10000)
+        ]]>
+    </select>
+    
+    <select id="selectIgnoreCalendar" parameterType="HashMap" resultType="com.common.map.ComCamelMap">
+        <![CDATA[
+		    WITH TMP AS (
+				SELECT 
+					CONVERT( DATETIME , LMTT_BGNDE , 112) AS LV 
+				FROM THP_ElstLmttSetup
+				WHERE 1=1
+				  AND ( LMTT_BGNDE >= CONVERT( VARCHAR , GETDATE() , 112 ) OR LMTT_ENDDE >=  CONVERT( VARCHAR , GETDATE() , 112 ) )
+				  AND ELST_CODE = #{elstCode}	  
+				UNION ALL 
+				SELECT 		
+					CONVERT( DATETIME , LV+1 , 112)  
+					FROM TMP WHERE LV+1 <= ( SELECT LMTT_ENDDE FROM THP_ElstLmttSetup 
+																				WHERE 1=1 
+																				  AND ( LMTT_BGNDE >= CONVERT( VARCHAR , GETDATE() , 112 ) OR LMTT_ENDDE >=  CONVERT( VARCHAR , GETDATE() , 112 ) ) 
+																				  AND ELST_CODE = #{elstCode} ) 
+			
+			)	
+			SELECT 
+				CONVERT( VARCHAR , LV , 112 ) AS IGNORE 
+			FROM TMP
+			WHERE LV >= CONVERT( VARCHAR , GETDATE() , 112 )
+			OPTION (MAXRECURSION 10000)
+        ]]>
+    </select>
+    
+    <select id="selectGetDate" parameterType="HashMap" resultType="com.common.map.ComCamelMap">
+	    SELECT 
+			DAY(GETDATE()) AS TODAY
+			, CONVERT( VARCHAR(8) , GETDATE() , 112 ) AS TODATE
+			, CONVERT(Char(4), DATEADD(DAY, -1, DATEADD( MONTH , (1+ #{calMonth} ) , REPLACE( #{yyyyMm} , '.' , '' )  + '01' ) ), 112) AS THISYEAR
+			, SUBSTRING ( CONVERT(Char(6), DATEADD(DAY, -1, DATEADD( MONTH , (1+ #{calMonth} ) , REPLACE( #{yyyyMm} , '.' , '' )  + '01' ) ), 112) , 5 , 2 ) AS THISMONTH
+			, SUBSTRING ( CONVERT(Char(8), DATEADD(DAY, -1, DATEADD( MONTH , (1+ #{calMonth} ) , REPLACE( #{yyyyMm} , '.' , '' )  + '01' ) ), 112) , 7 , 2 ) AS ENDDAY
+	</select>
+	
+	 <select id="selectPeriodDate" parameterType="HashMap" resultType="com.common.map.ComCamelMap">
+    	SELECT     
+    		CONVERT( CHAR(10), DATEADD( DAY, CONVERT( INT , #{getDate} , 23 ) , GETDATE() ) , 23 ) AS END_DATE
+			, CONVERT( CHAR(10), DATEADD( DAY, 0 , GETDATE() ) , 23 ) AS TODAY     
+    </select>
+	
+    <select id="SelectReserveList" parameterType="HashMap" resultType="com.common.map.ComCamelMap">
+    	<if test=' elstNm.equals("지하1층 강당") '>			
+    	<![CDATA[
+		WITH AMDATE AS (
+			SELECT CONVERT( VARCHAR(8) ,  #{firstDate} ) LV 
+		    UNION ALL 
+		    SELECT CONVERT( VARCHAR(8) , LV+1 ) FROM AMDATE WHERE LV+1 <= #{endDate} 
+		) 
+SELECT T.* FROM 
+(
+	SELECT CONVERT(VARCHAR(8) , LV ) AS ELST_USE_BGNDE , 8 AS ELST_USE_BGNTM FROM AMDATE 
+	UNION ALL SELECT CONVERT(VARCHAR(8) , LV ) AS ELST_USE_BGNDE , 9 FROM AMDATE 
+	UNION ALL SELECT CONVERT(VARCHAR(8) , LV ) AS ELST_USE_BGNDE , 10 FROM AMDATE 
+	UNION ALL SELECT CONVERT(VARCHAR(8) , LV ) AS ELST_USE_BGNDE , 11 FROM AMDATE 
+	UNION ALL SELECT CONVERT(VARCHAR(8) , LV ) AS ELST_USE_BGNDE , 12 FROM AMDATE 
+	UNION ALL SELECT CONVERT(VARCHAR(8) , LV ) AS ELST_USE_BGNDE , 13 FROM AMDATE 
+	UNION ALL SELECT CONVERT(VARCHAR(8) , LV ) AS ELST_USE_BGNDE , 14 FROM AMDATE 
+	UNION ALL SELECT CONVERT(VARCHAR(8) , LV ) AS ELST_USE_BGNDE , 15 FROM AMDATE 
+	UNION ALL SELECT CONVERT(VARCHAR(8) , LV ) AS ELST_USE_BGNDE , 16 FROM AMDATE 
+	UNION ALL SELECT CONVERT(VARCHAR(8) , LV ) AS ELST_USE_BGNDE , 17 FROM AMDATE 
+	UNION ALL SELECT CONVERT(VARCHAR(8) , LV ) AS ELST_USE_BGNDE , 18 FROM AMDATE	
+) T	
+WHERE 1=1
+	AND NOT EXISTS ( 
+					  SELECT 
+									NULL
+									FROM THP_ELSTREQST A
+									WHERE 1=1 
+									AND ( T.ELST_USE_BGNDE = A.ELST_USE_BGNDE OR T.ELST_USE_BGNDE = A.ELST_USE_ENDDE )
+									AND T.ELST_USE_BGNTM BETWEEN A.ELST_USE_BGNTM AND A.ELST_USE_ENDTM
+									AND ( ELST_USE_BGNDE BETWEEN  #{firstDate} AND #{endDate}  )	
+									AND ELST_CODE = #{elstCode}
+									AND PROGRS_STEP <> 03
+									AND ELST_TOT_USETM IN ( 4 , 5 )	
+					)	
+					AND NOT EXISTS ( 
+							 SELECT 
+									NULL
+									FROM THP_ELSTREQST A
+									WHERE 1=1 
+									AND ( T.ELST_USE_BGNDE = A.ELST_USE_BGNDE OR T.ELST_USE_BGNDE = A.ELST_USE_ENDDE )			
+									AND ( ELST_USE_BGNTM >= 08 OR ELST_USE_ENDTM <= 18 )
+									AND ( ELST_USE_BGNDE BETWEEN  #{firstDate} AND #{endDate}   )	
+									AND ELST_CODE = #{elstCode}
+									AND PROGRS_STEP <> 03  
+									AND ELST_TOT_USETM = 9
+							)				
+ORDER BY ELST_USE_BGNDE ASC, ELST_USE_BGNTM ASC
+		]]>
+		</if>
+		<if test=' !elstNm.equals("지하1층 강당") '>		
+		<![CDATA[	
+			WITH AMDATE AS (
+	SELECT CONVERT( VARCHAR(8) , #{firstDate} ) LV 
+	UNION ALL 
+	SELECT CONVERT( VARCHAR(8) , LV+1 ) FROM AMDATE WHERE LV+1 <= #{endDate}
+) 
+SELECT T.* FROM 
+(
+	SELECT CONVERT(VARCHAR(8) , LV ) AS ELST_USE_BGNDE , 8 AS ELST_USE_BGNTM FROM AMDATE 
+	UNION ALL SELECT CONVERT(VARCHAR(8) , LV ) AS ELST_USE_BGNDE , 9 FROM AMDATE 
+	UNION ALL SELECT CONVERT(VARCHAR(8) , LV ) AS ELST_USE_BGNDE , 10 FROM AMDATE 
+	UNION ALL SELECT CONVERT(VARCHAR(8) , LV ) AS ELST_USE_BGNDE , 11 FROM AMDATE 
+	UNION ALL SELECT CONVERT(VARCHAR(8) , LV ) AS ELST_USE_BGNDE , 12 FROM AMDATE 
+	UNION ALL SELECT CONVERT(VARCHAR(8) , LV ) AS ELST_USE_BGNDE , 13 FROM AMDATE 
+	UNION ALL SELECT CONVERT(VARCHAR(8) , LV ) AS ELST_USE_BGNDE , 14 FROM AMDATE 
+	UNION ALL SELECT CONVERT(VARCHAR(8) , LV ) AS ELST_USE_BGNDE , 15 FROM AMDATE 
+	UNION ALL SELECT CONVERT(VARCHAR(8) , LV ) AS ELST_USE_BGNDE , 16 FROM AMDATE 
+	UNION ALL SELECT CONVERT(VARCHAR(8) , LV ) AS ELST_USE_BGNDE , 17 FROM AMDATE 
+	UNION ALL SELECT CONVERT(VARCHAR(8) , LV ) AS ELST_USE_BGNDE , 18 FROM AMDATE	
+) T	
+WHERE 1=1
+AND NOT EXISTS ( 
+	SELECT
+		NULL
+	FROM THP_ELSTREQST A
+	WHERE 1=1
+	  AND ( T.ELST_USE_BGNDE = A.ELST_USE_BGNDE OR T.ELST_USE_BGNDE = A.ELST_USE_ENDDE )
+	  AND T.ELST_USE_BGNTM BETWEEN A.ELST_USE_BGNTM AND A.ELST_USE_ENDTM
+	  AND ( ELST_USE_BGNDE BETWEEN #{firstDate} AND #{endDate}  )
+	  AND ELST_CODE = #{elstCode}
+	  AND PROGRS_STEP <> 03
+)
+ORDER BY ELST_USE_BGNDE ASC , ELST_USE_BGNTM ASC	
+		]]>
+		</if>
+		
+	</select>    
+	
+	<select id="SelectReserveStatus" parameterType="HashMap" resultType="com.common.map.ComCamelMap">
+    	<if test=' elstNm.equals("지하1층 강당") '>			
+    	<![CDATA[
+		WITH SDATE AS (
+			SELECT CONVERT( VARCHAR(8) , REPLACE( #{firstDate} , '-' , '')  ) LV 
+		) 			
+		SELECT 
+			T.* 
+		FROM (
+		SELECT CONVERT(VARCHAR(8) , LV ) AS ELST_USE_BGNDE , 8 AS ELST_USE_BGNTM FROM SDATE 
+		UNION ALL SELECT CONVERT(VARCHAR(8) , LV ) AS ELST_USE_BGNDE , 13 FROM SDATE 
+		UNION ALL SELECT CONVERT(VARCHAR(8) , LV ) AS ELST_USE_BGNDE , 12 FROM SDATE 
+		UNION ALL SELECT CONVERT(VARCHAR(8) , LV ) AS ELST_USE_BGNDE , 18 FROM SDATE 
+		) T
+		WHERE 1=1
+		AND NOT EXISTS ( 
+			SELECT 
+				NULL
+			FROM THP_ELSTREQST A
+			WHERE 1=1 
+			  AND ( T.ELST_USE_BGNTM = ELST_USE_BGNTM OR T.ELST_USE_BGNTM = A.ELST_USE_ENDTM )
+			  AND ELST_USE_BGNDE = REPLACE( #{firstDate} , '-' , '')
+			  AND PROGRS_STEP <> 03
+			  AND ELST_CODE = #{elstCode}
+			  AND ELST_TOT_USETM IN ( 4 , 5 )	
+		)				
+		AND NOT EXISTS ( 
+			SELECT 
+				NULL
+			FROM THP_ELSTREQST A
+			WHERE 1=1 
+			  AND ( ELST_USE_BGNTM >= 0800 OR ELST_USE_ENDTM <= 1800 )
+			  AND ELST_USE_BGNDE = REPLACE( #{firstDate} , '-' , '')
+			  AND PROGRS_STEP <> 03
+			  AND ELST_CODE = #{elstCode}
+			  AND ELST_TOT_USETM = 9
+		)	 
+		]]>
+		</if>
+		<if test=' !elstNm.equals("지하1층 강당") '>		
+		<![CDATA[	
+			WITH SDATE AS (
+				SELECT CONVERT( VARCHAR(8) , REPLACE( #{firstDate} , '-' , '') ) LV 
+			) 			
+			SELECT 
+				T.* , DATEPART(weekday ,DATEADD(DAY, 0, ELST_USE_BGNDE) ) AS DP 
+			FROM (
+			SELECT CONVERT(VARCHAR(8) , LV ) AS ELST_USE_BGNDE 	, 8 AS ELST_USE_BGNTM FROM SDATE
+			UNION ALL SELECT CONVERT(VARCHAR(8) , LV ) AS ELST_USE_BGNDE , 9 FROM SDATE 
+			UNION ALL SELECT CONVERT(VARCHAR(8) , LV ) AS ELST_USE_BGNDE , 10 FROM SDATE 
+			UNION ALL SELECT CONVERT(VARCHAR(8) , LV ) AS ELST_USE_BGNDE , 11 FROM SDATE 
+			UNION ALL SELECT CONVERT(VARCHAR(8) , LV ) AS ELST_USE_BGNDE , 12 FROM SDATE 
+			UNION ALL SELECT CONVERT(VARCHAR(8) , LV ) AS ELST_USE_BGNDE , 13 FROM SDATE 
+			UNION ALL SELECT CONVERT(VARCHAR(8) , LV ) AS ELST_USE_BGNDE , 14 FROM SDATE 
+			UNION ALL SELECT CONVERT(VARCHAR(8) , LV ) AS ELST_USE_BGNDE , 15 FROM SDATE 
+			UNION ALL SELECT CONVERT(VARCHAR(8) , LV ) AS ELST_USE_BGNDE , 16 FROM SDATE 
+			UNION ALL SELECT CONVERT(VARCHAR(8) , LV ) AS ELST_USE_BGNDE , 17 FROM SDATE 
+			) T
+			WHERE 1=1
+			  AND NOT EXISTS ( 
+					SELECT 
+					NULL
+					FROM THP_ELSTREQST A
+					WHERE 1=1 
+				  	  AND ( T.ELST_USE_BGNTM BETWEEN A.ELST_USE_BGNTM AND A.ELST_USE_ENDTM )
+				  	  AND ELST_USE_BGNDE = REPLACE( #{firstDate} , '-' , '')
+				  	  AND PROGRS_STEP <> 03
+				  	  AND ELST_CODE = #{elstCode}		
+			)				  		
+		]]>
+		</if>
+	</select> 
+
+	<select id="selectElstList" parameterType="HashMap" resultType="com.common.map.ComCamelMap">
+		SELECT 
+			ELST_CODE
+			,ELST_NM
+			,ELST_SE
+			,HRHG
+			,LEND_STDR
+			,POSBL_NMPR
+			,REGISTER
+			,RGSDE
+			,UPDUSR
+			,UPDDE
+	  	FROM THP_ElstInfo
+	</select>
+	
+	<insert id="insert" parameterType="HashMap">
+		<selectKey keyProperty="erntSn" resultType="String" order="BEFORE">
+    		SELECT ISNULL ( MAX( ERNT_SN ) + 1 , 1 ) FROM THP_ElstReqst
+  		</selectKey>
+		INSERT INTO THP_ElstReqst (
+			ERNT_SN 					--[일련번호]
+			,REQST_SN 					--[신청번호]
+			,REQST_INSTT_NM  			--[신청기관명]
+			,REQST_INSTT_TELNO			--[신청기관연락처]
+			,REQST_INSTT_EMAIL 			--[신청기관이메일]
+			,REQST_INSTT_MBTLNUM		--[신청기관휴대폰]
+			,REQST_INSTT_FAX 			--[신청기관팩스]
+			,EVENT_NM					--[행사명]
+			,EVENT_CN 					--[행사내용]
+			,ELST_CODE					--[사용시설코드]
+			,ELST_USE_BGNDE 			--[사용시작일]
+			,ELST_USE_BGNTM				--[사용시작시]
+			,ELST_USE_ENDDE 			--[사용종료일]
+			,ELST_USE_ENDTM				--[사용종료시]
+			,ELST_TOT_USETM 			--[총사용시간]
+			,BIM_USE_AT					--[빔사용여부]
+			,BIM_USE_BGNDE 				--[사용시작일]
+			,BIM_USE_BGNTM				--[사용시작시]
+			,BIM_USE_ENDDE 				--[사용종료일]
+			,BIM_USE_ENDTM				--[사용종료시]
+			,BIM_TOT_USETM 				--[총사용시간]
+			,RDCXPT_SE_RESN 			--[감면구분상유]
+			,RDCXPT_CNFIRM_TM			--[감면확인시간]
+			,RDCXPT_CNFRMR 				--[감면확인자]
+			,ESTMT_AMOUNT 				--[견적금액]
+			,DCSN_AMOUNT 				--[확정금액]
+			,USER_PASSWORD              --[사용자비밀번호]
+			,PROGRS_STEP                --[진행단계]
+			,EMAIL_TRNSMIT_TM           --[이메일송신시간]
+			,SMS_TRNSMIT_TM             --[SMS송신시간]
+			,NTCN_TRNSMIT_TM            --[알림톡송신시간]
+			,MANUAL_CNFIRM_TM           --[지침확인 및 동의시간]
+			,ATPN_CNFIRM_TM             --[주의사항확인 및 동의시간]
+			,SETLE_MTHD 				--[결제방식]
+			,DTT            			--[입금일자]
+			,RCPMNY_ACNUT               --[입금계좌]
+			,RCPMNY_AMOUNT              --[입금액]
+			,TAXBIL_ISSU_AT             --[세금계산서발행여부]
+			,TAXBIL_ISSU_TM             --[TAXBIL_ISSU_TM]
+			,TAXBIL_NO                  --[TAXBIL_NO]
+			,OPETR                      --[OPETR]
+			,FLPTH						--[경로]
+      		,SERVER_FILE_NM				--[파일명]
+      		,ORGINL_FILE_NM				--[파일명]
+      		,FILE_EXTSN					--[확장자]	
+      		,FILE_MG					--[파일사이즈]
+			,RGSDE ,UPDDE               
+		) VALUES (
+			ISNULL( (SELECT MAX(ERNT_SN) + 1 FROM THP_ElstReqst ) , 1 )
+			, 1
+			,#{reqstInsttNm}
+			,#{reqstInsttTelno}
+			,#{reqstInsttEmail}
+			,#{reqstInsttMbtlnum}
+			,#{reqstInsttFax}
+			,#{eventNm}
+			,#{eventCn}
+			,#{elstCode}
+			,REPLACE( #{elstUseBgnde} , '-' , '' )
+			,#{elstUseBgntm} 
+			,REPLACE( #{elstUseEndde} , '-' , '' )
+			,#{elstUseEndtm} 
+			,#{elstTotUsetm} 
+			,#{bimUseAt}
+			,REPLACE( #{bimUseBgnde} , '-' , '' )
+			,#{bimUseBgntm}
+			,REPLACE( #{bimUseEndde} , '-' , '' )
+			,#{bimUseEndtm}
+			,#{bimTotUsetm}
+			,#{rdcxptSeResn}
+			,#{rdcxptCnfirmTm}
+			,#{rdcxptCnfrmr}
+			,#{estmtAmount , jdbcType=NUMERIC }
+			,#{dcsnAmount , jdbcType=NUMERIC}
+			,#{userPassword}
+			,#{progrsStep}
+			,#{emailTrnsmitTm}
+			,#{smsTrnsmitTm}
+			,#{ntcnTrnsmitTm}
+			,GETDATE()
+			,GETDATE()
+			,#{setleMthd}
+			,#{dtt}
+			,#{rcpmnyAcnut}
+			,#{rcpmnyAmount}
+			,#{taxbilssuAt}
+			,#{taxbilIssuTm}
+			,#{taxbilNo}
+			,#{opetr}
+			,#{flpth}
+      		,#{serverFileNm}
+      		,#{orginlFileNm}
+      		,#{fileExtsn}	
+      		,#{fileMg}
+			,GETDATE() ,GETDATE()
+		)
+	</insert>
+	
+	<delete id="delete" parameterType="HashMap">
+	<if test=" erntSn != null and erntSn != '' ">
+		DELETE THP_ElstReqst WHERE ERNT_SN = #{erntSn}
+	</if>
+	</delete>
+	
+</mapper>

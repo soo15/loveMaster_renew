@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--
+ * ************************************************************************************************
+ * System Name : 사랑의 열매 사용자 System
+ * Class Name  : sql-guidance.xml
+ * Author      : Chest Front
+ * Date        : 2019. 9. 6.
+ * Description : [ 게시판 ]
+ * History     :
+ * ************************************************************************************************
+ * No.     Date           Name             Description
+ * ************************************************************************************************
+ * CH_OO   2019. 9. 6.    권민      Initial Release
+ * CH_01
+ *************************************************************************************************
+-->
+<mapper namespace="com.chest.bbs.mapper.BbsMapper">
+    <!-- [ 게시판 ] 게시판 정보 한 건 조회 !! -->
+    <select id="selectBbsInfo" parameterType="HashMap" resultType="com.common.map.ComCamelMap">
+        <![CDATA[
+            SELECT  BBS_SN
+					, BBS_NM
+					, BBS_INDICTNM
+					, TMPLAT_TY
+					, BHF_CODE
+					, USE_AT
+					, UPPER_FNCT_AT
+					, ANSWER_AT
+					, FILE_AT
+					, FILE_CNT
+					, FILE_MG
+					, IMG_FILE_EXTSN
+					, DOC_FILE_EXTSN
+					, MOV_FILE_EXTSN
+					, ETC_FILE_EXTSN
+					, SEARCH_YN
+					, EXPSR_YN
+					, EXPSR_CNT
+					, ISNULL(TAB_AT, 'N') AS TAB_AT
+					, TAB_GROUP_CODE
+					, BBS_URL
+					, RGSDE
+					, REGISTER
+					, UPDDE
+					, UPDUSR
+					, NTT_ATRB
+					, TAB_CNT
+					, CN_TY
+					, TAB_ORDER
+					, LIST_CNT
+            FROM    THP_BbsInfo WITH (NOLOCK)
+            WHERE   USE_AT = 'Y'
+            AND     BBS_SN = #{pBbsSn}
+        ]]>
+    </select>
+
+    <!-- [ 게시판 ] 게시판 탭 정보 리스트 조회 !! -->
+    <select id="selectBbsTabList" parameterType="HashMap" resultType="com.common.map.ComCamelMap">
+        <![CDATA[
+            SELECT  BBS_SN
+                    , BBS_NM
+                    , BBS_URL
+                    , CN_TY
+                    , TAB_ORDER
+            FROM    THP_BbsInfo WITH (NOLOCK)
+            WHERE   USE_AT = 'Y'
+            AND     TAB_GROUP_CODE = #{tabGroupCode}
+            ORDER BY TAB_ORDER ASC
+        ]]>
+    </select>
+
+    <!-- [ 게시판 ] 게시물 리스트 Common Condition Query !! -->
+    <sql id="postListCondition">
+        <!-- [조회 조건] SJ -->
+        <if test='pSj != null and pSj != ""'>
+            AND A.SJ LIKE '%' + #{pSj} + '%'
+        </if>
+    </sql>
+
+    <!-- [ 게시판 ] 게시물 Page 리스트 Count 조회 !! -->
+    <select id="selectPostListCount" parameterType="HashMap" resultType="String">
+        <![CDATA[
+            SELECT  COUNT(*) AS CNT
+            FROM    THP_BbsList A WITH (NOLOCK)
+                    , THP_BbsInfo B WITH (NOLOCK)
+            WHERE   A.BBS_SN = B.BBS_SN
+            AND     A.BBS_SN = #{pBbsSn}
+            AND     A.DELETE_AT = 'N'
+            ]]>
+        <if test='pBhfCode != null and pBhfCode != ""'>
+            AND     A.BHF_CODE = #{pBhfCode}
+        </if>
+
+            <include refid="postListCondition" />
+    </select>
+
+    <!-- [ 게시판 ] 게시물 Page 리스트 조회 !! -->
+    <select id="selectPostList" parameterType="HashMap" resultType="com.common.map.ComCamelMap">
+        <![CDATA[
+            SELECT  ROW_NUMBER() OVER(ORDER BY (case when CONVERT(varchar, GETDATE(), 112) between a.BGNDE and a.endde then a.PRIORT else '99' end), A.LIST_SN DESC) AS NO
+                    , A.LIST_SN
+                    , B.BBS_SN
+                    , B.BBS_NM
+                    , A.SJ
+                    , '모금회' REGISTER_NM
+                    , CONVERT(VARCHAR(10), A.RGSDE, 20) AS RGSDE
+                    , A.RDCNT
+                    , C.FLPTH
+			        , C.SERVER_FILE_NM
+			        , CASE
+                        WHEN C.SERVER_FILE_NM IS NOT NULL
+                            THEN SUBSTRING(C.SERVER_FILE_NM, 0, LEN(C.SERVER_FILE_NM) - CHARINDEX('.', REVERSE(C.SERVER_FILE_NM))+1) + '_thumb' + C.FILE_EXTSN
+                        ELSE ''
+                      END AS THUMB_FILE_NM
+			        , C.FILE_EXTSN
+            FROM    THP_BbsList A WITH (NOLOCK)
+                    LEFT JOIN THP_BbsFileDetail C WITH (NOLOCK) ON A.LIST_SN = C.LIST_SN AND C.FILE_SE = 'T'
+                    , THP_BbsInfo B WITH (NOLOCK)
+            WHERE   A.BBS_SN = B.BBS_SN
+            AND     A.BBS_SN = #{pBbsSn}
+            AND     A.DELETE_AT = 'N'
+        ]]>
+        <if test='pBhfCode != null and pBhfCode != ""'>
+            AND     A.BHF_CODE = #{pBhfCode}
+        </if>
+
+            <include refid="postListCondition" />
+        <![CDATA[
+            ORDER BY (case when CONVERT(varchar, GETDATE(), 112) between a.BGNDE and a.endde then a.PRIORT else '99' end), A.LIST_SN DESC
+            OFFSET (CONVERT(int, #{currPageNo}) - 1) * CONVERT(int, #{pageCount}) ROWS FETCH NEXT CONVERT(int, #{pageCount}) ROWS ONLY
+        ]]>
+    </select>
+
+    <!-- [ 게시판 ] 게시물 조회수 +1 증가 !! -->
+    <update id="updatePostRdCnt" parameterType="HashMap">
+        UPDATE  THP_BbsList
+        SET
+                RDCNT = RDCNT + 1
+        WHERE   LIST_SN = #{listSn}
+    </update>
+
+    <!-- [ 게시판 ] 게시물 한 건 조회 !! -->
+    <select id="selectPostInfo" parameterType="HashMap" resultType="com.common.map.ComCamelMap">
+        <![CDATA[
+            SELECT  A.LIST_SN
+                    , A.SJ
+                    , A.REGISTER_NM
+                    , CONVERT(VARCHAR(10), A.RGSDE, 20) AS RGSDE
+                    , A.RDCNT
+                    , B.CN
+            FROM    THP_BbsList A WITH (NOLOCK)
+                    , THP_BbsDetail B WITH (NOLOCK)
+            WHERE   A.LIST_SN = B.LIST_SN
+        ]]>
+            AND     A.LIST_SN = #{listSn}
+
+    </select>
+
+    <!-- [ 게시판 ] 게시물 상세 페이지 내 이전, 다음글 리스트 조회 !! -->
+    <select id="selectPostPreNextList" parameterType="HashMap" resultType="com.common.map.ComCamelMap">
+        <![CDATA[
+        SELECT  A.LIST_SN
+                , A.SJ
+                , CONVERT(NVARCHAR(10), A.RGSDE, 20) AS RGSDE
+                , CASE
+                    WHEN A.LIST_SN < #{listSn}
+                        THEN 'P'
+                    ELSE 'N'
+                END AS GUBUN
+        FROM    THP_BbsList A WITH(NOLOCK)
+                INNER JOIN THP_BbsInfo B WITH(NOLOCK) ON A.BBS_SN = B.BBS_SN
+        WHERE   A.BHF_CODE = #{pBhfCode}
+        AND     A.DELETE_AT = 'N'
+        AND     A.BBS_SN = #{pBbsSn}
+        ]]>
+        <include refid="postListCondition" />
+        <![CDATA[
+        AND     A.LIST_SN IN
+                (
+                    SELECT  MAX(LIST_SN)        -- 이전글
+                    FROM    THP_BbsList WITH(NOLOCK)
+                    WHERE   BHF_CODE = A.BHF_CODE
+                    AND     BBS_SN = A.BBS_SN
+                    AND     DELETE_AT = 'N'
+                    AND     LIST_SN < #{listSn}
+        ]]>
+                    <include refid="postListCondition" />
+        <![CDATA[
+                    UNION ALL
+                    SELECT  MIN(LIST_SN)        -- 다음글
+                    FROM    THP_BbsList WITH(NOLOCK)
+                    WHERE   BHF_CODE = A.BHF_CODE
+                    AND     BBS_SN = A.BBS_SN
+                    AND     DELETE_AT = 'N'
+                    AND     LIST_SN > #{listSn}
+        ]]>
+                    <include refid="postListCondition" />
+        <![CDATA[
+                )
+        ORDER BY A.LIST_SN
+        ]]>
+    </select>
+</mapper>

@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--
+ * ************************************************************************************************
+ * System Name : 사랑의 열매 사용자 System
+ * Class Name  : sql-ct.xml
+ * Author      : Chest Front
+ * Date        : 2019. 10. 26.
+ * Description : [ 신뢰와 투명성 ] 신뢰와 투명성
+ * History     :
+ * ************************************************************************************************
+ * No.     Date           Name             Description
+ * ************************************************************************************************
+ * CH_OO   2019. 10. 26.    권민      Initial Release
+ * CH_01
+ *************************************************************************************************
+-->
+<mapper namespace="com.chest.lf.mapper.CtMapper">
+
+    <!-- [ 신뢰와 투명성 ] 시민제안/공익신고 입력 !! -->
+    <insert id="insertCtznPropse" parameterType="HashMap">
+        <selectKey keyProperty="ctzn_propse_sn" resultType="String" order="AFTER">
+            SELECT IDENT_CURRENT('THP_CtznPropse')
+        </selectKey>
+        <![CDATA[
+            INSERT INTO THP_CtznPropse
+            (
+                CTZN_PROPSE_SE
+                , CTZN_PROPSE_DETAIL_SE
+				, CTZN_PROPSE_NM
+				, CTZN_PROPSE_PHONE
+				, CTZN_PROPSE_EMAIL
+				, CTZN_PROPSE_CN
+				, FLPTH
+				, SERVER_FILE_NM
+				, ORGINL_FILE_NM
+				, FILE_EXTSN
+				, FILE_MG
+				, AGRE_AT1
+				, AGRE_RGSDE1
+				, AGRE_AT2
+				, AGRE_RGSDE2
+				, RGSDE
+                , PROGRS_STEP
+            )
+            VALUES
+            (
+                #{ctznPropseSe}
+                , #{ctznPropseDetailSe}
+                , #{ctznPropseNm}
+                , #{ctznPropsePhone}
+                , #{ctznPropseEmail}
+                , #{ctznPropseCn}
+                , #{flpth}
+                , #{serverFileNm}
+                , #{orginlFileNm}
+                , #{fileExtsn}
+                , #{fileMg}
+                , #{agreAt1}
+                , GETDATE()
+                , #{agreAt2}
+                , GETDATE()
+                , GETDATE()
+                , '01'
+            )
+        ]]>
+    </insert>
+
+    <!-- [ 신뢰와 투명성 ] 시민제안/공익신고 입력 이력 !! -->
+    <insert id="insertCtznPropseHist" parameterType="HashMap">
+        <![CDATA[
+            INSERT INTO THP_CtznPropseHist
+            (
+				CTZN_PROPSE_SN
+				, PROCESS_STEP
+				, CTZN_PROPSE_SE
+				, PROCESS_RESN
+				, CHARGER_NM
+				, RGSDE
+            )
+            VALUES
+            (
+                #{ctznPropseSn}
+                , '01'
+                , #{ctznPropseSe}
+                , '최초 접수'
+                , #{ctznPropseNm}
+                , GETDATE()
+            )
+        ]]>
+    </insert>
+    
+   	<select id="sendMailList" parameterType="HashMap" resultType="com.common.map.ComCamelMap">
+	<![CDATA[
+           { CALL LS_HR.PSWD.dbo.SP_CTZNPROPSEMAIL_WEB
+               ( 
+               	'SYSPW00002'
+               )
+           }
+	]]>
+	</select>
+
+</mapper>

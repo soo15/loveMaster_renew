@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--
+ * ************************************************************************************************
+ * System Name : 사랑의 열매 사용자 System
+ * Class Name  : sql-speclmys.xml
+ * Author      : Chest Front
+ * Date        : 2019. 9. 27.
+ * Description : [ 캠페인 ]
+ * History     :
+ * ************************************************************************************************
+ * No.     Date           Name             Description
+ * ************************************************************************************************
+ * CH_OO   2019. 9. 27.    권민      Initial Release
+ * CH_01
+ *************************************************************************************************
+-->
+<mapper namespace="com.chest.ca.mapper.SpeclmysMapper">
+    <!-- [ Speclmys ] List Common Condition Query !! -->
+    <sql id="speclmysListCondition">
+        <!-- [조회 조건] MYSSPECLE_NM -->
+        <if test='pMysspecleNm != null and pMysspecleNm != ""'>
+            AND MYSSPECLE_NM LIKE '%' + #{pMysspecleNm} + '%'
+        </if>
+    </sql>
+
+    <!-- [ 캠페인 ] 특별모금 Page 리스트 Count 조회 !! -->
+    <select id="selectSpeclmysListCount" parameterType="HashMap" resultType="String">
+        <![CDATA[
+            SELECT  COUNT(*) AS CNT
+            FROM    THP_MysSpecleEvent WITH (NOLOCK)
+            WHERE   1 = 1
+            AND     EXPSR_AT = 'Y'
+        ]]>
+        <choose>
+            <!-- tab 1 일 때는 해당지회 및 공통 모금 -->
+            <when test='tab == "1"'>
+            AND     (BHF_CODE = #{pBhfCode} OR CMMN_SE = 'Y')
+            </when>
+            <!-- tab 2 일 때는 parameter로 넘어오는 지회 모금 -->
+            <otherwise>
+            AND     BHF_CODE = #{pBhfCode}
+            AND CONVERT(varchar, GETDATE(), 112) BETWEEN mys_bgnde AND mys_endde
+            </otherwise>
+        </choose>
+            <include refid="speclmysListCondition" />
+    </select>
+
+    <!-- [ 캠페인 ] 특별모금 Page 리스트 조회 !! -->
+    <select id="selectSpeclmysList" parameterType="HashMap" resultType="com.common.map.ComCamelMap">
+        <![CDATA[
+            SELECT  MYSSPECLE_SN
+                    , BHF_CODE
+					, MYSSPECLE_NM
+					, RDCNT
+					, CMMN_SE
+					, FLPTH
+					, THUMB_FILE_NM
+					, REGISTER
+            FROM    THP_MysSpecleEvent WITH (NOLOCK)
+            WHERE   1 = 1
+            AND     EXPSR_AT = 'Y'
+        ]]>
+            <choose>
+	            <!-- tab 1 일 때는 해당지회 및 공통 모금 -->
+	            <when test='tab == "1"'>
+	            AND     (BHF_CODE = #{pBhfCode} OR CMMN_SE = 'Y')
+	            </when>
+	            <!-- tab 2 일 때는 parameter로 넘어오는 지회를 제외한 지회 모금 -->
+	            <otherwise>
+	            AND     BHF_CODE = #{pBhfCode}
+	            AND CONVERT(varchar, GETDATE(), 112) BETWEEN mys_bgnde AND mys_endde
+	            </otherwise>
+	        </choose>
+            <include refid="speclmysListCondition" />
+        <![CDATA[
+            ORDER BY MYSSPECLE_SN DESC
+            OFFSET (CONVERT(int, #{currPageNo}) - 1) * CONVERT(int, #{pageCount}) ROWS FETCH NEXT CONVERT(int, #{pageCount}) ROWS ONLY
+        ]]>
+    </select>
+
+    <!-- [ 캠페인 ] 특별모금 조회수 +1 증가 !! -->
+    <update id="updateSpeclmysRdCnt" parameterType="HashMap">
+        UPDATE  THP_MysSpecleEvent
+        SET
+                RDCNT = RDCNT + 1
+        WHERE   MYSSPECLE_SN = #{mysspecleSn}
+    </update>
+
+    <!-- [ 캠페인 ] 특별모금 한 건 조회 !! -->
+    <select id="selectSpeclmysInfo" parameterType="HashMap" resultType="com.common.map.ComCamelMap">
+        <![CDATA[
+            SELECT  MYSSPECLE_SN
+                    , BHF_CODE
+                    , MYSSPECLE_NM
+                    , CN
+                    , FLPTH
+                    , CONTENTS_FILE_NM
+                    , RDCNT
+                    , EVENT_CODE_FDRM
+                    , EVENT_CODE_LMPS
+                    , CMMN_SE
+                    , REGISTER
+                    , CONVERT(VARCHAR(10), RGSDE, 20) AS RGSDE
+                    , CASE WHEN (CONVERT(VARCHAR(10), GETDATE(), 112) BETWEEN MYS_BGNDE AND MYS_ENDDE) THEN 'Y' ELSE 'N' END AS SHOW_YN 
+            FROM    THP_MysSpecleEvent WITH (NOLOCK)
+            WHERE ISNULL(DELETE_AT, 'N') <> 'Y' 
+        ]]>
+            AND   MYSSPECLE_SN = #{mysspecleSn}
+    </select>
+    
+    <select id="sameDataCheck" parameterType="HashMap" resultType="String">
+    	SELECT 
+    		COUNT(*) 
+    	FROM THP_MysSpecleEventCnslt 
+    	WHERE 1=1 
+    	  AND ZEROPAY_DELNG_NO = #{zeropayDelngNo}
+    </select>
+    
+    <!-- 제로페이 저장 -->
+    <insert id="insert" parameterType="HashMap">
+	    INSERT INTO THP_MysSpecleEventCnslt (
+			MYSSPECLE_SN , CNSLT_SN , NM ,MBTLNUM ,CNTR_DE ,CNTR_AMOUNT ,ZEROPAY_DELNG_NO ,IHIDNUM_BIZNO 
+			,IEM_CODE1 ,AGRE_AT1 ,IEM_CODE2 ,AGRE_AT2 ,RGSDE ,AGRE_DE
+		) VALUES (
+			#{mysspecleSn} 
+			, ( SELECT ISNULL( MAX(CNSLT_SN ) + 1 ,  1 ) FROM THP_MysSpecleEventCnslt )
+			, #{nm} , #{mbtlnum} , #{cntrDe} , REPLACE( #{cntrAmount}  , ',' , '' ), #{zeropayDelngNo} ,  #{ihidnumBizno}
+			,'01' , 'Y' , '02' , 'Y' , GETDATE() , GETDATE()
+		)
+	</insert>
+	
+</mapper>

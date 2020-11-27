@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--
+ * ************************************************************************************************
+ * System Name : 사랑의 열매 사용자 System
+ * Class Name  : sql-intrcn.xml
+ * Author      : Chest Front
+ * Date        : 2019. 9. 20.
+ * Description : [ 소개 ]
+ * History     :
+ * ************************************************************************************************
+ * No.     Date           Name             Description
+ * ************************************************************************************************
+ * CH_OO   2019. 9. 20.    권민      Initial Release
+ * CH_01
+ *************************************************************************************************
+-->
+<mapper namespace="com.chest.lf.mapper.IntrcnMapper">
+
+    <!-- [ 소개 ] 홍보대사 Page 리스트 Count 조회 !! -->
+    <select id="selectPrambassadorListCount" parameterType="HashMap" resultType="String">
+        <![CDATA[
+            SELECT  COUNT(*) AS CNT
+            FROM    THP_PrAmbssdr WITH (NOLOCK)
+            WHERE   OUTTRST_AT = 'N'
+            AND     BHF_CODE = #{pBhfCode}
+        ]]>
+    </select>
+
+    <!-- [ 소개 ] 홍보대사 Page 리스트 조회 !! -->
+    <select id="selectPrambassadorList" parameterType="HashMap" resultType="com.common.map.ComCamelMap">
+        <![CDATA[
+            SELECT  PRAMBSSDR_SN
+                    , BHF_CODE
+                    , PRAMBSSDR_NM
+                    , FLPTH
+                    , SERVER_FILE_NM
+                    , THUMB_FILE_NM
+                    , FILE_EXTSN
+            FROM    THP_PrAmbssdr WITH (NOLOCK)
+            WHERE   OUTTRST_AT = 'N'
+            AND     BHF_CODE = #{pBhfCode}
+            ORDER BY PRAMBSSDR_SN ASC
+            OFFSET (CONVERT(int, #{currPageNo}) - 1) * CONVERT(int, #{pageCount}) ROWS FETCH NEXT CONVERT(int, #{pageCount}) ROWS ONLY
+        ]]>
+    </select>
+
+    <!-- [ 소개 ] 홍보대사 한 건 조회 !! -->
+    <select id="selectPrambassadorInfo" parameterType="HashMap" resultType="com.common.map.ComCamelMap">
+        <![CDATA[
+            SELECT  PRAMBSSDR_SN
+                    , BHF_CODE
+                    , PRAMBSSDR_NM
+                    , OCCP
+                    , ENTRST_DE
+                    , OUTTRST_DE
+                    , MAIN_ACT
+                    , FLPTH
+                    , SERVER_FILE_NM
+                    , FILE_EXTSN
+            FROM    THP_PrAmbssdr WITH (NOLOCK)
+            WHERE   OUTTRST_AT = 'N'
+        ]]>
+            AND     PRAMBSSDR_SN = #{prambssdrSn}
+    </select>
+
+    <!-- [ 소개 ] 홍보대사 상세 페이지 내 이전, 다음글 리스트 조회 !! -->
+    <select id="selectPrambassadorPreNextList" parameterType="HashMap" resultType="com.common.map.ComCamelMap">
+        <![CDATA[
+        SELECT  A.PRAMBSSDR_SN
+                , A.BHF_CODE
+                , A.PRAMBSSDR_NM
+                , CONVERT(NVARCHAR(10), A.RGSDE, 20) AS RGSDE
+                , CASE
+                    WHEN A.PRAMBSSDR_SN < #{prambssdrSn}
+                        THEN 'P'
+                    ELSE 'N'
+                END AS GUBUN
+        FROM    THP_PrAmbssdr A
+        WHERE   A.OUTTRST_AT = 'N'
+        AND     A.BHF_CODE = #{pBhfCode}
+        AND     PRAMBSSDR_SN IN
+                (
+                    SELECT  MAX(PRAMBSSDR_SN)        -- 이전글
+                    FROM    THP_PrAmbssdr WITH(NOLOCK)
+                    WHERE   OUTTRST_AT = 'N'
+                    AND     BHF_CODE = A.BHF_CODE
+                    AND     PRAMBSSDR_SN < #{prambssdrSn}
+                    UNION ALL
+                    SELECT  MIN(PRAMBSSDR_SN)        -- 다음글
+                    FROM    THP_PrAmbssdr WITH(NOLOCK)
+                    WHERE   OUTTRST_AT = 'N'
+                    AND     BHF_CODE = A.BHF_CODE
+                    AND     PRAMBSSDR_SN > #{prambssdrSn}
+                )
+        ORDER BY A.PRAMBSSDR_SN
+        ]]>
+    </select>
+
+</mapper>
