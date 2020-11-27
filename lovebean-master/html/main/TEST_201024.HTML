@@ -146,6 +146,50 @@
             // });
 
 
+            /*scroll*/
+            $('div#baseWrap').on('scroll', function () {
+
+
+                /*온도탑 sns-scroll*/
+                var scrollT = $(this).scrollTop(); //스크롤바의 상단위치
+                var scrollH = $(this).height(); //스크롤바를 갖는 div의 높이
+                var contentH = $('.scrolled-b').height(); //문서 전체 내용을 갖는 div의 높이
+
+                if (scrollH + 1 >= scrollT) { // 스크롤바가 아래 쪽에 위치할 때
+                    $('.box-wing').css({
+                        top: "320px"
+                    });
+                    $(".sns_wrapper").css({
+                        top: "740px"
+                    });
+                } else {
+                    $('.box-wing').animate({
+                        'top': 180 + 'px'
+                    }, 50);
+                    $(".sns_wrapper").animate({
+                        'top': 600 + 'px'
+                    }, 50);
+                }
+
+                var quick_nav = $('.quick_nav').height();
+                console.log("quick_nav =====" + quick_nav);
+                var centerPosition = (contentH - quick_nav) / 2 + scrollT;
+
+                console.log("centerPosition =====" + centerPosition);
+
+                if (scrollT < 100) {
+                    $('.quick_nav').animate({
+                        'top': 26 + 'px'
+                    }, 50);
+                } else {
+                    $('.quick_nav').animate({
+                        'top': centerPosition + 'px'
+                    }, 50);
+                }
+
+
+            });
+
 
             $(window).bind('resize', function () {
                 if ($(window).width() >= 1025) {
