@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN" "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+
+<tiles-definitions>
+    <!-- Base start -->
+    <definition name="base" template="/WEB-INF/views/layout/layoutBase.jsp">
+        <put-attribute name="title"  value="사회복지공동모금회 사랑의열매" />
+        <put-attribute name="header" value="/WEB-INF/views/layout/header.jsp" />
+        <put-attribute name="body"   value="/WEB-INF/views/layout/body.jsp" />
+        <put-attribute name="footer" value="/WEB-INF/views/layout/footer.jsp" />
+    </definition>
+
+    <definition name="/*/*" extends="base">
+        <put-attribute name="body" value="/WEB-INF/views/{1}/{2}.jsp" />
+    </definition>
+
+    <definition name="chest:/*/*" extends="base">
+        <put-attribute name="body" value="/WEB-INF/views/chest/{1}/{2}.jsp" />
+    </definition>
+    <!-- // Base end -->
+
+    <!-- PopUp start -->
+    <definition name="popup" template="/WEB-INF/views/layout/layoutPopup.jsp">
+        <put-attribute name="titlePop" value="사랑의 열매" />
+        <put-attribute name="bodyPop"  value="" />
+    </definition>
+
+    <definition name="pop:/*/*" extends="popup">
+        <put-attribute name="bodyPop" value="/WEB-INF/views/{1}/{2}.jsp" />
+    </definition>
+    <!-- // PopUp end -->
+
+    <!-- 업무용 Blank -->
+    <definition name="blank" template="/WEB-INF/views/layout/layoutBlank.jsp">
+        <put-attribute name="body" value="" />
+    </definition>
+
+    <definition name="blank:/*/*" extends="blank">
+        <put-attribute name="title" value="사랑의 열매" />
+        <put-attribute name="body"  value="/WEB-INF/views/{1}/{2}.jsp" />
+    </definition>
+    <!-- // Blank end -->
+
+    <!-- error Blank -->
+    <definition name="error" template="/WEB-INF/views/layout/layoutError.jsp">
+        <put-attribute name="title" value="사랑의 열매" />
+        <put-attribute name="body"  value="" />
+    </definition>
+
+    <definition name="error:/*/*" extends="blank">
+        <put-attribute name="body"  value="/WEB-INF/views/{1}/{2}.jsp" />
+    </definition>
+    <!-- // error Blank end -->
+
+    <!-- Login -->
+    <definition name="login" template="/WEB-INF/views/layout/layoutLogin.jsp">
+        <put-attribute name="title" value="사랑의 열매" />
+        <put-attribute name="body"  value="/WEB-INF/views/login/login.jsp" />
+    </definition>
+    <!-- // Login end -->
+<!--
+    <definition name="english" template="/en/html/main/main.html"/>
+    <definition name="china" template="/ch/html/main/main.html"/>
+    <definition name="japan" template="/jp/html/main/main.html"/>
+ -->
+</tiles-definitions>

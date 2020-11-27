@@ -1,0 +1,410 @@
+[15:47:18] INFO <00001> START formpayauthbill (4501B20140415FrmpyauthbillWindows 10JSPpure java 1.8.0_91            )
+[15:47:18]DEBUG <00001> INIPAYHOME : C:\PROJECT\workspace\ChestFront\src\main\webapp\WEB-INF\views\common
+[15:47:18]DEBUG <00001> MID        : INIBillTst
+[15:47:18]DEBUG <00001> KEYPW      : 1111
+[15:47:18]DEBUG <00001> CRYPTO     : execure
+[15:47:18]ERROR <00001> ENCRYPTION & DECRYPTION MODULES LOADING FAIL
+java.lang.NoClassDefFoundError: com/extrus/openssl/PasswordFinder
+	at com.inicis.inipay4.module.CryptoModuleMerge.getCrypto(CryptoModuleMerge.java:40)
+	at com.inicis.inipay4.factory.INIActionFactory.setParameter(INIActionFactory.java:113)
+	at com.inicis.inipay4.INIpay.payRequest(INIpay.java:277)
+	at test.Test.main(Test.java:75)
+Caused by: java.lang.ClassNotFoundException: com.extrus.openssl.PasswordFinder
+	at java.net.URLClassLoader.findClass(URLClassLoader.java:381)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:424)
+	at sun.misc.Launcher$AppClassLoader.loadClass(Launcher.java:331)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:357)
+	... 4 more
+[15:47:18] INFO <00001> TRANSACTION COMPLETE
+[16:32:49] INFO <00001> START formpayauthbill (4501B20140415FrmpyauthbillWindows 10JSPpure java 1.8.0_91            )
+[16:32:49]DEBUG <00001> INIPAYHOME : C:\PROJECT\workspace\ChestFront\src\main\webapp\WEB-INF\views\common
+[16:32:49]DEBUG <00001> MID        : INIBillTst
+[16:32:49]DEBUG <00001> KEYPW      : 1111
+[16:32:49]DEBUG <00001> CRYPTO     : execure
+[16:32:52]DEBUG <00001> EXTRUS CRYPTO USE!!
+[16:32:52]DEBUG <00001> #plainText : 
+CardNumber: 5409265952185051
+CardExpire: 202408
+CardQuota: 00
+QuotaInterest: 0
+Authentification: 00
+AuthField1: 790701
+AuthField2: 
+AuthField3: 
+Passwd: 
+
+[16:32:56] INFO <00001> MID : INIBillTst
+[16:32:56] INFO <00001> TID : INIpayBillINIBillTst20191017163249705852
+[16:32:56] INFO <00001> GOODNAME : 사랑의열매
+[16:32:56] INFO <00001> PRICE : 1000
+[16:32:56] INFO <00001> BUYERNAME : 김민수
+[16:32:56] INFO <00001> BUYERTEL : 010-2020-4048
+[16:32:56] INFO <00001> BUYEREMAIL : goodday0701@gmail.com
+[16:32:56] INFO <00001> PAYMETHOD : Auth
+[16:32:56]DEBUG <00001> SESSIONKEY : FD/Kb9jLu+MaWa0cVFbcSr1Di3/l0tkobevTwXHEU6XJViC/IuZuOp6Pj3423+ui
+NuKhsEnIId235D2lHa4ofMVRvk6wprBA9PmDSFdkZW/B2MW+MlCYDVNpxo2SBhlh
+iuXlqRdzfmfMSMH7jFWuSm+AS5A0nn/Vu6EzKOBkkxzfm4OqIYzegA==
+
+[16:32:56]DEBUG <00001> ENCRYPTED : YmkUZcUN9xmrOQed34dfKNcIT9ojA3gY2NPlnUbFbjXKFNSE6T6tN+zrFpHR4fiI
+8xD+37UlgEMbYjlBGH4Y9Icjkxu0uyTGoQdhlwBI0GTw9sj6feyKjnhj38arBHCJ
+coXBd8isUhYLprCN2uPEwKIK9SN0SyxMdctvD/dJdA8gpPJqne0X4mqxeQFBL0K0
+X0fNnudj/by2017YzQi1VGa5wodsgYX/
+
+[16:32:56]DEBUG <00001> MSG TO PG : InitechCash: PayIt
+Version: 4501B20140415FrmpyauthbillWindows 10JSPpure java 1.8.0_91            
+EncryptionAlgorithm: SEED_CBC
+SignAlgorithm: SIGN_SHA1
+RsaKeyNum: 1
+MPGID: INIBillTst
+Ack: 0
+MID: INIBillTst
+TID: INIpayBillINIBillTst20191017163249705852
+UID: INIBillTst
+UIP: 127.0.0.1
+URL: http://www.chest.or.kr
+moid: 
+GoodName: 사랑의열매
+Price: 1000
+Currency: WON
+BuyerName: 김민수
+BuyerTel: 010-2020-4048
+BuyerEmail: goodday0701@gmail.com
+PayMethod: Auth
+SessionKey: FD/Kb9jLu+MaWa0cVFbcSr1Di3/l0tkobevTwXHEU6XJViC/IuZuOp6Pj3423+ui
+NuKhsEnIId235D2lHa4ofMVRvk6wprBA9PmDSFdkZW/B2MW+MlCYDVNpxo2SBhlh
+iuXlqRdzfmfMSMH7jFWuSm+AS5A0nn/Vu6EzKOBkkxzfm4OqIYzegA==
+
+Encrypted: YmkUZcUN9xmrOQed34dfKNcIT9ojA3gY2NPlnUbFbjXKFNSE6T6tN+zrFpHR4fiI
+8xD+37UlgEMbYjlBGH4Y9Icjkxu0uyTGoQdhlwBI0GTw9sj6feyKjnhj38arBHCJ
+coXBd8isUhYLprCN2uPEwKIK9SN0SyxMdctvD/dJdA8gpPJqne0X4mqxeQFBL0K0
+X0fNnudj/by2017YzQi1VGa5wodsgYX/
+
+MerchantReserved1: 
+MerchantReserved2: 
+MerchantReserved3: 
+
+[16:32:56] INFO <00001> SIGN OK
+[16:32:57] INFO <00001> SIGNTURE:
+AA+ipVuGlHpbyU2YiJcj/ds/qNHhBstT8dTi833w9Nf3CVBrhGrJBg3EBKFizoO8
+9+E2x4Y2LPwNi3cbBUzNymVVzXZT4N4p/I0/oFH8v+X02GVyu/Lp7PSZuHjivHYn
+lEhHQgEqDxQuRHukflYpJIpoUbvpcdD3zLs8BEKDzGJT
+
+[16:32:57] INFO <00001> SET TX_ENCODECHARSET:KSC5601, SYSTEM ENCODING:UTF-8
+[16:32:57] INFO <00001> PG ADDRESS(PORT) : 203.238.37.3(9400)
+[16:32:57] INFO <00001> IP ADDRESS(PORT) : 203.238.37.3(9400)
+[16:32:57] INFO <00001> Connect TimeOut  : 5 sec.
+[16:32:57] INFO <00001> Connect to 203.238.37.3, 9400
+[16:32:57] INFO <00001> SEND OK, (TX ENCODECHARSET:KSC5601)
+[16:32:57]DEBUG <00001> InitechCash: ResultPayProc
+Version: 4.0
+EncryptionAlgorithm: SEED_CBC
+SignAlgorithm: SIGN_SHA1
+RsaKeyNum: 1
+SessionKey: AG6nNe9tpJzaSZjsuUSfqofUCtk2l1WyIEjJXuQ5JO+iiJQva0U8I5RsQN03kWhB
+1ALDoL3shBaZ81ynqUyc+QC5LE91wK9ZHloP3CUCXPZ0JniS2z39vXrw4so2H45F
+cAIfVtsW60CAUNPMUtLi5KRibdH5dbzyCT4YzJ/jcdyb93NjgAERxno=
+
+TID: INIpayBillINIBillTst20191017163249705852
+MID: INIBillTst
+Encrypted: yQ6rDG9CvkqgEHEd70K3GI0eYsHqgBJ+X7mlIqwmNnK53K+D3nj+7QMZCgIQzZDp
+bnp8l0seQm06bFBCTUopkOK99+NjOKT5z0lW8qvNEMmJXQDKucV5ELQIWcdZNpbN
+TJOdjRCuqN/y1Xnv6bYecQoQ1QA6xdBF1h7HuIafTHGRfsWVtVQXJYoc2wHUOp5f
+EYA4+9QGBM9oF+NrxLf8/b/SWSA1pVm7a/YefGetbeVwxUekZD1lrTqTHzIoca+G
+wBkn/bkaXKiaXzznxFY3RXscuTJ8KSw+WkmMXU22wPC+9Q3xeXK4uaMDCTm2m2As
+l8VUe597S1XGq2/0umfa3TSW3a2O07nswjMNFDK4t3suNyoSt8V4HHMSsLsTdKIb
+/bz/vRNgWRbBv72igsR7Q1F1Pief4Zg7BCV94h5rOxzgahrz5Pe2HC0k9w6rkv+D
+u4V2IKIq/belTD7l34dfhQfFKa7Z/FSEqzfchliVwMiqQReR8EzWgHs3tZ3c5J8S
+NMy5gcdIUBwx8t0NVg8H6bIv7X1VnrejICWuQcaNrTgpbQkNSaEhhw==
+
+Tail: O+ZLhAq2ZXnqFZvK8wEcw8pwpX1S89BEBUrijAY44/4W4Fr6DryY95PsQVO8GFPE
+4zwtWzUIhfyAUcoG2FDYXEFKJefvXzw+XDb4pyQhBM/nteCDwIkvkIDpOJPiKbaO
+kp6hXDBXrhjqQlCCHBpo+pdlglmEjhTclBg0azwkKq4=
+
+MOID: 
+CodeGW: 
+
+[16:32:57] INFO <00001> SOCKET CONNECTION CLOSE
+[16:32:57] INFO <00001> SIGN CHECK OK
+[16:32:58] INFO <00001> DECRYPT OK
+[16:32:58]DEBUG <00001> ResultCode: 01
+ResultMsg: [1223][인증실패|유효기간 오류]
+PayMethod: Auth
+PayOption: 
+PGAuthCode: PGAuthCode
+CardAuthCode: ERROR
+CardResultCode: 06
+CardResultNumber: 540926*********1
+CardResultExpire: 
+CardResultQuota: 00
+MerchantReserved1: Authentification=&PGauthdate=20191017&PGauthtime=163257&Detailcode=04
+MerchantReserved2: 
+MerchantReserved3: 
+Price: 1000
+Price1: 
+Price2: 
+SMemID: 
+EventFlag: 0
+
+[16:32:58] INFO <00001> TRANSACTION COMPLETE
+[16:37:57] INFO <00001> START formpayauthbill (4501B20140415FrmpyauthbillWindows 10JSPpure java 1.8.0_91            )
+[16:37:57]DEBUG <00001> INIPAYHOME : C:\PROJECT\workspace\ChestFront\src\main\webapp\WEB-INF\views\common
+[16:37:57]DEBUG <00001> MID        : INIBillTst
+[16:37:57]DEBUG <00001> KEYPW      : 1111
+[16:37:57]DEBUG <00001> CRYPTO     : execure
+[16:37:58]DEBUG <00001> EXTRUS CRYPTO USE!!
+[16:37:58]DEBUG <00001> #plainText : 
+CardNumber: 5409265952185051
+CardExpire: 2408
+CardQuota: 00
+QuotaInterest: 0
+Authentification: 00
+AuthField1: 790701
+AuthField2: 
+AuthField3: 
+Passwd: 
+
+[16:37:59] INFO <00001> MID : INIBillTst
+[16:37:59] INFO <00001> TID : INIpayBillINIBillTst20191017163757384168
+[16:37:59] INFO <00001> GOODNAME : 사랑의열매
+[16:37:59] INFO <00001> PRICE : 1000
+[16:37:59] INFO <00001> BUYERNAME : 김민수
+[16:37:59] INFO <00001> BUYERTEL : 010-2020-4048
+[16:37:59] INFO <00001> BUYEREMAIL : goodday0701@gmail.com
+[16:37:59] INFO <00001> PAYMETHOD : Auth
+[16:37:59]DEBUG <00001> SESSIONKEY : RwAKH4E0xvH/cVcdRTdrZjLHvPNxaHVzJbl55ADVbikAjycfpdbsBp1jdAF2zhVV
+ai+xeYNpDdbDVEmI/7DfVyv9K5JFzt+K4lZH49EBi8SGK58+1FNFAB+7bvx0hOih
+L7qdPzrli8BDf77OFuXysMPkvjGY0Xp3/aTSiaOgZiKZfmNvHLfdUg==
+
+[16:37:59]DEBUG <00001> ENCRYPTED : fVQV97nu82ffGSWsZxmNfazQ2qYnW4tE9dqe1WQDCyLzZWyxHEI0zzgJdboRMaSM
+SoldYKl2vpCB3486PhLzfqSbsSqKgdXGMfBCP1JL2sv8uILkBwI9pqu+fVN7B2oB
+EQWRk/Q5HtptWp73gJ6IV40lHjzKV58EmWJn4vIBnnO8ax07oV5CXH/jTzXencte
+7KWL7s9CgiG7Uh8MPNCVM8NcMpGzCU2w
+
+[16:37:59]DEBUG <00001> MSG TO PG : InitechCash: PayIt
+Version: 4501B20140415FrmpyauthbillWindows 10JSPpure java 1.8.0_91            
+EncryptionAlgorithm: SEED_CBC
+SignAlgorithm: SIGN_SHA1
+RsaKeyNum: 1
+MPGID: INIBillTst
+Ack: 0
+MID: INIBillTst
+TID: INIpayBillINIBillTst20191017163757384168
+UID: INIBillTst
+UIP: 127.0.0.1
+URL: http://www.chest.or.kr
+moid: 
+GoodName: 사랑의열매
+Price: 1000
+Currency: WON
+BuyerName: 김민수
+BuyerTel: 010-2020-4048
+BuyerEmail: goodday0701@gmail.com
+PayMethod: Auth
+SessionKey: RwAKH4E0xvH/cVcdRTdrZjLHvPNxaHVzJbl55ADVbikAjycfpdbsBp1jdAF2zhVV
+ai+xeYNpDdbDVEmI/7DfVyv9K5JFzt+K4lZH49EBi8SGK58+1FNFAB+7bvx0hOih
+L7qdPzrli8BDf77OFuXysMPkvjGY0Xp3/aTSiaOgZiKZfmNvHLfdUg==
+
+Encrypted: fVQV97nu82ffGSWsZxmNfazQ2qYnW4tE9dqe1WQDCyLzZWyxHEI0zzgJdboRMaSM
+SoldYKl2vpCB3486PhLzfqSbsSqKgdXGMfBCP1JL2sv8uILkBwI9pqu+fVN7B2oB
+EQWRk/Q5HtptWp73gJ6IV40lHjzKV58EmWJn4vIBnnO8ax07oV5CXH/jTzXencte
+7KWL7s9CgiG7Uh8MPNCVM8NcMpGzCU2w
+
+MerchantReserved1: 
+MerchantReserved2: 
+MerchantReserved3: 
+
+[16:37:59] INFO <00001> SIGN OK
+[16:37:59] INFO <00001> SIGNTURE:
+AA15eJxxHDL4SWyKSu1xxgGBYnHVuRNT6sbhEhRlKuOHNZz/R2BrSynrtinXuKuc
+JjibftpKOWUyAQ7kCZKacOT4QWk5PCzlPCFTgM6opbfQTPPKbJYndjMk65Cmegcz
+mD3sRmHrInhHd63Buye2O4GMjbx8ZEEauZJtwpLhuftZ
+
+[16:37:59] INFO <00001> SET TX_ENCODECHARSET:KSC5601, SYSTEM ENCODING:UTF-8
+[16:37:59] INFO <00001> PG ADDRESS(PORT) : 203.238.37.3(9400)
+[16:37:59] INFO <00001> IP ADDRESS(PORT) : 203.238.37.3(9400)
+[16:37:59] INFO <00001> Connect TimeOut  : 5 sec.
+[16:37:59] INFO <00001> Connect to 203.238.37.3, 9400
+[16:37:59] INFO <00001> SEND OK, (TX ENCODECHARSET:KSC5601)
+[16:37:59]DEBUG <00001> InitechCash: ResultPayProc
+Version: 4.0
+EncryptionAlgorithm: SEED_CBC
+SignAlgorithm: SIGN_SHA1
+RsaKeyNum: 1
+SessionKey: ALAjRA2lhn+0mgW9W4c1VDSYKTOyQ7M1DZpR1EZF6YLabMDxjwGx15bbu/XdaRlj
+PfdBy5UXPkD06mNeVT5eT2PXEdllcGP4eYGwkK0mPrG7wDKc5oyJqp1vsl5s0Glp
+Fg0+ViimfKSTDU7vj0fM0JQB9c6cW9aFJ/mqT0hVRNLBqqIPlszvPYU=
+
+TID: INIpayBillINIBillTst20191017163757384168
+MID: INIBillTst
+Encrypted: lPfttmAjBG2GUR0yJagF0a4QkhrLhYPRzWjzkFbbuBCr97nM8xItoVT4eiAqTXco
+nTamDZvIyo1cNstrlc+93TVw0gt7+xpjghVHtrLv/s3CGqvfPXK6mNBsxG31Atfq
+kCcgDJuv7NvDvRdg9EelLXKCJIrPooye2XVnkBLKXrrbVntMUhFDo6GzUPvno/5C
+5FcveCy/gz/CoIH+GYV2BQAkjB0r9y34oCUvix9xsP6RZEO+esVDt8FfAPqloBow
+3JQFljG7fojSMe5GjOiKXNkcbRp2oogeVo2XPj8oidTgPQ/VmeTLZOY6jmnrpR0j
+R6SzRvxwJ/cV+PJAkqjWDl5ahx9Sb0QkBRF3ra74a10lr7WdhLIf/qwEWTx+AdLU
+tNd07BZcSxSctkcS6EfZvFJHY1PSgA3EN2RSP8iJvHAkvEJVukpLKMxvNsypDMAy
+udTq+RG6trvlKTPLNRMMEOaZMy4b5RCRk3z4I3cH1XS1FvtfAeqXmucbr6gEPeer
+o+UKzwQ2m7fijtt51qfbMQg6NbDNn4NtOibbUabAegXM+VohntLe5Sc59HvICw0J
+
+Tail: bbcnMhXTNWHxPAuikMHz0FhI4UNASr06Bi3jXxPd/U5bE4UfKsNHvE1TAcOHi6Ah
+hsgF8VS2snA8FagQD/nOsdTfRd35ism5A3o4+UyvR/crM5gBDa/STwxyAnVomPa3
+9uip9FqtPoroqkHQ9Uak0BEFqPHuN0L/Rr2gC0m/nIY=
+
+MOID: 
+CodeGW: 
+
+[16:37:59] INFO <00001> SOCKET CONNECTION CLOSE
+[16:37:59] INFO <00001> SIGN CHECK OK
+[16:37:59] INFO <00001> DECRYPT OK
+[16:37:59]DEBUG <00001> ResultCode: 01
+ResultMsg: [12HH][인증실패|서브가맹점 정보 미확인]
+PayMethod: Auth
+PayOption: 
+PGAuthCode: PGAuthCode
+CardAuthCode: ERROR
+CardResultCode: 06
+CardResultNumber: 540926*********1
+CardResultExpire: 
+CardResultQuota: 00
+MerchantReserved1: Authentification=&PGauthdate=20191017&PGauthtime=163759&Detailcode=04
+MerchantReserved2: 
+MerchantReserved3: 
+Price: 1000
+Price1: 
+Price2: 
+SMemID: 
+EventFlag: 0
+
+[16:37:59] INFO <00001> TRANSACTION COMPLETE
+[16:54:27] INFO <00001> START formpayauthbill (4501B20140415FrmpyauthbillWindows 10JSPpure java 1.8.0_91            )
+[16:54:27]DEBUG <00001> INIPAYHOME : C:\PROJECT\workspace\ChestFront\src\main\webapp\WEB-INF\views\common
+[16:54:27]DEBUG <00001> MID        : INIBillTst
+[16:54:27]DEBUG <00001> KEYPW      : 1111
+[16:54:27]DEBUG <00001> CRYPTO     : execure
+[16:54:28]DEBUG <00001> EXTRUS CRYPTO USE!!
+[16:54:28]DEBUG <00001> #plainText : 
+CardNumber: 4028571244663803
+CardExpire: 2403
+CardQuota: 00
+QuotaInterest: 0
+Authentification: 00
+AuthField1: 790701
+AuthField2: 
+AuthField3: 
+Passwd: 
+
+[16:54:29] INFO <00001> MID : INIBillTst
+[16:54:29] INFO <00001> TID : INIpayBillINIBillTst20191017165427119736
+[16:54:29] INFO <00001> GOODNAME : 사랑의열매
+[16:54:29] INFO <00001> PRICE : 1000
+[16:54:29] INFO <00001> BUYERNAME : 김민수
+[16:54:29] INFO <00001> BUYERTEL : 010-2020-4048
+[16:54:29] INFO <00001> BUYEREMAIL : goodday0701@gmail.com
+[16:54:29] INFO <00001> PAYMETHOD : Auth
+[16:54:29]DEBUG <00001> SESSIONKEY : QTOpKD4hjLCHa+NejeRPzdazAQ+UtSXM183AK+SDDll/JEZlESILtQZxVBMULxux
+ikv62w6qoghm3TEc29zBwaOPAcF1xZd4IU713qcUz++ZfUcimt4oCiM5Zl+77ecE
+X1CM1N8AemAS+SEHsU3sMG73Z7wppRTA/TcSfJq9jIkHMpGRvbdUTw==
+
+[16:54:29]DEBUG <00001> ENCRYPTED : OQdwDNFZGGB0P6a8sHrxAzcAxfhOpddOhe9LGPIwSX1tu2dLVGRq0Al4f76/pXeP
+zUAJN//JXSo1CbDwImzmX4csACBgJebDDyjh3fYMDe4w6tIxiRQeecVBz3uSbhf7
+5bcUlBhnS+Ziq7+72/2qv6CbdXLd/vtsdsVq25GeGkerEzwNxgVQPt9J4OVoQeBo
+KPkhcY656EUepUB2WGg69G8XP9DSp05O
+
+[16:54:29]DEBUG <00001> MSG TO PG : InitechCash: PayIt
+Version: 4501B20140415FrmpyauthbillWindows 10JSPpure java 1.8.0_91            
+EncryptionAlgorithm: SEED_CBC
+SignAlgorithm: SIGN_SHA1
+RsaKeyNum: 1
+MPGID: INIBillTst
+Ack: 0
+MID: INIBillTst
+TID: INIpayBillINIBillTst20191017165427119736
+UID: INIBillTst
+UIP: 127.0.0.1
+URL: http://www.chest.or.kr
+moid: 
+GoodName: 사랑의열매
+Price: 1000
+Currency: WON
+BuyerName: 김민수
+BuyerTel: 010-2020-4048
+BuyerEmail: goodday0701@gmail.com
+PayMethod: Auth
+SessionKey: QTOpKD4hjLCHa+NejeRPzdazAQ+UtSXM183AK+SDDll/JEZlESILtQZxVBMULxux
+ikv62w6qoghm3TEc29zBwaOPAcF1xZd4IU713qcUz++ZfUcimt4oCiM5Zl+77ecE
+X1CM1N8AemAS+SEHsU3sMG73Z7wppRTA/TcSfJq9jIkHMpGRvbdUTw==
+
+Encrypted: OQdwDNFZGGB0P6a8sHrxAzcAxfhOpddOhe9LGPIwSX1tu2dLVGRq0Al4f76/pXeP
+zUAJN//JXSo1CbDwImzmX4csACBgJebDDyjh3fYMDe4w6tIxiRQeecVBz3uSbhf7
+5bcUlBhnS+Ziq7+72/2qv6CbdXLd/vtsdsVq25GeGkerEzwNxgVQPt9J4OVoQeBo
+KPkhcY656EUepUB2WGg69G8XP9DSp05O
+
+MerchantReserved1: 
+MerchantReserved2: 
+MerchantReserved3: 
+
+[16:54:29] INFO <00001> SIGN OK
+[16:54:29] INFO <00001> SIGNTURE:
+AGw28cuDW08PTw8GUM9HntaaOGc8fJfxd4BIS+cIs5Q6HzUpQTBqHccxCURNTzKz
+kAzpNMhUSF1ldqNCzmruIv/jxq4r2FABChFItIDTbFOSLjuY47TvjmAlAUvRqs5c
+/8wKOPZd6BFZTGXTUjzzk6e4YDA3Ni3nECaSKvAaj2Qq
+
+[16:54:29] INFO <00001> SET TX_ENCODECHARSET:KSC5601, SYSTEM ENCODING:UTF-8
+[16:54:29] INFO <00001> PG ADDRESS(PORT) : 203.238.37.3(9400)
+[16:54:29] INFO <00001> IP ADDRESS(PORT) : 203.238.37.3(9400)
+[16:54:29] INFO <00001> Connect TimeOut  : 5 sec.
+[16:54:29] INFO <00001> Connect to 203.238.37.3, 9400
+[16:54:29] INFO <00001> SEND OK, (TX ENCODECHARSET:KSC5601)
+[16:54:30]DEBUG <00001> InitechCash: ResultPayProc
+Version: 4.0
+EncryptionAlgorithm: SEED_CBC
+SignAlgorithm: SIGN_SHA1
+RsaKeyNum: 1
+SessionKey: AB7tUtlRnTvFRXAbT1jepElgXH4q4gm2KuowDTaJZ847qkcdWScBU7EyKAlb4nWE
+2F95jQvbE/yz+YV6aqjq21iiw21R8JSj4vjePnZV58CoR6l8oJfUR9jMsuPFPm97
+NhQ72BeJsBKyfmbVcWu6WlXTtuEF+h9rDOSlvkCqtYpkEZF4l5V1+Tk=
+
+TID: INIpayBillINIBillTst20191017165427119736
+MID: INIBillTst
+Encrypted: vSlZaVkY3jQhWTzFiN6ciW5qsV0D6AJNs/yE9CWayHb0SfBHn3ZXFriN6KIPEPL4
+DuA7YlBPnnCThzJgjE6oq7yStR13Kn7hz1khIJW2RHeNJdwjngkFoRzHj1kMgB3F
+ubYWpR6falkPaR6E5HKvEUR5LaQx0iFcbHoyGutCdM4SpUSF5v3QRH5RZ1Gbz8BS
+Id88HSmIf7w5+w9L5Cu+lqXKU1QRr1XTwHvGKWlt5Rjr6f5cs08ereUfSjp0DOWD
+OY1zePxMlTxLMpR5JW5C3s/KiC09KxHS+GzJja2GNZty+1q+jjRLLV7Zh6RzTHX5
+n3e7nbhhMYU/VMJkH7bgoWAzYQv0CqrI9jTQoujGVqRRTdbTTvraXQvpkBbOd9dx
+8/q1Mh9fFpYh7R09P0OhglIj1Ip9Ods9EjFWOIZl+67Tfd5AVX/alxrbDGOinWqB
+YO0uA/Mg1bIi2lGPy9bnJWy7kVHn3fmJWqEPvjh6TTw7mB/3biwLRgcaxk/Ig2Cb
+L41kYo2GRkdKRcFS3UOeA/zdBpbESH3to3vh5IAeahqr2zi7tk4s9etWIV1kPpjs
+jem8wrnPxB07KQjWRI2HqpmP0vcEPli5WADiL/fWEgBxErnQLXoqWYKRi9EhxVvm
+ZiXOKlZPTfSwqYeOAWly2jghGEQtqELv
+
+Tail: dXAJepQ7kxtveSWXI7RbnS/4zdxllacqKKDYMJPGXUakdGpwAITbq8yyNRmfxb0N
+0ZT6PtTA6XFU5BJEv5J+J2Al9bMccK/QZby6s4FDDQRILWoodJNq1zZFfl+4IFe1
+ymEPbwnZZctnOxIzijqhB+n88A0J2kkld7y2ZTMS68g=
+
+MOID: 
+CodeGW: 
+
+[16:54:30] INFO <00001> SOCKET CONNECTION CLOSE
+[16:54:30] INFO <00001> SIGN CHECK OK
+[16:54:30] INFO <00001> DECRYPT OK
+[16:54:30]DEBUG <00001> ResultCode: 00
+ResultMsg: [신용카드|본인인증이 성공하였습니다.]
+PayMethod: Auth
+PayOption: 
+PGAuthCode: PGAuthCode
+CardAuthCode: 00360797
+CardResultCode: 04
+CardResultNumber: 402857*********3
+CardResultExpire: 
+CardResultQuota: 00
+MerchantReserved1: Authentification=&PGauthdate=20191017&PGauthtime=165430&Detailcode=00
+MerchantReserved2: 
+MerchantReserved3: BillKey=320cb6d4be45aaf791a2a4a94e5ba59a8a4d8dd0&CardPass=&CardKind=0
+Price: 1000
+Price1: 
+Price2: 
+SMemID: 
+EventFlag: 0
+
+[16:54:30] INFO <00001> TRANSACTION COMPLETE
