@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-version https://git-lfs.github.com/spec/v1
-oid sha256:220d73af690a9b97d67eaa2004b1af892e9f9a1413f2ddbc0965b5e6883ebe04
-size 4122
-=======
+
 // 1. String concatenation
 console.log('my' + ' cat');
 console.log('1' + 2);
@@ -179,4 +175,3 @@ for (let i = 0; i < 11; i++) {
   }
   console.log(`q2. ${i}`);
 }
->>>>>>> b5bcfaee1171b19d6c037cb3e04951c60adec453

@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-version https://git-lfs.github.com/spec/v1
-oid sha256:215d1dd201111e5f329aab6709669ee7b03c00503f3e25f0760ecbfce7b8d1f0
-size 1526
-=======
+
 'use strict';
 
 // JavaScript is synchronous.
@@ -73,4 +69,3 @@ userStorage.loginUser(
     console.log(error);
   }
 );
->>>>>>> b5bcfaee1171b19d6c037cb3e04951c60adec453

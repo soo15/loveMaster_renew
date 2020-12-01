@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-version https://git-lfs.github.com/spec/v1
-oid sha256:09575705559266f398cbf77867486a101ed81791e69e048d09cd822a745ecff0
-size 995
-=======
+
 // async & await
 // clear style of using promise :)
 
@@ -54,4 +50,3 @@ function pickOnlyOne() {
 }
 
 pickOnlyOne().then(console.log);
->>>>>>> b5bcfaee1171b19d6c037cb3e04951c60adec453

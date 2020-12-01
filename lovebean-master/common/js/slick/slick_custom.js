@@ -19,6 +19,7 @@
         // hero_slider
         $(".slider-hero .slider.hero-imgs").slick({
           lazyLoad:'ondemaand',
+          autoplay:true,
           infinite: true,
           slidesToShow: 1,
           slidesToScroll: 1,

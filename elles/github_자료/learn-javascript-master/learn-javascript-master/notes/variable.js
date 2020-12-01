@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-version https://git-lfs.github.com/spec/v1
-oid sha256:12064e6f4c024d5e6a276167aafa1b87cbec4e916b7ebc5387c1506ef9734c51
-size 3204
-=======
+
 // 1. Use strict
 // added in ES 5
 // use this for Vanila Javascript.
@@ -115,5 +111,4 @@ text = '7' + 5;
 console.log(`value: ${text}, type: ${typeof text}`);
 text = '8' / '2';
 console.log(`value: ${text}, type: ${typeof text}`);
-console.log(text.charAt(0));
->>>>>>> b5bcfaee1171b19d6c037cb3e04951c60adec453
+console.log(text.charAt(0));\
