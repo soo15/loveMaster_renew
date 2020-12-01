@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-version https://git-lfs.github.com/spec/v1
-oid sha256:76d29b20e3c58937877393024ee2fbf30f8d5b7de19f5e1fda65ad8f26df7b6f
-size 1477
-=======
+
 'use strict';
 
 // Promise is a JavaScript object for asynchronous operation.
@@ -67,4 +63,3 @@ getHen() //
   .then(console.log)
   .catch(console.log);
   
->>>>>>> b5bcfaee1171b19d6c037cb3e04951c60adec453

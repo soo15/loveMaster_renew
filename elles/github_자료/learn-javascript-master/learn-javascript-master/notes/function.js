@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-version https://git-lfs.github.com/spec/v1
-oid sha256:da7f9ae9ce20ff1b6b997bacef694d73f499cd5a6c6ce7c6b442604ec9cea13d
-size 3759
-=======
+
 // Function
 // - fundamental building block in the program
 // - subprogram can be used multiple times
@@ -172,4 +168,3 @@ function calculate(command, a, b) {
   }
 }
 console.log(calculate('add', 2, 3));
->>>>>>> b5bcfaee1171b19d6c037cb3e04951c60adec453

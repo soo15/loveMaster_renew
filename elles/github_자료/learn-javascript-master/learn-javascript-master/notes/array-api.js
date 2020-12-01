@@ -1,9 +1,5 @@
-<<<<<<< HEAD
-version https://git-lfs.github.com/spec/v1
-oid sha256:66611acbdce53f82b3aad48fa0d30cd69a3abd6ab45f8d1dba3e0779bb531c6d
-size 2341
-=======
-// Q1. make a string out of an array
+
+// Q1. make a string out of an array - 주어진 배열을 스트링으로 출력
 {
   const fruits = ['apple', 'banana', 'orange'];
   const result = fruits.join(',');
@@ -103,4 +99,3 @@ console.clear();
     .join();
   console.log(result);
 }
->>>>>>> b5bcfaee1171b19d6c037cb3e04951c60adec453

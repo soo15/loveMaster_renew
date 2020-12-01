@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-version https://git-lfs.github.com/spec/v1
-oid sha256:7e719e22a5570e7f955ff79f3abb390db079fc7672a9b5f5dc14537da952b399
-size 2779
-=======
+
 'use strict';
 // Object-oriendted programming
 // class: template
@@ -137,4 +133,3 @@ function change(value) {
 }
 change(obj);
 console.log(obj);
->>>>>>> b5bcfaee1171b19d6c037cb3e04951c60adec453
