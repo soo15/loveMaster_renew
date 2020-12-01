@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        li {
+            width: 300px;
+            height: 300px;
+            background-color: antiquewhite;
+            list-style: none;
+            margin-bottom: 4px;
+        }
+
+        .special {
+            background-color: rosybrown;
+        }
+
+        aside {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+        }
+    </style>
+    <title>coordinate_X,Y</title>
+</head>
+
+<body>
+    <aside>
+        <button class="scrollBy">scrollBy</button>
+        <button class="scrollTo">scrollTo</button>
+        <button class="scrollInto">scrollInto</button>
+    </aside>
+    <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li class="special"></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+    <script>
+        const special = document.querySelector('.special');
+        special.addEventListener('click', function (e) {
+            const Rect = this.getBoundingClientRect();
+            // const pX = e.pageX;
+            // const pY = e.pageY;
+            // const cX = e.clientX;
+            // const cY = e.clientY;
+            console.log(Rect);
+            // console.log(`client: ${cX} , ${cY}`);
+            // console.log(`page: ${pX} , ${pY}`);
+
+            console.log(`clientX: ${e.clientX}, clientY: ${e.clientY}`);
+            console.log(`pageX: ${e.pageX}, pageY: ${e.pageY}`);
+        });
+
+
+        const sB = document.querySelector('.scrollBy');
+        const sT = document.querySelector('.scrollTo');
+        const sIt = document.querySelector('.scrollInto');
+        sB.addEventListener('click', () => {
+            window.scrollBy({
+                top: 100,
+                left: 0,
+                behavior: "smooth"
+            });
+        });
+        sT.addEventListener('click', () => {
+            window.scrollTo(0, 0);
+        });
+        sIt.addEventListener('click', () => {
+            special.scrollIntoView();
+        });
+    </script>
+</body>
+
+</html>
