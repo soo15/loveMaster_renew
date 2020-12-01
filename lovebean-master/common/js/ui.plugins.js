@@ -22,12 +22,14 @@
 				return createUiAccordionToggle(opt);
 			}
 		});
+
 		$ui.uiAccordion.option = {
 			current: null,
 			autoclose: false,
 			callback: false,
 			level: 3
 		};
+		
 		function createUiAccordion(opt) {
 			if (opt === undefined || !$('#' + opt.id).length) {
 				return false;
