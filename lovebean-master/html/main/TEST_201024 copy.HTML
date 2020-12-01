@@ -1,0 +1,1027 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no, user-scalable=no">
+
+    <meta name="keywords" content="사랑의 열매, 사회복지공동모금회" />
+    <meta name="description" content="" />
+
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="mobile-web-app-capable" content="yes">
+    <title>( 중앙회 ) 사회복지공동모금회 사랑의열매</title>
+
+    <!-- css ÃªÂ²Â½Ã«Â¡Â  -->
+    <link rel="stylesheet" href="../../common/css/ui.base.css?_v=20201015095339">
+    <link rel="stylesheet" href="../../common/css/ui.main.css?_v=20201015095339">
+    <!-- <link rel="stylesheet" href="../../common/css/swiper.css"> -->
+    <!-- 
+    <style>
+        @media (orientation: portrait) {
+            html {
+                transform: rotate(-90deg);
+                transform-origin: top left;
+                position: absolute;
+                top: 100%;
+                left: 0;
+            }
+        }
+    </style> -->
+
+
+    <!-- slick -->
+    <link rel="stylesheet" href="../../common/css/slick/slick-theme.css">
+    <link rel="stylesheet" href="../../common/css/slick/slick.css">
+    <link rel="stylesheet" href="../../common/css/slick/slick-custom.css">
+    <link rel="stylesheet" href="../../common/css/slick/slick-responsive.css">
+    <link rel="stylesheet" href="http://cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
+    <link rel="stylesheet" href="../../common/css/ui.responsive.css">
+
+    <!-- Jquery -->
+    <script type="text/javascript" src="../../common/js/jquery/js/jquery-3.4.1.min.js"></script>
+    <script type="text/javascript" src="../../common/js/jquery/plugin/jquery.cookie.js"></script>
+    <!-- cookie Plugin -->
+    <script type="text/javascript" src="../../common/js/jquery/js/jquery-ui.js"></script>
+
+    <!-- Chest Front Common -->
+    <script type="text/javascript" src="../../common/js/chest_menu.js?_v=20201015095339"></script>
+    <!-- menu script -->
+    <script type="text/javascript" src="../../common/js/chest_util.js"></script><!-- util script -->
+    <script type="text/javascript" src="../../common/js/chest_ajax.js"></script>
+
+
+    <!-- <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script> -->
+    <!--ajax script -->
+    <script type="text/javascript" src="../../common/js/chest_com.js"></script> <!-- common script -->
+    <script type="text/javascript" src="../../common/js/chest_grid.js"></script><!-- grid script -->
+    <script type="text/javascript" src="../../common/js/chest_date.js"></script><!-- date script -->
+    <script type="text/javascript" src="../../common/js/chest_user.js"></script><!-- user script -->
+    <!-- Chest ui Common -->
+
+    <script type="text/javascript" src="../../common/js/ui.global.js"></script>
+    <script type="text/javascript" src="../../common/js/ui.plugins.js"></script>
+    <script type="text/javascript" src="../../common/js/ui.common.js?_v=20201015095339"></script>
+    <!-- <script type="text/javascript" src="../../common/js/signature_pad.min.js"></script> -->
+
+    <script type="text/javascript">
+        // $(document).ready(function () {
+        //     // quick_menu toggle
+        //     $(".quick_nav .btn_close").click(function () {
+        //         $(".quick_nav").toggleClass("quick_nav-close");
+        //     });
+
+
+        //     //follow quick menu
+        //     // $(window).scroll(function () {
+        //     //     var scrollTop = $(document).scrollTop();
+        //     //     if (scrollTop < 180) {
+        //     //         scrollTop = 180;
+        //     //     }
+        //     //     $(".quick_nav").stop();
+        //     //     $(".quick_nav").animate({
+        //     //         "top": scrollTop
+        //     //     });
+        //     // });
+
+
+
+        //     var $quickMenu = $(".quick_nav");
+        //     $(window).scroll(function () {
+        //         var scrollValue = $(window).scrollTop(); //스크롤 위치변수선언
+
+        //         //퀵메뉴 가운데 위치값 계산
+        //         var centerPosition = ($(window).height() - $quickMenu.height()) / 2 + $(window)
+        //             .scrollTop();
+
+        //         if (scrollValue < 100) { //스크롤 위치값이 100 이하
+        //             $quickMenu.stop().animate({
+        //                 'top': 26 + 'px'
+        //             }, 1000);
+        //         } else if (scrollValue > 300) { //스크롤 위치값이 100이하
+        //             $quickMenu.stop().animate({
+        //                 'top': centerPosition + 'px'
+        //             }, 1000);
+        //         }
+        //     });
+
+        // });
+
+        // function actionToggle() {
+        //     const action = document.querySelector('.quick_action');
+        //     action.classList.toggle('quick_active')
+        // }
+
+        $(document).ready(function () {
+
+            // quick_menu toggle
+            $(".quick_nav .btn_close").click(function () {
+                $(".quick_nav").toggleClass("quick_nav-close");
+            });
+            // var HPosition = parseInt($("#baseMain").css("height"));
+            // var quickPosition = parseInt($(".quick_nav").css("top"));
+            // $(window).scroll(function () {
+            //     var position = $(window).scrollTop(); // 현재 스크롤바의 위치값을 반환합니다.
+            //     var quicktotal = quickPosition + position + 450;
+
+            //     // if (position < HPosition) {
+            //     //     position = quickPosition + position + 450;
+            //     // }
+            //     $(".quick_nav").stop().animate({ "top": position + quickPosition + "px" }, 500);
+            // });
+
+            //follow quick menu
+            // $(window).scroll(function () {
+            //     var scrollTop = $(document).scrollTop();
+            //     if (scrollTop < 26) {
+            //         scrollTop = 180;
+            //     }
+            //     $(".quick_nav").stop();
+            //     $(".quick_nav").animate({
+            //         "top": scrollTop
+            //     });
+            // });
+
+
+
+            $(window).bind('resize', function () {
+                if ($(window).width() >= 1025) {
+                    snsScroll();
+                } else {
+                    $(window).unbind();
+                    stopDefAction();
+                    stopEvent();
+                    return;
+                    //remove();
+                }
+            }).trigger('resize');
+
+
+
+            //progress_overflow
+            var progress = document.querySelectorAll('.cause-card__progress span');
+            for (var i = 0; i < progress.length; i++) {
+                var item = progress.item(i).style.width.replace(/[^0-9]/g, "");
+                if (item >= 100) {
+                    /* console.log(progress.item(i)) */
+                    $(progress.item(i)).addClass('importantRule')
+                } else {
+                    item = item;
+                }
+            }
+
+        });
+
+        // function getHeight() {
+        //     // var doc = document;
+        //     // return Math.max(
+        //     //     doc.body.scrollHeight, doc.documentElement.scrollHeight,
+        //     //     doc.body.offsetHeight, doc.documentElement.offsetHeight,
+        //     //     
+
+        // }
+
+
+        function snsScroll() {
+            $(window).scroll(function () {
+                var scrollTop = $(document).scrollTop();
+                if (scrollTop < 660) {
+                    scrollTop = 660;
+                } else {
+                    scrollTop = 0;
+                }
+                $(".sns_wrapper").stop();
+                $(".sns_wrapper").animate({
+                    "top": scrollTop
+                });
+            });
+        }
+
+        function stopDefAction(e) {
+            e.preventDefault();
+        }
+
+        function stopEvent(e) {
+            e.stopPropagation();
+        }
+
+        window.addEventListener('scroll', () => {
+            //const scrollable = document.documentElement.scrollHeight - window.innerHeight;
+            //const scrollable = window.innerHeight;
+            //const scrolled = window.scrollY;
+            var scrollTop = $(document).scrollTop();
+            if (scrollTop < 26) {
+                scrollTop = 26;
+            }
+
+            $(".quick_nav").stop({});
+            $(".quick_nav").animate({
+                "top": scrollTop
+            });
+            //console.log(scrollTop)
+
+
+        });
+
+
+
+
+        //cause-card__progress
+        // const progress = document.querySelectorAll('.cause-card__progress span');
+        // let result = document.querySelector('.cause-card__progress');
+        // result.innerText = div.offsetWidth + 'x' + div.offsetHeight;
+        // console.log(result)
+
+        function actionToggle() {
+            const action = document.querySelector('.quick_action');
+            action.classList.toggle('quick_active')
+        }
+    </script>
+
+</head>
+
+<body>
+    <div class="base-main" id="baseMain">
+        <!--main_section-->
+        <div class="main__vs">
+            <!--slider_hero-->
+            <div class="slider-hero-box">
+                <div class="slider-hero">
+                    <div class="hero-box">
+                        <div class="slider hero-imgs">
+                            <div class="slide"></div>
+                            <div class="slide"></div>
+                        </div>
+                        <div class="main-hero__buttons">
+                            <button type="button" class="main-hero__prev" tabindex="0" role="button">이전</button>
+                            <button type="button" class="main-hero__autoplay main-hero__autoplay--pause" tabindex="0"
+                                role="button">멈춤</button>
+                            <button type="button" class="main-hero__next" tabindex="0" role="button">다음</button>
+                            <!-- <span class="pagination"></span> -->
+
+                            <div class="pagination">
+                                <span class="current"></span>
+                                <span>&nbsp;/&nbsp;</span>
+                                <span class="total"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hero-bg-box">
+                        <div class="slider hero-bgs">
+                            <div class="slide"></div>
+                            <div class="slide"></div>
+                        </div>
+                    </div>
+
+
+                    <!--notice&campaign-->
+                    <div class="sliderB_container_box">
+                        <div class="sliderB_container_camp">
+                            <!-- slider1  -->
+                            <div class="main_v_notice">
+                                <h1><strong>부산</strong> 사회복지공동모금회</h1>
+                                <div class="slider">
+                                    <div class="v_notice_contents">
+                                        <div>
+                                            <strong>공지사항1</strong>
+                                            <em>2020.08.01 ~ 2020.08.31</em>
+                                            <h2>[사랑의 징검다리] 부산 지역 어려운 이웃들
+                                                에게 마음을 전해요</h2>
+                                            <p>온라인 영상을 통한 2021 배분기준 및 사업 신청방법 안내. 온라인 영상을 통한 2021 배분기준 및 사업 신청방법 안내.온라인
+                                                영상을 통한 2021 배분기준 및 사업 신청방법 안내. 온라인 영상을 통한 2021 배분기준 및 사업 신청방법 안내.</p>
+                                        </div>
+                                        <div><a></a></div>
+                                    </div>
+                                    <div class="v_notice_contents">
+                                        <div>
+                                            <strong>공지사항1</strong>
+                                            <em>2020.08.01 ~ 2020.08.31</em>
+                                            <h2>[사랑의 징검다리] 부산 지역 어려운 이웃들
+                                                에게 마음을 전해요</h2>
+                                            <p>온라인 영상을 통한 2021 배분기준 및 사업 신청방법 안내.</p>
+                                        </div>
+                                        <div><a></a></div>
+                                    </div>
+                                    <div class="v_notice_contents">
+                                        <div>
+                                            <strong>공지사항1</strong>
+                                            <em>2020.08.01 ~ 2020.08.31</em>
+                                            <h2>[사랑의 징검다리] 부산 지역 어려운 이웃들
+                                                에게 마음을 전해요</h2>
+                                            <p>온라인 영상을 통한 2021 배분기준 및 사업 신청방법 안내.</p>
+                                        </div>
+                                        <div><a></a></div>
+                                    </div>
+                                    <div class="v_notice_contents">
+                                        <div>
+                                            <strong>공지사항1</strong>
+                                            <em>2020.08.01 ~ 2020.08.31</em>
+                                            <h2>[사랑의 징검다리] 부산 지역 어려운 이웃들
+                                                에게 마음을 전해요</h2>
+                                            <p>온라인 영상을 통한 2021 배분기준 및 사업 신청방법 안내.</p>
+                                        </div>
+                                        <div><a></a></div>
+                                    </div>
+                                    <div class="v_notice_contents">
+                                        <div>
+                                            <strong>공지사항1</strong>
+                                            <em>2020.08.01 ~ 2020.08.31</em>
+                                            <h2>[사랑의 징검다리] 부산 지역 어려운 이웃들
+                                                에게 마음을 전해요</h2>
+                                            <p>온라인 영상을 통한 2021 배분기준 및 사업 신청방법 안내.</p>
+                                        </div>
+                                        <div><a></a></div>
+                                    </div>
+                                </div>
+
+                                <!-- button -->
+                                <div class="main_notice__buttons">
+                                    <button type="button" class="main_notice___prev" tabindex="0" role="button"><span
+                                            class="ir_pm">이전</span></button>
+                                    <button type="button" class="main_notice___next" tabindex="0" role="button"><span
+                                            class="ir_pm">다음</span></button>
+                                </div>
+                                <!-- //button -->
+                            </div>
+                            <!-- // -->
+                            <!-- // -->
+                        </div>
+                    </div>
+                    <!--//notice&campaign-->
+                </div>
+            </div>
+            <!--//slider_hero-->
+        </div>
+        <!--//main_section-->
+        <!-- quick_nav(box-banner)_web -->
+        <div class="quick_nav">
+            <!-- quick_box -->
+            <div class="quick-area">
+                <h2>주요 서비스</h2>
+                <button class="btn_close"><span class="ir_pm">접기</span></button>
+                <ul class="quick-info">
+                    <li>
+                        <a href="#">
+                            <i class="ico-notice"></i>
+                            <span class="txt">공지사항</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class="ico-info"></i>
+                            <span class="txt">지원안내</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class="ico-online"></i>
+                            <span class="txt">온라인배분신청</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class="ico-donation1"></i>
+                            <span class="txt">일시기부</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class="ico-donation2"></i>
+                            <span class="txt">정기기부</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class="ico-mypage"></i>
+                            <span class="txt">마이페이지</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <!-- //quick_box -->
+        </div>
+        <!-- //quick_nav -->
+        <!-- quick_nav(mobile) -->
+        <div class="quick_action" onclick="actionToggle();">
+            <span>+</span>
+            <h2>주요 서비스 </h2>
+            <ul class="quick-info">
+                <li><a href="#"><i class="ico-notice"></i><em class="txt">공지사항</em></a></li>
+                <li><a href="#"><i class="ico-info"></i><em class="txt">지원안내</em></a></li>
+                <li><a href="#"><i class="ico-online"></i><em class="txt">온라인배분신청</em></a></li>
+                <li><a href="#"><i class="ico-donation1"></i><em class="txt">일시기부</em></a></li>
+                <li><a href="#"><i class="ico-donation2"></i><em class="txt">정기기부</em></a></li>
+                <li><a href="#"><i class="ico-mypage"></i><em class="txt">마이페이지</em></a></li>
+            </ul>
+        </div>
+        <!-- //quick_nav(mobile) -->
+        <!--box-card_camp-->
+        <div class="box-card_camp">
+            <div class="box-card_campbox">
+                <div class="innerbox">
+                    <dl class="title">
+                        <dt>함께나누면<br />행복도 2배<br /><strong class="red">착한기부</strong></dt>
+                        <dd>
+                            <p>사랑의열매는<br />기부내역확인서비스로<br />기부금 내역을 공개하고 있습니다.<br />여러분의 사랑을 보여주세요.</p>
+                            <div class="list-link">
+                                <ul>
+                                    <li class="tab on"><a href="#">정기기부</a></li>
+                                    <li class="tab"><a href="#">일반기부</a></li>
+                                </ul>
+                            </div>
+                        </dd>
+                    </dl>
+                    <div class="contentsbox">
+                        <div>
+                            <i class="d_icon_home"></i>
+                            <h3 class="contentsbox_title">착한가정</h3>
+                            <p class="description">가족 모두가 나눔의 의미를 함께 나눌 수 있는 나눔실천 프로그램입니다.</p>
+                            <button class="btn">신청하기</button>
+                        </div>
+                        <div>
+                            <i class="d_icon_store"></i>
+                            <h3 class="contentsbox_title">착한가정</h3>
+                            <p>가족 모두가 나눔의 의미를 함께 나눌 수 있는 나눔실천 프로그램입니다.</p>
+                            <button class="btn">신청하기</button>
+                        </div>
+                        <div>
+                            <i class="d_icon_work"></i>
+                            <h3 class="contentsbox_title">착한가정</h3>
+                            <p>가족 모두가 나눔의 의미를 함께 나눌 수 있는 나눔실천 프로그램입니다.</p>
+                            <button class="btn">신청하기</button>
+                        </div>
+                        <div>
+                            <i class="d_icon_namum"></i>
+                            <h3 class="contentsbox_title">착한가정</h3>
+                            <p>가족 모두가 나눔의 의미를 함께 나눌 수 있는 나눔실천 프로그램입니다.</p>
+                            <button class="btn">신청하기</button>
+                        </div>
+                        <div>
+                            <i class="d_icon_club"></i>
+                            <h3 class="contentsbox_title">착한가정</h3>
+                            <p>가족 모두가 나눔의 의미를 함께 나눌 수 있는 나눔실천 프로그램입니다.</p>
+                            <button class="btn">신청하기</button>
+                        </div>
+                        <div>
+                            <i class="d_icon_honor"></i>
+                            <h3 class="contentsbox_title">착한가정</h3>
+                            <p>가족 모두가 나눔의 의미를 함께 나눌 수 있는 나눔실천 프로그램입니다.</p>
+                            <button class="btn">신청하기</button>
+                        </div>
+                        <div>
+                            <i class="d_icon_fit"></i>
+                            <h3 class="contentsbox_title">착한가정</h3>
+                            <p>가족 모두가 나눔의 의미를 함께 나눌 수 있는 나눔실천 프로그램입니다.</p>
+                            <button class="btn">신청하기</button>
+                        </div>
+                        <div>
+                            <i class="d_icon_social"></i>
+                            <h3 class="contentsbox_title">착한가정</h3>
+                            <p>가족 모두가 나눔의 의미를 함께 나눌 수 있는 나눔실천 프로그램입니다.</p>
+                            <button class="btn">신청하기</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--//box-card_camp-->
+        <!-- sns -->
+        <div class="sns_wrapper">
+            <h3>
+                <strong>#사랑의열매 </strong>사회복지공동모금회
+            </h3>
+            <div class="sns-box">
+                <a href="javascript:snsMoveEvent('SNS_PB');" title="새 창 열림" class="ico-f"><span
+                        class="ir_pm">페이스북</span></a>
+                <a href="https://www.youtube.com/channel/UCbHsnc9llMcA9ypjVAnpcuQ" title="새 창 열림" class="ico-u"
+                    target="_blank"><span class="hide">유튜브</span></a>
+                <a href="javascript:snsMoveEvent('SNS_BG');" title="새 창 열림" class="ico-b"><span
+                        class="ir_pm">블로그</span></a>
+                <a href="javascript:snsMoveEvent('SNS_IS');" title="새 창 열림" class="ico-i"><span
+                        class="ir_pm">인스타그램</span></a>
+            </div>
+            <div class="sns_campaign">
+                <a href="#">
+                    <img src="https://source.unsplash.com/136x136/weekly?1" alt="">
+                    <p class="sns_hashtag-txt">오늘의 오지랖 넓~은 기업은 바로 #삼성전자
+                        삼성전자의 #갤럭시노트20울트라 를 4MC가 리뷰한다!</p>
+                </a>
+                <a href="#">
+                    <img src="https://source.unsplash.com/136x136/weekly?2" alt="">
+                    <p class="sns_hashtag-txt">오늘의 오지랖 넓~은 기업은 바로 #삼성전자
+                        삼성전자의 #갤럭시노트20울트라 를 4MC가 리뷰한다!</p>
+                </a>
+                <a href="#">
+                    <img src="https://source.unsplash.com/136x136/weekly?3" alt="">
+                    <p class="sns_hashtag-txt">오늘의 오지랖 넓~은 기업은 바로 #삼성전자
+                        삼성전자의 #갤럭시노트20울트라 를 4MC가 리뷰한다!</p>
+                </a>
+                <a href="#">
+                    <img src="https://source.unsplash.com/136x136/weekly?4" alt="">
+                    <p class="sns_hashtag-txt">오늘의 오지랖 넓~은 기업은 바로 #삼성전자
+                        삼성전자의 #갤럭시노트20울트라 를 4MC가 리뷰한다!</p>
+                </a>
+                <a href="#">
+                    <img src="https://source.unsplash.com/136x136/weekly?5" alt="">
+                    <p class="sns_hashtag-txt">오늘의 오지랖 넓~은 기업은 바로 #삼성전자
+                        삼성전자의 #갤럭시노트20울트라 를 4MC가 리뷰한다!</p>
+                </a>
+                <a href="#">
+                    <img src="https://source.unsplash.com/136x136/weekly?5" alt="">
+                    <p class="sns_hashtag-txt">오늘의 오지랖 넓~은 기업은 바로 #삼성전자
+                        삼성전자의 #갤럭시노트20울트라 를 4MC가 리뷰한다!</p>
+                </a>
+            </div>
+        </div>
+        <!-- //sns -->
+        <!--crowd-camp-->
+        <div class="main-type2-camp">
+            <div class="crowd-camp">
+                <div class="innerbox">
+                    <dl class="title">
+                        <dt>우리 같이<br />응원해요!<br /><strong class="blue">크라우드 펀딩</strong></dt>
+                        <dd>
+                            <p>모금된 금액은 수수료 없이 전액 펀딩<br />사업에 사용됩니다.</p>
+                            <div class="list-link">
+                                <ul>
+                                    <li class="tab on"><a href="#">펀딩더보기</a></li>
+                                    <li class="tab"><a href="#">신청하기</a></li>
+                                    <li class="tab"><a href="#">펀딩후기</a></li>
+                                </ul>
+                            </div>
+                        </dd>
+                    </dl>
+                    <!--main_sub_slider2-->
+
+
+                    <div class="slick_sub">
+                        <div class="tab-pane" id="slide-scroll">
+                            <div class="test-case-wrap slick-crowd-camp">
+                                <div class="slider">
+                                    <div>
+                                        <div class="crowd-camp-img">
+                                            <img src="../../common/img/re_main_2010/sample.png">
+                                        </div>
+                                        <h3>내 일을 찾는 청년들에게 내일을 선물해주세요내 일을 찾는 청년들에게 내일을 선물해주세요</h3>
+                                        <p>by대한의료사회복지사협회</p>
+                                        <div class="cause-card__content">
+                                            <div class="cause-card__top">
+                                                <div class="cause-card__progress">
+                                                    <span style="width: 23%;" class="cardProgress">
+                                                        <b><i>23</i>%</b>
+                                                    </span>
+                                                </div><!-- /.cause-card__progress -->
+                                                <div class="cause-card__goals">
+                                                    <p>480,000 원</p>
+                                                    <p>총 1,500,000원</p>
+                                                </div><!-- /.cause-card__goals -->
+                                            </div><!-- /.cause-card__top -->
+                                        </div><!-- /.cause-card__content -->
+                                        <a class="crowd-camp-button">참여하기</a>
+                                    </div>
+                                    <div>
+                                        <div class="crowd-camp-img">
+                                            <img src="../../common/img/re_main_2010/sample.png">
+                                        </div>
+                                        <h3>내 일을 찾는 청년들에게 내일을 선물해주세요</h3>
+                                        <p>by대한의료사회복지사협회</p>
+                                        <div class="cause-card__content">
+                                            <div class="cause-card__top">
+                                                <div class="cause-card__progress">
+                                                    <span style="width: 70%;" class="cardProgress">
+                                                        <b><i>70</i>%</b>
+                                                    </span>
+                                                </div><!-- /.cause-card__progress -->
+                                                <div class="cause-card__goals">
+                                                    <p>480,000 원</p>
+                                                    <p>총 1,500,000원</p>
+                                                </div><!-- /.cause-card__goals -->
+                                            </div><!-- /.cause-card__top -->
+                                        </div><!-- /.cause-card__content -->
+                                        <a class="crowd-camp-button">참여하기</a>
+                                    </div>
+                                    <div>
+                                        <div class="crowd-camp-img">
+                                            <img src="../../common/img/re_main_2010/sample.png">
+                                        </div>
+                                        <h3>내 일을 찾는 청년들에게 내일을 선물해주세요</h3>
+                                        <p>by대한의료사회복지사협회</p>
+                                        <div class="cause-card__content">
+                                            <div class="cause-card__top">
+                                                <div class="cause-card__progress">
+                                                    <span style="width: 70%;" class="cardProgress">
+                                                        <b><i>70</i>%</b>
+                                                    </span>
+                                                </div><!-- /.cause-card__progress -->
+                                                <div class="cause-card__goals">
+                                                    <p>480,000 원</p>
+                                                    <p>총 1,500,000원</p>
+                                                </div><!-- /.cause-card__goals -->
+                                            </div><!-- /.cause-card__top -->
+                                        </div><!-- /.cause-card__content -->
+                                        <a class="crowd-camp-button">참여하기</a>
+                                    </div>
+                                    <div>
+                                        <div class="crowd-camp-img">
+                                            <img src="../../common/img/re_main_2010/sample.png">
+                                        </div>
+                                        <h3>내 일을 찾는 청년들에게 내일을 선물해주세요</h3>
+                                        <p>by대한의료사회복지사협회</p>
+                                        <div class="cause-card__content">
+                                            <div class="cause-card__top">
+                                                <div class="cause-card__progress">
+                                                    <span style="width: 70%;" class="cardProgress">
+                                                        <b><i>70</i>%</b>
+                                                    </span>
+                                                </div><!-- /.cause-card__progress -->
+                                                <div class="cause-card__goals">
+                                                    <p>480,000 원</p>
+                                                    <p>총 1,500,000원</p>
+                                                </div><!-- /.cause-card__goals -->
+                                            </div><!-- /.cause-card__top -->
+                                        </div><!-- /.cause-card__content -->
+                                        <a class="crowd-camp-button">참여하기</a>
+                                    </div>
+                                </div>
+
+                                <!-- button -->
+                                <div class="crowd-camp-buttons">
+                                    <button type="button" class="crowd-camp_prev" tabindex="0" role="button"><span
+                                            class="ir_pm">이전</span></button>
+                                    <button type="button" class="crowd-camp_next" tabindex="0" role="button"><span
+                                            class="ir_pm">다음</span></button>
+
+                                    <span id="pagination"></span>
+                                </div>
+
+                                <!-- //button -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--//crowd-camp-->
+        <!-- camp-namum -->
+        <div class="main-type2-camp">
+
+            <div class="camp-namum">
+
+                <div class="innerbox">
+                    <dl class="title">
+                        <dt>사랑의 열매와<br />함께 나누는<br /><strong class="green">나눔 스토리</strong></dt>
+                        <dd>
+                            <p>여러분의 소중한 성금은 꼭 필요한 곳에<br />사용됩니다.</p>
+                            <div class="list-link">
+                                <ul>
+                                    <li class="tab on"><a href="#">스토리더보기</a></li>
+                                    <li class="tab"><a href="#">지원사업</a></li>
+                                </ul>
+                            </div>
+                        </dd>
+                    </dl>
+
+                    <div class="slick_sub"">
+                        <div class=" tab-pane" id="slide-scroll">
+                        <div class="test-case-wrap slick-camp-namum">
+                            <div class="slider">
+                                <div>
+                                    <div class="camp-namum-img">
+                                        <img src="../../common/img/re_main_2010/sample.png">
+                                    </div>
+                                    <p>코로나19! 나눔으로 되찾는 일상_의료진</p>
+                                </div>
+                                <div>
+                                    <div class="camp-namum-img">
+                                        <img src="../../common/img/re_main_2010/sample.png">
+                                    </div>
+                                    <p>코로나19! 나눔으로 되찾는 일상_의료진</p>
+                                </div>
+                                <div>
+                                    <div class="camp-namum-img">
+                                        <img src="../../common/img/re_main_2010/sample.png">
+                                    </div>
+                                    <p>코로나19! 나눔으로 되찾는 일상_의료진</p>
+                                </div>
+                                <div>
+                                    <div class="camp-namum-img">
+                                        <img src="../../common/img/re_main_2010/sample.png">
+                                    </div>
+                                    <p>코로나19! 나눔으로 되찾는 일상_의료진</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- button -->
+                    <div class="crowd-nanum__buttons">
+                        <button type="button" class="crowd-nanum_prev" tabindex="0" role="button"><span
+                                class="ir_pm">이전</span></button>
+                        <button type="button" class="crowd-nanum_next" tabindex="0" role="button"><span
+                                class="ir_pm">다음</span></button>
+                    </div>
+                    <!-- //button -->
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+    <!-- //camp-namum -->
+    <!-- 열매튜브 -->
+    <div class="main-type2-camp main-beanTube">
+        <div class="main-beanTube_box">
+            <div class="beanTube_title">
+                <h2><strong>열매</strong>튜브<span class="beanIcon"></span></h2>
+                <div class="beanTube-list-link">
+                    <ul>
+                        <li class="tab1 on"><a href="#">사랑의열매&JTBC</a></li>
+                        <li class="tab2"><a href="#">연말연중광고</a></li>
+                        <li class="tab3"><a href="#">온라인배분사업설명회</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="slick_sub">
+                <div class=" tab-pane" id="slide-scroll">
+                    <div class="test-case-wrap slick-beanTube">
+                        <div class="slider">
+                            <div>
+                                <img src="../../common/img/re_main_2010/youtube_img01.png" />
+                                <div class="beanTube_descript">
+                                    <h2>#나눔 #우리가 #움직여야</h2>
+                                    <p>사랑의열매2020년 연중광고
+                                        이영지,<br /> 나눔으로 세상을 움직이다</p>
+                                </div>
+                            </div>
+                            <div>
+                                <img src="../../common/img/re_main_2010/youtube_img02.png" />
+                                <div class="beanTube_descript">
+                                    <h2>#착한오지라퍼</h2>
+                                    <p>(속보)이영지, 중학교때부터 사랑의열매와 연이<br />
+                                        깊어… [착한 오지라퍼 ep.7]</p>
+                                </div>
+                            </div>
+                            <div>
+                                <img src="../../common/img/re_main_2010/youtube_img03.png" />
+                                <div class="beanTube_descript">
+                                    <h2>#사랑의 열매& JTBC</h2>
+                                    <p>사랑의열매2020년 바이럴광고- 적!재!적!소!에<br />
+                                        빠르게!</p>
+                                </div>
+                            </div>
+                            <div>
+                                <img src="../../common/img/re_main_2010/youtube_img04.png" />
+                                <div class="beanTube_descript">
+                                    <h2>#나눔 #우리가 #움직여야</h2>
+                                    <p>사랑의열매2020년 연중광고
+                                        이영지,<br /> 나눔으로 세상을 움직이다</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- button -->
+                <div class="beanTube-buttons">
+                    <button type="button" class="beanTube_prev" tabindex="0" role="button"><span
+                            class="ir_pm">이전</span></button>
+                    <button type="button" class="beanTube_next" tabindex="0" role="button"><span
+                            class="ir_pm">다음</span></button>
+                </div>
+                <!-- //button -->
+            </div>
+
+        </div>
+        <!-- //main_sub_slider-->
+    </div>
+    <!-- //열매튜브 -->
+    <!-- 공지사항/최근보도/지원안내 -->
+    <div class="main-bbs">
+        <div class="box-bbs">
+            <h3 class="box-bbs-title">공지사항</h3>
+            <ul class="bbs-list" id="noticeList">
+                <li class="bbs-item"> <a href="javascript:;" onclick="javascript:goPostDetail(this);" data-bbs_sn="1000"
+                        data-list_sn="13350" class="bbs-link">
+                        <div class="bbs-link-col days"> <span class="bbs-day">14</span> <span
+                                class="bbs-month">2020.10</span> </div>
+                        <div class="bbs-link-col"> <span class="bbs-title">2020년도 인턴 채용</span> </div>
+                    </a></li>
+                <li class="bbs-item"> <a href="javascript:;" onclick="javascript:goPostDetail(this);" data-bbs_sn="1000"
+                        data-list_sn="13349" class="bbs-link">
+                        <div class="bbs-link-col days"> <span class="bbs-day">14</span> <span
+                                class="bbs-month">2020.10</span> </div>
+                        <div class="bbs-link-col"> <span class="bbs-title">제2회 사랑의열매 학술상 안내(기간연장, ~10/31)</span>
+                        </div>
+                    </a></li>
+                <li class="bbs-item"> <a href="javascript:;" onclick="javascript:goPostDetail(this);" data-bbs_sn="1000"
+                        data-list_sn="13333" class="bbs-link">
+                        <div class="bbs-link-col days"> <span class="bbs-day">08</span> <span
+                                class="bbs-month">2020.10</span> </div>
+                        <div class="bbs-link-col"> <span class="bbs-title">연구직 직원 채용 최종 합격자 발표</span> </div>
+                    </a></li>
+                <li class="bbs-item"> <a href="javascript:;" onclick="javascript:goPostDetail(this);" data-bbs_sn="1000"
+                        data-list_sn="13236" class="bbs-link">
+                        <div class="bbs-link-col days"> <span class="bbs-day">25</span> <span
+                                class="bbs-month">2020.09</span> </div>
+                        <div class="bbs-link-col"> <span class="bbs-title">연구직 직원채용 2차 전형(수행평가) 합격자 발표</span> </div>
+                    </a></li>
+            </ul>
+            <a href="/bbs/1000/initPostList.do" class="bbs-more" alt="공지사항 더 보기" title="공지사항 더 보기">more</a>
+        </div>
+        <div class="box-bbs">
+            <h3 class="box-bbs-title">최근보도</h3>
+            <ul class="bbs-list" id="mediaList">
+                <li class="bbs-item"> <a href="javascript:;" onclick="javascript:goPostDetail(this);" data-bbs_sn="1003"
+                        data-list_sn="13374" class="bbs-link">
+                        <div class="bbs-link-col days"> <span class="bbs-day">19</span> <span
+                                class="bbs-month">2020.10</span> </div>
+                        <div class="bbs-link-col"> <span class="bbs-title">[한국경제 외] 국민MC 송해, 마스크 10만장 기부</span>
+                        </div>
+                    </a></li>
+                <li class="bbs-item"> <a href="javascript:;" onclick="javascript:goPostDetail(this);" data-bbs_sn="1003"
+                        data-list_sn="13337" class="bbs-link">
+                        <div class="bbs-link-col days"> <span class="bbs-day">13</span> <span
+                                class="bbs-month">2020.10</span> </div>
+                        <div class="bbs-link-col"> <span class="bbs-title">[뉴스1] 전국 소상공인 위해 상점가 특별방역 지원</span>
+                        </div>
+                    </a></li>
+                <li class="bbs-item"> <a href="javascript:;" onclick="javascript:goPostDetail(this);" data-bbs_sn="1003"
+                        data-list_sn="13258" class="bbs-link">
+                        <div class="bbs-link-col days"> <span class="bbs-day">05</span> <span
+                                class="bbs-month">2020.10</span> </div>
+                        <div class="bbs-link-col"> <span class="bbs-title">[연합뉴스] W아너 소사이어티, ’제1회 w아너 리더십 포럼’
+                                개최</span> </div>
+                    </a></li>
+                <li class="bbs-item"> <a href="javascript:;" onclick="javascript:goPostDetail(this);" data-bbs_sn="1003"
+                        data-list_sn="13257" class="bbs-link">
+                        <div class="bbs-link-col days"> <span class="bbs-day">05</span> <span
+                                class="bbs-month">2020.10</span> </div>
+                        <div class="bbs-link-col"> <span class="bbs-title">[뉴스1] ’박상민·황기순의 사랑더하기’ 누적 기부금 6억원
+                                달성</span> </div>
+                    </a></li>
+            </ul>
+            <a href="/bbs/1003/initPostList.do" class="bbs-more" alt="최근보도 더 보기" title="최근보도 더 보기">more</a>
+        </div>
+        <div class="box-bbs">
+            <h3 class="box-bbs-title">지원안내</h3>
+            <ul class="bbs-list" id="supportList">
+                <li class="bbs-item"> <a href="javascript:;" onclick="javascript:goPostDetail(this);" data-bbs_sn="1004"
+                        data-list_sn="13369" class="bbs-link">
+                        <div class="bbs-link-col days"> <span class="bbs-day">16</span> <span
+                                class="bbs-month">2020.10</span> </div>
+                        <div class="bbs-link-col"> <span class="bbs-title">2020 하반기 아리따운물품나눔 선정공고</span> </div>
+                    </a></li>
+                <li class="bbs-item"> <a href="javascript:;" onclick="javascript:goPostDetail(this);" data-bbs_sn="1004"
+                        data-list_sn="13327" class="bbs-link">
+                        <div class="bbs-link-col days"> <span class="bbs-day">07</span> <span
+                                class="bbs-month">2020.10</span> </div>
+                        <div class="bbs-link-col"> <span class="bbs-title">2021년 기획사업 “코로나19 이후를 대비하는 사회백신 프로젝트”
+                                신청안내(온라인 설명회 자료 추가)</span> </div>
+                    </a></li>
+                <li class="bbs-item"> <a href="javascript:;" onclick="javascript:goPostDetail(this);" data-bbs_sn="1004"
+                        data-list_sn="13248" class="bbs-link">
+                        <div class="bbs-link-col days"> <span class="bbs-day">28</span> <span
+                                class="bbs-month">2020.09</span> </div>
+                        <div class="bbs-link-col"> <span class="bbs-title">2020년 기획 ’북한이탈주민 지원사업’ 공모 신청 안내</span>
+                        </div>
+                    </a></li>
+                <li class="bbs-item"> <a href="javascript:;" onclick="javascript:goPostDetail(this);" data-bbs_sn="1004"
+                        data-list_sn="13340" class="bbs-link">
+                        <div class="bbs-link-col days"> <span class="bbs-day">13</span> <span
+                                class="bbs-month">2020.10</span> </div>
+                        <div class="bbs-link-col"> <span class="bbs-title">2020년 ’비영리스타트업 인큐베이팅 사업’ 면접심사 대상기관
+                                안내</span> </div>
+                    </a></li>
+            </ul>
+            <a href="/bbs/1004/initPostList.do" class="bbs-more" alt="지원안내 더 보기" title="지원안내 더 보기">more</a>
+        </div>
+    </div>
+    <!-- // -->
+
+    <!-- <script type="text/javascript" src="//code.jquery.com//jquery-3.4.1.min.js"></script> -->
+    <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+    <script type="text/javascript" src="../../common/css/slick/slick.min.js"></script>
+    <script type="text/javascript" src="../../common/js/slick/slick_custom.js"></script>
+    </div>
+
+    <!-- 프로팅배너 -->
+    <!-- <div>
+                <div class="box-sns">
+                    <div class="main_border_test">
+
+                    </div>
+                </div>
+                <div class="Temperature_box">
+                    <div class="box-card_camp">
+                    </div>
+                </div>
+            </div> -->
+    <!-- //프로팅배너 -->
+
+
+    <script>
+        (function ($, win, doc, undefined) {
+            $(doc).ready(function () {
+
+                //필수실행
+                $plugins.common.init({
+                    menuid: '00_00_00' //1depth_2depth_3depth
+                });
+                var swiper, swiper2, swiper3, swiper4, timer;
+
+                $(window).on('resize', function () {
+                    clearTimeout(timer);
+                    timer = setTimeout(function () {
+                        swiper.update();
+                        swiper2.update();
+                        swiper3.update();
+                        swiper4.update();
+                    }, 200)
+                });
+
+                swiperGroup();
+                function swiperGroup() {
+                    swiper = new Swiper('#mainVs', {
+                        slidesPerView: 1,
+                        spaceBetween: 30,
+                        loop: true,
+                        pagination: {
+                            el: '.swiper-pagination',
+                            clickable: true,
+                        },
+                        navigation: {
+                            nextEl: '.btn-swiper-next',
+                            prevEl: '.btn-swiper-prev',
+                        }
+                    });
+                    swiper2 = new Swiper('#mainBn1', {
+                        slidesPerView: 3,
+                        spaceBetween: 52,
+                        breakpoints: {
+                            480: {
+                                spaceBetween: 8
+                            },
+                            768: {
+                                spaceBetween: 20
+                            }
+                        },
+                        loop: true,
+                    });
+
+                    swiper3 = new Swiper('#mainBn2', {
+                        slidesPerView: 3,
+                        spaceBetween: 52,
+                        breakpoints: {
+                            600: {
+                                slidesPerView: 1,
+                                spaceBetween: 8
+                            },
+                            768: {
+                                spaceBetween: 20
+                            }
+                        },
+                        loop: true,
+                    });
+
+                    swiper4 = new Swiper('#mainBn3', {
+                        slidesPerView: 2,
+                        spaceBetween: 25,
+                        breakpoints: {
+                            480: {
+                                spaceBetween: 8
+                            },
+                            768: {
+                                spaceBetween: 12
+                            }
+                        },
+                        loop: true,
+                        navigation: {
+                            nextEl: '.btn-swiper-next',
+                            prevEl: '.btn-swiper-prev',
+                        }
+                    });
+                }
+
+                $('#mainBn1_next').on('click', function () {
+                    swiper2.slideNext();
+                });
+                $('#mainBn1_prev').on('click', function () {
+                    swiper2.slidePrev();
+                });
+                $('#mainBn2_next').on('click', function () {
+                    swiper3.slideNext();
+                })
+                $('#mainBn2_prev').on('click', function () {
+                    swiper3.slidePrev();
+                })
+            });
+        })(jQuery, window, document);
+    </script>
+</body>
+
+</html>
