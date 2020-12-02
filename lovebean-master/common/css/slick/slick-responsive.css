@@ -4,6 +4,14 @@
 
         @media all and (max-width:1024px) {
 
+            /* quick menu */
+            .quick_nav{
+                display:none;
+            }
+            .quick_action{
+                display:block;
+            }
+
             
     
             /* main_hero_slide */
@@ -80,15 +88,6 @@
             .main_v_notice .slider .v_notice_contents p{
                 font-size:11px;
                 display: none;
-            }
-
-            /* quick_menu */
-            .quick_nav{
-                display: none;
-            }
-
-            .quick_action {
-                display: block;
             }
 
 
@@ -362,15 +361,7 @@
                 height: 65px;
             } 
 
-            /* quick_menu */
-            .quick_action {
-                top:auto;
-                bottom:28px;
-            }
-
-            .quick_action.quick_active {
-                bottom:120px;
-            }
+          
 
             .innerbox .title {
                 width: 230px;
@@ -536,18 +527,7 @@
             }
 
 
-            /* quick_mobile */
-            .quick_action {
-                width: 68px;
-                height: 68px;
-                top:auto;
-                bottom:12px;
-            }
-
-            .quick_action.quick_active {
-                top:auto;
-                bottom: 240px;
-            }
+            
 
             .box-card_camp {
                 width: 100%;

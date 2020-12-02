@@ -634,7 +634,7 @@
             left:-36px;
             font-family: 'xeicon';
             font-size: 16px;
-            color:white
+            color:white;
         }
 
 
@@ -737,8 +737,8 @@
             display: none;
             position: fixed;
             z-index: 10;
-            top: 480px;
-            right: 10px;
+            bottom: 0;
+            right: 0;
             width: 90px;
             height: 90px;
             background: #FD4852;
@@ -747,9 +747,7 @@
             box-shadow: 0 5px 5px rgba(0,0,0,0.3);
         }
 
-        .quick_action.quick_active {
-            top: 300px;
-            right: 10px;
+        .quick_action.quick_active{
             background: transparent;
             box-shadow: 0 5px 5px rgba(0,0,0,0);
             -webkit-tap-highlight-color: transparent;
@@ -773,21 +771,36 @@
         }
 
 
-        .quick_action span {
-            position: relative;
-            width: 100%;
+        .quick_action span{
+            position: absolute;
             height: 100%;
-            line-height: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            top:0;
+            left:50%;
+            transform: translateX(-50%);
+            display: inline;
+            line-height: 78px;
+            text-align: center;
             color: #fff;
             font-size: 5em;
             font-weight: 100;
             transition: .3s ease-in-out;
         }
+
+        .quick_action span:before{
+            content: '';
+            display: block;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 55px;
+            height:51px;
+            background-image: url('../../common/img/re_main_2010/quic');
+            border: 1px solid #000;
+        }
         
         .quick_action.quick_active span {
+            left: 30%;
             transform: rotate(135deg);
             z-index: 10;
             font-weight: 100;
@@ -1086,7 +1099,7 @@
         .slick-camp-namum .slider .camp-namum-img {
             margin: 0px auto;
             padding: 0px;
-            max-width: 316px;
+            max-width: 320px;
             height: 232px;
             border-radius: 6px;
             background-color: rgb(255, 255, 255);
@@ -1532,8 +1545,8 @@
         /* sns */
         
         .sns_wrapper {
-            position: absolute;
-            top:660px;
+            position: fixed;
+            top:0px;
             left: 12px;
             max-width: 230px;
             box-sizing: border-box;

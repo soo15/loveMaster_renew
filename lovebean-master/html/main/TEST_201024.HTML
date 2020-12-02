@@ -41,6 +41,167 @@
     <link rel="stylesheet" href="../../common/css/slick/slick-responsive.css">
     <link rel="stylesheet" href="http://cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
     <link rel="stylesheet" href="../../common/css/ui.responsive.css">
+    <style>
+        /* ---quick mobile */
+
+        .box-wing_Cm {
+            position: fixed;
+            display: block;
+            z-index: 10;
+            width: 90px;
+            height: 90px;
+            bottom: 100px;
+            right: 0;
+            background: #1DC5A4;
+            cursor: pointer;
+            border-radius: 50%;
+            box-shadow: 0 5px 5px rgba(0, 0, 0, 0.3);
+        }
+
+        .box-wing_Cm.active {
+            background: transparent;
+            box-shadow: 0 5px 5px rgba(0, 0, 0, 0);
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .box-wing_Cm span {
+            position: absolute;
+            height: 100%;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            display: inline;
+            line-height: 78px;
+            text-align: center;
+            color: #fff;
+            font-size: 5em;
+            font-weight: 100;
+            transition: .1s ease-in;
+        }
+
+        .box-wing_Cm span:before {
+            content: '';
+            display: block;
+            position: absolute;
+            width: 54px;
+            height: 53px;
+            top: 50%;
+            left: 50%;
+            background: url('../../common/img/re_main_2010/wing_Mbg00_2011.png') no-repeat;
+            background-size: 100% auto;
+            transform: translate(-50%, -50%);
+        }
+
+        .box-wing_Cm.active span:before {
+            display: none;
+        }
+
+
+        .box-wing_Cm.active span {
+            top: -12px;
+            left: 30%;
+            transform: rotate(135deg);
+            z-index: 10;
+            font-weight: 100;
+            color: black;
+            opacity: 1;
+        }
+
+        .box-wing_Cm h2,
+        .box-wing_Cm button,
+        .box-wing_Cm .wing-data,
+        .box-wing_Cm .wing-data_box,
+        .box-wing_Cm .wing-data_box:nth-child(2),
+        .box-wing_Cm .wing-data_box .wing-title,
+        .box-wing_Cm .wing-data_box .wing-content,
+        .box-wing_Cm .wing-data_T:before {
+            display: none;
+        }
+
+        .box-wing_Cm.active h2,
+        .box-wing_Cm.active button,
+        .box-wing_Cm.active .wing-data,
+        .box-wing_Cm.active .wing-data_box,
+        .box-wing_Cm.active.wing-data_box:nth-child(2),
+        .box-wing_Cm.active .wing-data_box .wing-title,
+        .box-wing_Cm.active .wing-data_box .wing-content,
+        .box-wing_Cm.active .wing-data_T:before {
+            display: block;
+        }
+
+        .box-wing_Cm.active h2 {
+            display: inline;
+            width: 100%;
+            color: white;
+            display: block;
+            box-sizing: border-box;
+            padding: 20px 0 0 20px;
+            display: block;
+        }
+
+
+        .box-wing_Cm.active button {
+            position: absolute;
+            top: 52px;
+            right: 36px;
+            background-color: #FD4852;
+            padding: 6px 20px;
+            color: white;
+            font-size: 18px;
+            border-radius: 20px;
+        }
+
+        .box-wing_Cm.active .wing-data {
+            position: absolute;
+            right: 10px;
+            width: 340px;
+            height: 266px;
+            box-sizing: border-box;
+            border-radius: 14px;
+            background: #2BA662;
+            background-image: url('../../common/img/re_main_2010/wing_Mbg04_2011.png');
+            background-position: top;
+            background-repeat: no-repeat;
+            background-size: 100% auto;
+        }
+
+        .box-wing_Cm.active .wing-data_box {
+            display: inline-block;
+            height: 46px;
+            font-weight: 200;
+            float: left;
+            padding: 8px 0 0 20px;
+
+        }
+
+        .box-wing_Cm.active .wing-data_box:nth-child(2) {
+            float: right;
+            text-align: left;
+            padding: 8px 20px 0 0;
+        }
+
+        .box-wing_Cm.active .wing-data_box .wing-title {
+            color: white;
+            font-size: 16px;
+        }
+
+        .box-wing_Cm.active .wing-data_box .wing-content {
+            color: white;
+            font-size: 22px;
+        }
+
+        .box-wing_Cm.active .wing-data_T:before {
+            content: "";
+            display: block;
+            width: 140px;
+            height: 106px;
+            pointer-events: none;
+            background-image: url('../../common/img/re_main_2010/wing_Mbg01_2011.png');
+            background-position: top;
+            background-repeat: no-repeat;
+            background-size: 100% auto;
+        }
+    </style>
 
     <!-- Jquery -->
     <script type="text/javascript" src="../../common/js/jquery/js/jquery-3.4.1.min.js"></script>
@@ -117,7 +278,6 @@
         // }
 
         $(document).ready(function () {
-
             // quick_menu toggle
             $(".quick_nav .btn_close").click(function () {
                 $(".quick_nav").toggleClass("quick_nav-close");
@@ -148,11 +308,9 @@
 
             /*scroll*/
             $('div#baseWrap').on('scroll', function () {
-
-
                 /*온도탑 sns-scroll*/
-                var scrollT = $(this).scrollTop(); //스크롤바의 상단위치
-                var scrollH = $(this).height(); //스크롤바를 갖는 div의 높이
+                var scrollT = window.scrollTop(); //스크롤바의 상단위치
+                var scrollH = window.height(); //스크롤바를 갖는 div의 높이
                 var contentH = $('.scrolled-b').height(); //문서 전체 내용을 갖는 div의 높이
 
                 if (scrollH + 1 >= scrollT) { // 스크롤바가 아래 쪽에 위치할 때
@@ -185,23 +343,24 @@
                     $('.quick_nav').animate({
                         'top': centerPosition + 'px'
                     }, 50);
-                }
+                };
+
 
 
             });
 
 
-            $(window).bind('resize', function () {
-                if ($(window).width() >= 1025) {
-                    snsScroll();
-                } else {
-                    $(window).unbind();
-                    stopDefAction();
-                    stopEvent();
-                    return;
-                    //remove();
-                }
-            }).trigger('resize');
+            // $(window).bind('resize', function () {
+            //     if ($(window).width() >= 1025) {
+            //         snsScroll();
+            //     } else {
+            //         $(window).unbind();
+            //         stopDefAction();
+            //         stopEvent();
+            //         return;
+            //         //remove();
+            //     }
+            // }).trigger('resize');
 
 
 
@@ -229,26 +388,26 @@
         // }
 
 
-        function snsScroll() {
-            $(window).scroll(function () {
-                var scrollTop = $(document).scrollTop();
-                if (scrollTop < 660) {
-                    scrollTop = 660;
-                }
-                $(".sns_wrapper").stop();
-                $(".sns_wrapper").animate({
-                    "top": scrollTop
-                });
-            });
-        }
+        // function snsScroll() {
+        //     $(window).scroll(function () {
+        //         var scrollTop = $(document).scrollTop();
+        //         if (scrollTop < 660) {
+        //             scrollTop = 660;
+        //         }
+        //         $(".sns_wrapper").stop();
+        //         $(".sns_wrapper").animate({
+        //             "top": scrollTop
+        //         });
+        //     });
+        // }
 
-        function stopDefAction(e) {
-            e.preventDefault();
-        }
+        // function stopDefAction(e) {
+        //     e.preventDefault();
+        // }
 
-        function stopEvent(e) {
-            e.stopPropagation();
-        }
+        // function stopEvent(e) {
+        //     e.stopPropagation();
+        // }
 
         window.addEventListener('scroll', () => {
             //const scrollable = document.documentElement.scrollHeight - window.innerHeight;
@@ -279,8 +438,59 @@
 
         function actionToggle() {
             const action = document.querySelector('.quick_action');
-            action.classList.toggle('quick_active')
+            action.classList.toggle('quick_active');
+
         }
+
+        function T_actionToggle() {
+            const T_action = document.querySelector('.box-wing_Cm');
+            T_action.classList.toggle('active');
+        }
+
+
+        document.addEventListener('click', function () {
+            const wing_Cm = document.querySelector('.box-wing_Cm');
+            const quick = document.querySelector('.quick_action');
+            if ($(wing_Cm).hasClass("active") === true &&
+                $(quick).hasClass("quick_active") === true) {
+                console.log('둘다가지고있다')
+                $('.box-wing_Cm.active').css({
+                    bottom: "472px"
+                });
+                $('.quick_action.quick_active').css({
+                    bottom: "200px"
+                });
+            } else if ($(wing_Cm).hasClass("active") === true ||
+                $(quick).hasClass("quick_active") === true) {
+                console.log('가지고있다')
+
+                if ($(wing_Cm).hasClass("active") === true) {
+                    $('.box-wing_Cm.active').css({
+                        bottom: "300px"
+                    });
+                    $('.quick_action').css({
+                        bottom: "0px"
+                    });
+                }
+                if ($(quick).hasClass("quick_active") === true) {
+                    $('.box-wing_Cm').css({
+                        bottom: "300px"
+                    });
+                    $('.quick_action.quick_active').css({
+                        bottom: "200px"
+                    });
+                }
+            } else {
+                console.log('안가지고있다')
+                $('.box-wing_Cm').css({
+                    bottom: "100px"
+                });
+                $('.quick_action').css({
+                    bottom: "0px"
+                });
+            }
+
+        });
     </script>
 
 </head>
@@ -942,27 +1152,36 @@
             <a href="/bbs/1004/initPostList.do" class="bbs-more" alt="지원안내 더 보기" title="지원안내 더 보기">more</a>
         </div>
     </div>
-    <!-- // -->
+    <!-- //공지사항/최근보도/지원안내 -->
+
+
+    <!-- Temperature Tower of Love Fruit Start(mobile) -->
+    <div class="box-wing_Cm" onClick="T_actionToggle()">
+        <span>+</span>
+        <p class="love-text"><span class="love-number" id="temperatureVal"></span></p>
+        <div class="temperature-bar"><span class="bar-on" id="temperatureBar"></span></div>
+        <div class="wing-data">
+            <h2>2021 나눔온도<br />아직 너무 추워요!</h2>
+            <button>참여하기</button>
+            <div class="wing-data_T">
+                <div class="wing-data_box">
+                    <h3 class="wing-title">현재 모금액</h3>
+                    <p class="wing-content"><span class="wing-num" id="acmslt"></span>억원</p>
+                </div>
+                <div class="wing-data_box">
+                    <h3 class="wing-title">나눔 목표액</h3>
+                    <p class="wing-content"><span class="wing-num" id="goal"></span>억원<br /></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- //Temperature Tower of Love Fruit Start -->
 
     <!-- <script type="text/javascript" src="//code.jquery.com//jquery-3.4.1.min.js"></script> -->
     <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
     <script type="text/javascript" src="../../common/css/slick/slick.min.js"></script>
     <script type="text/javascript" src="../../common/js/slick/slick_custom.js"></script>
     </div>
-
-    <!-- 프로팅배너 -->
-    <!-- <div>
-                <div class="box-sns">
-                    <div class="main_border_test">
-
-                    </div>
-                </div>
-                <div class="Temperature_box">
-                    <div class="box-card_camp">
-                    </div>
-                </div>
-            </div> -->
-    <!-- //프로팅배너 -->
 </body>
 
 </html>
