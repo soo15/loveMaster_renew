@@ -13,16 +13,10 @@ const gameBtn = document.querySelector('.game__button');
 const gameTimer = document.querySelector('.game__timer');
 const gameScore = document.querySelector('.game__score');
 
-const popUp = document.querySelector('.pop-up');
-const popUpText = document.querySelector('.pop-up__message');
-const popUpRefresh = document.querySelector('.pop-up__refresh');
-
 let started = false;
 let score = 0;
 let timer = undefined;
 
-//이벤트위임
-field.addEventListener('click', onFieldClick);
 
 gameBtn.addEventListener('click',() => {
     //console.log('log');
@@ -41,20 +35,12 @@ function startGame(){
     startGameTimer();
 }
 
-function stopGame(){
-    stopGameTimer();
-    hideGameButton();
-    showPopupWithText('Replay?');
-}
+function stopGame(){}
 
 function showStopButton(){
     const icon = gameBtn.querySelector('.fa-play');
     icon.classList.add('fa-stop');
     icon.classList.remove('fa-play');
-}
-
-function hideGameButton(){
-    gameBtn.style.visibility = 'hidden';
 }
 
 function showTimerAndScore(){
@@ -74,20 +60,10 @@ function startGameTimer(){
     }, 1000); 
 }
 
-function stopGameTimer(){
-    clearInterval(timer);
-}
-
-
 function updateTimerText(time){
     const minutes = Math.floor(time / 60);
     const seconds = time % 60;
     gameTimer.innerText = `${minutes}:${seconds}`;
-}
-
-function showPopupWithText(text){
-    popUp.innerText = text;
-    popUp.classList.remove('pop-up--hide')
 }
 
 function initGame(){
@@ -96,37 +72,6 @@ function initGame(){
     //벌래와 당근을 생성한뒤 field에 추가해줌
     addItem('carrot' , CARROT_COUNT, 'img/carrot.png');
     addItem('bug', BUG_COUNT, 'img/bug.png');
-}
-
-function onFieldClick(event){
-    console.log(event);
-    if(!started){
-        return;
-    }
-    const target = event.target;
-    if(target.matches('.carrot')){
-        //당근!
-        target.remove();
-        score++;
-        updateScoreBoard();
-        if(score === CARROT_COUNT){
-            finishGame(true);
-        }
-    } else if(target.matches('.bug')){
-        //벌레!!
-        stopGameTimer();
-        finishGame(false);
-    }
-}
-
-function finishGame(win){
-    started = false;
-    hideGameButton();
-    showPopupWithText(win? 'YOU WON!' : 'YOU LOST!');
-}
-
-function updateScoreBoard(){
-    gameScore.innerHTML = CARROT_COUNT - score;
 }
   
 function addItem(className, count, imgPath){

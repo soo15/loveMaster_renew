@@ -21,8 +21,6 @@ let started = false;
 let score = 0;
 let timer = undefined;
 
-//이벤트위임
-field.addEventListener('click', onFieldClick);
 
 gameBtn.addEventListener('click',() => {
     //console.log('log');
@@ -96,37 +94,6 @@ function initGame(){
     //벌래와 당근을 생성한뒤 field에 추가해줌
     addItem('carrot' , CARROT_COUNT, 'img/carrot.png');
     addItem('bug', BUG_COUNT, 'img/bug.png');
-}
-
-function onFieldClick(event){
-    console.log(event);
-    if(!started){
-        return;
-    }
-    const target = event.target;
-    if(target.matches('.carrot')){
-        //당근!
-        target.remove();
-        score++;
-        updateScoreBoard();
-        if(score === CARROT_COUNT){
-            finishGame(true);
-        }
-    } else if(target.matches('.bug')){
-        //벌레!!
-        stopGameTimer();
-        finishGame(false);
-    }
-}
-
-function finishGame(win){
-    started = false;
-    hideGameButton();
-    showPopupWithText(win? 'YOU WON!' : 'YOU LOST!');
-}
-
-function updateScoreBoard(){
-    gameScore.innerHTML = CARROT_COUNT - score;
 }
   
 function addItem(className, count, imgPath){
