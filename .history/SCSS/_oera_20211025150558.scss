@@ -1,0 +1,1239 @@
+@charset "utf-8";
+
+/* ! HTML5 Boilerplate v5.3.0 | MIT License | https://html5boilerplate.com/
+ * Some were added by Designfever.com
+ * update : 2017/03/07
+*/
+// ==========================================================================
+// Base styles: opinionated defaults
+// --------------------------------------------------------------------------
+
+
+// base style
+// --------------------------------------------------------------------------
+
+// box-size
+*, *:before, *:after {
+    box-sizing: border-box;
+}
+
+* {
+    word-break: keep-all;
+    -ms-word-wrap: break-word;
+    word-wrap: break-word;
+    // touch
+    -webkit-overflow-scrolling: touch;
+}
+
+*:before, *:after {
+    display: none;
+    content: '';
+}
+
+body, dl, ul, ol, li, dt, dd, blockquote, p, h1, h2, h3, h4, h5, h6 {
+    padding: 0;
+    margin: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    margin: 0;
+    font-weight: normal;
+}
+
+ul, ol {
+    list-style: none;
+}
+
+
+caption, legend {
+    visibility: hidden;
+    height: 0;
+    width: 0;
+    font-size: 0;
+    text-indent: -9999px;
+}
+
+pre, xmp, plaintext, listing, samp, kbd, code, figure, figcaption {
+    margin: 0
+}
+
+iframe {
+    border: none;
+}
+
+img {
+    vertical-align: top
+}
+
+hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #ccc;
+    margin: 1em 0;
+    padding: 0;
+}
+
+// Remove the gap between audio, canvas, iframes,
+// images, videos and the bottom of their containers:
+// https://github.com/h5bp/html5-boilerplate/issues/440
+audio,
+canvas,
+iframe,
+img,
+svg,
+video {
+    vertical-align: middle;
+}
+
+fieldset {
+    border: 0;
+    margin: 0;
+    padding: 0;
+}
+
+i, cite, em, var, address, dfn {
+    font-style: normal;
+}
+
+a {
+    &:link, &:visited, &:active {
+        text-decoration: none;
+        color: inherit;
+    }
+
+    &:hover {
+        color: inherit;
+    }
+}
+
+// base style: Form elements
+// --------------------------------------------------------------------------
+
+button {
+    padding: 0;
+    overflow: hidden;
+    background: none;
+    cursor:pointer;
+    border: 0;
+
+    &:focus {
+        outline: none;
+    }
+}
+
+
+// l  -webkit- : 구글, 사파리 브라우저에 적용
+// l  -moz- : 파이어폭스 브라우저에 적용
+// l  -ms- : 익스플로러에 적용, 보통 생략합니다.
+// l  -o- : 오페라 브라우저에 적용
+
+input, button, textarea, select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border-radius: 0;
+}
+
+// input type:button style
+$_buttons-list: (
+        "button",
+        "[type='button']",
+        "[type='reset']",
+        "[type='submit']",
+);
+
+#{$_buttons-list}{
+    vertical-align: top;
+    outline: none;
+}
+
+input[type="radio"],
+input[type="checkbox"] {
+    position: relative;
+    margin: 0;
+    padding: 0;
+}
+
+input[type="checkbox"] {
+    -webkit-appearance:checkbox;
+    -moz-appearance:checkbox;
+}
+
+input[type="radio"] {
+    -webkit-appearance:radio;
+    -moz-appearance:radio;
+}
+
+// input style
+$_text-inputs-list: (
+        "[type='color']",
+        "[type='date']",
+        "[type='datetime']",
+        "[type='datetime-local']",
+        "[type='email']",
+        "[type='month']",
+        "[type='number']",
+        "[type='password']",
+        "[type='search']",
+        "[type='tel']",
+        "[type='text']",
+        "[type='time']",
+        "[type='url']",
+        "[type='week']",
+        "input:not([type])",
+        "textarea",
+);
+
+#{$_text-inputs-list}{
+    border: 1px solid #888;
+    outline: none;
+    vertical-align: baseline;
+    &::placeholder {
+        color: #555;
+    }
+}
+#{$_text-inputs-list} {
+    &:invalid{
+        border: 1px solid red;
+    }
+}
+
+select {
+    border: 1px solid #888;
+    background: transparent;
+    -webkit-appearance:none; /* for chrome */
+    -moz-appearance:none; /*for firefox*/
+    appearance:none;
+
+    &::-ms-expand{
+        display:none;/*for IE10,11*/
+    }
+}
+
+textarea {
+    border: 1px solid white;
+    resize: none;
+}
+
+#{$_text-inputs-list}, select {
+    &:focus{
+        border: 1px solid blue;
+    }
+    &:disabled{
+        background-color: #444;
+        color: #888;
+    }
+}
+
+// reset style
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    margin: 0;
+    -webkit-appearance: none;
+}
+
+input::-ms-clear,
+input::-ms-reveal {display: none; width : 0; height: 0;}
+
+input::-webkit-search-decoration,
+input::-webkit-search-cancel-button,
+input::-webkit-search-results-button,
+input::-webkit-search-results-decoration { display: none; }
+
+
+.clearfix::after { content: ''; display: table; clear: both }
+
+// base style: Touch Device
+// --------------------------------------------------------------------------
+
+// touch-action
+//
+// 값	                설명
+// ....................................................................................
+// auto	            브라우저가 요소의 동작을 결정합니다. 이는 -ms-touch-action의 기본값입니다.
+// none	            허용되는 기본 동작이 없습니다.
+// manipulation	    이동, 손가락을 모아서 축소/확대 및 살짝 밀어서 앞/뒤로 이동만 허용됩니다.
+// double-tap-zoom  두 번 탭하여 확대/축소만 허용됩니다.
+// inherit	        요소가 해당 상위 요소에서 -ms-touch-action 값을 상속합니다.
+//
+// api : https://blogs.msdn.microsoft.com/ie_ko/2012/04/28/1153/
+[role=button], a, area, button, input, label, select, summary, textarea {
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+}
+
+//터치 디바이스 기기에서 탭 하이라이트 효과 제거
+// a, button, input, label, select, textarea{-webkit-tap-highlight-color: transparent;}
+
+
+
+
+// base style: Skip Navi & Browser Upgrade Prompt
+// --------------------------------------------------------------------------
+
+// skip Navigation
+#skip-navi{
+    position: absolute; top: 0; left: 0;
+    width: 100%;
+    z-index: 600;
+
+    a {
+        display: block;
+        position: absolute;
+        top: -9999px;
+
+        &:hover, &:active, &:focus{
+            display: inline-block;
+            top: 0;
+            width: 100%;
+        }
+
+        span {
+            display: block;
+            padding: 10px 0;
+            background: #fafafa;
+            border: 2px solid #666;
+            color: #000;
+            font-size: 16px;
+            text-align: center;
+        }
+    }
+}
+
+// browser Upgrage
+.browser-upgrade {
+    position: fixed; left: 0; top: 0;
+    width: 100%;
+    z-index: 10000;
+    background: #efefef;
+    border-bottom: 2px solid #bababa;
+    margin: 0;
+    padding: 10px 0;
+    text-align: center;
+    font-size: 14px;
+    color: #595959;
+
+    a {
+        font-size: 18px;
+        color: #0027AA;
+
+        &:hover {
+            color: #000;
+        }
+    }
+}
+
+
+// 통신용 엘리먼트 숨기기
+iframe[name ^='google_']{
+    position: absolute; left:-9999px; top:-9999px; width:0; height:0; visibility: hidden;
+}
+
+
+// base style: browser scroll
+// --------------------------------------------------------------------------
+
+// IE scrollbar
+// body{
+//    scrollbar-face-color:#ddd;
+//    scrollbar-3dlight-color:#fff;
+//    scrollbar-highlight-color:#fff;
+//    scrollbar-shadow-color:#fff;
+//    scrollbar-darkshadow-color:#fff;
+//    scrollbar-arrow-color:#ddd;
+//    scrollbar-track-color:#fff;
+// }
+
+// webkit scrollbar
+
+
+
+// base style: Print
+// Inlined to avoid the additional HTTP request:
+// http://www.phpied.com/delay-loading-your-print-css/
+// --------------------------------------------------------------------------
+
+@media print {
+    *,
+    *:before,
+    *:after,
+    *:first-letter,
+    *:first-line {
+        background: transparent !important;
+        color: #000 !important; //Black prints faster: http://www.sanbeiji.com/archives/953 */
+        box-shadow: none !important;
+        text-shadow: none !important;
+    }
+
+    a,
+    a:visited {
+        text-decoration: underline;
+    }
+
+    a[href]:after {
+        content: " (" attr(href) ")";
+    }
+
+    abbr[title]:after {
+        content: " (" attr(title) ")";
+    }
+
+    // Don't show links that are fragment identifiers,
+    // or use the `javascript:` pseudo protocol
+    a[href^="#"]:after,
+    a[href^="javascript:"]:after {
+        content: "";
+    }
+
+    pre,
+    blockquote {
+        border: 1px solid #555;
+        page-break-inside: avoid;
+    }
+
+    // Printing Tables:
+    // http://css-discuss.incutio.com/wiki/Printing_Tables
+    thead {
+        display: table-header-group;
+    }
+
+    tr,
+    img {
+        page-break-inside: avoid;
+    }
+
+    img {
+        max-width: 100% !important;
+    }
+
+    p,
+    h2,
+    h3 {
+        orphans: 3;
+        widows: 3;
+    }
+
+    h2,
+    h3 {
+        page-break-after: avoid;
+    }
+}
+
+.wa {
+    text-indent: -9999px;
+    position: absolute;
+    top: -9999px;
+    font-size: 0;
+}
+
+// common
+// ---------------------------------- Site common-comp classes ---------------------------------- //
+
+html, body {
+    background-color: white;
+}
+
+template {
+    display: none !important;
+}
+
+@import "../layout/header";
+@import "../layout/header-tablet-sub";
+@import "../layout/columns";
+@import "../layout/menu";
+@import "../layout/footer";
+
+.hidden {visibility: hidden};
+.none {display: none};
+
+#viewport {
+    width: 100%;
+    top: 0; left: 0;
+}
+
+.hash-anchor {
+    font-size:0;
+    width: 0; height:0;
+    visibility:hidden;
+}
+
+.sticky-holder {
+    display: block;
+    position: absolute;
+    left: 0; top: 0;
+    width: 100%; height: 100vh;
+}
+
+section {
+    position: relative;
+    width: 100%; height: auto;
+    font-size:0;
+
+    //@include calc-prop-set('padding', 0 0, 0 0);
+
+    img {
+        position:relative;
+        width: 100%;
+        height: auto;
+        @extend .no-select;
+    }
+
+    .background {
+        position: absolute;
+        figure, .img-holder, .bg {
+            width:100%; height:100%;
+            background: {
+                size: cover;
+                position: center;
+                repeat: no-repeat;
+            };
+        }
+    }
+
+    .container {
+        display: flex;
+        flex-wrap: wrap;
+        //max-width:1920px;
+        position: relative;
+        width: 100%; height: 100%;
+        margin: 0 auto;
+        justify-content: flex-end;
+    }
+
+    &.full-screen {
+        height: 100vh;
+    }
+}
+
+.sec-kv {
+    height: 100vh;
+    min-height: 1000px;
+    div {
+        width: 100%;
+        height: 100%;
+    }
+}
+
+hr {
+    width: 100%;
+    margin:0;
+    border-color: #707070;
+}
+
+.no-select {
+    user-drag: none;
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-drag: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+}
+
+figure {
+    width: 100%;
+}
+
+body {
+    background: #fff;
+}
+
+video {
+    outline:#fff;
+    box-sizing: unset;
+    -webkit-box-sizing: unset;
+    -moz-box-sizing: unset;
+    border-radius: 1px;
+}
+
+strong{font-weight: normal;}
+
+
+.white { color: #fff; border-color: #fff !important; hr{border-color:#fff !important;} .txt{color:#fff;}}
+.black { color: #000; border-color: #000 !important; hr{border-color:#000 !important;} .txt{color:#000;}}
+.dark {color:#313131}
+.gray{color:#707070;}
+.gray-2 {color: #b2b2b2;}
+.blue-green{color:#264D54;}
+.emerald {color:#14C4C4}
+
+.mask-txt {
+    overflow: hidden;
+    //height: 23px;
+    @extend .motion-btn;
+    @include break-point-max($break-mobile-max) {
+        height: fit-content;
+    }
+}
+
+.app>section {
+    &.sec-1 {
+         @include calc-prop-set('padding-top', 315px, 170px);
+    }
+}
+
+
+// 신형주: 애플 기기에서 전화번호로 인식 되는 부분에 대한 스타일링이 다르게 나오는 부분 수정
+a[x-apple-data-detectors] {
+    color: inherit !important;
+    text-decoration: none !important;
+    font-size: inherit !important;
+    font-family: inherit !important;
+    font-weight: inherit !important;
+    line-height: inherit !important;
+}
+
+
+//div, article, figure, content, section {
+//    transform: translate3d(0,0,0);
+//    backface-visibility: hidden;
+//}
+
+body > .loading-din-holder {
+    position: fixed;
+    z-index: $z-index_loading;
+    width: 100vw;
+    height: 100vh;
+    background: #000;
+    opacity: 0;
+}
+
+
+
+
+@mixin mx-break-point-small(){
+    @at-root html:not(.desktop) &{
+        @media screen and (max-width: $break-site-min) {
+            @content;
+        }
+    }
+}
+
+//@mixin calc-font-set (
+//    $desktopSize, $desktopLineHeight,
+//    $mobileSize, $mobileLineHeight,
+//) {
+//    font-size: calc-vw-mobile($mobileSize);
+//    line-height: $mobileLineHeight;
+//
+//    @include break-point-between($max-mobile-width, $max-content-width) {
+//        font-size: calc-vw-desktop($desktopSize);
+//        line-height: $desktopLineHeight;
+//    }
+//
+//    @include break-point-min($max-content-width) {
+//        font-size: $desktopSize;
+//        line-height: $desktopLineHeight;
+//    }
+//}
+
+@mixin calc-font-set (
+    $desktopSize, $desktopLineHeight,
+    $tabletSize, $tabletLineHeight,
+    $mobileSize, $mobileLineHeight,
+) {
+    font-size: calc-vw-mobile($mobileSize);
+    line-height: $mobileLineHeight;
+
+    @include break-point-between($max-mobile-width, $max-tablet-width) {
+        font-size: calc-vw-tablet($tabletSize);
+        line-height: $tabletLineHeight;
+    }
+
+    @include break-point-between($max-tablet-width, $max-content-width) {
+        font-size: calc-vw-desktop-font($desktopSize);
+        line-height: $desktopLineHeight;
+    }
+
+    @include break-point-min($max-desktop-width) {
+        font-size: $desktopSize;
+        line-height: $desktopLineHeight;
+    }
+}
+
+@mixin calc-letter-spacing($letter-spacing) {
+    $letter-spacing : (0.001 * $letter-spacing);
+    letter-spacing: $letter-spacing + em;
+}
+
+@mixin calc-font-letter-spacing-set (
+    $desktopLetterSpacing,
+    $mobileLetterSpacing
+) {
+    //@include calc-letter-spacing($mobileLetterSpacing);
+    //
+    //@include break-point-between($max-mobile-width, $max-content-width) {
+    //    @include calc-letter-spacing($desktopLetterSpacing);
+    //}
+    //
+    //@include break-point-min($max-content-width) {
+    //    @include calc-letter-spacing($desktopLetterSpacing);
+    //}
+}
+
+@mixin calc-prop-set-important (
+    $property,
+    $desktop, $mobile
+) {
+
+    $mobileVW: $mobile;
+    @if is-percentage($mobileVW)==false {
+        @if is-relative-length($mobileVW)==false {
+            $mobileVW: calc-vw-mobile($mobile);
+        }
+    }
+    $desktopVW: $desktop;
+    @if is-percentage($desktopVW)==false {
+        @if is-relative-length($desktopVW)==false {
+            $desktopVW: calc-vw-desktop($desktop);
+        }
+    }
+
+    //$desktopVW: $desktop;
+    #{$property}: $mobileVW !important;
+    @include break-point-between($max-mobile-width, $max-content-width) {
+        #{$property}: $desktopVW !important;
+    }
+    @include break-point-min($max-content-width) {
+        #{$property}: $desktop !important;
+    }
+}
+
+@mixin calc-prop-set (
+    $property,
+    $desktop, $mobile
+) {
+
+    $mobileVW: $mobile;
+    @if is-percentage($mobileVW)==false {
+        @if is-relative-length($mobileVW)==false {
+            $mobileVW: calc-vw-mobile($mobile);
+        }
+    }
+    $desktopVW: $desktop;
+    @if is-percentage($desktopVW)==false {
+        @if is-relative-length($desktopVW)==false {
+            $desktopVW: calc-vw-desktop($desktop);
+        }
+    }
+
+    //$desktopVW: $desktop;
+    #{$property}: $mobileVW;
+    @include break-point-between($max-mobile-width, $max-content-width) {
+        #{$property}: $desktopVW;
+    }
+
+    @include break-point-min($max-content-width) {
+        #{$property}: $desktopVW;
+        //#{$property}: $desktop;
+    }
+}
+
+@mixin calc-prop-ptm-set (
+    $property,
+    $desktop, $mobile
+) {
+
+    $mobileVW: $mobile;
+    @if is-percentage($mobileVW)==false {
+        @if is-relative-length($mobileVW)==false {
+            $mobileVW: calc-vw-mobile($mobile);
+        }
+    }
+    $tabletVW: $mobile;
+    @if is-percentage($tabletVW)==false {
+        @if is-relative-length($tabletVW)==false {
+            $tabletVW: calc-vw-tablet($mobile);
+        }
+    }
+    $desktopVW: $desktop;
+    @if is-percentage($desktopVW)==false {
+        @if is-relative-length($desktopVW)==false {
+            $desktopVW: calc-vw-desktop($desktop);
+        }
+    }
+
+    #{$property}: $mobileVW;
+    @include break-point-between($max-mobile-width, $break-tablet-max) {
+        #{$property}: $tabletVW;
+    }
+    @include break-point-between($break-tablet-max, $max-content-width) {
+        #{$property}: $desktopVW;
+    }
+    @include break-point-min($max-content-width) {
+        #{$property}: $desktop;
+    }
+}
+
+@function calc-vw-desktop-font($value-px) {
+    @return calc-vw($value-px, $max-desktop-width);
+}
+
+@function calc-vw-desktop($value-px) {
+    @return calc-vw($value-px, $max-content-width);
+}
+
+@function calc-vw-tablet($value-px) {
+    @return calc-vw($value-px, $max-tablet-width);
+}
+
+@function calc-vw-mobile($value-px) {
+    @return calc-vw($value-px, $psd-mobile-width);
+}
+
+@include break-point-max($break-mobile-max) {
+    br._pc,
+    .type-pc{
+        display: none !important;
+    }
+}
+
+@include break-point-min($break-tablet-min) {
+    br._m,
+    .type-mobile{
+        display: none !important;
+    }
+}
+
+
+
+
+//motion_scss
+@charset "utf-8";
+
+//페이지 타이틀 모션
+.motion-title {
+    &.onTrans {
+        span {
+            opacity: 1;
+            transform: translate3d(0, 0, 0);
+
+            @for $i from 1 through 3 {
+                $duration: 0.8s;
+                $delay: (0.4 * $i) + 0s;
+
+                &:nth-child(#{$i}) {
+                    transition: opacity $duration $delay ease-out, transform $duration $delay ease-out;
+                }
+            }
+        }
+    }
+    span {
+        opacity: 0;
+        transform: translate3d(0, 30%, 0);
+    }
+}
+
+//페이지 서브타이틀 모션
+.motion-sub-title {
+    &.onTrans {
+        span {
+            opacity: 1;
+            transform: translate3d(0, 0, 0);
+
+            @for $i from 1 through 3 {
+                $duration: 0.6s;
+                $delay: (0.2 * $i) + 0s;
+
+                &:nth-child(#{$i}) {
+                    transition: opacity $duration $delay ease-out, transform $duration $delay ease-out;
+                }
+            }
+        }
+    }
+    span {
+        opacity: 0;
+        transform: translate3d(0, 10%, 0);
+    }
+}
+
+//이미지 기본 모션
+.motion-basic-img {
+    figure {
+        overflow: hidden;
+        position: relative;
+        transform: translate3d(0,0,0);
+
+        img {
+            opacity: 0;
+            clip-path: polygon(0 0,1% 0,1% 100%,0 100%);
+            transform: translate3d(0,0,0) scale(1.2);
+        }
+
+        &.onTrans {
+            img {
+                clip-path: polygon(0 0,100% 0,100% 100%,0 100%);
+                opacity: 1;
+                transform: scale(1.0);
+                $duration : 2s;
+                transition: transform $duration 0.8s ease-out,
+                opacity $duration 0.8s ease-out,
+                clip-path 1s 0.8s ease-out;
+            }
+        }
+    }
+}
+
+//이미지 기본 모션
+.motion-basic2-img {
+    .img-holder {
+        overflow: hidden;
+        position: relative;
+        transform: translate3d(0,0,0);
+
+        .background, .din, img {
+            opacity: 0;
+            clip-path: polygon(0 0,1% 0,1% 100%,0 100%);
+            transform: translate3d(0,0,0) scale(1.2);
+        }
+
+        &.onTrans {
+            .background, .din, img {
+                clip-path: polygon(0 0,100% 0,100% 100%,0 100%);
+                opacity: 1;
+                transform: scale(1.0);
+                $duration : 1.5s;
+                transition: transform $duration 0.2s ease-out,
+                opacity $duration 0.2s ease-out,
+                clip-path 1s 0.2s ease-out;
+            }
+        }
+    }
+}
+
+//이미지 썸네일 기본 모션
+.motion-basic-img-thumb {
+    @extend .motion-basic-img;
+    figure {
+        &.onTrans {
+            img {
+                $duration: 0.8s;
+                transition: transform $duration 0.2s ease-out,
+                opacity $duration 0.2s ease-out,
+                clip-path $duration 0.2s ease-out;
+            }
+        }
+    }
+}
+
+//제품 영상 모션
+.motion-product-video {
+    figure {
+        //overflow: hidden;
+        position: relative;
+        transform: translate3d(0,0,0);
+        clip-path: polygon(0 0,1% 0,1% 100%,0 100%);
+        $duration : 1.2s;
+        transition: clip-path $duration ease-out;
+        //opacity $duration ease-out;
+    }
+    &.onTrans {
+        figure {
+            clip-path: polygon(0 0,100% 0,100% 100%,0 100%);
+        }
+    }
+}
+
+//기본 텍스트 모션
+.motion-basic-txt {
+    opacity: 0;
+    transform: translate3d(0, 20%, 0);
+    &.onTrans {
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
+        transition: opacity 0.8s ease-out, transform 0.8s  ease-out;
+    }
+}
+
+//타이틀,서브 텍스트 모션
+.motion-content-txt {
+    &.onTrans {
+        span {
+            opacity: 1;
+            transform: translate3d(0 ,0 ,0);
+            transition: opacity 0.8s 0.3s ease-out, transform 0.8s 0.3s ease-out;
+        }
+        h3,h4, strong {
+            opacity: 1;
+            transform: translate3d(0 ,0 ,0);
+            transition: opacity 0.8s 0.3s ease-out, transform 1.2s 0.3s ease-out;
+        }
+        p {
+            opacity: 1;
+            transform: translate3d(0 ,0 ,0);
+            transition: opacity 0.6s 0.6s ease-out, transform 0.8s 0.6s ease-out;
+        }
+    }
+    span {
+        opacity: 0;
+        transform: translate3d(0, 20%, 0);
+    }
+    h3, h4, strong {
+        opacity: 0;
+        transform: translate3d(0, 20%, 0);
+    }
+    p {
+        opacity: 0;
+        transform: translate3d(0, 30%, 0);
+    }
+}
+
+//blur-box 모션
+.motion-blur-box {
+    opacity: 0;
+    transform: translate3d(0, 10%, 0);
+
+    &.onTrans {
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
+        transition: opacity 0.8s 0s ease-out, transform 0.8s 0s ease-out;
+
+        h4 {
+            opacity: 1;
+            transform: translate3d(0, 0, 0);
+            transition: opacity 1.2s 0.4s ease-out, transform 1.2s 0.4s ease-out;
+        }
+
+        p {
+            opacity: 1;
+            transform: translate3d(0, 0, 0);
+            transition: opacity 0.8s 0.8s ease-out, transform 0.8s 0.8s ease-out;
+        }
+    }
+
+    h4 {
+        opacity: 0;
+        transform: translate3d(0,10%,0);
+    }
+    p {
+        opacity: 0;
+        transform: translate3d(0,20%,0);
+    }
+}
+
+//btn 모션
+.motion-btn {
+    opacity: 0;
+    transform: translate3d(0, 30%, 0);
+    &.onTrans {
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
+        transition: opacity 0.8s 0.5s ease-out, transform 0.8s 0.5s ease-out;
+    }
+}
+
+//기본 opacity 모션
+.motion-basic {
+    opacity: 0;
+    &.onTrans {
+        opacity: 1;
+        transition: opacity 0.8s 0.2s ease-out;
+    }
+}
+
+//기본 transform 모션
+.motion-basic2 {
+    opacity: 0;
+    transform: translate3d(0, 10%, 0);
+    &.onTrans {
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
+        transition: opacity 0.8s 0.4s ease-out, transform 0.8s 0.4s ease-out;
+    }
+}
+
+//텍스트 slide-up 모션
+.motion-slide-up {
+    h3, h4, p {
+        overflow: hidden;
+        width: 100%;
+        opacity: 0;
+
+        span {
+            display: inline-block;
+            transform: translate3d(0, 80%, 0);
+            opacity: 0;
+        }
+    }
+    &.onTrans {
+        h3, h4, p {
+            opacity: 1;
+            transition: opacity 0.2s ease-out;
+
+            &:nth-of-type(2) {
+                opacity: 1;
+                transition-delay: 0.6s;
+            }
+            &:nth-of-type(3) {
+                opacity: 1;
+                transition-delay: 0.9s;
+            }
+        }
+    }
+}
+
+//텍스트 slide-up 모션
+@mixin motion-txt-delay($length, $duration, $startDelay) {
+    @for $i from 1 through $length {
+        $delay : $startDelay +  (0.03 * $i);
+
+        span {
+            &:nth-child(#{$i}) {
+                opacity: 1;
+                transform: translate3d(0, 0, 0);
+                transition: opacity #{$duration}s #{$delay}s ease-out, transform #{$duration}s #{$delay}s cubic-bezier(0.17, 0.18, 0.58, 1);
+            }
+        }
+
+    }
+}
+
+//이미지 blur 모션
+.motion-blur-img {
+    figure {
+        overflow: hidden;
+        position: relative;
+        transform: translate3d(0,0,0);
+        img {
+            transform: translate3d(0,0,0) scale(1.2);
+        }
+        .mask {
+            position: absolute;
+            top: 0; left: 0;
+            z-index: 1;
+            width: 100%; height: 110%;
+            transform: translate3d(0, -5%, 0);
+            background: #fff;
+        }
+
+        &.onTrans {
+            img {
+                transform: scale(1.0);
+                transition: transform 1.2s 0.4s ease-out;
+            }
+            .mask {
+                transform: translate3d(100%,-5%,0);
+                transition: transform 1s 0.4s ease-in-out;
+            }
+        }
+    }
+}
+
+.motion-blur-thumb{
+    @extend .motion-blur-img;
+    figure {
+        &.onTrans {
+            .mask {
+                transition: transform 0.8s 0.2s ease-in-out;
+            }
+        }
+    }
+}
+
+// 이미지 자동 롤링 (공통 rolling 셋팅, fade로 전환되는 타입)
+@mixin loop-rolling-set($length) {
+    @for $i from 0 to $length {
+        figure:nth-child(#{$i+1}) {
+            opacity: 0;
+            position: absolute;
+            top: 50%; left: 50%;
+            transform: translate3d(-50%, -50%, 0);
+        }
+    }
+}
+@mixin loop-fade-rolling($length, $duration, $trans, $startDelay) {
+    $transDu: $trans * 1%;
+
+    $showPer: (100/$length) * 1%;
+    $retainPer: $showPer + $transDu;
+    $hidePer: (100-$trans) * 1%;
+
+    @for $i from 0 to $length {
+        $toDuration: $duration;
+        $delay: ($toDuration/($length) * $i) + $startDelay;
+
+        figure:nth-child(#{$i+1}) {
+            animation : loop-fade-type #{$toDuration}s #{$delay}s infinite linear;
+        }
+    }
+
+    @keyframes loop-fade-type {
+        0% {
+            opacity : 0;
+        }
+        #{$transDu} {
+            opacity : 1;
+        }
+        #{$showPer} {
+            opacity : 1;
+        }
+        #{$showPer + $transDu} {
+            opacity : 0;
+        }
+        100% {
+            opacity : 0;
+        }
+    }
+}
+
+
+
+
+
+
+
+
+// guid
+
+.img-guide{
+    [class*="img-col"]{
+        @include calc-prop-set('margin-top', 50px, 50px);
+    }
+    h2{
+        @extend .font-en-size-40;
+        position: absolute;
+        z-index: 1;
+        @include calc-prop-set('top', 50px, 10px);
+        @include calc-prop-set('left', 50px, 10px);
+    }
+}
+
+
+[class*="img-col"]{
+    margin-left: -41%;
+    @include break-point-max($break-site-min) {
+        margin-left: -18%;
+    }
+    @include break-point-max($break-mobile-max) {
+        margin-left: 0;
+    }
+}
+
+//viedo
+video {
+    width:100%;
+    height:100%;
+}
+
+.column{
+
+    &.img-col-1 {
+        @include calc-prop-set('margin-right', (100% / 6)* 5, 0);
+    }
+
+    &.img-col-2 {
+        @include calc-prop-set('margin-right', (100% / 6)* 4, 0);
+    }
+
+    &.img-col-3 {
+        @include calc-prop-set('margin-right', (100% / 6)* 3, 0);
+    }
+
+    &.img-col-4 {
+        @include calc-prop-set('margin-right', (100% / 6)* 2, 0);
+    }
+
+    &.img-col-5 {
+        @include calc-prop-set('margin-right', (100% / 6)* 1, 0);
+    }
+}

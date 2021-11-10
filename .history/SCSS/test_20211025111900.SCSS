@@ -1,0 +1,85 @@
+@charset "utf-8";
+
+*, *:before, *:after{
+    box-sizing:border-box;
+}
+
+
+*{
+    word-break: keep-all;
+    -ms-word-wrap: break-word;
+    word-wrap: break-word;
+    -webkit-overflow-scrolling:touch;
+}
+
+
+*:before, *:after{
+    display: none;
+    content: '';
+}
+
+body, dl, ul, ol, li, dt, dd, blockquote, p, h1, h2, h3, h4, h5, h6 {
+    padding: 0;
+    margin: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    margin: 0;
+    font-weight: normal;
+}
+
+ul, ol {
+    list-style: none;
+}
+
+caption, legend {
+    visibility: hidden;
+    height: 0;
+    width: 0;
+    font-size: 0;
+    text-indent: -9999px;
+}
+
+pre, xmp, plaintext, listing, samp, kbd, code, figure, figcaption {
+    margin: 0
+}
+
+iframe {
+    border: none;
+}
+
+img {
+    vertical-align: top
+}
+
+
+hr{
+    display: block;
+    height:1px;
+    border: 0;
+    border-top: 1px solid #ccc;
+    margin: 1em 0;
+    padding: 0;
+}
+
+
+audio,
+canvas,
+iframe,
+img,
+svg,
+video {
+    vertical-align: middle;
+}
+
+
+fieldset {
+    border: 0;
+    margin: 0;
+    padding: 0;
+}
+
+
+i, cite, em, var, address, dfn {
+    font-style: normal;
+}
